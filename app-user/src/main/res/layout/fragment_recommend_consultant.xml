@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_card_white_radius_10_border_0"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_recommend_module_title" />
+
+            <com.mtjk.view.MyRefreshRecyclerView
+                android:id="@+id/consultantRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:overScrollMode="never"
+                app:my_divider_color="#E6F0F2"
+                app:my_divider_height="1px"
+                app:my_item_layout="@layout/item_recommend_consultant" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

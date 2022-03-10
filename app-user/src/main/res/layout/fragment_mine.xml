@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mtjk.bean.BeanUser" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.MineFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#133C53"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <com.mtjk.view.MyImageView
+                        load="@{data.avatar}"
+                        radius="@{30}"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_vertical"
+                        app:my_default="@drawable/default_header" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="80dp"
+                        android:paddingVertical="5dp">
+
+                        <RelativeLayout
+                            android:id="@+id/info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:maxWidth="100dp"
+                                android:maxLines="1"
+                                android:text="@{data.nickName}"
+                                android:textColor="#fff"
+                                android:textSize="21dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/name"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_toRightOf="@id/name"
+                                android:drawableLeft="@drawable/icon_mine_vip"
+                                android:drawablePadding="5dp"
+                                android:text="会员"
+                                android:textColor="#fff"
+                                android:textSize="12dp"
+                                android:visibility="@{data.vipLevel>0?View.VISIBLE:View.GONE}" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/edit"
+                                android:layout_width="60dp"
+                                android:layout_height="20dp"
+                                android:layout_alignTop="@id/name"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/selector_mine_edit"
+                                android:paddingHorizontal="2dp"
+                                android:text="编辑资料"
+                                android:textColor="#fff"
+                                android:textSize="13dp" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/conmpanyname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/info"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#fff"
+                            android:textSize="14dp"
+                            android:visibility="gone"
+                            tools:text="北京小桔科技有限公司" />
+                    </RelativeLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/follow"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{data.followExpertCount}"
+                            android:textColor="#fff"
+                            android:textSize="10dp"
+                            tools:text="1231" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="关注"
+                            android:textColor="#fff"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="20dp"
+                        android:background="#E6F0F2" />
+
+                    <LinearLayout
+                        android:id="@+id/collection"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{data.favoriteCount}"
+                            android:textColor="#fff"
+                            android:textSize="10dp"
+                            tools:text="4231" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="收藏"
+                            android:textColor="#fff"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="20dp"
+                        android:background="#E6F0F2" />
+
+                    <LinearLayout
+                        android:id="@+id/history"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{data.browseCount}"
+                            android:textColor="#fff"
+                            android:textSize="10dp"
+                            tools:text="424" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="浏览足迹"
+                            android:textColor="#fff"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/selector_mine_top_bg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/selector_card_10"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="20dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="20dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/my_evaluation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/icon_testing" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="我的测评"
+                            android:textColor="#133C53"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="20dp"
+                        android:background="#fff" />
+
+                    <LinearLayout
+                        android:id="@+id/my_consult"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/icon_mine_consulting" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="我的咨询"
+                            android:textColor="#133C53"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="20dp"
+                        android:background="#fff" />
+
+                    <LinearLayout
+                        android:id="@+id/my_course2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/icon_course" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="我的课程"
+                            android:textColor="#133C53"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <com.mtjk.view.ItemView
+                android:id="@+id/my_course"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:my_icon="@drawable/icon_my_course"
+                app:my_title="我的课程" />
+
+            <com.mtjk.view.ItemView
+                android:id="@+id/my_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:my_icon="@drawable/icon_mine_order"
+                app:my_title="我的订单" />
+
+            <com.mtjk.view.ItemView
+                android:id="@+id/my_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:my_icon="@drawable/icon_mine_wallet"
+                app:my_title="我的钱包" />
+
+            <com.mtjk.view.ItemView
+                android:id="@+id/my_vipcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:my_icon="@drawable/icon_mine_vipcard"
+                app:my_title="会员卡" />
+
+            <com.mtjk.view.ItemView
+                android:id="@+id/my_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:my_icon="@drawable/icon_mine_help"
+                app:my_title="帮助与反馈" />
+
+            <com.mtjk.view.ItemView
+                android:id="@+id/my_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:my_icon="@drawable/icon_mine_setting"
+                app:my_title="设置" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

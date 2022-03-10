@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mtjk.bean.BeanString" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/item"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/base_selector_button_dark"
+            android:enabled="@{data.itemSelected}"
+            android:gravity="center"
+            android:stateListAnimator="@null"
+            android:text="@{data.str}"
+            android:textColor="@drawable/base_selector_color_button_white" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:my_item_layout="@layout/item_qualification_list" />
+
+        <LinearLayout
+            android:id="@+id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="148dp"
+                android:layout_height="114dp"
+                android:src="@drawable/base_icon_empty" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add"
+                android:layout_width="122dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/selector_button_white"
+                android:drawableLeft="@drawable/icon_add"
+                android:paddingLeft="20dp"
+                android:stateListAnimator="@null"
+                android:paddingRight="20dp"
+                android:text="添加证书" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

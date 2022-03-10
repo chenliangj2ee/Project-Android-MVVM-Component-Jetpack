@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="time"
+            type="String" />
+
+        <variable
+            name="nan"
+            type="Integer" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{title}"
+                        android:textColor="#1F2326"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/time"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_edit_bg"
+                        android:hint="请输入"
+                        android:inputType="number"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:singleLine="true"
+
+                        android:textColor="#1F2326"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="小时"
+                        android:textColor="#1F2326"
+                        android:textSize="17dp" />
+
+                </LinearLayout>
+
+                <include layout="@layout/layout_line" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ziliao"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="证明资料"
+                        android:textColor="#1F2326"
+                        android:textSize="17dp" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:orientation="horizontal">
+
+
+                        <RadioButton
+                            android:id="@+id/radio1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/base_selector_radiobutton_bg"
+                            android:button="@null" />
+
+                        <TextView
+
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="上传证明"
+                            android:textColor="#515357" />
+
+                        <RadioButton
+                            android:id="@+id/radio2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/base_selector_radiobutton_bg"
+                            android:button="@null" />
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="文字描述"
+                            android:textColor="#515357" />
+
+                    </RadioGroup>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <include layout="@layout/layout_line" />
+
+                <TextView
+                    android:id="@+id/sczm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="上传证明"
+                    android:textColor="#1F2326"
+                    android:textSize="17dp" />
+
+                <com.mtjk.view.MyRefreshRecyclerView
+                    android:id="@+id/refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    app:my_item_layout="@layout/item_selector_image"
+                    app:my_layout_manager="gridLayout"
+                    app:my_span_count="3" />
+
+                <include layout="@layout/layout_line" />
+
+
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/editLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"
+                    app:my_max_length="200" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/base_selector_button_dark"
+            android:enabled="false"
+            android:stateListAnimator="@null"
+            android:text="保存"
+            android:textColor="@drawable/base_selector_color_button_white" />
+    </LinearLayout>
+</layout>

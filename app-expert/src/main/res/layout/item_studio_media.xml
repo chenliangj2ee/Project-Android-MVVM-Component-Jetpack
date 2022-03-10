@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="image"
+            type="com.fcyd.expert.bean.BeanImageSelected" />
+
+        <import type="android.view.View"></import>
+
+    </data>
+
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.mtjk.view.MyImageView
+            load="@{image.url}"
+            radius="@{5}"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background='@{image.url.startsWith("http")?@drawable/load_default:@drawable/icon_add_image}'
+            android:scaleType="center" />
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/icon_video_bg"
+            android:visibility='@{image.url.endsWith(".mp4")?View.VISIBLE:View.GONE}' />
+
+        <ImageView
+            android:id="@+id/play"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/icon_play"
+            android:visibility='@{image.url.endsWith(".mp4")?View.VISIBLE:View.GONE}' />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="right"
+            android:padding="3dp"
+            android:src="@drawable/icon_studio_medio_close"
+            android:visibility='@{image.add?View.GONE:View.VISIBLE}' />
+
+    </FrameLayout>
+</layout>

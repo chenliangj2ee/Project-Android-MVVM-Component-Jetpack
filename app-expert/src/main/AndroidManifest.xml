@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.fcyd.expert">
+
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.ACCESS_WIFI_STATE"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:node="replace" /> <!-- 【常用】 移动推送 TPNS SDK所需权限 -->
+    <uses-permission
+        android:name="android.permission.WAKE_LOCK"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.VIBRATE"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.RECEIVE_USER_PRESENT"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.GET_TASKS"
+        tools:node="replace" />
+
+    <application
+        android:name=".ExpertApplication"
+        android:icon="@mipmap/logo"
+        android:allowBackup="false"
+        android:label="${APP_NAME}"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BASE"
+        android:usesCleartextTraffic="true"
+        tools:replace="name,icon,label,roundIcon,android:theme,android:allowBackup">
+        <activity
+            android:name=".activity.HelpAndActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.ExpertAuthActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PersonalInfoEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SettingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LogOffActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AccountSafeActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LogOffFailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MyOrderActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WalletActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WalletDetailListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WalletWithdrawActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WalletWithdrawListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AuthActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ExpertSettledActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".activity.ReadingAgreementActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StudioMediaEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StudioUserEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReleaseConsultRemindActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReleaseConsultActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ConsultTimeSettingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ExpertIdUploadActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ExpertAuthSubmitSuccessActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EducationEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.QualificationListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.QualificationEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ExperienceEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReleaseConsultSuccessActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ConsultManagerActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MyFansActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ConsultFeedbackActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MyLiveListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="TD_APP_ID"
+            android:value="AF860118FB7D4A2096DD3EF4F23A56F8" />
+        <meta-data
+            android:name="TD_CHANNEL_ID"
+            android:value="home" /> <!-- 推送，服务接入点域名：新加坡 -->
+        <meta-data
+            android:name="XG_SERVER_SUFFIX"
+            android:value="tpns.sh.tencent.com" /> <!-- 【必须】 移动推送 TPNS receiver广播接收 -->
+        <receiver
+            android:name="com.tencent.android.tpush.XGPushReceiver"
+            android:process=":xg_vip_service">
+            <intent-filter android:priority="0x7fffffff">
+
+                <!-- 【必须】 移动推送 TPNS SDK的内部广播 -->
+                <action android:name="com.tencent.android.xg.vip.action.SDK" />
+                <action android:name="com.tencent.android.xg.vip.action.INTERNAL_PUSH_MESSAGE" />
+                <action android:name="com.tencent.android.xg.vip.action.ACTION_SDK_KEEPALIVE" />
+                <!-- 【可选】 系统广播：网络切换 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <!-- 【可选】 系统广播：开屏 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 【可选】 一些常用的系统广播，增强移动推送 TPNS service的复活机会，请根据需要选择。当然，您也可以添加App自定义的一些广播让启动service -->
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver> <!-- 【必须】移动推送 TPNS service -->
+        <service
+            android:name="com.tencent.android.tpush.service.XGVipPushService"
+            android:persistent="true"
+            android:process=":xg_vip_service" /> <!-- 【必须】通知 service ，android:name 部分改为包名.XGVIP_PUSH_ACTION -->
+        <service
+            android:name="com.tencent.android.tpush.rpc.XGRemoteService"
+            android:exported="false"
+            >
+            <intent-filter>
+
+                <!-- 【必须】请修改为当前APP名包.XGVIP_PUSH_ACTION -->
+                <action android:name="${APPLICATIONID}.XGVIP_PUSH_ACTION" />
+            </intent-filter>
+        </service>
+        <!-- 【必须】【注意】authorities 修改为包名.XGVIP_PUSH_AUTH -->
+        <provider
+            android:name="com.tencent.android.tpush.XGPushProvider"
+            android:authorities="${APPLICATIONID}.XGVIP_PUSH_AUTH"
+            tools:replace=":authorities" /> <!-- 【必须】【注意】authorities 修改为包名.TPUSH_PROVIDER -->
+        <provider
+            android:name="com.tencent.android.tpush.SettingsContentProvider"
+            android:authorities="${APPLICATIONID}.TPUSH_PROVIDER"
+            tools:replace=":authorities" /> <!-- 【可选】用于增强保活能力 -->
+        <provider
+            android:name="com.tencent.android.tpush.XGVipPushKAProvider"
+            android:authorities="${APPLICATIONID}.AUTH_XGPUSH_KEEPALIVE"
+            android:exported="true"
+            tools:replace=":authorities" /> <!-- 推送安卓p及以上需要设置 -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+
+</manifest>

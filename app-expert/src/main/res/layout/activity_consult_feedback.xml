@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.fcyd.expert.bean.BeanFeedback" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.mtjk.view.MyEditArea
+            android:layout_width="match_parent"
+            android:layout_height="388dp"
+            app:my_hint="请输入来访者咨询方案(最少20字)"
+            app:my_max_length="2000"
+            android:layout_margin="15dp"
+            app:my_text="@={bean.content}"
+            app:my_textSize="17dp" />
+    </LinearLayout>
+</layout>

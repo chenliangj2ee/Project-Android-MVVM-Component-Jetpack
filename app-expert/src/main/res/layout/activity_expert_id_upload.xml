@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bean"
+            type="com.fcyd.expert.bean.BeanAuth" />
+
+        <variable
+            name="type"
+            type="Integer" />
+
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_header_expert_auth" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/idType"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="证件类型"
+                    app:my_value="@={bean.id_type}"
+                    app:my_value_hint=" " />
+
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/idNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+                    app:my_lineShow="true"
+                    app:my_max_length="19"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="证件号码"
+                    app:my_value="@={bean.id_Num}"
+                    app:my_value_hint=" " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="上传证件"
+                    android:textColor="#1F2326"
+                    android:textSize="17dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/idBg"
+                        load="@{bean.id_image1}"
+                        radius="@{5}"
+                        android:layout_width="216dp"
+                        android:layout_height="132dp"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        app:my_default="@drawable/icon_id_bg_zheng" />
+
+
+                    <ImageView
+                        android:id="@+id/camera1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_id_camera_zheng" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="上传身份证人像面"
+                    android:textColor="#008599"
+                    android:textSize="14dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility='@{type==0?View.VISIBLE:View.GONE}'>
+
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/idBg2"
+                        load="@{bean.id_image2}"
+                        radius="@{5}"
+                        android:layout_width="216dp"
+                        android:layout_height="132dp"
+                        android:layout_gravity="center"
+                        android:scaleType="center"
+                        app:my_default="@drawable/icon_id_bg_fan" />
+
+
+                    <ImageView
+                        android:id="@+id/camera2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_id_camera_zheng" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="上传身份证国徽面"
+                    android:textColor="#008599"
+                    android:textSize="14dp"
+                    android:visibility='@{type==0?View.VISIBLE:View.GONE}' />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="吱吱心理会确保您的信息安全，请放心填写、上传"
+                    android:textColor="#A9ADB2"
+                    android:textSize="12dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/next"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/base_selector_button_dark"
+                    android:enabled="false"
+                    android:stateListAnimator="@null"
+                    android:text="提交"
+                    android:textColor="@drawable/base_selector_color_button_white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

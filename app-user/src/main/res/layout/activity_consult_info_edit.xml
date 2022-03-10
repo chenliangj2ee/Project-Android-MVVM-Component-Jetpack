@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#E6F0F2" />
+        </LinearLayout>
+
+
+        <com.mtjk.view.ItemEditView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_title="姓名"
+            app:my_value="" />
+
+        <com.mtjk.view.ItemEditView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_edit="false"
+            app:my_title="年龄"
+            app:my_value=""
+            app:my_value_hint="请选择 " />
+
+        <com.mtjk.view.ItemEditView
+            android:id="@+id/sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_edit="false"
+            app:my_title="性别"
+            app:my_value=""
+            app:my_value_hint="请选择 " />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="问题类型"
+            android:textColor="#1F2326"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="问题描述(选填)"
+                android:textColor="#1F2326"
+                android:textSize="16dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/selector_edit_bg">
+
+                <EditText
+                    android:id="@+id/edit1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0000"
+                    android:gravity="top"
+                    android:hint="请简单描述您需要咨询的问题"
+                    android:maxLength="200"
+                    android:padding="5dp"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/num1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_margin="5dp"
+                    android:text="0/200" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="期望效果(选填)"
+                android:textColor="#1F2326"
+                android:textSize="16dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/selector_edit_bg">
+
+                <EditText
+                    android:id="@+id/edit2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0000"
+                    android:gravity="top"
+                    android:hint="请简单描述您期望达到的咨询效果"
+                    android:maxLength="200"
+                    android:padding="5dp"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/num2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_margin="5dp"
+                    android:text="0/200" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="隐私保护：吱吱心理平台全方位保护您的信息安全，您所填写的所有信息将受到安全保护，请放心填写。"
+                android:textColor="#A9ADB2"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

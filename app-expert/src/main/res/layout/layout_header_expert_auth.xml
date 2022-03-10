@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#133C53"
+    android:orientation="vertical"
+    android:paddingTop="40dp"
+    tools:showIn="@layout/activity_user_info_edit">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="backAction"
+            android:padding="12dp"
+            android:src="@drawable/icon_back_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="专家认证"
+            android:textColor="#FFF"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="帮助"
+            android:textColor="#FFF"
+            android:visibility="invisible"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+
+        <CheckBox
+            android:id="@+id/step1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/base_selector_radiobutton_bg"
+            android:button="@null"
+            android:enabled="false" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/line_white_xu" />
+
+        <CheckBox
+            android:id="@+id/step2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/base_selector_radiobutton_bg"
+            android:button="@null"
+            android:enabled="false" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/line_white_xu" />
+
+        <CheckBox
+            android:id="@+id/step3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/base_selector_radiobutton_bg"
+            android:button="@null"
+            android:enabled="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="填写信息"
+            android:textColor="#FFF"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="提交初审"
+            android:textColor="#FFF"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="视频复审"
+            android:textColor="#FFF"
+            android:textSize="14dp" />
+    </LinearLayout>
+</LinearLayout>

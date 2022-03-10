@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mtjk.bean.BeanRecommend" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.mtjk.view.ItemView
+            android:id="@+id/accountSafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:my_title="账号与安全" />
+
+        <com.mtjk.view.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:my_title="消息管理" />
+
+        <com.mtjk.view.ItemView
+            android:id="@+id/userXy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_title="用户协议" />
+
+        <com.mtjk.view.ItemView
+            android:id="@+id/userYs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_title="隐私协议" />
+
+        <com.mtjk.view.ItemView
+            android:id="@+id/upgrade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_title="版本更新" />
+
+        <com.mtjk.view.ItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:my_title="清除缓存" />
+
+        <com.mtjk.view.ItemView
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:my_title="关于吱吱" />
+
+        <com.mtjk.view.ItemView
+            android:id="@+id/exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:my_rightShow="false"
+            app:my_title="退出登录" />
+    </LinearLayout>
+</layout>

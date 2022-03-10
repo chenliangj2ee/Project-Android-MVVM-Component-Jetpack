@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanTags" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/item"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/selector_tags_bg"
+            android:enabled="@{data.itemSelected}"
+            android:gravity="center"
+            android:stateListAnimator="@null"
+            android:text="@{data.name}"
+            android:textColor="@drawable/selector_color_tags"
+            android:textSize="14dp" />
+    </LinearLayout>
+</layout>

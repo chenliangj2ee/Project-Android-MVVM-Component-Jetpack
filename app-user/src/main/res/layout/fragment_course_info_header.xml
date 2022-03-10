@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanCourse" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.mtjk.view.MyFrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            app:my_ratio="1080:1920">
+
+        </com.mtjk.view.MyFrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@{data.title}"
+            android:textColor="#1F2326"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:text="哈佛80年幸福研究结果表明 " />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:lineSpacingExtra="4dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@{data.introduction}"
+            android:textColor="#515357"
+            android:textSize="15dp"
+            tools:text="哈佛80年幸福研究结果表明：和我们人生幸福度的联系最为紧密的是，我们人际关系的质量。" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text='@{data.sectionList.size()+"讲  |  播放量"+data.playCount}'
+            android:textColor="#A9ADB2"
+            android:textSize="12dp"
+            tools:text="27讲  |  播放量25万" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/app_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/selector_title_tag" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="选集"
+                android:textColor="#1F2326"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text='@{"("+data.sectionList.size() +")"}'
+                android:textColor="#A9ADB2"
+                android:textSize="17dp"
+                tools:text="(4)" />
+
+            <TextView
+                android:id="@+id/all"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:text="全部"
+                android:textColor="#515357"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:src="@drawable/icon_right"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/catalogueRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            app:my_item_layout="@layout/item_course_catalogue"
+            app:my_orientation="horizontal" />
+    </LinearLayout>
+</layout>

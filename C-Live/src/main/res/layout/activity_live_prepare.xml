@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/local_preview_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/start"
+        android:layout_width="130dp"
+        android:layout_height="@dimen/button_height"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/live_action_button_bg"
+        android:gravity="center"
+        android:text="@string/go_live_text"
+        android:textColor="@color/live_action_button_text_color"
+        android:textSize="@dimen/text_size_normal" />
+</FrameLayout>
+

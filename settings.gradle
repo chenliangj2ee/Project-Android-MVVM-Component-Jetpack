@@ -1,0 +1,18 @@
+rootProject.name = "ZhiZhi"
+include ':app-user'
+include ':L-Base'
+include ':L-Compiler'
+include ':L-ImageSelector'
+include ':L-Player'
+include ':app-expert'
+include ':L-CityPicker'
+include ':C-Live'
+include ':L-Live-Framework'
+
+include ':L-IM-Core'
+include ':C-IM'
+include ':L-IM-Chat'
+include ':L-IM-Contact'
+include ':L-IM-Conversation'
+include ':L-IM-Group'
+include ':L-IM-Calling'

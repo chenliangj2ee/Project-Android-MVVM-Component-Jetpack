@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?><!--tag==主播layout-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/icon_live_bg"
+    android:orientation="vertical"
+    android:paddingTop="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/icon_live_bg"
+        android:orientation="vertical">
+
+        <!-- 顶部主播信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp">
+
+                <com.mtjk.view.MyImageView
+                    android:id="@+id/userHeader"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/default_header" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="主播"
+                        android:textColor="#FFF"
+                        android:textSize="12dp" />
+
+                    <TextView xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/viewNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/icon_live_view_user"
+                        android:gravity="center"
+                        android:text="0人看过"
+                        android:textColor="#D6EAED"
+                        android:textSize="8dp"
+                        tools:text="0人看过" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/user3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp" />
+
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/user2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp" />
+
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/user1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp" />
+
+                    <TextView
+                        android:id="@+id/userCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:textColor="#FFF"
+                        android:textSize="14dp" />
+
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/close"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        android:src="@drawable/live_bottom_btn_close" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/liveTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/base_selector_button_dark_24"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="主题：正念冥想，清晨唤醒"
+                android:textColor="#fff"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:id="@+id/host_in_top_participant_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/room_owner_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <!--主播画面-->
+                        <FrameLayout
+                            android:id="@+id/room_owner_video_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#123243">
+
+                        </FrameLayout>
+
+                        <!--声音-->
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/live_host_in_owner_mute_icon"
+                            android:layout_width="@dimen/live_host_in_seat_item_more_btn_size"
+                            android:layout_height="@dimen/live_host_in_seat_item_more_btn_size"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:src="@drawable/host_seat_item_mute_icon"
+                            android:visibility="gone" />
+                        <!--声音动画-->
+                        <io.agora.vlive.ui.view.VoiceIndicateGifView
+                            android:id="@+id/live_host_in_owner_voice_indicate"
+                            android:layout_width="@dimen/live_host_in_seat_item_voice_indicate_width"
+                            android:layout_height="@dimen/live_host_in_seat_item_voice_indicate_height"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="@dimen/live_host_in_seat_item_margin"
+                            android:layout_marginBottom="@dimen/live_host_in_seat_item_margin"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+                    <!--粉丝列表-->
+                    <io.agora.vlive.ui.view.LiveRoomUserLayout
+                        android:id="@+id/host_in_participant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_toEndOf="@id/room_owner_layout"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <!--粉丝-->
+            <io.agora.vlive.ui.view.LiveMultiHostSeatLayout2
+                android:id="@+id/live_host_in_seat_layout"
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@color/black_alpha" />
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <!--    底部-->
+
+            <!--    消息-->
+
+
+            <io.agora.vlive.ui.view.bottomLayout.LiveBottomButtonLayout
+                android:id="@+id/host_in_bottom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/live_bottom_layout_height"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin" />
+
+            <io.agora.vlive.ui.view.LiveRoomMessageList
+                android:id="@+id/message_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/host_in_bottom_layout"
+                android:layout_below="@id/live_host_in_seat_layout"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="52dp"
+                android:overScrollMode="never"
+                android:paddingHorizontal="15dp" />
+
+            <io.agora.vlive.ui.view.RtcStatsView
+                android:id="@+id/multi_host_rtc_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/live_host_in_seat_layout"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:background="@drawable/color_round_rect_gray_light"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <io.agora.vlive.ui.view.LiveMessageEditLayout
+        android:id="@+id/message_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/live_message_edit_height"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:paddingTop="@dimen/live_message_text_margin"
+        android:paddingBottom="@dimen/live_message_text_margin"
+        android:visibility="gone" />
+</RelativeLayout>

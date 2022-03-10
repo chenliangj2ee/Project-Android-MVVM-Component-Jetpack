@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="user"
+            type="io.agora.vlive.bean.BeanLinkUser" />
+
+        <import type="com.mtjk.base.R" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            load="@{user.avatar}"
+            radius="@{17}"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="#eee" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="60dp"
+            android:gravity="center_vertical"
+            android:text="@{user.nickName}"
+            android:textColor="#333333" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/base_selector_button_grey_24"
+            android:gravity="center"
+            android:textColor="@drawable/base_selector_color_button_dark"
+            android:stateListAnimator="@null"
+            android:text='拒绝'
+            android:textSize="14dp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/accept"
+            bindBackground="@{user.linkAccept==true ? R.drawable.base_selector_button_grey_24: R.drawable.base_selector_button_dark_24}"
+            bindButtonColor='@{user.linkAccept==true?"#A9ADB2":"#FFFFFF"}'
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/base_selector_button_dark_34"
+            android:gravity="center"
+            android:stateListAnimator="@null"
+            android:text='@{user.linkAccept==true?"已接受":"接受"}'
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#E6F0F2" />
+    </FrameLayout>
+</layout>

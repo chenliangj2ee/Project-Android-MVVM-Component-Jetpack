@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="309dp"
+            android:background="@drawable/wallet_withdraw_header_bg" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="40dp">
+            <LinearLayout
+                android:id="@+id/tool_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:onClick="backAction"
+                    android:padding="12dp"
+                    android:src="@drawable/icon_back_white" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="余额提现"
+                    android:textColor="#FFF"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/todetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:onClick="toDetail"
+                    android:text="明细"
+                    android:textColor="#FFF"
+                    android:textSize="14dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/withdraw_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/tool_header"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
+
+                <CheckBox
+                    android:id="@+id/step1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/base_selector_radiobutton_bg"
+                    android:checked="true"
+                    android:button="@null"
+                    android:enabled="false" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/line_white_xu" />
+
+                <CheckBox
+                    android:id="@+id/step2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/base_selector_radiobutton_bg"
+                    android:button="@null"
+                    android:enabled="false" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/line_white_xu" />
+
+                <CheckBox
+                    android:id="@+id/step3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/base_selector_radiobutton_bg"
+                    android:button="@null"
+                    android:enabled="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/withdraw_progress_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/withdraw_progress"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="提现申请"
+                    android:textColor="#FFF"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="平台审核"
+                    android:textColor="#FFF"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="提现成功"
+                    android:textColor="#FFF"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="148dp"
+                android:layout_below="@id/withdraw_progress_text"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/base_selector_button_white_34_border_1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="提现金额"
+                    android:textColor="#A9ADB2"
+                    android:textSize="14dp" />
+
+                <EditText
+                    android:id="@+id/withdraw_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/wallet_withdraw_money_bg"
+                    android:inputType="number|numberDecimal"
+                    android:hint="0"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/leftIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:gravity="center"
+                    android:text="可提现金额¥0"
+                    android:textColor="#515357"
+                    android:textSize="14dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/wallet_withdraw_balance_drawable"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/withdraw"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:layout_marginHorizontal="45dp"
+                android:layout_marginBottom="103dp"
+                android:background="@drawable/base_selector_button_dark_20"
+                android:text="确认"
+                android:textColor="#FFF"
+                android:textSize="17dp" />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

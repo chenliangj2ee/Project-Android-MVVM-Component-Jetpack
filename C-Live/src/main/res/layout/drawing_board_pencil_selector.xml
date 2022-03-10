@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <cn.bingoogolapple.transformerstip.view.TransformersTipLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:ad_arrowExtraOffsetX="30dp"
+        app:ad_arrowExtraOffsetY="0dp"
+        app:ad_arrowGravity="to_top_align_start"
+        app:ad_arrowHeight="6dp"
+        app:ad_bgColor="#f6f7f8"
+        app:ad_radius="4dp"
+        app:ad_shadowColor="#33000000"
+        app:ad_shadowSize="6dp" >
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/lineSelector"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            app:my_layout_manager="gridLayout"
+            app:my_span_count="4"
+            app:my_item_layout="@layout/drawing_board_line_item" />
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/colorSelector"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="10dp"
+            app:my_layout_manager="gridLayout"
+            app:my_span_count="5"
+            app:my_item_layout="@layout/drawing_board_color_item" />
+    </cn.bingoogolapple.transformerstip.view.TransformersTipLinearLayout>
+</layout>

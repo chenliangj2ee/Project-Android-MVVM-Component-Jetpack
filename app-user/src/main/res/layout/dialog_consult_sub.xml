@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="date"
+            type="com.mtjk.bean.BeanDate" />
+
+        <variable
+            name="time"
+            type="java.lang.String" />
+
+        <variable
+            name="isVideo"
+            type="java.lang.Boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_link_mic_list_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="咨询方式与时间"
+                android:textColor="#1F2326"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:textSize="17dp" />
+            <!--                android:src="@drawable/icon_close_link_mic_dialog"-->
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_gravity="bottom"
+            android:background="#E6F0F2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/video"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background='@{isVideo?@drawable/base_selector_button_dark:@drawable/base_selector_button_white_border_1}'
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_consult_sub_video"
+                    android:tint='@{isVideo?@color/white:@color/text_default}' />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="视频咨询"
+                    android:textColor='@{isVideo?@color/white:@color/text_default}' />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/voice"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background='@{isVideo?@drawable/base_selector_button_white_border_1:@drawable/base_selector_button_dark}'
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_consult_sub_phone"
+                    android:tint='@{isVideo==false?@color/white:@color/text_default}' />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="语音咨询"
+                    android:textColor='@{isVideo==false?@color/white:@color/text_default}' />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/dateRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            app:my_item_layout="@layout/item_consult_sub_date"
+            app:my_orientation="horizontal" />
+
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/timeRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            app:my_empty_layout="@layout/empty_no_time"
+            app:my_item_layout="@layout/item_consult_sub_time" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text='@{date.timeDes()==null?"":"服务时间:"+date.timeDes()}'
+                android:textSize="12dp"
+                tools:text="服务时间:05-13" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text='@{date.week==null?"":"(周"+date.week+")"}'
+                android:textSize="12dp"
+                tools:text="(周一)" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text='@{time==null?"":"     "+time}'
+                android:textSize="12dp"
+                tools:text="    13:00-14:00" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/startSub"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/base_selector_button_dark"
+            android:enabled='@{time==null?false:true}'
+            android:gravity="center"
+            android:stateListAnimator="@null"
+            android:text="开始预约"
+            android:textColor="@drawable/base_selector_color_button_white"
+            android:textSize="14dp" />
+    </LinearLayout>
+</layout>

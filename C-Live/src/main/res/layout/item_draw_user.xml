@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="user"
+            type="io.agora.vlive.bean.BeanAudience" />
+
+        <import type="com.mtjk.base.R" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp">
+
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/base_selector_radiobutton_bg"
+            android:button="@null"
+            android:checked='@{user.itemSelected?true:false}'
+            android:clickable="false"
+            android:enabled="false"
+            android:focusable="false" />
+
+        <ImageView
+            load="@{user.avatar}"
+            radius="@{17}"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="13dp"
+            android:src="#eee" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="@{user.nickname}"
+            android:textColor="#333333"
+            android:textSize="17dp"
+            tools:text="tom" />
+
+
+    </LinearLayout>
+</layout>

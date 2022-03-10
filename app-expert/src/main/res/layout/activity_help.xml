@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+
+        <variable
+            name="data"
+            type="com.mtjk.bean.BeanRecommend" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. 如何发布咨询服务？"
+                android:textColor="#000"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="10dp"
+                android:text="开通账号后，在【待办】或【工作台】中，编辑工作室装修、发布咨询服，两项资料审核通过后，您的咨询服务发布完成，来访者将能看到您的工作室及咨询信息。"
+                android:textColor="#888"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="2. 如何修改个人资料？"
+                android:textColor="#000"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="10dp"
+                android:text="您可在【工作台】—【专家信息】修改您的个人资料，资料审核通过后修改完成。"
+                android:textColor="#888"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="3. 如何进入咨询室？"
+                android:textColor="#000"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="10dp"
+                android:text="在来访者预约成功且您确认预约信息后，点击【开始咨询】直接进入线上咨询室。"
+                android:textColor="#888"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="4. 咨询结束后，如何收到咨询费用？"
+                android:textColor="#000"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="10dp"
+                android:text="（1） 咨询师和来访者完成咨询服务且做出评价后，咨询服务完成；如果来访者未做出评价，7天后系统将自动确认，该咨询被视为完成状态。
+（2） 咨询师将在【我的】查看到账户余额，若【提现】请联系平台【在线客服】。"
+                android:textColor="#888"
+                android:textSize="14dp" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</layout>

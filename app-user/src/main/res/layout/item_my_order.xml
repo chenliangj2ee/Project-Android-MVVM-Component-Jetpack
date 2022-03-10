@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="order"
+            type="com.mentuojiankang.user.bean.BeanOrder" />
+
+        <variable
+            name="status"
+            type="com.mtjk.obj.ObjectOrder" />
+
+        <import type="com.mtjk.obj.ObjectProduct" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text='@{"订单号:"+order.orderId}'
+            android:textColor="#1F2326"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            tools:text="订单号:1212323232323232" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <com.mtjk.view.MyImageView
+                load="@{order.orderItems.coverImage}"
+                radius="@{2}"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:my_default="@drawable/load_default" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="@{order.orderItems.title}"
+                        android:textColor="#1F2326"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        tools:text="抑郁症测评【专业版】抑郁症测评【专业版】抑郁症测评【专业版】" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="19dp"
+                        android:text="@{order.statusDes()}"
+                        android:textColor="#008599"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@{order.typeDes()}"
+                    android:textColor="#515357"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text='@{"下单时间"+order.orderDateDes()}'
+                    android:textColor="#A9ADB2"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="实付:"
+                android:textColor="#1F2326"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{order.paidAmount+""}'
+                android:textColor="#F44336"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                tools:text="19.9" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="币"
+                android:textColor="#1F2326"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="修改信息"
+                android:textColor="#133C53"
+                android:visibility="@{order.orderItems.type ==1 &amp;&amp;  (order.orderStatus==status.STATUS_NO_PAY||order.orderStatus==status.STATUS_WAIT_CONFIRM ||order.orderStatus==status.STATUS_DOING)  ?View.VISIBLE:View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancelOrder"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="取消订单"
+                android:textColor="#133C53"
+                android:visibility="@{order.orderStatus==status.STATUS_NO_PAY?View.VISIBLE:View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/pay"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="付款"
+                android:textColor="#133C53"
+                android:visibility="@{ order.orderStatus==status.STATUS_NO_PAY ?View.VISIBLE:View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="删除"
+                android:textColor="#133C53"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="再次咨询"
+                android:textColor="#133C53"
+                android:visibility="@{order.orderItems.type ==1 &amp;&amp;  order.orderStatus==status.STATUS_WAIT_EVALUATE?View.VISIBLE:View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/chat"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="发消息"
+                android:textColor="#133C53"
+                android:visibility="@{ order.orderServer ==200 &amp;&amp; order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="提醒确认"
+                android:textColor="#133C53"
+                android:visibility="gone" />
+            <!--            android:visibility="@{order.orderItems.type  !=1 &amp;&amp;  order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}"-->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/evaluate"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="评价"
+                android:textColor="#133C53"
+                android:visibility="@{order.commentState==0&amp;&amp;(order.orderStatus==status.STATUS_WAIT_EVALUATE||order.orderStatus==status.STATUS_FINISH)?View.VISIBLE:View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/startCourse"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="开始观看"
+                android:textColor="#133C53"
+                android:visibility='@{order.isShowLookCourse()?View.VISIBLE:View.GONE}' />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/look"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="查看反馈"
+                android:textColor="#133C53"
+                android:visibility='@{order.expertPlan!=null&amp;&amp;!"".equals(order.expertPlan)?View.VISIBLE:View.GONE}' />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/startLive"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_dark"
+                android:text="开始咨询"
+                android:textColor="#fff"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

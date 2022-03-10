@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="section"
+            type="com.mentuojiankang.user.bean.BeanSection" />
+
+        <variable
+            name="course"
+            type="com.mentuojiankang.user.bean.BeanCourse" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text='@{(section.itemPosition+1)+""}'
+            android:textColor="#515357"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{section.sectionName}"
+                android:textColor='@{section.itemPosition==position?@color/text_default:@color/black}'
+                android:textSize="14dp"
+                android:textStyle="bold"
+                tools:text="注意开会时的身体语言" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text='@{section.playCount+"次播放"+section.sizeDes}'
+                    android:textColor="#A9ADB2"
+                    android:textSize="12dp"
+                    tools:text="3086次播放 12:75" />
+
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/selector_scbf"
+                    android:gravity="center"
+                    android:text='上次播放'
+                    android:textColor="#008599"
+                    android:textSize="8dp"
+                    android:visibility="@{section.itemPosition==position?View.VISIBLE:View.GONE}" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src='@{course.buy? (@drawable/icon_buyed): (section.itemPosition==0? @drawable/play_course_catalogue:@drawable/icon_buy)}'
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text='@{course.buy? ("已购"): (section.itemPosition==0? "试听":"购买")}'
+                android:textColor="#A9ADB2"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            android:background="#E6F0F2" />
+    </FrameLayout>
+</layout>

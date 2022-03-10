@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".fragment.HomeFragment">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/homeTab"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:isScrollContainer="true"
+                app:tabIndicator="@drawable/selector_tab_line"
+                app:tabIndicatorColor="#007B8E"
+                app:tabIndicatorFullWidth="false"
+                app:tabPaddingEnd="0dp"
+                app:tabPaddingStart="0dp"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="#133C53"
+                app:tabTextAppearance="@style/TabLayoutTheme"
+                app:tabTextColor="#A9ADB2" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right"
+                android:padding="15dp" />
+        </FrameLayout>
+
+
+        <com.mtjk.view.MyViewPager
+            android:id="@+id/homeViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</layout>

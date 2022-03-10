@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanCourse" />
+
+        <import type="android.view.View"></import>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="0dp">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#f00"
+                    app:layout_scrollFlags="scroll">
+
+                    <fragment
+                        android:id="@+id/headerFragment"
+                        android:name="com.mentuojiankang.user.fragment.CourseInfoHeaderFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabIndicator="@drawable/selector_tab_line"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabRippleColor="@android:color/transparent"
+                    app:tabSelectedTextColor="@color/text_default"
+                    app:tabTextColor="#A9ADB2" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <include layout="@layout/layout_line" />
+
+                <com.mtjk.view.MyViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#fff"
+            android:paddingBottom="10dp"
+            android:visibility="@{data.buy?View.GONE:View.VISIBLE}">
+
+            <LinearLayout
+                android:id="@+id/subscribe"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="38dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="38dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/base_selector_button_dark"
+                android:gravity="center"
+                android:stateListAnimator="@null">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订阅课程"
+                    android:textColor="#fff"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text='@{data.discountPrice+""}'
+                    android:textColor="#fff"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text='@{data.price+""}'
+                    android:textColor="#fff"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fullScreenLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:visibility="gone" />
+    </FrameLayout>
+</layout>

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bean"
+            type="com.fcyd.expert.bean.BeanAuth" />
+
+
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_header_expert_auth" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="头像"
+                        android:textColor="#1F2326"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text=""
+                        android:textColor="#A9ADB2"
+                        android:textSize="17dp" />
+
+                    <com.mtjk.view.MyImageView
+                        load="@{bean.header}"
+                        radius="@{20}"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        app:my_default="@drawable/default_header" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:src="@drawable/icon_right"
+                        android:textColor="#1F2326"
+                        android:textSize="17dp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#E6F0F2" />
+
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="姓名"
+                    app:my_value="@={bean.name}"
+                    app:my_value_hint="添加" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="性别"
+                        android:textColor="#1F2326"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="*"
+                        android:textColor="#D0021B"
+                        android:textSize="16dp" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:orientation="horizontal">
+
+
+                        <RadioButton
+                            android:id="@+id/nan"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/base_selector_radiobutton_bg"
+                            android:button="@null"
+                            android:checked="@{bean.sex==1?true:false}" />
+
+                        <TextView
+
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="男"
+                            android:textColor="#515357" />
+
+                        <RadioButton
+                            android:id="@+id/nv"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/base_selector_radiobutton_bg"
+                            android:button="@null"
+                            android:checked="@{bean.sex==2?true:false}" />
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:text="女"
+                            android:textColor="#515357" />
+
+                    </RadioGroup>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#E6F0F2" />
+
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="地区"
+                    app:my_value="@{bean.address}"
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/cynx"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="从业年限"
+                    app:my_value="@={bean.cynx}"
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/jybj"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="教育背景"
+                    app:my_value="@{bean.jybj_xx}"
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/zgzs"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="资格证书"
+                    app:my_value='@{bean.zgzs.size()>0?bean.zgzs[0].certificateName:""}'
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/gajl"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="个案经历"
+                    app:my_value='@{bean.gajl_sc.length()>0?bean.gajl_sc+"小时":""}'
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/grtyjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="个人体验经历"
+                    app:my_value='@{bean.grtyjl_sc.length()>0?bean.grtyjl_sc+"小时":""}'
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/gtddjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="个体督导经历"
+                    app:my_value='@{bean.gtddjl_sc.length()>0?bean.gtddjl_sc+"小时":""}'
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/ttddjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="团体督导经历"
+                    app:my_value='@{bean.ttddjl_sc.length()>0?bean.ttddjl_sc+"小时":""}'
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/dcsxjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="短程受训经历"
+                    app:my_value='@{bean.dcsxjl_sc.length()>0?bean.dcsxjl_sc+"小时":""}'
+                    app:my_value_hint="添加" />
+
+                <com.mtjk.view.ItemEditView
+                    android:id="@+id/ccsxjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    app:my_edit="false"
+                    app:my_lineShow="true"
+                    app:my_must_input="true"
+                    app:my_textSize="17dp"
+                    app:my_title="长程受训经历"
+                    app:my_value='@{bean.ccsxjl_sc.length()>0?bean.ccsxjl_sc+"小时":""}'
+                    app:my_value_hint="添加" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:paddingLeft="20dp"
+                        android:text="擅长领域"
+                        android:textColor="#1F2326"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="*"
+                        android:textColor="#D0021B"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/areaSCLY"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    app:my_hint="请简单描述您的擅长领域。例如：专业增长
+情绪困扰、职场困感、个人成长问题等等"
+                    app:my_max_length="200"
+                    app:my_text="@={bean.scly}"
+                    app:my_textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:text="详细介绍(选填)"
+                    android:textColor="#1F2326"
+                    android:textSize="16dp" />
+
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/areaXXJS"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    app:my_hint="请详细介绍个人情况，方便来访者了解您。可以介绍您的从业经历，所获荣誉等。"
+                    app:my_max_length="1000"
+                    app:my_text="@={bean.xxjs}"
+                    app:my_textSize="16dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="吱吱心理将确保您的信息安全，请放心填写"
+                    android:textColor="#A9ADB2"
+                    android:textSize="12dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/next"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/base_selector_button_dark"
+                    android:enabled="false"
+                    android:stateListAnimator="@null"
+                    android:text="下一步"
+                    android:textColor="@drawable/base_selector_color_button_white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

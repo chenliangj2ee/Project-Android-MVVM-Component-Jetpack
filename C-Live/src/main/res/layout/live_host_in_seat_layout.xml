@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/live_host_seat_item_1"
+            layout="@layout/live_host_in_seat_item"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <include
+            android:id="@+id/live_host_seat_item_2"
+            layout="@layout/live_host_in_seat_item"
+            android:layout_width="90dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/live_host_seat_item_3"
+            layout="@layout/live_host_in_seat_item"
+            android:layout_width="90dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/live_host_seat_item_4"
+            layout="@layout/live_host_in_seat_item"
+            android:layout_width="90dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/live_host_seat_item_5"
+            layout="@layout/live_host_in_seat_item"
+            android:layout_width="90dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

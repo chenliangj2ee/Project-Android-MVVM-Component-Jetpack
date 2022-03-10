@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="time"
+            type="com.mtjk.bean.BeanTime" />
+
+        <variable
+            name="mType"
+            type="Integer" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/selector_consult_sub_select_time_default"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_vertical|top"
+            android:src='@{mType.equals(1)?@drawable/icon_consult_release_1_to_1:@drawable/icon_consult_release_1_to_more}' />
+
+        <TextView
+            android:id="@+id/timeT"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:text="@{time.timeDes()}"
+            android:textColor="#515357"
+            android:textSize="14dp"
+            tools:text="13:00-14:00" />
+
+        <TextView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="70dp"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="#008599"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="修改"
+            android:textColor="#008599"
+            android:textSize="14dp" />
+
+    </FrameLayout>
+</layout>

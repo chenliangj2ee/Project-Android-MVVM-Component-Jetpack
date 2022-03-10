@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanWork" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/base_selector_edittext_background_34">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:background="#0000"
+                android:hint="搜索"
+                android:textSize="14dp"
+                android:paddingLeft="40dp" />
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:padding="10dp"
+                android:src="@drawable/icon_search" />
+
+        </FrameLayout>
+
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:overScrollMode="never"
+            app:my_empty_layout="@layout/base_layout_empty"
+            app:my_item_layout="@layout/item_my_fans" />
+    </LinearLayout>
+</layout>

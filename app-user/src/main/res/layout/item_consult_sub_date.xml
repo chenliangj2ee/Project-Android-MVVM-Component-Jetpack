@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemDate"
+            type="com.mtjk.bean.BeanDate" />
+
+        <import type="com.mentuojiankang.user.R"></import>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{itemDate.week}"
+            android:textColor="#A9ADB2"
+            android:textSize="10dp"
+            tools:text="日" />
+
+        <TextView
+            bindBackground='@{itemDate.itemSelected?R.drawable.selector_date_bg:R.drawable.selector_transparent}'
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@{itemDate.timeDes()}"
+            android:textColor="#515357"
+            android:textSize="12dp"
+            tools:text="05-10" />
+    </LinearLayout>
+</layout>

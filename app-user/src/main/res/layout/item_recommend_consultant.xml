@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.mentuojiankang.user.bean.BeanConsult" />
+
+        <import type="android.view.View" />
+
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp">
+
+
+        <FrameLayout
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background='@{bean.state?@drawable/selector_home_recommend_header_bg:@drawable/selector_transparent}'>
+
+            <com.mtjk.view.MyImageView
+                load="@{bean.avatar}"
+                radius="@{60}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                app:my_default="@drawable/default_header" />
+
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center|bottom"
+                android:background="@drawable/selector_consulting"
+                android:visibility='@{bean.state?View.VISIBLE:View.GONE}'>
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/icon_consulting_bg"
+                    android:padding="4dp"
+                    android:src="@drawable/icon_consulting" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:text="咨询中"
+                    android:textColor="#FFF"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLength="8"
+                    android:text="@{bean.realName}"
+                    android:textColor="#111235"
+                    android:textSize="17dp"
+                    tools:text="Lisa" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text='@{"从业"+bean.years+"年"}'
+                    android:textColor="#515357"
+                    android:textSize="12dp"
+                    tools:text="从业15年" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_weight="1"
+                    android:textColor="#515357"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/icon_location"
+                    android:textColor="#1F2326"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@{bean.location}"
+                    android:textColor="#AFB6BF"
+                    android:textSize="12dp"
+                    tools:text="北京" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text='@{bean.certificateDes()}'
+                android:textColor="#1F2326"
+                android:textSize="14dp"
+                android:visibility='@{(bean.school+bean.major+bean.education).length==0?View.GONE:View.VISIBLE}'
+                tools:text="心理学证书" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="10dp"
+                android:maxLines="2"
+                android:text='@{bean.introduction==null||"".equals(bean.introduction)?"":"擅长："+bean.introduction}'
+                android:textColor="#515357"
+                android:textSize="12dp"
+                tools:text="擅长：情绪困扰、职场困惑、个人成长问题、家庭辅导、婚恋、情感、亲子沟通。？" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用户评分"
+                    android:textColor="#515357"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text='@{bean.score+""}'
+                    android:textColor="#1F2326"
+                    android:textSize="12dp"
+                    tools:text="5.0" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:text="咨询量   "
+                    android:textColor="#515357"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text='@{bean.consultNumber+""}'
+                    android:textColor="#1F2326"
+                    android:textSize="12dp"
+                    tools:text="2112" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/book"
+                    android:layout_width="66dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/base_selector_button_dark_34"
+                    android:stateListAnimator="@null"
+                    android:text="倾诉"
+                    android:textColor="@drawable/base_selector_color_button_white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

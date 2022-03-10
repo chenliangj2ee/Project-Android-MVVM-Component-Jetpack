@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.mtjk.view.MyRefreshRecyclerView
+            app:my_empty_layout="@layout/base_layout_empty"
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="80dp"
+            app:my_item_layout="@layout/item_vip_card" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/useVipCard"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_margin="20dp"
+            android:stateListAnimator="@null"
+            android:background="@drawable/base_selector_button_dark"
+            android:textColor="@drawable/base_selector_color_button_white"
+            android:text="使用"
+          />
+
+    </RelativeLayout>
+</layout>

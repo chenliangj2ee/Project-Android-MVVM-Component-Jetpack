@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanWork" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.mtjk.view.MyImageView
+            bindSrc="@{data.icon}"
+            bindTint='@{data.color}'
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            app:my_ratio="354:174" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@{data.title}"
+            android:textColor="#515357"
+            android:textSize="10dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

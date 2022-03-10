@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="base_purple_200">#FFBB86FC</color>
+    <color name="base_purple_500">#008599</color>
+    <color name="base_purple_700">#008599</color>
+    <color name="base_teal_200">#008599</color>
+    <color name="base_teal_700">#FF018786</color>
+    <color name="base_black">#FF000000</color>
+    <color name="base_white">#FFFFFFFF</color>
+    <color name="base_toolbar_text_color">#1F2326</color>
+    <color name="app_transparent">#0000</color>
+    <color name="app_background">#F0F2F7</color>
+
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#FF0066CC</color>
+    <color name="hgrey">#C0D1DA</color>
+    <color name="login_title_text">#133C53</color>
+    <color name="code_login_text">#008599</color>
+    <color name="color_btn">#ff1da6ba</color>
+    <color name="tab_color">#009E9D</color>
+    <color name="tab_default_color">#C0D1DA</color>
+    <color name="text_default">#008599</color>
+    <color name="recharge_text_default">#F6F7F8</color>
+</resources>

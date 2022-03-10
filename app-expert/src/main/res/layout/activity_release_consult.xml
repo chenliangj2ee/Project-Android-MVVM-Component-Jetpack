@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanConsult" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="上传封面图片"
+            android:textColor="#1F2326"
+            android:textSize="17dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/addIcon"
+                android:layout_width="118dp"
+                android:layout_height="118dp">
+
+                <ImageView
+                    android:layout_width="108dp"
+                    android:layout_height="108dp"
+                    android:layout_gravity="bottom"
+                    android:background="#F6F7F8" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#F6F7F8"
+                    android:drawableLeft="@drawable/icon_add"
+                    android:gravity="center"
+                    android:text="添加图片"
+                    android:textColor="#008599"
+                    android:textSize="14dp" />
+
+                <com.mtjk.view.MyImageView
+                    android:id="@+id/image"
+                    load="@{data.coverImage}"
+                    radius="@{5}"
+                    android:layout_width="108dp"
+                    android:layout_height="108dp"
+                    android:layout_gravity="bottom" />
+
+                <ImageView
+                    android:id="@+id/delete"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/icon_edittext_delete"
+                    android:visibility='@{data!=null&amp;&amp;!data.coverImage.equals("")?View.VISIBLE:View.GONE}' />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#A9ADB2"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <include layout="@layout/layout_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="咨询标题"
+            android:textColor="#1F2326"
+            android:textSize="17dp" />
+
+        <com.mtjk.view.MyEditArea
+            android:id="@+id/editarea"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            app:my_max_length="30"
+            app:my_text="@={data.title}" />
+
+        <include layout="@layout/layout_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="咨询类型"
+                android:textColor="#1F2326"
+                android:textSize="17dp" />
+
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/type1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/base_selector_radiobutton_bg"
+                    android:button="@null"
+                    android:checked="@{data.serverType==1?true:false}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:onClick="@{_->type1.performClick()}"
+                    android:text="1对1"
+                    android:textColor="#515357"
+                    android:textSize="14dp" />
+
+
+                <RadioButton
+                    android:id="@+id/type2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/base_selector_radiobutton_bg"
+                    android:button="@null"
+                    android:checked="@{data.serverType==2?true:false}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:onClick="@{_->type2.performClick()}"
+                    android:text="1对多"
+                    android:textColor="#515357"
+                    android:textSize="14dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <include layout="@layout/layout_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="咨询方式"
+                android:textColor="#1F2326"
+                android:textSize="17dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+
+                <CheckBox
+                    android:id="@+id/mode1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/base_selector_checkbox_bg"
+                    android:button="@null"
+                    android:checked='@{data.consultType.contains(1)?true:false}' />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:onClick="@{_->mode1.performClick()}"
+                    android:text="视频"
+                    android:textColor="#515357"
+                    android:textSize="14dp" />
+
+                <CheckBox
+                    android:id="@+id/mode2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/base_selector_checkbox_bg"
+                    android:button="@null"
+                    android:checked='@{data.consultType.contains(2)?true:false}' />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:onClick="@{_->mode2.performClick()}"
+                    android:text="语音"
+                    android:textColor="#515357"
+                    android:textSize="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <include layout="@layout/layout_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="咨询时间"
+                android:textColor="#1F2326"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:paddingRight="10dp"
+                android:text='@{data.ConsultTime.week.size()==0?"添加":"修改"}'
+                android:textColor="#A9ADB2" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_right" />
+
+        </LinearLayout>
+
+        <include layout="@layout/layout_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="咨询价格"
+                android:textColor="#1F2326"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/price"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/base_selector_edittext_background"
+                android:gravity="center_vertical|right"
+                android:hint="请输入价格"
+                android:inputType="numberDecimal"
+                android:maxLength="7"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="#1F2326" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_right"
+                android:text="元"
+                android:textColor="#1F2326"
+                android:textSize="17dp" />
+
+
+        </LinearLayout>
+
+        <include layout="@layout/layout_line" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="1币=1元（例：输入600币，相当于600元）"
+            android:textColor="#D0021B"
+            android:textSize="12dp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/look"
+                android:layout_width="85dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/base_selector_button_white_border_1"
+                android:stateListAnimator="@null"
+                android:text="预览"
+                android:textColor="@drawable/base_selector_color_button_dark"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/submitConsult"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/base_selector_button_dark"
+                android:enabled="false"
+                android:stateListAnimator="@null"
+                android:text="发布"
+                android:textColor="@drawable/base_selector_color_button_white"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

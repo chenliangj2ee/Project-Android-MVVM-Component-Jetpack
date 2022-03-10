@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanConsultService" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp">
+
+
+        <com.mtjk.view.MyImageView
+            load="@{data.coverImage}"
+            radius="@{2}"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:my_default="@drawable/load_default" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{data.title}"
+                android:textColor="#1F2326"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                tools:text="婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询" />
+
+            <TextView
+                android:id="@+id/des"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{data.des()}"
+                android:textColor="#515357"
+                android:textSize="10dp"
+                tools:text="语音 视频 / 50分钟" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text='@{data.salePrice+"币"}'
+                android:textColor="@color/text_default"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                tools:text="1900币" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/book"
+                android:layout_width="60dp"
+                android:layout_height="24dp"
+                android:background="@drawable/base_selector_button_dark_24"
+                android:stateListAnimator="@null"
+                android:text="预约"
+                android:textColor="#fff"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text='@{"咨询量"+data.consultNum}'
+                android:textColor="#515357"
+                android:textSize="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:controller_layout_id="@layout/layout_controller"
+        app:resize_mode="fill"
+        app:show_shuffle_button="true"
+        app:show_subtitle_button="true" />
+
+
+    <ImageView
+        android:id="@+id/playerBack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:src="@drawable/base_toolbar_back"
+        app:tint="#FFF" />
+
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/load_default"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/startBG"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#5000"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/start"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:src="@drawable/icon_play" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+         />
+</FrameLayout>

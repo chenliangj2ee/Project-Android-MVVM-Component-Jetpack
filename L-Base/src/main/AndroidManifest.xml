@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mtjk.base">
+
+    <uses-permission
+        android:name="android.permission.REORDER_TASKS"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.ACCESS_WIFI_STATE"
+        tools:node="replace" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:node="replace" />
+    <uses-permission
+        android:name="android.permission.GET_TOP_ACTIVITY_INFO"
+        tools:ignore="ProtectedPermissions"
+        tools:node="replace" />
+
+    <application>
+        <activity
+            android:name="com.mentuojiankang.user.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.mtjk.BaseApplication"
+            android:value="com.mtjk.BaseApplication" />
+
+        <activity
+            android:name="com.mtjk.account.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mtjk.account.NoMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mtjk.base.WebViewActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mtjk.act.ImagesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mtjk.act.TextActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mtjk.act.EvaluateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="true"
+            android:label="统一样式表"
+            android:screenOrientation="portrait">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+    </application>
+
+</manifest>

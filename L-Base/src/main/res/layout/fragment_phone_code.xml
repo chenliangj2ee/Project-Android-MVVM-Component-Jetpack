@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.mtjk.bean.MyLoginModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".fragment.login.PhoneCodeFragment">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/phone_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150dp"
+                    android:src="@drawable/login_logo" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="37dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginRight="37dp"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="#0000"
+                        android:gravity="center"
+                        android:hint="@string/input_phone_hint"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        android:text="@={model.phone}"
+                        android:textSize="17dp"
+                        app:my_digits="1234567890" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#E6F0F2" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/getCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="37dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="37dp"
+                    android:background="@drawable/base_selector_button_dark"
+                    android:clickable="true"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:stateListAnimator="@null"
+                    android:text="@string/get_phone_code"
+                    android:textColor="@drawable/base_selector_color_button_white"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/layout_agreement"
+                    layout="@layout/layout_agreement"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/white" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/code_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="80dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_weight="1"
+                        android:text="@string/base_input_phone_code"
+                        android:textColor="@color/login_title_text"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/has_send_to"
+                        android:textColor="#A9ADB2"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="@{model.phone}"
+                        android:textColor="#A9ADB2"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/base_selector_button_white_border_1_20"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="23S后重发"
+                        android:textColor="#8AA0A7"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <com.king.view.splitedittext.SplitEditText
+                    android:id="@+id/code"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    android:digits="1234567890"
+                    android:inputType="phone"
+                    android:text="@={model.code}"
+                    app:setBorderColor="#E5E5E5"
+                    app:setBorderCornerRadius="10dp" />
+
+                <TextView
+                    android:id="@+id/noMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="收不到验证码？" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:src="@drawable/base_toolbar_back"
+                android:visibility="gone" />
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

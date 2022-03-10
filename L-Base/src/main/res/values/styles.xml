@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabBackground">@color/white</item>
+        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+    <style name="ActivityDialogStyle" >
+        <!--去掉action bar和标题栏-->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--背景透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--dialog圆角-->
+        <item name="android:windowBackground">@drawable/dialog_bg</item>
+
+        <!--弹窗后整个屏幕的背景是否有遮障层，默认是半透明的-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="radio_btn_theme">
+        <item name="android:textColor">@drawable/selector_radiobutton_text</item>
+        <item name="android:background">@drawable/selector_radiobutton_checkbox</item>
+        <item name="android:button">@null</item>
+    </style>
+</resources>

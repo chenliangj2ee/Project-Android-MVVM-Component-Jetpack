@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanTest" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.mtjk.view.MyImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/icon_test_info_header"
+            app:my_ratio="1170:573" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="114dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="@{data.scaleName}"
+                android:textColor="#F2FFFF"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:text="SCL-90症状自测量表" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/selector_card_white_radius_10_border_0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="测评介绍"
+                    android:textColor="#1F2326"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:lineSpacingExtra="10dp"
+                    android:text="@{data.briefIntro}"
+                    android:textColor="#515357"
+                    android:textSize="15dp"
+                    tools:text="据统计，我国抑郁症患者人数约为6000万人。它存在于各个阶层的人群如：学生、上班族、老人，目前还有相当多的人根本没有意识到自己患有抑郁症，更没有进行过系统的诊疗，在自杀的危险因素中，抑郁症与自杀密切相关，40%的自杀死亡者在自杀时患有抑郁症。专业测试让你快速发现自身是否有抑郁倾向!《抑郁自评量表(SDSI》，是世界上最著名的心理健康测试量表之一，广泛应用于精神障碍和心理疾病门诊检查。本测试结果仅供用户自测参考，不作为医学诊断。" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/start"
+            android:layout_width="200dp"
+            android:layout_height="46dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="66dp"
+            android:background="@drawable/base_selector_button_dark_46"
+            android:text="开始测评"
+            android:stateListAnimator="@null"
+            android:textColor="@drawable/base_selector_color_button_white" />
+    </FrameLayout>
+
+</layout>

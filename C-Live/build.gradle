@@ -1,0 +1,139 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
+apply plugin: 'kotlin-kapt'
+//ARoute配置
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('azure_keystore_file')
+            storePassword 'azureKeystorePassword'
+            keyAlias = 'azure_keystore_alias'
+            keyPassword 'azureKeystorePassword'
+        }
+    }
+
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+//        applicationId "io.agora.vlive"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 32101
+        versionName "3.2.1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release_user {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        develop_user {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        alpha_user {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release_expert {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        develop_expert {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        alpha_expert {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+
+
+configurations {
+    cleanedAnnotations
+    compile.exclude group: 'org.jetbrains' , module:'annotations'
+}
+
+dependencies {
+    def agora_rtc_version = "3.6.1"
+    def agora_rtm_version = "1.2.2"
+    def lifecycle_version = "2.2.0"
+    def navigation_version = "2.3.0"
+    def retrofit_version = "2.7.2"
+    def okhttp_logging_version = "4.2.1"
+    def gson_version = "2.8.6"
+    def glide_version = "4.11.0"
+    kapt project(path: ':L-Compiler')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    implementation "androidx.navigation:navigation-fragment:$navigation_version"
+    implementation "androidx.navigation:navigation-ui:$navigation_version"
+    implementation "androidx.navigation:navigation-fragment:$navigation_version"
+    implementation "androidx.navigation:navigation-ui:$navigation_version"
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+//    implementation 'org.jetbrains:annotations-java5:15.0'
+
+    implementation "io.agora.rtc:full-sdk:$agora_rtc_version"
+    implementation "io.agora.rtm:rtm-sdk:$agora_rtm_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation ("com.github.bumptech.glide:glide:$glide_version") {
+        exclude group: "com.android.support"
+    }
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    implementation 'com.elvishew:xlog:1.6.1'
+
+    implementation project(path: ':L-Live-Framework')
+
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+
+    implementation project(path: ':L-Base')
+
+    //声网互动白板
+    implementation 'com.github.duty-os:white-sdk-android:2.13.17'
+    //带箭头指示的弹出窗
+    implementation 'com.github.bingoogolapple.BGATransformersTip-Android:library:1.0.8@aar'
+}

@@ -1,0 +1,183 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
+apply plugin: 'kotlin-kapt'
+//ARoute配置
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+android {
+    signingConfigs {
+        debug {
+            storeFile file('../mentaluser-signed.key')
+            storePassword 'fcld@2200'
+            keyPassword 'fcld@2200'
+            keyAlias 'fangcunlingdong'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            storeFile file('../mentaluser-signed.key')
+            storePassword 'fcld@2200'
+            keyAlias 'fangcunlingdong'
+            keyPassword 'fcld@2200'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.fcyd.expert"
+        minSdk 26
+        targetSdk 26
+        versionCode 4
+        versionName "1.1.3"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi-v7a"//, "arm64-v8a"//,"armeabi"
+        }
+
+        //tpns消息推送配置
+        manifestPlaceholders = [
+                XG_ACCESS_ID : "1580008316",
+                XG_ACCESS_KEY: "A5TH4E686EKU",
+                PACKAGE_NAME : "com.fcyd.expert",
+        ]
+
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+
+        release_expert {
+            buildConfigField "Boolean", "isRelease", 'true'
+            buildConfigField "Boolean", "isTest", 'false'
+            buildConfigField "Boolean", "isDev", 'false'
+            buildConfigField "Boolean", "isUserApp", 'false'
+            buildConfigField "Boolean", "isExpertApp", 'true'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            manifestPlaceholders = [
+                    APPLICATIONID: "com.fcyd.expert",
+                    APP_NAME     : "吱吱心理咨询师"
+            ]
+        }
+
+        develop_expert {
+            applicationIdSuffix "develop"
+            buildConfigField "Boolean", "isDev", 'true'
+            buildConfigField "Boolean", "isTest", 'false'
+            buildConfigField "Boolean", "isRelease", 'false'
+            buildConfigField "Boolean", "isUserApp", 'false'
+            buildConfigField "Boolean", "isExpertApp", 'true'
+            signingConfig signingConfigs.debug
+            debuggable true
+            manifestPlaceholders = [
+                    APPLICATIONID: "com.fcyd.expert.develop",
+                    APP_NAME     : "咨询师-开发"
+            ]
+        }
+        alpha_expert {
+            applicationIdSuffix "alpha"
+            buildConfigField "Boolean", "isTest", 'true'
+            buildConfigField "Boolean", "isDev", 'false'
+            buildConfigField "Boolean", "isRelease", 'false'
+            buildConfigField "Boolean", "isUserApp", 'false'
+            buildConfigField "Boolean", "isExpertApp", 'true'
+            signingConfig signingConfigs.debug
+            debuggable true
+            manifestPlaceholders = [
+                    APPLICATIONID: "com.fcyd.expert.alpha",
+                    APP_NAME     : "咨询师-测试"
+            ]
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    //网易云
+    packagingOptions {
+
+        exclude 'META-INF/DEPENDENCIES'
+
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libRSSupport.so'
+        pickFirst 'lib/arm64-v8a/librsjni.so'
+        pickFirst 'lib/arm64-v8a/librsjni_androidx.so'
+        pickFirst 'lib/armeabi-v7a/libRSSupport.so'
+        pickFirst 'lib/armeabi-v7a/librsjni.so'
+        pickFirst 'lib/armeabi-v7a/librsjni_androidx.so'
+        pickFirst 'lib/x86/libRSSupport.so'
+        pickFirst 'lib/x86/librsjni.so'
+        pickFirst 'lib/x86/librsjni_androidx.so'
+        pickFirst 'lib/x86_64/libRSSupport.so'
+        pickFirst 'lib/x86_64/librsjni.so'
+        pickFirst 'lib/x86_64/librsjni_androidx.so'
+    }
+}
+
+dependencies {
+
+    kapt project(path: ':L-Compiler')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation project(':L-Base')
+
+    //end
+    implementation project(':L-Player')
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    implementation 'io.github.yidun:quicklogin:3.0.9'
+    // TPNS 推送 [VERSION] 为最新 SDK 版本号
+    implementation 'com.tencent.tpns:tpns:1.2.7.1-release'
+
+    implementation 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
+    implementation project(':L-CityPicker')
+    //IMmoudle引入start
+    implementation project(':C-IM')
+    implementation project(':L-IM-Chat')
+    implementation project(':L-IM-Conversation')
+    //end
+
+    implementation project(':C-Live')
+
+}

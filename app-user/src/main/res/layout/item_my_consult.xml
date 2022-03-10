@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="order"
+            type="com.mentuojiankang.user.bean.BeanMyConsult" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <com.mtjk.view.MyImageView
+                load="@{order.image}"
+                radius="@{5}"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                android:background="#eee"
+                app:my_default="@drawable/load_default" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{order.title}"
+                    android:textColor="#1F2326"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    tools:text="抑郁症测评【专业版】" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:text='@{order.consultType==1?"视频咨询":"语音咨询"}'
+                    android:textColor="#515357"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="修改信息"
+                android:textColor="@drawable/base_selector_color_button_dark"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/startConsult"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/base_selector_button_dark"
+                android:stateListAnimator="@null"
+                android:text="开始咨询"
+                android:textColor="@drawable/base_selector_color_button_white" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

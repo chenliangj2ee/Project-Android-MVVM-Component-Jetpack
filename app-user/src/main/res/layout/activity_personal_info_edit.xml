@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mtjk.bean.BeanUser" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/selector_mine_item_bg"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_mine_setting"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="#0000"
+                    android:gravity="right"
+                    android:text="头像"
+                    android:textColor="#515357"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="#0000"
+                    android:gravity="right"
+                    android:textColor="#515357"
+                    android:textSize="14dp" />
+
+                <com.mtjk.view.MyImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    app:load="@{data.avatar}"
+                    app:my_default="@drawable/default_header"
+                    app:radius="@{17}" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/icon_right" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#E6F0F2" />
+        </LinearLayout>
+
+
+        <com.mtjk.view.ItemEditView
+            android:id="@+id/nicknameuser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_rightShow="false"
+            app:my_title="昵称"
+            app:my_value="@={data.nickName}" />
+
+        <com.mtjk.view.ItemEditView
+            android:id="@+id/sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_edit="false"
+            app:my_title="性别"
+            app:my_value="@{data.genderDes}" />
+
+        <com.mtjk.view.ItemEditView
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_edit="false"
+            app:my_title="年龄"
+            app:my_value_hint="添加"
+            app:my_value='@{data.age+"岁"}'/>
+
+        <com.mtjk.view.ItemEditView
+            android:id="@+id/marriage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_edit="false"
+            app:my_title="婚姻状态"
+            app:my_value="@{data.marriageState}"
+            app:my_value_hint="添加" />
+
+        <com.mtjk.view.ItemEditView
+            android:id="@+id/useraddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_lineShow="false"
+            app:my_edit="false"
+            app:my_title="常居地"
+            app:my_value="@{data.location}"
+            app:my_value_hint="添加" />
+
+        <com.mtjk.view.ItemEditView
+            android:id="@+id/editoccupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:my_edit="false"
+            app:my_title="所在行业"
+            app:my_value="@{data.industry}"
+            app:my_value_hint="添加" />
+
+        <com.mtjk.view.ItemEditView
+            android:id="@+id/userindustry"
+            app:my_rightShow="false"
+            app:my_edit="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:my_value="@={data.occupation}"
+            app:my_title="职业"/>
+
+    </LinearLayout>
+</layout>

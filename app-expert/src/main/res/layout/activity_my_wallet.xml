@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanWallet" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/selector_item_deepgreen_radius_10_border_10">
+            <LinearLayout
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="我的收入（元）"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/wallet_item_income"
+                    android:textColor="@android:color/white"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/total_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{String.valueOf(data.totalIncome)}"
+                    android:textColor="@android:color/white"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/left_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="23dp"
+                    android:drawablePadding="5dp"
+                    android:drawableLeft="@drawable/wallet_item_balance"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/info"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:drawableRight="@drawable/wallet_item_to_detail"
+                android:text="明细"
+                android:textColor="@android:color/white"
+                android:textSize="14dp"/>
+            <TextView
+                android:id="@+id/withdraw"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/base_selector_button_green_63"
+                android:text="提现"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"/>
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

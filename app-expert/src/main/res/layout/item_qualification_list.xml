@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mtjk.bean.BeanCertificate" />
+
+        <import type="android.view.View"></import>
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.daimajia.swipe.SwipeLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_bg_qualification_item">
+
+            <TextView
+                android:id="@+id/delete"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/selector_bg_swipe_delete"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="#FFF"
+                android:textSize="14dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@{data.certificateName}"
+                    android:textColor="#1F2326"
+                    android:textSize="17dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/edit"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/selector_card_white_radius_12_border_2"
+                    android:gravity="center"
+                    android:text="修改"
+                    android:textColor="#008599"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+        </com.daimajia.swipe.SwipeLayout>
+    </LinearLayout>
+</layout>

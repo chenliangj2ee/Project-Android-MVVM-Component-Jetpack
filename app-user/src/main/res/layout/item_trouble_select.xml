@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanEmotionTag" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/item"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:stateListAnimator="@null"
+            android:background="@drawable/base_selector_button_dark"
+            android:textColor="@drawable/base_selector_color_button_white"
+            android:enabled="@{data.selected}"
+            android:gravity="center"
+            android:text="@{data.emotionName}"  />
+    </LinearLayout>
+</layout>

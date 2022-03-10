@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanArticle" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingTop="12dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="12dp">
+
+        <com.mtjk.view.MyImageView
+            load="@{data.coverImage}"
+            radius="@{2}"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/load_default"
+            app:my_ratio="5:3"
+
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:lines="1"
+                android:text="@{data.title}"
+                android:textColor="#515357"
+                android:textSize="15dp"
+                tools:text="如何在关系中树立并守住界限，不内耗如何在关系中树立并守住界限，不内耗" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text='@{"作者："+data.author}'
+                android:textColor="#515357"
+                android:textSize="12dp"
+                tools:text="作者：张三" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center_vertical|bottom">
+
+                <com.mtjk.view.MyImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:gravity="right"
+                    android:src="@drawable/icon_article_view_count" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical|bottom"
+                    android:text='@{""+data.readCount+"人看过"}'
+                    android:textColor="#515357"
+                    android:textSize="12dp"
+                    tools:text="1000人看过" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

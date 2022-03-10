@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_link_mic_list_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="在线用户"
+                    android:textColor="#1F2326"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/userCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="(0)"
+                    android:textColor="#959B9F"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="15dp"
+                android:padding="10dp"
+                android:src="@drawable/icon_close_link_mic_dialog"
+                android:text="完成"
+                android:textSize="17dp" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_gravity="bottom"
+            android:background="#E6F0F2" />
+
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="342dp"
+            android:minHeight="342dp"
+            app:my_divider_height="1px"
+            app:my_divider_marginLeft="15dp"
+            app:my_divider_marginRight="15dp"
+            app:my_item_layout="@layout/item_draw_user" />
+    </LinearLayout>
+</layout>

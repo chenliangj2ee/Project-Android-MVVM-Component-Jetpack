@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="150dp"
+            android:text="发布成功"
+            android:textColor="#1F2326"
+            android:textSize="21dp" />
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/base_icon_empty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="审核中，将在24小时内审核完成"
+            android:textColor="#A9ADB2"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/look"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/base_selector_button_white_border_1"
+                android:stateListAnimator="@null"
+                android:text="查看咨询管理"
+                android:textColor="@drawable/base_selector_color_button_dark" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/release"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:stateListAnimator="@null"
+                android:background="@drawable/base_selector_button_dark"
+                android:text="再发一个"
+                android:textColor="@drawable/base_selector_color_button_white" />
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bean"
+            type="com.mentuojiankang.user.bean.BeanLive" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+        <!--        直播中-->
+        <com.mtjk.view.MyImageView
+            load="@{bean.coverImage}"
+            radius="@{3}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            app:my_default="@drawable/load_default"
+            app:my_ratio="175:240" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_live_list_state"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingRight="15dp"
+            android:visibility='@{bean.status==1?View.VISIBLE:View.GONE}'>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/user_icon_live_doing" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="直播中"
+                android:textColor="#fff"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <!--        可预约-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/selector_live_list_state"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingRight="15dp"
+            android:visibility='@{bean.status==2?View.VISIBLE:View.GONE}'>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_live_time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="可预约"
+                android:textColor="#fff"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/icon_course_yin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/user_icon_live_header"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text='@{bean.lookNum+"人看过"}'
+                    android:textColor="#FFFFFF"
+                    android:textSize="10dp"
+                    tools:text="1.3w人看过" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:maxLines="2"
+                android:text="@{bean.liveCourseName}"
+                android:textColor="#FFF"
+                android:textSize="14dp"
+                tools:text="每天10分钟正念冥想，带您觉知心灵的奥秘" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:background="@drawable/selector_live_book_layout"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility='@{bean.status==2?View.VISIBLE:View.GONE}'>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="@{bean.startTimeDes()}"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12dp"
+                    tools:text="6月15日 20:00" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/book"
+                    android:layout_width="60dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/base_selector_button_dark_24"
+                    android:visibility="@{bean.status == 1 ? View.GONE : View.VISIBLE}"
+                    android:enabled="@{bean.paid?false:true}"
+                    android:stateListAnimator="@null"
+                    android:text='@{bean.paid?"已预约":"预约"}'
+                    android:textSize="16dp"
+                    android:textColor="@drawable/base_selector_color_button_white" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</layout>

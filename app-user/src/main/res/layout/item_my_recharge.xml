@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanRecharge" />
+
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/rechargeback"
+        android:clickable="true"
+        android:background='@{data.itemSelected?@drawable/icon_rechage_back:@drawable/icon_rechage_defultback}'
+        android:layout_width="102dp"
+        android:layout_height="66dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rechargetext"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:text='@{data.price+"币"}'
+            android:textColor='@{data.itemSelected?@color/text_default:@color/black}'
+            android:layout_width="match_parent"
+            android:layout_height="25dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/rechargesmalltext"
+            android:layout_marginTop="5dp"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:text='@{"￥"+data.price}'
+            android:textColor='@{data.itemSelected?@color/text_default:@color/black}'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+</layout>

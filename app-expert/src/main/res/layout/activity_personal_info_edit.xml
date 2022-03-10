@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.mtjk.bean.BeanUser" />
+    </data>
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="头像"
+                    android:textColor="#1F2326"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#D0021B"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text=""
+                    android:textColor="#A9ADB2"
+                    android:textSize="14dp" />
+
+                <com.mtjk.view.MyImageView
+                    load="@{bean.avatar}"
+                    radius="@{20}"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    app:my_default="@drawable/default_header" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:src="@drawable/icon_right"
+                    android:textColor="#1F2326"
+                    android:textSize="14dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#E6F0F2" />
+
+
+            <com.mtjk.view.ItemEditView
+                android:id="@+id/expertname"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                app:my_edit="false"
+                app:my_lineShow="true"
+                app:my_must_input="true"
+                app:my_rightShow="false"
+                app:my_textSize="14dp"
+                app:my_title="姓名"
+                app:my_value="@{bean.realName}"
+                app:my_value_hint="添加" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="性别"
+                    android:textColor="#1F2326"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#D0021B"
+                    android:textSize="16dp" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/expertman"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/base_selector_radiobutton_bg"
+                        android:button="@null"
+                        android:checked="@{bean.gender==1?true:false}"
+                        android:enabled="false" />
+
+                    <TextView
+
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="男"
+                        android:textColor="#515357" />
+
+                    <RadioButton
+                        android:id="@+id/expertwoman"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/base_selector_radiobutton_bg"
+                        android:button="@null"
+                        android:checked="@{bean.gender==2?true:false}"
+                        android:enabled="false" />
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="女"
+                        android:textColor="#515357" />
+
+                </RadioGroup>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#E6F0F2" />
+
+
+            <com.mtjk.view.ItemEditView
+                android:id="@+id/expertloction"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                app:my_edit="false"
+                app:my_lineShow="true"
+                app:my_must_input="true"
+                app:my_rightShow="false"
+                app:my_textSize="14dp"
+                app:my_title="地区"
+                app:my_value="@{bean.location}"
+                app:my_value_hint="添加" />
+
+            <com.mtjk.view.ItemEditView
+                android:id="@+id/expertcynx"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                app:my_edit="false"
+                app:my_lineShow="true"
+                app:my_must_input="true"
+                app:my_rightShow="false"
+                app:my_textSize="14dp"
+                app:my_title="从业年限"
+                app:my_value='@{bean.years+"年"}'
+                app:my_value_hint="添加" />
+
+            <com.mtjk.view.ItemEditView
+                android:id="@+id/experteducation"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                app:my_edit="false"
+                app:my_lineShow="true"
+                app:my_must_input="true"
+                app:my_rightShow="false"
+                app:my_textSize="14dp"
+                app:my_title="教育背景"
+                app:my_value="@{bean.educationExperienceModel.school}"
+                app:my_value_hint="添加" />
+
+            <com.mtjk.view.ItemEditView
+                android:id="@+id/expertcertificate"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                app:my_edit="false"
+                app:my_lineShow="true"
+                app:my_must_input="true"
+                app:my_rightShow="false"
+                app:my_textSize="14dp"
+                app:my_title="资格证书"
+                app:my_value='@{bean.qualificationCertificateModels.size()>0?bean.qualificationCertificateModels.get(0).certificateName:""}'
+                app:my_value_hint="添加" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:paddingLeft="20dp"
+                        android:text="擅长领域"
+                        android:textColor="#1F2326"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="*"
+                        android:textColor="#D0021B"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/expertareaSCLY"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="14dp"
+                    app:my_hint="请简单描述您的擅长领域。例如：专业增长情绪困扰、职场困感、个人成长问题等等"
+                    app:my_max_length="200"
+                    app:my_text="@={bean.introduction}"
+                    app:my_textSize="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:text="详细介绍(选填)"
+                    android:textColor="#1F2326"
+                    android:textSize="14dp" />
+
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/expertareaXXJS"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="14dp"
+                    app:my_hint="请详细介绍个人情况，方便来访者了解您。可以介绍您的从业经历，所获荣誉等。"
+                    app:my_max_length="1000"
+                    app:my_text="@={bean.personalIntroduce}"
+                    app:my_textSize="14dp" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/exportnext"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/base_selector_button_dark"
+                    android:stateListAnimator="@null"
+                    android:text="提交"
+                    android:textColor="@drawable/base_selector_color_button_white"
+                    android:textSize="14dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

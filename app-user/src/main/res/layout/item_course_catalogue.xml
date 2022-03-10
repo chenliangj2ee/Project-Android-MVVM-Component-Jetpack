@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="course"
+            type="com.mentuojiankang.user.bean.BeanCourse" />
+
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanSection" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="152dp"
+        android:layout_height="88dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/selector_card_catalogue"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text='@{(data.itemPosition+1)+"-"+data.sectionName}'
+            android:textColor="#1F2326"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="正在播放"
+            android:textColor="#A9ADB2"
+            android:textSize="12dp"
+            android:visibility="@{data.isPlay?View.VISIBLE:View.GONE}" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="55dp"
+            android:layout_marginBottom="2dp"
+            android:src="@drawable/icon_playing"
+            android:textColor="#A9ADB2"
+            android:textSize="12dp"
+            android:visibility="@{data.isPlay?View.VISIBLE:View.GONE}" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="2dp"
+            android:src='@{course.buy? (@drawable/icon_buyed): (data.itemPosition==0? @drawable/play_course_catalogue:@drawable/icon_buy)}'
+            android:textColor="#A9ADB2"
+            android:textSize="12dp"
+            android:visibility="@{data.isPlay?View.GONE:View.VISIBLE}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:text="@{data.sizeDes()}"
+            android:textColor="#A9ADB2"
+            android:textSize="14dp" />
+
+    </FrameLayout>
+</layout>

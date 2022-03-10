@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.mtjk.bean.BeanString" />
+
+        <import type="android.view.View"></import>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <com.mtjk.view.MyImageView
+            load="@{bean.str}"
+            radius="@{5}"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/load_default"
+            app:my_ratio="300:180" />
+
+        <com.mtjk.view.MyImageView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_icon_video_bg"
+            android:visibility='@{bean.str.endsWith(".mp4")?View.VISIBLE:View.GONE}'
+            app:my_ratio="300:180" />
+
+        <ImageView
+            android:id="@+id/play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_play"
+            android:visibility='@{bean.str.endsWith(".mp4")?View.VISIBLE:View.GONE}' />
+    </FrameLayout>
+
+</layout>

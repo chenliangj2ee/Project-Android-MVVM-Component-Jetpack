@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/consultTab"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="#008599"
+            app:tabTextColor="#515357"
+            app:tabPaddingStart="1dp"
+            android:background="#0000"
+            app:tabPaddingEnd="1dp"
+            app:tabMinWidth="10dp"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabIndicatorHeight="0dp"
+            app:tabTextAppearance="@style/TabLayoutTheme" />
+
+        <com.mtjk.view.MyViewPager
+            android:id="@+id/consultViewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

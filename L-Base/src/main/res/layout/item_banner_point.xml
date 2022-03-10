@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mtjk.bean.BeanPoint" />
+
+        <import type="android.view.View"></import>
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:minWidth="20dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="15dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:background="@drawable/base_selector_banner_point"
+            android:button="@null"
+            android:checked="@{data.itemSelected}"
+            android:visibility='@{data.itemSelected?View.VISIBLE:View.GONE}' />
+
+
+        <CheckBox
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:background="@drawable/base_selector_banner_point"
+            android:button="@null"
+            android:checked="@{data.itemSelected}"
+            android:visibility='@{data.itemSelected==false?View.VISIBLE:View.GONE}' />
+    </LinearLayout>
+</layout>

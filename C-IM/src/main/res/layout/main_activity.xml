@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+    <com.tencent.qcloud.tuicore.component.TitleBarLayout
+        android:id="@+id/main_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight = "1"/>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="57.18dp"
+        android:background="#f7f7f7"
+        android:clipChildren="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/conversation_btn_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="tabClick"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/conversation"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/conversation_selected"
+                android:textColor="@color/tab_text_selected_color"
+                android:drawablePadding="3dp"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:text="@string/tab_conversation_tab_text" />
+
+            <com.tencent.qcloud.tuicore.component.UnreadCountTextView
+                android:id="@+id/msg_total_unread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@id/conversation"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="-20dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:minWidth="18.4dp"
+                android:minHeight="18.4dp"
+                android:textColor="#fff"
+                android:textSize="13.6dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/contact_btn_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="tabClick"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/contact_normal"
+                android:drawablePadding="3dp"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:text="@string/tab_contact_tab_text" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/myself_btn_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="tabClick"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableTop="@drawable/myself_normal"
+                android:drawablePadding="3dp"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:text="@string/tab_profile_tab_text" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

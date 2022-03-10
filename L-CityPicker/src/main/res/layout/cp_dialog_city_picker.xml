@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="所在地区"
+            android:textStyle="bold"
+            android:textColor="#1F2326"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:padding="15dp"
+            android:src="@drawable/icon_city_close" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_marginTop="50dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cp_city_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/cp_overlay"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cp_overlay_bg"
+                android:textColor="#FFF"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <com.zaaach.citypicker.view.SideIndexBar
+            android:id="@+id/cp_side_index_bar"
+            android:layout_width="36dp"
+            android:layout_height="600dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="50dp" />
+    </FrameLayout>
+</layout>

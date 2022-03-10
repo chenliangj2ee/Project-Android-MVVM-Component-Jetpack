@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanCard" />
+
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vip_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/icon_novip_card_bg"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{data.companyName}"
+                android:textColor="#133C53"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text='@{"余额: "+data.leftAmount+"币"}'
+                    android:textColor="#97659A" />
+                <CheckBox
+                    android:clickable="false"
+                    android:gravity="right"
+                    android:id="@+id/vipCardUse"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:checked="@{data.itemSelected?true:false}"
+                    android:background="@drawable/base_selector_radiobutton_bg"
+                    android:button="@null" />
+            </LinearLayout>
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/vip_card_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </ImageView>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="使用规则"
+                    android:textColor="#A9ADB2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rules"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+               <LinearLayout
+                   android:orientation="vertical"
+                   android:layout_width="0dp"
+                   android:layout_weight="5"
+                   android:layout_height="wrap_content">
+
+                   <TextView
+                       android:singleLine="true"
+                       android:layout_marginTop="15dp"
+                       android:textSize="11dp"
+                       android:textColor="#515357"
+                       android:text="会员卡不可兑换现金，不设找零"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+                   </TextView>
+
+                   <TextView
+                       android:id="@+id/startToEnd"
+                       android:singleLine="true"
+                       android:layout_marginTop="10dp"
+                       android:textSize="11dp"
+                       android:textColor="#515357"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+                   </TextView>
+               </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

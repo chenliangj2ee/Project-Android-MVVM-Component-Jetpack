@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="state"
+            type="Integer" />
+
+        <variable
+            name="bean"
+            type="com.fcyd.expert.bean.BeanConsult" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <com.mtjk.view.MyImageView
+                load="@{bean.coverImage}"
+                radius="@{5}"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                app:my_default="@drawable/load_default" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="@{bean.title}"
+                        android:textColor="#1F2326"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        tools:text="抑郁症测评【专业版】抑郁症测评【专业版】抑郁症测评【专业版】" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{state==2&amp;&amp;bean.verify==1?"待审核":"未通过"}'
+                        android:textColor="#D0021B"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:visibility='@{state==2?View.VISIBLE:View.GONE}'
+                        tools:text="待审核" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:text='@{"咨询量"+bean.orderSum+"     评价"+bean.commentSum}'
+                    android:textColor="#515357"
+                    android:textSize="12dp"
+                    tools:text="咨询量0     评价0" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:text='@{bean.upTime==null||"".equals(bean.upTime)?"":"发布时间 "+bean.upTime}'
+                    android:textColor="#A9ADB2"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    tools:text="发布时间 2021.04.23 20:12:39" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="实付:"
+                android:textColor="#1F2326"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F44336"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:gravity="right|bottom"
+                android:text='@{"总价:"+bean.price+"币"}'
+                android:textColor="#133C53"
+                android:textSize="12dp"
+                tools:text="总价:689币" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/reason"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:stateListAnimator="@null"
+                android:text="未通过原因"
+                android:textColor="#133C53"
+                android:visibility='@{state==2&amp;&amp;bean.verify==3?View.VISIBLE:View.GONE}' />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/delete"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:stateListAnimator="@null"
+                android:text="删除"
+                android:textColor="#133C53" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/update"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:stateListAnimator="@null"
+                android:text="修改"
+                android:textColor="#133C53" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/down"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:stateListAnimator="@null"
+                android:text="下架"
+                android:textColor="#133C53"
+                android:visibility='@{state==1?View.VISIBLE:View.GONE}' />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/up"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:stateListAnimator="@null"
+                android:text="上架"
+                android:textColor="#133C53"
+                android:visibility='@{state==3?View.VISIBLE:View.GONE}' />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

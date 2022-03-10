@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanMyLive" />
+
+        <import type="android.view.View"></import>
+
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/selector_card_white_radius_5_border_0"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <com.mtjk.view.MyImageView
+                    load="@{data.liveCourseCoverImage}"
+                    radius="@{2}"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:my_default="@drawable/load_default" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="70dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:paddingRight="40dp"
+                        android:text="@{data.liveCourseSectionName}"
+                        android:textColor="#1F2326"
+                        android:textSize="15dp"
+                        tools:text="心理咨询心理咨询心理咨询心理咨询心理咨询心理咨询心理咨询" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="@{data.startTimeDes()}"
+                        android:textColor="#A9ADB2"
+                        android:textSize="12dp"
+                        tools:text="开始时间2002-04-04 10:22" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="5dp"
+                    android:text='@{data.stateDes()}'
+                    android:textColor="@color/text_default"
+                    android:textSize="12dp"
+                    tools:text="已结束" />
+
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/start"
+                android:layout_width="68dp"
+                android:layout_height="24dp"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="10dp"
+                android:background="@drawable/base_selector_button_dark"
+                android:enabled="@{data.enable()}"
+                android:stateListAnimator="@null"
+                android:text="开始直播"
+                android:textColor="@drawable/base_selector_color_button_white"
+                android:textSize="12dp"
+                android:visibility='@{data.state==1?View.VISIBLE:View.GONE}' />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:width="15dp" android:height="6dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#ff009e9d" />
+                    <corners android:radius="3dp" />
+                </shape>
+            </item>
+
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <item android:width="6dp" android:height="6dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#ffc4c4c4" />
+                    <corners android:radius="3dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

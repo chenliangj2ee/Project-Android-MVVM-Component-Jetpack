@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="expertAvatar"
+            type="java.lang.String" />
+
+        <variable
+            name="myAvatar"
+            type="java.lang.String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_link_mic_list_bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="等待连麦"
+                android:textColor="#1F2326"
+                android:textSize="17dp" />\
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="15dp"
+                android:padding="10dp"
+                android:src="@drawable/icon_close_link_mic_dialog"
+                android:text="申请消息"
+                android:textSize="17dp" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_gravity="bottom"
+            android:background="#E6F0F2" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+
+            <ImageView
+                android:id="@+id/iconLeft"
+                load="@{expertAvatar}"
+                radius="@{20}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="100dp"
+                android:background="@drawable/linking_header_bg"
+                android:padding="5dp" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/waiting_link_bg" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/waiting_link" />
+
+            <ImageView
+                android:id="@+id/iconRight"
+                load="@{myAvatar}"
+                radius="@{20}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/linking_header_bg"
+                android:padding="5dp" />
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel"
+            android:layout_width="120dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:stateListAnimator="@null"
+            android:background="@drawable/base_selector_button_dark_34"
+            android:text="取消申请"
+            android:textColor="@drawable/base_selector_color_button_white" />
+    </LinearLayout>
+</layout>
