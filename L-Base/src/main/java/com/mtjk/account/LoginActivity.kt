@@ -48,6 +48,7 @@ class LoginActivity : MyBaseActivity<ActivityBaseLoginBinding, AccountViewModel>
         codeLogin()
         quickLogin()
 
+        log("登录")
 
 
     }

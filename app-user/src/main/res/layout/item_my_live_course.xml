@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanLiveCourse" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingHorizontal="15dp"
+        android:paddingTop="15dp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/cover"
+            android:layout_width="130dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/cover"
+            android:layout_toRightOf="@id/cover"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{data.name}"
+            android:textColor="#1F2326"
+            android:textSize="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/cover"
+            android:layout_toRightOf="@id/cover"
+            android:layout_marginLeft="15dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{data.introduction}"
+            android:textColor="#A9ADB2"
+            android:textSize="14dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/cover"
+            android:layout_marginTop="15dp"
+            android:background="@color/app_background" />
+    </RelativeLayout>
+</layout>

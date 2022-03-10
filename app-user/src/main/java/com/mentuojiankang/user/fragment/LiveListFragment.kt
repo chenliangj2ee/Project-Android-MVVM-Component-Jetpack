@@ -45,7 +45,13 @@ class LiveListFragment : MyBaseFragment<FragmentLiveListBinding, LiveViewModel>(
     }
 
     private fun bookClick(live: BeanLive) {
-        toDetail(live)
+        if(live.free == 1) {
+            mViewModel.bookLive(live).obs(this@LiveListFragment) {
+                it.y { mBinding.refresh.refresh() }
+            }
+        } else {
+            toDetail(live)
+        }
     }
 
     private fun toLiveRoom(live: BeanLive) {

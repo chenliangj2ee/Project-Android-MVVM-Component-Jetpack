@@ -151,9 +151,9 @@
                     android:layout_marginRight="5dp"
                     android:background="@drawable/base_selector_button_dark_24"
                     android:visibility="@{bean.status == 1 ? View.GONE : View.VISIBLE}"
-                    android:enabled="@{bean.paid?false:true}"
+                    android:enabled="@{bean.bought == 1 ? false:true}"
                     android:stateListAnimator="@null"
-                    android:text='@{bean.paid?"已预约":"预约"}'
+                    android:text='@{bean.bought == 1 ? "已预约":"预约"}'
                     android:textSize="16dp"
                     android:textColor="@drawable/base_selector_color_button_white" />
             </LinearLayout>
