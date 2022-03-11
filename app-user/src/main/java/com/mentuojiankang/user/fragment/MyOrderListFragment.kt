@@ -160,8 +160,26 @@ class MyOrderListFragment : MyBaseFragment<FragmentMyOrderListBinding, OrderView
 
             return;
         }
-
-
+        if (bean.orderServer == ObjectProduct.TYPE_LIVE_COURSE) {
+            var payInfo = BeanPayInfo()
+            payInfo.paycoverImage = bean.orderItems!!.coverImage
+            payInfo.paylessonTitle = bean.orderItems!!.title
+            payInfo.payprice = bean.paidAmount
+            payInfo.paysectionCount = 0
+            payInfo.productId = bean.orderItems!!.productId
+            goto(
+                PaymentConfirmActivity::class.java,
+                "order",
+                payInfo,
+                "productType",
+                ObjectProduct.TYPE_LIVE_COURSE,
+                "payAgain",
+                true,
+                "orderId",
+                bean.orderId
+            )
+            return;
+        }
     }
 
     /**
