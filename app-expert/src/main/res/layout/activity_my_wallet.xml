@@ -29,8 +29,6 @@
                     android:ellipsize="end"
                     android:lines="1"
                     android:text="我的收入（元）"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/wallet_item_income"
                     android:textColor="@android:color/white"
                     android:textSize="14dp" />
 
