@@ -17,7 +17,7 @@ android {
     defaultConfig {
         minSdk 22
         targetSdk 31
-        versionCode 100
+        versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -197,4 +197,5 @@ dependencies {
     // 支付宝 SDK AAR 包所需的配置
     // TPNS 推送 [VERSION] 为最新 SDK 版本号
     implementation 'com.tencent.tpns:tpns:1.2.7.1-release'
+
 }

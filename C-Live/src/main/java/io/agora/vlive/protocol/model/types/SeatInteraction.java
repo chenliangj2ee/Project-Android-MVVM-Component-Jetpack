@@ -23,5 +23,4 @@ public class SeatInteraction {
     public static final int LIVE_DRAWING_REJECT_INVITE = 14;//画板拒绝
 
 
-
 }

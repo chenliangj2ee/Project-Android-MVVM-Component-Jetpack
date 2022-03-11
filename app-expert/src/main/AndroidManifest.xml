@@ -30,7 +30,7 @@
     <uses-permission
         android:name="android.permission.GET_TASKS"
         tools:node="replace" />
-
+    <uses-sdk tools:overrideLibrary="org.apache.logging.log4j,com.zaaach.citypicker,com.tencent.qcloud.tim.demo,com.tencent.qcloud.tuikit.tuichat,com.tencent.qcloud.tuikit.tuiconversation,com.tencent.qcloud.tuikit.tuicontact,com.tencent.qcloud.tuikit.tuigroup,com.tencent.liteav.trtccalling,com.tencent.qcloud.tuicore,com.donkingliang.imageselector" />
     <application
         android:name=".ExpertApplication"
         android:icon="@mipmap/logo"
