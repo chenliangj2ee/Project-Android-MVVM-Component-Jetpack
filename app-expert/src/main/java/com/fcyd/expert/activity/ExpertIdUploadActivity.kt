@@ -280,7 +280,7 @@ class ExpertIdUploadActivity : MyBaseActivity<ActivityExpertIdUploadBinding, Use
 
         loading.dismiss()
         if (loadCount != successCount) {
-            if (errorCount < 3) {
+            if (errorCount < 10) {
                 errorCount++
                 mBinding.next.performClick()
             } else {
