@@ -698,7 +698,7 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
         this.log("邀请被接受-咨询师回调。。。。userId:$userId  index:$index")
 
         for (index in Live.seats.indices) {
-            if (Live.seats[index].user.userId.isNullOrEmpty()) {
+            if (Live.seats[index].user.uid==0) {
                 Live.seats[index].seat.state = 1
                 Live.seats[index].seat.no = index
                 Live.seats[index].user.userId = userId
