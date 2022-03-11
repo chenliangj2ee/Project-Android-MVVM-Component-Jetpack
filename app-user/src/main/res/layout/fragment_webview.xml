@@ -17,7 +17,7 @@
             android:paddingBottom="80dp"
             android:background="#fff">
 
-            <com.netease.nis.basesdk.webview.NisWebView
+            <com.mtjk.view.MyWebView
                 android:id="@+id/webview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

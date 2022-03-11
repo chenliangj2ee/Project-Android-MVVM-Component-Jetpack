@@ -5,11 +5,9 @@ import com.mtjk.BaseInit
 import com.mtjk.annotation.MyClass
 import com.mtjk.base.MyBaseDialog
 import com.mtjk.dialog.ReportDialog
-import com.mtjk.utils.BusCode
-import com.mtjk.utils.click
-import com.mtjk.utils.send
-import com.mtjk.utils.show
+import com.mtjk.utils.*
 import io.agora.util.drawingboard.DrawingBoard
+import io.agora.vlive.Live
 import io.agora.vlive.databinding.DialogLiveMoreBinding
 
 /**
@@ -19,12 +17,14 @@ import io.agora.vlive.databinding.DialogLiveMoreBinding
  * date:2021/11/30
  */
 @MyClass(mDialogGravity = Gravity.BOTTOM, mDialogAnimation = true)
-class LiveMoreDialog(roomId:Int) : MyBaseDialog<DialogLiveMoreBinding>() {
-    var roomId=roomId
-    var channelName=""
-   object Status{
-       var showDraw=true
-   }
+class LiveMoreDialog(roomId: Int) : MyBaseDialog<DialogLiveMoreBinding>() {
+    var roomId = roomId
+    var channelName = ""
+
+    object Status {
+        var showDraw = true
+    }
+
     override fun initCreate() {
         mBinding.tousu.click {
             var dialog = ReportDialog(roomId)
@@ -34,11 +34,17 @@ class LiveMoreDialog(roomId:Int) : MyBaseDialog<DialogLiveMoreBinding>() {
         mBinding.draw.show(LiveMoreDialog.Status.showDraw)
         mBinding.draw.click {
 
-            if(BaseInit.isUserApp){
+            if (BaseInit.isUserApp) {
                 //展示画板
                 send(BusCode.LIVE_DRAW_SHOW_GZ)
-            }else{
-                DrawingSelectDialog().show(this)
+            } else {
+
+                if (Live.audienceObjectList.isEmpty()) {
+                    toast("暂无观众")
+                } else {
+                    DrawingSelectDialog().show(this)
+                }
+
 
             }
             dismiss()
@@ -46,8 +52,8 @@ class LiveMoreDialog(roomId:Int) : MyBaseDialog<DialogLiveMoreBinding>() {
         mBinding.yichang.click { }
     }
 
-    fun channelName(channelName:String){
-        this.channelName=channelName
+    fun channelName(channelName: String) {
+        this.channelName = channelName
     }
 
 

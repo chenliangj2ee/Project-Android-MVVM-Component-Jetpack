@@ -23,7 +23,7 @@ android {
 //    }
 
     defaultConfig {
-        minSdk 26
+        minSdk 22
         targetSdk 26
         archivesBaseName = "TUIKitDemo"
         multiDexEnabled = true

@@ -1,11 +1,14 @@
 package com.fcyd.expert.bean
 
+import android.util.Log
 import com.chenliang.annotation.ApiModel
 import com.fcyd.expert.R
 import com.mtjk.base.MyBaseBean
 import com.mtjk.obj.ObjectProduct
+import com.mtjk.utils.date
 import com.mtjk.utils.dateT
 import com.mtjk.utils.dateToLong
+import com.mtjk.utils.log
 
 /**
  * author:chenliang
@@ -79,5 +82,9 @@ class BeanTODO : MyBaseBean() {
         return ""
     }
 
-    fun enable() =if(ApiModel.release) System.currentTimeMillis() >= startTime.dateT("yyyy-MM-dd HH:mm:ss").dateToLong("yyyy-MM-dd HH:mm:ss") - 60 * 10 else true
+    fun enable() =
+        if (ApiModel.release)
+            System.currentTimeMillis() >= (startTime.dateT("yyyy-MM-dd HH:mm:ss")
+                .dateToLong("yyyy-MM-dd HH:mm:ss") - 60 * 10 * 1000)
+        else true
 }

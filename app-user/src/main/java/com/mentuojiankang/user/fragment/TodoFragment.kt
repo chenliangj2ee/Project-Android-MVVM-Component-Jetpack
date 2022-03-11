@@ -9,7 +9,6 @@ import com.mtjk.base.MyBaseFragment
 import com.mtjk.base.obs
 import com.mtjk.obj.ObjectProduct
 import com.mtjk.utils.*
-import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 import gorden.rxbus2.Subscribe
 import io.agora.vlive.bean.BeanParam
 import kotlinx.android.synthetic.main.fragment_todo.*

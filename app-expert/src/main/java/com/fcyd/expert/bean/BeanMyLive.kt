@@ -27,5 +27,5 @@ class BeanMyLive : MyBaseBean() {
         return ""
     }
 
-    fun enable() =  System.currentTimeMillis() >= startTime.dateT("yyyy-MM-dd HH:mm:ss").dateToLong("yyyy-MM-dd HH:mm:ss") - 60 * 10
+    fun enable() =  System.currentTimeMillis() >= startTime.dateT("yyyy-MM-dd HH:mm:ss").dateToLong("yyyy-MM-dd HH:mm:ss") - 60 * 10*1000
 }

@@ -194,7 +194,7 @@ open class MyBaseViewModel : ViewModel() {
             is JSONException -> bean.msg = "数据解析异常，非法JSON"
             is MalformedJsonException -> bean.msg = "数据解析异常，非法JSON"
             is UnknownServiceException -> bean.msg = "未知服务器路径"
-            is Exception -> bean.msg = "程序异常" + e.javaClass.name
+            is Exception -> bean.msg = "服务器异常"
         }
         return bean
     }

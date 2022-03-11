@@ -41,7 +41,7 @@ class QualificationEditActivity :
 
         with(mBinding) {
             zsmc.click { zsmcDialog() }
-            addIcon.click { selectImage(false) }
+            addIcon.click { selectImage(video = false, crop = false)}
             delete.click {
                 bean?.certificateImageUrl = ""
                 mBinding.bean?.notifyChange()

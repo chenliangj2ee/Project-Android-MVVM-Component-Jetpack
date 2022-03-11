@@ -5,6 +5,7 @@
     tools:ignore="MissingDefaultResource">
 
     <data>
+
         <variable
             name="data"
             type="com.mentuojiankang.user.bean.BeanTest" />
@@ -65,14 +66,20 @@
                     android:textSize="17dp"
                     android:textStyle="bold" />
 
+                <com.mtjk.view.MyWebView
+                    android:id="@+id/webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
                 <TextView
+                    android:id="@+id/des"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:lineSpacingExtra="10dp"
-                    android:text="@{data.briefIntro}"
                     android:textColor="#515357"
                     android:textSize="15dp"
+                    android:visibility="gone"
                     tools:text="据统计，我国抑郁症患者人数约为6000万人。它存在于各个阶层的人群如：学生、上班族、老人，目前还有相当多的人根本没有意识到自己患有抑郁症，更没有进行过系统的诊疗，在自杀的危险因素中，抑郁症与自杀密切相关，40%的自杀死亡者在自杀时患有抑郁症。专业测试让你快速发现自身是否有抑郁倾向!《抑郁自评量表(SDSI》，是世界上最著名的心理健康测试量表之一，广泛应用于精神障碍和心理疾病门诊检查。本测试结果仅供用户自测参考，不作为医学诊断。" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
@@ -84,8 +91,8 @@
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="66dp"
             android:background="@drawable/base_selector_button_dark_46"
-            android:text="开始测评"
             android:stateListAnimator="@null"
+            android:text="开始测评"
             android:textColor="@drawable/base_selector_color_button_white" />
     </FrameLayout>
 

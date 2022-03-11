@@ -245,22 +245,14 @@
                     android:paddingBottom="10dp">
 
                     <TextView
+                        android:id="@+id/introduction"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="5dp"
                         android:maxLines="2"
-                        android:text='@{"                :"+bean.introduction}'
                         android:textColor="#515357"
                         android:textSize="14dp"
-                        tools:text="                :专业增长情绪困扰、职场困感、个人成长问题。个体辅导：擅长家庭辅导、婚恋、情感、亲子沟通，家庭关系。" />
-
-                    <com.mtjk.view.MyImageView
-                        android:layout_width="50dp"
-                        android:layout_height="15dp"
-                        android:layout_marginTop="3dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/icon_zysc"
-                        app:my_ratio="50:14" />
+                        tools:text="专业擅长:专业增长情绪困扰、职场困感、个人成长问题。个体辅导：擅长家庭辅导、婚恋、情感、亲子沟通，家庭关系。" />
 
                     <ImageView
                         android:layout_width="60dp"

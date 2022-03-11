@@ -122,6 +122,7 @@ class ConsultInfoActivity : MyBaseActivity<ActivityConsultInfoBinding, ConsultVi
         mToolBar.setTitle("${bean.expertDetailEntity!!.realName}的工作室")
         bean.expertDetailEntity!!.resetDefault()
         mBinding.bean = bean.expertDetailEntity
+        mBinding.introduction.setHtmlText("<b><font color='#008599'>专业擅长:</font></b>${bean.expertDetailEntity?.introduction}")
         this.bean = mBinding.bean!!
 //        initFavorite(bean.expertDetailEntity)
         var arrays = arrayListOf<BeanBanner>()

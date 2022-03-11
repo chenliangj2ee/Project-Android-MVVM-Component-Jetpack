@@ -1,6 +1,7 @@
 package com.mentuojiankang.user.activity
 
 import android.graphics.Paint
+import android.webkit.WebView
 import com.mentuojiankang.user.R
 import com.mentuojiankang.user.bean.BeanCourse
 import com.mentuojiankang.user.bean.BeanPayInfo
@@ -16,6 +17,7 @@ import com.mtjk.base.obs
 import com.mtjk.fragment.EvaluateFragment
 import com.mtjk.obj.ObjectProduct
 import com.mtjk.utils.*
+import com.mtjk.view.MyWebView
 import gorden.rxbus2.Subscribe
 import kotlinx.android.synthetic.main.activity_course_info.*
 
@@ -81,7 +83,7 @@ class CourseInfoActivity : MyBaseActivity<ActivityCourseInfoBinding, CourseViewM
         order.subTitle = "${course.sectionList!!.size}节"
         viewpager.clearFragments()
         viewpager.addFragments(
-            DetailsWebViewFragment("", bean.detailUrl),
+            DetailsWebViewFragment(bean.detailUrl, MyWebView.Type.IMAGE ),
 //            CourseRecommendFragment(),
             goto(EvaluateFragment::class.java, "productId", bean.id)
         )

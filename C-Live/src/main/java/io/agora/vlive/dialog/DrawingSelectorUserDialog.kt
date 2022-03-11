@@ -15,7 +15,9 @@ import io.agora.vlive.databinding.ItemDrawUserBinding
 import io.agora.vlive.databinding.ItemLinkMicListBinding
 import io.agora.vlive.databinding.TrtcliveroomLinkMicListBinding
 import kotlinx.android.synthetic.main.dialog_draw_select_user.*
+import kotlinx.android.synthetic.main.dialog_draw_select_user.view.*
 import kotlinx.android.synthetic.main.trtcliveroom_link_mic_list.view.*
+import kotlinx.android.synthetic.main.trtcliveroom_link_mic_list.view.recycler
 import okhttp3.internal.filterList
 import java.util.ArrayList
 
@@ -56,7 +58,7 @@ class DrawingSelectorUserDialog : MyBaseDialog<DialogDrawSelectUserBinding>() {
                     filterList.add(bean)
                 }
             }
-            userCount.text="(${Live.audienceObjectList.size})"
+            this.userCount.text="(${Live.audienceObjectList.size})"
             recycler.addDatas(filterList)
         }
     }

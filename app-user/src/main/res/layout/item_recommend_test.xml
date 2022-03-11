@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
+                android:visibility="invisible"
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:text='@{data.subjectCount+"题  "+data.briefIntro}'

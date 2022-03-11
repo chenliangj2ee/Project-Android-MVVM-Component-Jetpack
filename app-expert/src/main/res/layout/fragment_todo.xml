@@ -4,7 +4,6 @@
     tools:ignore="all">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragment.TodoFragment">
@@ -12,12 +11,13 @@
         <include
             android:id="@+id/layout_todo_setting"
             layout="@layout/layout_todo_setting"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <com.mtjk.view.MyRefreshRecyclerView
             android:id="@+id/todoList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/app_background"
             app:my_empty_layout="@layout/base_layout_empty"
             app:my_item_layout="@layout/item_todo" />
 

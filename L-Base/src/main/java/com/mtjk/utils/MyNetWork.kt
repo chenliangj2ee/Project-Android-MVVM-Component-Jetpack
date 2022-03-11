@@ -42,7 +42,7 @@ object MyNetWork {
             .addInterceptor { chain ->
                 val original = chain.request()
                 val newOriginal = addParam(original)
-                var user= getBeanUser()
+                var user = getBeanUser()
                 val request = newOriginal.newBuilder()
                     .header("token", "${user?.token}")
                     .method(newOriginal.method, newOriginal.body)
@@ -60,7 +60,9 @@ object MyNetWork {
      * 统一添加参数
      */
     private fun addParam(oldRequest: Request): Request {
-        var user= getBeanUser()
+        var user = getBeanUser()
+        log("userId:${user?.userId}")
+        log("token:${user?.token}")
         var builder = oldRequest.url
             .newBuilder()
 //            .setEncodedQueryParameter(

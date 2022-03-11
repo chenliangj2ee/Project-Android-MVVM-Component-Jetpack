@@ -268,7 +268,7 @@ abstract class LiveBaseActivity : BaseActivity(), RtcEventHandler, RtmMessageLis
                 this.log("进入聊天房间成功")
 
                 if(this@LiveBaseActivity is ZhuBoActivity2){
-                    Live.sendMessage(this@LiveBaseActivity,"进入咨询师")
+                    Live.sendMessage(this@LiveBaseActivity,"咨询师进入")
                 }
 
 

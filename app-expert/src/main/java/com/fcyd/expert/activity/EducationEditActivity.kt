@@ -31,7 +31,7 @@ class EducationEditActivity : MyBaseActivity<ActivityEducationEditBinding, Accou
 
         with(mBinding) {
             xl.click { xlDialog() }
-            addIcon.click { selectImage(false) }
+            addIcon.click { selectImage(video = false, crop = false) }
             delete.click {
                 image.setImageBitmap(null)
                 delete.show(false)

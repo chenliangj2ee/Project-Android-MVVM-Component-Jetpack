@@ -33,7 +33,7 @@ android {
 
     defaultConfig {
         applicationId "com.mentuojiankang.user"
-        minSdk 26
+        minSdk 22
         targetSdk 26
         versionCode 4
         versionName "1.1.2"

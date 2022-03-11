@@ -15,6 +15,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import com.google.gson.Gson
+import com.mtjk.base.MyBaseDialog
 import com.mtjk.base.obs
 import com.mtjk.bean.BeanUser
 import com.mtjk.dialog.DialogLoading
@@ -61,6 +62,7 @@ import kotlinx.android.synthetic.main.activity_host_in.userCount
 import kotlinx.android.synthetic.main.activity_host_in.userHeader
 import kotlinx.android.synthetic.main.activity_host_in.username
 import kotlinx.android.synthetic.main.activity_host_in_2.*
+import java.lang.Exception
 
 /**
  * tag==观众-1对多
@@ -944,7 +946,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
 
     override fun onAnchorUidResponse(uid: Int, seats: MutableList<SeatStateMessageDataItem>?) {
         log("获取主播，座位信息成功..............")
-        runOnUiThread{
+        runOnUiThread {
             ownerRtcUid = uid.toInt()
             isHost = true
             myRtcRole = Constants.CLIENT_ROLE_BROADCASTER
@@ -1073,11 +1075,13 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
         }
     }
 
+    private var drawInviteDialog: MyDialog? = null
+
     @Subscribe(code = BusCode.LIVE_DRAW_INVITE_MESSAGE)
     public fun drawInvite(list: ArrayList<String>) {
         var user = getBeanUser()
         if (list.any { user!!.userId == it }) {
-            dialog("咨询师向你发送在线共享画板").n("取消") {
+            drawInviteDialog = dialog("咨询师向你发送在线共享画板").n("取消") {
                 LiveMoreDialog.Status.showDraw = true
             }.y("接受") {
                 LiveMoreDialog.Status.showDraw = true
@@ -1099,7 +1103,8 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
                             this.log("接受画板失败")
                         }
                     })
-            }.show(this)
+            }
+            drawInviteDialog?.show(this)
         } else {
             disableDraw = true
             showDraw()
@@ -1115,8 +1120,14 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
 
     @Subscribe(code = BusCode.LIVE_DRAW_CLOSE_ALL)
     fun closeAllDraw() {
-        toast("主播结束共享画板")
-        disableDraw = false;
+        try {
+            toast("主播结束共享画板")
+            disableDraw = false;
+            drawInviteDialog?.dismiss()
+        }catch (e:Exception){
+
+        }
+
     }
 
     @Subscribe(code = BusCode.LIVE_UPDATE_ZHUBO_UID)

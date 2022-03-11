@@ -33,7 +33,7 @@ android {
 
     defaultConfig {
         applicationId "com.fcyd.expert"
-        minSdk 26
+        minSdk 22
         targetSdk 26
         versionCode 4
         versionName "1.1.3"

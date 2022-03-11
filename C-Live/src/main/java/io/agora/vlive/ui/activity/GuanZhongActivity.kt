@@ -54,6 +54,7 @@ import io.agora.vlive.utils.Global
 import io.agora.vlive.utils.UserUtil
 import io.agora.vlive.vm.RoomViewModel
 import kotlinx.android.synthetic.main.activity_host_in.*
+import java.lang.Exception
 
 /**
  * tag==观众-1对1
@@ -994,11 +995,12 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
         }
     }
 
+    var drawInviteDialog:MyDialog?=null
     @Subscribe(code = BusCode.LIVE_DRAW_INVITE_MESSAGE)
     public fun drawInvite(list: ArrayList<String>) {
         var user = getBeanUser()
         if (list.any { user!!.userId == it }) {
-            dialog("咨询师向你发送在线共享画板").n("拒绝") {
+            drawInviteDialog=dialog("咨询师向你发送在线共享画板").n("拒绝") {
                 Live.sendPeer(
                     this,
                     liveParam!!.userId,
@@ -1033,7 +1035,8 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
                             this.log("接受画板失败")
                         }
                     })
-            }.show(this)
+            }
+            drawInviteDialog?.show(this)
         }
     }
     fun showDraw(){
@@ -1043,6 +1046,17 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
     fun updateZhuBoUid(uid:String) {
         onAnchorUidResponse(uid.toInt(),null)
     }
+    @Subscribe(code = BusCode.LIVE_DRAW_CLOSE_ALL)
+    fun closeAllDraw() {
+        try {
+            toast("主播结束共享画板")
+            drawInviteDialog?.dismiss()
+        }catch (e: Exception){
+
+        }
+
+    }
+
     companion object {
         private val ROOM_NAME_HINT_COLOR = Color.rgb(101, 101, 101)
         private val ROOM_NAME_COLOR = Color.rgb(235, 235, 235)

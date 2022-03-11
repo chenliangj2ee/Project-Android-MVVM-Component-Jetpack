@@ -363,6 +363,24 @@ abstract class MyBaseActivity<BINDING : ViewDataBinding, VM : ViewModel> : AppCo
         }
     }
 
+    fun selectImage(video: Boolean,crop:Boolean) {
+        arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        ).checkPermissions(this) {
+            if (it) {
+                ImageSelector.builder()
+                    .setCrop(crop)
+                    .video(video)
+                    .setSelected(selectImages)
+                    .start(this, REQUEST_CODE_CAMERA)
+            } else {
+//                toast("没有权限")
+            }
+        }
+    }
+
     fun selectImageSingle(crop: Boolean) {
         arrayOf(
             Manifest.permission.CAMERA,
