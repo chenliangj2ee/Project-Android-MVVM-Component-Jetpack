@@ -6,7 +6,6 @@ import com.fcyd.expert.databinding.ActivityMyWalletBinding
 import com.fcyd.expert.vm.UserViewModel
 import com.mtjk.annotation.MyClass
 import com.mtjk.base.MyBaseActivity
-import com.mtjk.base.WebViewActivity
 import com.mtjk.base.obs
 import com.mtjk.utils.click
 import com.mtjk.utils.goto
@@ -24,7 +23,6 @@ class WalletActivity : MyBaseActivity<ActivityMyWalletBinding, UserViewModel>() 
     var withdrawNow = 0.0
 
     override fun initCreate() {
-        mToolBar.showRight("帮助", { toHelp() })
         loadData()
     }
 
@@ -42,10 +40,6 @@ class WalletActivity : MyBaseActivity<ActivityMyWalletBinding, UserViewModel>() 
         super.initClick()
         mBinding.withdraw.click { toWithDraw() }
         mBinding.detail.click { toDetail() }
-    }
-
-    private fun toHelp() {
-        goto(WebViewActivity::class.java, "url", "file:///android_asset/html/user_about.html", "title", "钱包帮助")
     }
 
     /*
