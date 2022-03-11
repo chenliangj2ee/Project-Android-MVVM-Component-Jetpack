@@ -371,6 +371,10 @@ interface ApiService {
     @GET("/api-app/v1/app/user/liveCourse/queryById")
     fun getLiveDetail(@Query("id") id: String): Data<BeanLiveDetail>
 
+    @MyRetrofitGo(mTag = "直播课程", mLoading = false, mFailToast = false, mCache = true)
+    @POST("/api-app/v1/app/user/myCourse/liveCourse")
+    fun getLiveCourse(@Body body: Any): DataPages<BeanLiveCourse>
+
     @MyRetrofitGo(mTag = "文章列表", mLoading = false, mFailToast = false, mCache = true)
     @GET("/api-app/v1/app/cms/article/getPageList")
     fun getArticleList(

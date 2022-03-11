@@ -2,6 +2,7 @@ package com.mentuojiankang.user.activity
 
 import com.mentuojiankang.user.bean.BeanTrouble
 import com.mentuojiankang.user.databinding.ActivityMyCourseBinding
+import com.mentuojiankang.user.fragment.MyLiveCourseFragment
 import com.mentuojiankang.user.fragment.RecordingCourseFragment
 import com.mentuojiankang.user.vm.CourseViewModel
 import com.mtjk.annotation.MyClass
@@ -22,7 +23,7 @@ class MyCourseActivity : MyBaseActivity<ActivityMyCourseBinding, CourseViewModel
             "录播课"
         )
         viewpager.addFragments(
-            RecordingCourseFragment(),
+            MyLiveCourseFragment(),
             RecordingCourseFragment()
         )
     }
