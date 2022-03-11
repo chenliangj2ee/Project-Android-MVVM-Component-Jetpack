@@ -65,7 +65,7 @@ class ExperienceEditActivity : MyBaseActivity<ActivityExperienceEditBinding, Def
 
                         root.delete.click {
                             refresh.removeData(bean)
-                            arrays.removeAt(bean.itemPosition)
+                             arrays.removeAt(bean.itemPosition)
                             for (item in selectImages) {
                                 if (item == bean.url) {
                                     selectImages.remove(item)
