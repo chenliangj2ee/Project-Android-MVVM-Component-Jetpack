@@ -39,12 +39,12 @@ class LiveMoreDialog(roomId: Int) : MyBaseDialog<DialogLiveMoreBinding>() {
                 send(BusCode.LIVE_DRAW_SHOW_GZ)
             } else {
 
-                if (Live.audienceObjectList.isEmpty()) {
-                    toast("暂无观众")
-                } else {
-                    DrawingSelectDialog().show(this)
-                }
-
+//                if (Live.audienceObjectList.isEmpty()) {
+//                    toast("暂无观众")
+//                } else {
+//                    DrawingSelectDialog().show(this)
+//                }
+                DrawingSelectDialog().show(this)
 
             }
             dismiss()
