@@ -25,7 +25,6 @@ class MyLiveCourseFragment : MyBaseFragment<FragmentMyLiveCourseListBinding, Liv
     private fun bindItem(course: BeanLiveCourse) {
         with(course.binding as ItemMyLiveCourseBinding) {
             data = course
-            this.cover.load(course.coverImage)
         }
     }
 

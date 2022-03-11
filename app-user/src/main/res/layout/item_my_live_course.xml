@@ -17,11 +17,14 @@
         android:background="@android:color/white"
         android:paddingHorizontal="15dp"
         android:paddingTop="15dp">
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.mtjk.view.MyImageView
             android:id="@+id/cover"
             android:layout_width="130dp"
             android:layout_height="80dp"
             android:scaleType="centerCrop"
+            load="@{data.coverImage}"
+            radius="@{2}"
+            app:my_default="@drawable/load_default"
             android:layout_centerVertical="true" />
         <TextView
             android:layout_width="wrap_content"
@@ -39,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/cover"
             android:layout_toRightOf="@id/cover"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:ellipsize="end"
             android:lines="1"
             android:text="@{data.introduction}"
