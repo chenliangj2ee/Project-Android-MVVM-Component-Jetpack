@@ -153,7 +153,7 @@
                     android:visibility="@{bean.status == 1 ? View.GONE : View.VISIBLE}"
                     android:enabled="@{bean.bought == 1 ? false:true}"
                     android:stateListAnimator="@null"
-                    android:text='@{bean.bought == 1 ? "已预约":"预约"}'
+                    android:text='@{(bean.bought == 1 || bean.bought == 2)  ? "已预约":"预约"}'
                     android:textSize="16dp"
                     android:textColor="@drawable/base_selector_color_button_white" />
             </LinearLayout>
