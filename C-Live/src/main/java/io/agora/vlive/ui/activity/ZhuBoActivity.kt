@@ -422,7 +422,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
         dialogLinkList!!.setItemClick { beanLinkUser: BeanLinkUser, aBoolean: Boolean ->
             if (aBoolean) { //接受申请
                 this.log("接受申请：userId:" + beanLinkUser.userId + "  name:" + beanLinkUser.nickName)
-                if (Live.seats[beanLinkUser.index - 1].user.userId != "") {
+                if (Live.seats[0].user.userId != "") {
                     this.toast("请下麦当前观众后再试")
                     return@setItemClick
                 }
@@ -657,14 +657,14 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
 
         var liveParam = BeanParam().get<BeanParam>()
 
-        Live.seats[index].seat.state = 1
-        Live.seats[index].seat.no = index
-        Live.seats[index].user.userId = userId
-        Live.seats[index].user.uid = uid
-        Live.seats[index].user.userName = userName
-        Live.seats[index].user.enableVideo =
+        Live.seats[0].seat.state = 1
+        Live.seats[0].seat.no = index
+        Live.seats[0].user.userId = userId
+        Live.seats[0].user.uid = uid
+        Live.seats[0].user.userName = userName
+        Live.seats[0].user.enableVideo =
             if (liveParam!!.liveType == BeanParam.LiveType.VIDEO_ONE) 1 else 0
-        Live.seats[index].user.enableAudio = 1
+        Live.seats[0].user.enableAudio = 1
         Live.sendSentMessage(this)
         runOnUiThread { mSeatLayout!!.updateStates(Live.seats) }
     }
@@ -900,11 +900,11 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
             }
         }
         dialog(message).y {
-            this.log("下麦UserId:" + Live.seats[position].user.userId)
+            this.log("下麦UserId:" + Live.seats[0].user.userId)
             this.log("用户列表:" + Gson().toJson(Live.seats))
             Live.sendPeer(
                 this,
-                Live.seats[position].user.userId,
+                Live.seats[0].user.userId,
                 SeatInteraction.OWNER_FORCE_LEAVE,
                 3,
                 RtmMessageManager.PEER_MSG_TYPE_SEAT,
@@ -918,7 +918,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
                         this.log("下麦通知失败" + Gson().toJson(errorInfo))
                     }
                 })
-            Live.seats[position] = SeatStateMessageDataItem()
+            Live.seats[0] = SeatStateMessageDataItem()
             runOnUiThread { mSeatLayout!!.updateStates(Live.seats) }
             Live.sendSentMessage(this)
         }.show(this)

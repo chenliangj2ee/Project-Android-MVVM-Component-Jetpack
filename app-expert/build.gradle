@@ -34,7 +34,7 @@ android {
     defaultConfig {
         applicationId "com.fcyd.expert"
         minSdk 26
-        targetSdk 31
+        targetSdk 26
         versionCode 5
         versionName "1.1.4"
         multiDexEnabled true
