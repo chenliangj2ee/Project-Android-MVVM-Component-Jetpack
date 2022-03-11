@@ -5,7 +5,8 @@ import java.util.List;
 
 public class SeatStateMessage extends AbsRtmMessage {
     public List<SeatStateMessageDataItem> data;
-    public List<String> drawUserIds = new ArrayList<>();
+    public List<String> drawUserIds;
+
     public static class SeatStateMessageDataItem {
         public SeatState seat = new SeatState();
         public UserState user = new UserState();

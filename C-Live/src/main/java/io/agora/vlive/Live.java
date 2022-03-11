@@ -40,7 +40,7 @@ public class Live {
     public static List<BeanAudience> audienceObjectList = new ArrayList<>();
 
     /**
-     *绘画中的用户集合
+     * 绘画中的用户集合
      */
     public static List<BeanAudience> drawingUsers = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class Live {
     }
 
 
-    public static void initSeats(){
+    public static void initSeats() {
         seats.clear();
         drawingUsers.clear();
         drawUserIds.clear();
@@ -65,9 +65,9 @@ public class Live {
         boolean add = false;
 
         for (int i = 0; i < Live.seats.size(); i++) {
-            if ("".equals(Live.seats.get(i).user.userId)) {
+            if (Live.seats.get(i).user.uid == 0) {
                 Live.seats.get(i).seat.state = 1;
-                Live.seats.get(i).seat.no = user.getIndex();
+                Live.seats.get(i).seat.no = i;
                 Live.seats.get(i).user.userId = user.getUserId();
                 Live.seats.get(i).user.role = 2;
                 Live.seats.get(i).user.uid = user.getUid();
@@ -160,6 +160,7 @@ public class Live {
             }
         });
     }
+
     public static void sendDrawCloseMessage(LiveBaseActivity activity) {
         SeatStateMessage message = new SeatStateMessage();
         message.cmd = RtmMessageManager.LIVE_DRAWING_CLOSE;
@@ -213,10 +214,10 @@ public class Live {
     }
 
 
-    public static void sendRtmZhuboIntoMessage(LiveBaseActivity activity, int uid,ResultCallback callback) {
+    public static void sendRtmZhuboIntoMessage(LiveBaseActivity activity, int uid, ResultCallback callback) {
         SeatStateMessage message = new SeatStateMessage();
         message.cmd = RtmMessageManager.LIVE_ZHUBO_UID_UPDATE;
-        message.uid =uid;
+        message.uid = uid;
         MyFunctionKt.log(activity, "主播进入房间，群发UID消息:" + new Gson().toJson(message));
         activity.getMessageManager().sendChannelMessage(new Gson().toJson(message), callback);
     }

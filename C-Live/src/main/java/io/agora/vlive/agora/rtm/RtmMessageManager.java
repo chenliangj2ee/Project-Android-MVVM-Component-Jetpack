@@ -247,10 +247,10 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
                 case SeatInteraction.OWNER_CANCEL_INVITE:
                     listener.onCancelRtmSeatInvited();
                 case SeatInteraction.LIVE_DRAWING_ACCEPT_INVITE:
-                    MyFunctionKt.sendSelf(message.data.fromUser,BusCode.LIVE_DRAW_ACCEPT_INVITE);
+                    MyFunctionKt.sendSelf(message.data.fromUser, BusCode.LIVE_DRAW_ACCEPT_INVITE);
                     break;
                 case SeatInteraction.LIVE_DRAWING_REJECT_INVITE:
-                    MyFunctionKt.sendSelf(userName,BusCode.LIVE_DRAW_REJECT_INVITE);
+                    MyFunctionKt.sendSelf(userName, BusCode.LIVE_DRAW_REJECT_INVITE);
                     break;
             }
         }
@@ -322,7 +322,10 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
         try {
             JSONObject obj = new JSONObject(json);
             cmd = obj.getInt("cmd");
-            int uid= obj.getInt("uid");
+            int uid = 0;
+            if (obj.has("uid")) {
+                uid = obj.getInt("uid");
+            }
             for (final RtmMessageListener listener : mMessageListeners) {
                 switch (cmd) {
                     case CHANNEL_MSG_TYPE_CHAT://聊天信息
@@ -370,15 +373,15 @@ public class RtmMessageManager implements RtmClientListener, RtmChannelListener 
                     case LIVE_DRAWING_INVITE://画板邀请
                         SeatStateMessage drawInvite = gson.fromJson(json, SeatStateMessage.class);
                         MyFunctionKt.sendSelf(drawInvite.drawUserIds, BusCode.LIVE_DRAW_INVITE_MESSAGE);
-                        MyFunctionKt.log(this,"消息画板邀请。。。。。。。。。。");
+                        MyFunctionKt.log(this, "消息画板邀请。。。。。。。。。。");
                         break;
                     case LIVE_DRAWING_CLOSE://画板关闭
                         MyFunctionKt.send(this, BusCode.LIVE_DRAW_CLOSE_ALL);
-                        MyFunctionKt.log(this,"消息画板关闭。。。。。。。。。。");
+                        MyFunctionKt.log(this, "消息画板关闭。。。。。。。。。。");
                         break;
                     case LIVE_ZHUBO_UID_UPDATE://主播进入更新UID
-                        MyFunctionKt.sendSelf(uid+"", BusCode.LIVE_UPDATE_ZHUBO_UID);
-                        MyFunctionKt.log(this,"主播进入，更新UID。。。。。。。。。。");
+                        MyFunctionKt.sendSelf(uid + "", BusCode.LIVE_UPDATE_ZHUBO_UID);
+                        MyFunctionKt.log(this, "主播进入，更新UID。。。。。。。。。。");
                         break;
                     case CHANNEL_MSG_TYPE_PRODUCT_STATE_PURCHASED:
                         break;

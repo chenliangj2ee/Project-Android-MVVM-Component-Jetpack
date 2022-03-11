@@ -566,7 +566,7 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
         var message: String = resources.getString(R.string.live_room_host_in_apply_rejected_message)
         message = String.format((message), nickname)
 
-        dialog(message).single(true).show(this)
+        dialog("您的连麦被咨询师拒绝").single(true).show(this)
     }
 
     /**
