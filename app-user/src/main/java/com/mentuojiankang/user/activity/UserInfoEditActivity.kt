@@ -35,9 +35,10 @@ class UserInfoEditActivity : MyBaseActivity<ActivityUserInfoEditBinding, Account
         "其他"
     )
     var user = getBeanUser()
+    var isFinish = false
     override fun initCreate() {
         mBinding.user = user
-        updateUserInfo(false)
+        updateUserInfo()
         mToolBar.showRight("跳过") {
             gotoFinish(ExplainActivity::class.java, "user", user!!)
         }
@@ -52,7 +53,10 @@ class UserInfoEditActivity : MyBaseActivity<ActivityUserInfoEditBinding, Account
         name.changed { check() }
 
         header.click { selectImage(false) }
-        next.click { updateUserInfo(true) }
+        next.click {
+            isFinish = true
+            updateUserInfo()
+        }
         nan.checked {
             if (it) user?.gender = 1
             check()
@@ -66,8 +70,7 @@ class UserInfoEditActivity : MyBaseActivity<ActivityUserInfoEditBinding, Account
         hy.click { selectorHy() }
     }
 
-    private fun updateUserInfo(finish: Boolean) {
-
+    private fun updateUserInfo() {
         if (user?.nickName.isNullOrEmpty()) {
             user?.nickName = "吱友" + user?.account?.substring(7)
         }
@@ -81,7 +84,7 @@ class UserInfoEditActivity : MyBaseActivity<ActivityUserInfoEditBinding, Account
         mViewModel.updateUserAccount(user!!).obs(this) {
             it.y {
                 user!!.save()
-                if (finish){
+                if (isFinish) {
                     gotoFinish(ExplainActivity::class.java, "user", user!!)
                 }
 

@@ -63,7 +63,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:ellipsize="end"
-                                android:maxWidth="100dp"
+                                android:maxWidth="130dp"
                                 android:maxLines="1"
                                 android:text="@{data.nickName}"
                                 android:textColor="#fff"
