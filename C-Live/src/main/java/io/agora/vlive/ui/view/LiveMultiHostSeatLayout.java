@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.mtjk.bean.BeanUser;
 import com.mtjk.utils.MyFunctionKt;
 
 import java.util.ArrayList;
@@ -320,8 +321,10 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
         AppCompatImageView icon = new AppCompatImageView(getContext());
 //        icon.setImageResource(UserUtil.getUserProfileIcon(seatState.userId));
 
-        if (user != null && user.avatar != null && user.enableVideo == 0) {
-            MyFunctionKt.load(icon, user.avatar, 10);
+        if (user!=null&& user.enableVideo == 0) {
+            seatState.videoLayout.removeAllViews();
+            BeanUser loginUser=new BeanUser().get();
+            MyFunctionKt.load(icon, loginUser.getAvatar(),1);
             seatState.videoLayout.addView(icon);
         }
     }

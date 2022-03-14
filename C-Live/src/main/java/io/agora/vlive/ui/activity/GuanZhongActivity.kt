@@ -123,7 +123,7 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
             profileImage!!.outlineProvider = RoomOwnerOutline()
 //            userLayout.removeAllViews()
             userLayout.addView(profileImage)
-            profileImage?.load(liveParam!!.userHeader, 10)
+            profileImage?.load(liveParam!!.userHeader, 1)
         }
 
         fun showVideoUI() {

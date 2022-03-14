@@ -115,7 +115,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
             profileImage!!.outlineProvider = RoomOwnerOutline()
 //            userLayout.removeAllViews()
             userLayout.addView(profileImage)
-            profileImage?.load(user!!.avatar, 10)
+            profileImage?.load(user!!.avatar,1)
         }
 
         fun showVideoUI() {
@@ -254,7 +254,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
     }
 
 
-    fun sendUidToUsers(){
+    fun sendUidToUsers() {
         runOnUiThread {
             postDelayed(1000) {
                 log("主播发送uid:")
@@ -265,7 +265,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
 
                     override fun onFailure(p0: ErrorInfo?) {
                         log("主播发送uid失败")
-                        postDelayed(3000){
+                        postDelayed(3000) {
                             sendUidToUsers()
                         }
                     }
@@ -422,7 +422,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
         dialogLinkList!!.setItemClick { beanLinkUser: BeanLinkUser, aBoolean: Boolean ->
             if (aBoolean) { //接受申请
                 this.log("接受申请：userId:" + beanLinkUser.userId + "  name:" + beanLinkUser.nickName)
-                if (Live.seats[0].user.userId != "") {
+                if (Live.seats[0].user.uid != 0) {
                     this.toast("请下麦当前观众后再试")
                     return@setItemClick
                 }
