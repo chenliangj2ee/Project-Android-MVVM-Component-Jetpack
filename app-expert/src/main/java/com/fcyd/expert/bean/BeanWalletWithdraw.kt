@@ -80,6 +80,9 @@ class BeanWalletWithdraw : MyBaseBean() {
         if(orderStatus == ObjectWithdraw.STATUS_CLOSE_ORDER) {
             return "失败"
         }
+        if(orderStatus == ObjectWithdraw.STATUS_CANCEL_ORDER) {
+            return "订单取消"
+        }
         return ""
     }
 
