@@ -321,10 +321,9 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
         AppCompatImageView icon = new AppCompatImageView(getContext());
 //        icon.setImageResource(UserUtil.getUserProfileIcon(seatState.userId));
 
-        if (user!=null&& user.enableVideo == 0) {
+        if (user != null && user.enableVideo == 0 && user.avatar != null) {
             seatState.videoLayout.removeAllViews();
-            BeanUser loginUser=new BeanUser().get();
-            MyFunctionKt.load(icon, loginUser.getAvatar(),1);
+            MyFunctionKt.load(icon, user.avatar, 1);
             seatState.videoLayout.addView(icon);
         }
     }

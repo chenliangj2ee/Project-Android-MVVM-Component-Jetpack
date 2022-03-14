@@ -61,8 +61,13 @@ public class Live {
     }
 
     public static boolean setSeat(BeanLinkUser user) {
-
         boolean add = false;
+        for (int i = 0; i < Live.seats.size(); i++) {
+            if (Live.seats.get(i).user.uid == user.getUid()) {
+                Live.seats.set(i, new SeatStateMessage.SeatStateMessageDataItem());
+            }
+        }
+
 
         for (int i = 0; i < Live.seats.size(); i++) {
             if (Live.seats.get(i).user.uid == 0) {

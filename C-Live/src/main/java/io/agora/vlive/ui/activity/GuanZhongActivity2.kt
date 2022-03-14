@@ -942,7 +942,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     }
 
     override fun onAnchorUidResponse(uid: Int, seats: MutableList<SeatStateMessageDataItem>?) {
-        log("获取主播，座位信息成功..............")
+        log("获取主播，座位信息成功..............uid:$uid")
         runOnUiThread {
             ownerRtcUid = uid.toInt()
             isHost = true
