@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import com.fcyd.expert.databinding.ActivityMyWalletWithdrawBinding
 import com.fcyd.expert.vm.UserViewModel
 import com.mtjk.annotation.MyField
@@ -86,13 +87,10 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
         //提现操作
         mViewModel.WalletWithdraw(amount).obs(this@WalletWithdrawActivity) {
             it.y {
-                mBinding.step2.isChecked = true
-                mBinding.withdraw.isClickable = false
                 withdrawal -= amount
                 withdrawal = if(withdrawal >= 0.0) withdrawal else 0.0
                 withdrawal = withdrawal.roundTo2DecimalPlaces()
-                updateMoneyAvailable()
-                setWithdrawResult()
+                afterWithdraw()
             }
             it.n {
                 toast("提现申请失败，请检查网络")
@@ -104,6 +102,16 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
         var intent = Intent()
         intent.putExtra("withdrawal", withdrawal)
         setResult(Activity.RESULT_OK, intent)
+    }
+
+    private fun afterWithdraw() {
+        mBinding.withdraw.visibility = View.GONE
+        mBinding.withdrawAmountLayout.visibility = View.GONE
+        mBinding.empty.visibility = View.VISIBLE
+        mBinding.step2.isChecked = true
+        mBinding.withdraw.isClickable = false
+        updateMoneyAvailable()
+        setWithdrawResult()
     }
 
     fun Double.roundTo2DecimalPlaces() =

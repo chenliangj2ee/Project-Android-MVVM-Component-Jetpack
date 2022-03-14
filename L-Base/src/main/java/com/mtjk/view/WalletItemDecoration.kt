@@ -104,7 +104,7 @@ class WalletItemDecoration(val mContext: Context?, val mGroupListener: OnGroupLi
         } else {
             val preGroupName = getGroupName(position - 1)
             val groupName = getGroupName(position)
-            !TextUtils.equals(preGroupName, groupName)
+            !groupName.isNullOrEmpty() && !TextUtils.equals(preGroupName, groupName)
         }
     }
 
