@@ -17,18 +17,14 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/selector_title_tag" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="体验评价"
+                android:text="服务评价"
                 android:textColor="#000"
-                android:textSize="14dp" />
+                android:textSize="17dp" />
 
             <TextView
                 android:id="@+id/title"
@@ -38,7 +34,7 @@
                 android:layout_weight="1"
                 android:text=""
                 android:textColor="#888888"
-                android:textSize="14dp"
+                android:textSize="17dp"
                 tools:text="(1000)" />
 
             <TextView
@@ -48,7 +44,7 @@
                 android:gravity="center"
                 android:text="查看全部"
                 android:textColor="#515357"
-                android:textSize="10dp" />
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="20dp"
