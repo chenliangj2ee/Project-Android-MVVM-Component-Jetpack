@@ -250,7 +250,7 @@
                 android:layout_weight="1"
                 android:gravity="right|center_vertical"
                 android:paddingRight="10dp"
-                android:text='@{data.ConsultTime.week.size()==0?"添加":"修改"}'
+                android:text='添加'
                 android:textColor="#A9ADB2" />
 
             <ImageView

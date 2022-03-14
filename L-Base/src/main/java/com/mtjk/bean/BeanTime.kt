@@ -2,8 +2,6 @@ package com.mtjk.bean
 
 import com.mtjk.base.MyBaseBean
 import com.mtjk.utils.dateToLong
-import com.mtjk.utils.log
-import com.mtjk.utils.toJson
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,10 +10,7 @@ import java.util.*
  * date:2021/12/6
  */
 class BeanTime : MyBaseBean() {
-    var startHour = 0//B端时间段选择框使用
-    var startMinute = 0//B端时间段选择框使用
-    var endHour = 0//B端时间段选择框使用
-    var endMinute = 0//B端时间段选择框使用
+    var text = ""//B端使用
     var state = 0
     var id = ""//B端时间段选择框使用
     var consultStartTime = ""//B端网络请求入参使用
@@ -34,34 +29,28 @@ class BeanTime : MyBaseBean() {
 
     var serverId = ""
 
-    fun timeDes(): String {
-        var start = Calendar.getInstance()
-        start.set(Calendar.HOUR_OF_DAY, startHour)
-        start.set(Calendar.MINUTE, startMinute)
+    var startHour = 0
+    var startMinute = 0
+    var endHour = 0
+    var endMinute = 0
 
-        var end = Calendar.getInstance()
-        end.set(Calendar.HOUR_OF_DAY, endHour)
-        end.set(Calendar.MINUTE, endMinute)
-        var format = SimpleDateFormat("HH:mm")
-        return format.format(start.timeInMillis) + " - " + format.format(end.timeInMillis)
+
+    fun initText() {
+        if (consultStartTime.length > 4)
+            text = consultStartTime.substring(0, 5)
     }
 
+    fun initTime() {
+        if(text.isNotEmpty()) {
+            var format = SimpleDateFormat("HH:mm")
+            var start = Calendar.getInstance()
+            start.set(Calendar.HOUR_OF_DAY, text.split(":")[0].toInt())
+            start.set(Calendar.MINUTE, 0)
+            consultStartTime = format.format(start.time)
+            start.add(Calendar.HOUR_OF_DAY, 1)
+            consultEndTime = format.format(start.time)
+        }
 
-    fun nextTime(duration: Int): BeanTime {
-        var start = Calendar.getInstance()
-        start.set(Calendar.HOUR_OF_DAY, startHour)
-        start.set(Calendar.MINUTE, startMinute)
-        start.add(Calendar.MINUTE, 10 + duration)
-        log("现在：${this.toJson()}")
-        var next = BeanTime()
-        next.startHour = start.get(Calendar.HOUR_OF_DAY)
-        next.startMinute = start.get(Calendar.MINUTE)
-        log("加后：${next.toJson()}")
-        return next
-    }
-
-
-    fun initHM() {
         if (consultStartTime.contains(":")) {
             startHour = consultStartTime.split(":")[0].toInt()
             startMinute = consultStartTime.split(":")[1].toInt()
@@ -70,21 +59,6 @@ class BeanTime : MyBaseBean() {
             endHour = consultEndTime.split(":")[0].toInt()
             endMinute = consultEndTime.split(":")[1].toInt()
         }
-    }
-
-    fun initTime() {
-
-        var format = SimpleDateFormat("HH:mm")
-
-        var start = Calendar.getInstance()
-        start.set(Calendar.HOUR_OF_DAY, startHour)
-        start.set(Calendar.MINUTE, startMinute)
-        consultStartTime = format.format(start.timeInMillis)
-
-        var end = Calendar.getInstance()
-        end.set(Calendar.HOUR_OF_DAY, endHour)
-        end.set(Calendar.MINUTE, endMinute)
-        consultEndTime = format.format(end.timeInMillis)
     }
 
 

@@ -16,87 +16,28 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/icon_bg_seting_times"
-            android:visibility="gone"
-            android:padding="30dp">
+
+            android:layout_height="50dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="如何设置咨询时间？"
-                android:textColor="#1F2326"
-                android:textSize="14dp" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="60dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical|right"
-                android:background="@drawable/icon_chakan"
-                android:text="查看"
-                android:textColor="#FFF"
-                android:textSize="14dp" />
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#FFF"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="选择时长"
+                android:layout_gravity="center"
+                android:text="咨询时间设置"
                 android:textColor="#1F2326"
                 android:textSize="17dp" />
 
-
-            <CheckBox
-                android:id="@+id/time15"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/base_selector_radiobutton_bg"
-                android:button="@null"
-                android:checked="true" />
-
             <TextView
-
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:checked="true"
-                android:gravity="center_vertical"
-                android:onClick="@{_->time15.performClick()}"
-                android:text="15分钟"
-                android:textColor="#515357"
+                android:id="@+id/finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:padding="15dp"
+                android:text="完成"
+                android:textColor="#828C93"
                 android:textSize="14dp" />
+        </FrameLayout>
 
-            <CheckBox
-                android:id="@+id/time30"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/base_selector_radiobutton_bg"
-                android:button="@null" />
-
-            <TextView
-
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:onClick="@{_->time30.performClick()}"
-                android:text="30分钟"
-                android:textColor="#515357"
-                android:textSize="14dp" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -327,7 +268,8 @@
             android:paddingLeft="30dp"
             android:text="注：选择一周服务时间"
             android:textColor="#A9ADB2"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -337,28 +279,16 @@
             android:paddingLeft="15dp"
             android:paddingTop="5dp"
             android:paddingRight="15dp"
-            android:paddingBottom="5dp">
+            android:paddingBottom="85dp">
 
             <com.mtjk.view.MyRefreshRecyclerView
-                android:id="@+id/refresh"
+                android:id="@+id/times"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:my_item_layout="@layout/item_consult_sub_time" />
+                app:my_item_layout="@layout/item_consult_time"
+                app:my_layout_manager="gridLayout"
+                app:my_span_count="4" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/addTime"
-                android:layout_width="180dp"
-                android:layout_height="44dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/base_selector_button_white_border_1"
-                android:drawableLeft="@drawable/icon_add"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:stateListAnimator="@null"
-                android:text="点击添加时间"
-                android:textColor="#008599"
-                android:textSize="14dp" />
         </LinearLayout>
 
     </LinearLayout>

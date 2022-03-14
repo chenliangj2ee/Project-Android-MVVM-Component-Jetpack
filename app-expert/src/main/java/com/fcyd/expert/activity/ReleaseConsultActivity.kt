@@ -3,6 +3,7 @@ package com.fcyd.expert.activity
 import android.content.Intent
 import com.fcyd.expert.bean.BeanConsult
 import com.fcyd.expert.databinding.ActivityReleaseConsultBinding
+import com.fcyd.expert.dialog.DialogConsultTimeSetting
 import com.fcyd.expert.vm.ConsultViewModel
 import com.mtjk.annotation.MyClass
 import com.mtjk.annotation.MyField
@@ -23,10 +24,10 @@ class ReleaseConsultActivity : MyBaseActivity<ActivityReleaseConsultBinding, Con
 
     @MyField
     var id = ""
-    var bean = BeanConsult()
+    var consult = BeanConsult()
 
     override fun initCreate() {
-        mBinding.data = bean
+        mBinding.data = consult
         getConsultInfo()
 //        mToolBar.showRight("帮助") { }
         editChanged(editarea.edit, price) { check() }
@@ -40,44 +41,40 @@ class ReleaseConsultActivity : MyBaseActivity<ActivityReleaseConsultBinding, Con
             delete.show(false)
         }
         type1.click {
-            bean.serverType = 1
+            consult.serverType = 1
             time.isEnabled = true
             check()
         }
         type2.click {
-            bean.serverType = 2
+            consult.serverType = 2
             time.isEnabled = true
             check()
         }
         mode1.click {
             if (mode1.isChecked)
-                bean.consultType.add(1)
+                consult.consultType.add(1)
             else
-                bean.consultType.remove(1)
+                consult.consultType.remove(1)
             check()
         }
         mode2.click {
             if (mode2.isChecked)
-                bean.consultType.add(2)
+                consult.consultType.add(2)
             else
-                bean.consultType.remove(2)
+                consult.consultType.remove(2)
             check()
         }
         time.click {
-            if (bean.serverType == 0) {
+            if (consult.serverType == 0) {
                 toast("请选择咨询类型")
                 return@click
             }
-            bean.consultTime.timeIntervals.forEach { it.initHM() }
-            goto(
-                ConsultTimeSettingActivity::class.java,
-                "type",
-                bean.serverType,
-                "times",
-                bean.consultTime.timeIntervals,
-                "weeks",
-                bean.consultTime.week
-            )
+            consult.consultTime.timeIntervals.forEach { it.initText() }
+
+            DialogConsultTimeSetting(
+                consult.consultTime.timeIntervals,
+                consult.consultTime.week
+            ).show(this)
         }
 
         submitConsult.click { submitConsult() }
@@ -87,14 +84,14 @@ class ReleaseConsultActivity : MyBaseActivity<ActivityReleaseConsultBinding, Con
      * 发布
      */
     private fun submitConsult() {
-        bean.salePrice = mBinding.price.text.toString().toFloat()
-        bean.price = mBinding.price.text.toString().toFloat()
-        bean.consultTime.timeIntervals.forEach { it.initTime() }
+        consult.salePrice = mBinding.price.text.toString().toFloat()
+        consult.price = mBinding.price.text.toString().toFloat()
+        consult.consultTime.timeIntervals.forEach { it.initTime() }
 
 
-        log("发布咨询：${bean.toJson()}")
+        log("发布咨询：${consult.toJson()}")
 
-        mViewModel.releaseConsult(bean).obs(this) {
+        mViewModel.releaseConsult(consult).obs(this) {
             it.y { gotoFinish(ReleaseConsultSuccessActivity::class.java) }
 
         }
@@ -105,11 +102,12 @@ class ReleaseConsultActivity : MyBaseActivity<ActivityReleaseConsultBinding, Con
      */
     @Subscribe(code = BusCode.RESULT_TIME_SETTINGS)
     fun resultTimes(intent: Intent) {
-        bean.consultTime.timeIntervals.clear()
-        bean.consultTime.week.clear()
-        bean.consultTime.timeIntervals.addAll(intent.getSerializableExtra("times") as ArrayList<BeanTime>)
-        bean.consultTime.week.addAll(intent.getIntegerArrayListExtra("weeks") as ArrayList<Int>)
-        time.text = "修改"
+        consult.consultTime.timeIntervals.clear()
+        consult.consultTime.week.clear()
+        consult.consultTime.timeIntervals.addAll(intent.getSerializableExtra("times") as ArrayList<BeanTime>)
+        consult.consultTime.week.addAll(intent.getIntegerArrayListExtra("weeks") as ArrayList<Int>)
+        if (consult.consultTime.week.isNotEmpty())
+            time.text = consult.weekDes()
         check()
     }
 
@@ -126,7 +124,7 @@ class ReleaseConsultActivity : MyBaseActivity<ActivityReleaseConsultBinding, Con
 
             MyImage.uploadBusiness(url) {
                 if (it.finish) {
-                    bean.coverImage = it.path
+                    consult.coverImage = it.path
                     check()
                 }
             }
@@ -141,12 +139,12 @@ class ReleaseConsultActivity : MyBaseActivity<ActivityReleaseConsultBinding, Con
         with(mBinding) {
             submitConsult.isEnabled =
                 editarea.getText().isNotEmpty()
-                        && bean.serverType != -1
-                        && bean.consultType.size != 0
+                        && consult.serverType != -1
+                        && consult.consultType.size != 0
                         && price.text.isNotEmpty()
-                        && bean.coverImage != null
-                        && bean.consultTime.timeIntervals.size > 0
-                        && bean.coverImage.isNotEmpty()
+                        && consult.coverImage != null
+                        && consult.consultTime.timeIntervals.size > 0
+                        && consult.coverImage.isNotEmpty()
         }
     }
 
@@ -171,8 +169,10 @@ class ReleaseConsultActivity : MyBaseActivity<ActivityReleaseConsultBinding, Con
         if (bean == null) {
             finish()
         }
-        bean.consultTime.timeIntervals.forEach { it.initHM() }
-        this.bean = bean
+        bean.consultTime.timeIntervals.forEach { it.initText() }
+        this.consult = bean
+        if (bean.consultTime.week.isNotEmpty())
+            time.text = bean.weekDes()
         mBinding.data = bean
         var price = bean.price.toString()
         if (price.endsWith(".0"))

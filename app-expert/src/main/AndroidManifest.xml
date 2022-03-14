@@ -142,10 +142,6 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.ConsultTimeSettingActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.ExpertIdUploadActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />

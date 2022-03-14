@@ -38,14 +38,12 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:visibility="@{bean.introVideo.size()>0?View.VISIBLE:View.GONE}">
 
                     <com.stx.xhb.androidx.XBanner
                         android:id="@+id/banner"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:layout_margin="10dp"
                         app:AutoPlayTime="3000"
                         app:isShowIndicatorOnlyOne="false"
                         app:pageChangeDuration="800"
@@ -60,7 +58,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_margin="10dp"
                         android:background="@drawable/selector_icon_video_bg"
                         android:visibility="gone" />
 

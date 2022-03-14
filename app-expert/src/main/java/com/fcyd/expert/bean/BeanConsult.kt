@@ -33,4 +33,37 @@ class BeanConsult : MyBaseBean() {
         var timeIntervals = ArrayList<BeanTime>()
         var week = ArrayList<Int>()
     }
+
+    fun weekDes(): String {
+        var des = arrayListOf<String>()
+        consultTime.week.sort()
+            consultTime.week.forEach {
+                when (it) {
+                    1 -> {
+                        des.add("周一")
+                    }
+                    2 -> {
+                        des.add("周二")
+                    }
+                    3 -> {
+                        des.add("周三")
+                    }
+                    4 -> {
+                        des.add("周四")
+                    }
+                    5 -> {
+                        des.add("周五")
+                    }
+                    6 -> {
+                        des.add("周六")
+                    }
+
+                }
+
+            }
+        if(  consultTime.week.contains(0)){
+            des.add("周日")
+        }
+      return   des.joinToString("/")
+    }
 }
