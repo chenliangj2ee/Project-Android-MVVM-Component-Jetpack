@@ -151,8 +151,8 @@
                     android:layout_marginRight="5dp"
                     android:background="@drawable/base_selector_button_dark_24"
                     android:visibility="@{bean.status == 1 ? View.GONE : View.VISIBLE}"
-                    android:enabled="@{bean.bought == 1 ? false:true}"
                     android:stateListAnimator="@null"
+                    android:enabled="@{(bean.bought == 1 || bean.bought == 2) ? false:true}"
                     android:text='@{(bean.bought == 1 || bean.bought == 2)  ? "已预约":"预约"}'
                     android:textSize="16dp"
                     android:textColor="@drawable/base_selector_color_button_white" />

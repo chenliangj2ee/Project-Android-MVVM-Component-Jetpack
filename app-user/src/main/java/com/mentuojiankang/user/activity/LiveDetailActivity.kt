@@ -1,11 +1,8 @@
 package com.mentuojiankang.user.activity
 
 import android.graphics.Paint
-import android.os.Build
 import android.view.View
-import android.webkit.WebSettings
 import com.mentuojiankang.user.bean.BeanLive
-import com.mentuojiankang.user.bean.BeanLiveDetail
 import com.mentuojiankang.user.bean.BeanPayInfo
 import com.mentuojiankang.user.databinding.ActivityLiveDetailBinding
 import com.mentuojiankang.user.vm.LiveViewModel
@@ -26,7 +23,6 @@ class LiveDetailActivity : MyBaseActivity<ActivityLiveDetailBinding, LiveViewMod
 
     override fun initCreate() {
         initView()
-        loadData()
     }
 
     private fun initView() {
@@ -34,6 +30,11 @@ class LiveDetailActivity : MyBaseActivity<ActivityLiveDetailBinding, LiveViewMod
             price.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             webview.load("", MyWebView.Type.IMAGE)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
     }
 
     private fun loadData() {
