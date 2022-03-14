@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanVisitor" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF">
+            <com.mtjk.view.MyImageView
+                android:id="@+id/head_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                app:image_radius="30dp"
+                app:load="@{data.avatar}"
+                app:my_default="@drawable/default_header" />
+            <TextView
+                android:id="@+id/nick_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/head_image"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{data.nickname}"
+                android:textColor="#111235"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/person_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/nick_name"
+                android:layout_below="@id/nick_name"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text='@{data.sexDesc() + " | " + data.age + "岁" + " | " + data.maritalDesc() + " | " + data.locationDesc()}'
+                android:textColor="#515357"
+                android:textSize="14dp" />
+            <TextView
+                android:id="@+id/industry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/nick_name"
+                android:layout_below="@id/person_info"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text='@{"行业：" + data.industryDesc()}'
+                android:textColor="#515357"
+                android:textSize="14dp" />
+            <TextView
+                android:id="@+id/occupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/industry"
+                android:paddingVertical="10dp"
+                android:layout_alignLeft="@id/nick_name"
+                android:text='@{"职业：" + data.occupationDesc()}'
+                android:textSize="14dp"
+                android:textColor="#515357" />
+            <TextView
+                android:id="@+id/edit"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="编辑"
+                android:background="@drawable/base_selector_button_green_63" />
+        </RelativeLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="15dp"
+            android:layout_height="50dp"
+            app:tabIndicator="@drawable/selector_tab_line"
+            app:tabIndicatorFullWidth="false"
+            app:tabRippleColor="@android:color/transparent"
+            android:background="#0000"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/text_default"
+            app:tabTextColor="#A9ADB2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#eee" />
+
+        <com.mtjk.view.MyViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

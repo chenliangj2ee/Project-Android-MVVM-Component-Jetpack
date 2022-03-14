@@ -21,4 +21,6 @@ class BeanProduct : MyBaseBean() {
     var consultDay: String = ""
     var consultStartTime: String = ""
     var consultEndTime: String = ""
+
+    var id: String = ""
 }

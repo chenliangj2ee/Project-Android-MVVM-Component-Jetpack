@@ -229,4 +229,48 @@ interface ApiService {
     @MyRetrofitGo(mTag = "来访者信息", mLoading = true, mFailToast = false, mCache = true)
     @GET("/api-app/v1/app/expert/visitor/infoAndCase/getOne")
     fun getVisitorInfo(@Query("orderId") orderId: String): Data<BeanOrder.VisitorUser>
+
+    @MyRetrofitGo(mTag = "来访者列表", mLoading = true, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/expert/visitor/page")
+    fun getVisitorList(
+        @Query(value = "username") username: String,
+        @Query(value = "pageNo") pageNo: Int,
+        @Query(value = "pageSize") pageSize: Int
+    ): DataPages<BeanVisitor>
+
+    @MyRetrofitGo(mTag = "来访者咨询记录", mLoading = true, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/expert/visitor/service/list")
+    fun getVisitorConsult(
+        @Query(value = "userId") userId: String,
+        @Query(value = "pageNo") pageNo: Int,
+        @Query(value = "pageSize") pageSize: Int
+    ): DataPages<BeanVisitorConsult>
+
+    @MyRetrofitGo(mTag = "来访者量表列表", mLoading = true, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/expert/visitor/test/list")
+    fun getVisitorGauge(
+        @Query(value = "userId") userId: String,
+        @Query(value = "pageNo") pageNo: Int,
+        @Query(value = "pageSize") pageSize: Int
+    ): DataPages<BeanVisitorGauge>
+
+    @MyRetrofitGo(mTag = "获取单个咨询信息", mLoading = false, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/expert/visitor/case/getOne")
+    fun getVisitorConsultDetail( @Query(value = "visitorCaseId") visitorCaseId: String): Data<BeanVisitorConsultDetail>
+
+    //TODO
+    @MyRetrofitGo(mTag = "保存单个咨询信息", mLoading = false, mFailToast = false, mCache = true)
+    @POST("/api-app/v1/app/expert/visitor/xxx")
+    fun saveVisitorConsult(@Body body: Any): Data<Boolean>
+
+    //TODO 获取来访者信息
+    @MyRetrofitGo(mTag = "获取来访者信息", mLoading = false, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/expert/z")
+    fun getVisitorDetail(@Body body: Any): Data<Boolean>
+
+    //TODO 编辑来访者信息
+    @MyRetrofitGo(mTag = "保存来访者备注信息", mLoading = false, mFailToast = false, mCache = true)
+    @POST("/api-app/v1/app/expert/zz")
+    fun saveVisitorDetail(@Body body: Any): Data<Boolean>
+
 }

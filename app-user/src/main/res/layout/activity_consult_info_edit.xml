@@ -1,141 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-
     </data>
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
             android:orientation="vertical">
-
-
-            <View
-                android:id="@+id/line"
+            <com.mtjk.view.ItemEditView
+                android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
+                android:layout_height="wrap_content"
+                app:my_value_hint="请输入姓名"
+                app:my_rightShow="false"
+                app:my_title="姓名"
+                app:my_value="" />
+            <com.mtjk.view.ItemEditView
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:my_edit="false"
+                app:my_title="年龄"
+                app:my_value=""
+                app:my_value_hint="请选择 " />
+            <com.mtjk.view.ItemEditView
+                android:id="@+id/sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:my_edit="false"
+                app:my_title="性别"
+                app:my_value=""
+                app:my_value_hint="请选择 " />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="#E6F0F2" />
+                android:layout_marginTop="15dp"
+                android:text="问题类型"
+                android:textColor="#1F2326"
+                android:textSize="16dp" />
+            <com.mtjk.view.MyRefreshRecyclerView
+                android:id="@+id/typeSelector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_gravity="center_horizontal"
+                app:my_layout_manager="gridLayout"
+                app:my_span_count="3"
+                app:my_item_layout="@layout/item_consult_type" />
         </LinearLayout>
 
-
-        <com.mtjk.view.ItemEditView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:my_title="姓名"
-            app:my_value="" />
-
-        <com.mtjk.view.ItemEditView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:my_edit="false"
-            app:my_title="年龄"
-            app:my_value=""
-            app:my_value_hint="请选择 " />
-
-        <com.mtjk.view.ItemEditView
-            android:id="@+id/sex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:my_edit="false"
-            app:my_title="性别"
-            app:my_value=""
-            app:my_value_hint="请选择 " />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="问题类型"
-            android:textColor="#1F2326"
-            android:textSize="16dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:background="@android:color/white"
+            android:padding="20dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="问题描述(选填)"
-                android:textColor="#1F2326"
-                android:textSize="16dp" />
-
             <FrameLayout
+                android:id="@+id/desc_header"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/selector_edit_bg">
-
-                <EditText
-                    android:id="@+id/edit1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#0000"
-                    android:gravity="top"
-                    android:hint="请简单描述您需要咨询的问题"
-                    android:maxLength="200"
-                    android:padding="5dp"
-                    android:textSize="16dp" />
-
+                android:layout_height="36dp"
+                android:onClick="@{_->descHeaderStatus.performClick()}">
                 <TextView
-                    android:id="@+id/num1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"
-                    android:layout_margin="5dp"
-                    android:text="0/200" />
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="期望效果(选填)"
-                android:textColor="#1F2326"
-                android:textSize="16dp" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/selector_edit_bg">
-
-                <EditText
-                    android:id="@+id/edit2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#0000"
-                    android:gravity="top"
-                    android:hint="请简单描述您期望达到的咨询效果"
-                    android:maxLength="200"
-                    android:padding="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="描述(选填)"
+                    android:textColor="#1F2326"
                     android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/num2"
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/desc_header_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"
-                    android:layout_margin="5dp"
-                    android:text="0/200" />
+                    android:layout_gravity="center_vertical|right"
+                    android:button="@null"
+                    android:drawableRight="@drawable/consult_desc_selector"/>
             </FrameLayout>
 
+            <LinearLayout
+                android:id="@+id/desc_content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="问题描述(选填)"
+                    android:textColor="#1F2326"
+                    android:textSize="16dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/selector_edit_bg">
+
+                    <EditText
+                        android:id="@+id/desc_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#0000"
+                        android:gravity="top"
+                        android:hint="请简单描述您需要咨询的问题"
+                        android:maxLength="200"
+                        android:paddingHorizontal="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="30dp"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/num1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:layout_margin="5dp"
+                        android:text="0/200" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="期望效果(选填)"
+                    android:textColor="#1F2326"
+                    android:textSize="16dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/selector_edit_bg">
+
+                    <EditText
+                        android:id="@+id/effect_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#0000"
+                        android:gravity="top"
+                        android:hint="请简单描述您期望达到的咨询效果"
+                        android:maxLength="200"
+                        android:paddingHorizontal="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="30dp"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/num2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:layout_margin="5dp"
+                        android:text="0/200" />
+                </FrameLayout>
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,8 +173,19 @@
                 android:text="隐私保护：吱吱心理平台全方位保护您的信息安全，您所填写的所有信息将受到安全保护，请放心填写。"
                 android:textColor="#A9ADB2"
                 android:textSize="12dp" />
+            <TextView
+                android:id="@+id/commit"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginHorizontal="45dp"
+                android:background="@drawable/base_selector_button_dark"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="#FFF"
+                android:textSize="17dp" />
         </LinearLayout>
-
-
     </LinearLayout>
 </layout>

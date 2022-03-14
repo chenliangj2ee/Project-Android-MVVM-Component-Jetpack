@@ -12,7 +12,7 @@ import com.mtjk.annotation.MyClass
 import com.mtjk.annotation.MyField
 import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.obs
-import com.mtjk.bean.BeanUser
+import com.mtjk.obj.ObjectProduct
 import com.mtjk.utils.*
 import gorden.rxbus2.Subscribe
 import kotlinx.android.synthetic.main.activity_payment_confirm.*
@@ -50,6 +50,8 @@ class PaymentConfirmActivity : MyBaseActivity<ActivityPaymentConfirmBinding, Ord
 
     //标记第一次进来只算第一张会员卡
     var firsttime = false
+
+    private var orderItemId = ""
 
     @MyField
     var params: BeanParams = BeanParams()
@@ -173,6 +175,7 @@ class PaymentConfirmActivity : MyBaseActivity<ActivityPaymentConfirmBinding, Ord
         ).obs(this) {
             it.y {
                 successorderid = it.orderId
+                orderItemId = it.orderItems?.id.toString()
                 //如果余额不够就进行拉起小程序
                 if (endPay > 0) {
                     confirm()
@@ -238,8 +241,10 @@ class PaymentConfirmActivity : MyBaseActivity<ActivityPaymentConfirmBinding, Ord
         dialog.show(this)
         postDelayed(3000) {
             dialog.dismiss()
-            if (productType == 100) {
+            if (productType == ObjectProduct.TYPE_COURSE) {
                 send(BusCode.PAYMENT_SUCCESS)
+            } else if (productType == ObjectProduct.TYPE_CONSULT) {
+                goto(PayConsultSuccessActivity::class.java, "orderItemId", orderItemId)
             } else {
                 goto(MyOrderActivity::class.java)
             }

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanVisitorConsultDetail" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:paddingHorizontal="15dp"
+                android:paddingTop="20dp"
+                android:orientation="vertical" >
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.consultTimeDesc()}"
+                    android:textSize="14dp"
+                    android:textColor="#515357" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:drawablePadding="10dp"
+                    android:textColor="#515357" />
+                <TextView
+                    android:id="@+id/question_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:textColor="#515357" />
+                <TextView
+                    android:id="@+id/question_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:textColor="#515357" />
+                <TextView
+                    android:id="@+id/question_effect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="#515357" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical" >
+                <TextView
+                    android:id="@+id/main_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="主诉问题(选填)"
+                    android:textSize="16dp"
+                    android:textColor="#A9ADB2" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp" >
+                    <EditText
+                        android:id="@+id/main_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="30dp"
+                        android:inputType="textMultiLine"
+                        android:scrollbars="vertical"
+                        android:hint="可以描述一下主诉问题"
+                        android:gravity="top|left"
+                        android:background="@drawable/base_selector_button_white_border_1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="/200"
+                        android:textColor="#A9ADB2"
+                        android:layout_gravity="bottom|right" />
+                    <TextView
+                        android:id="@+id/main_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:layout_marginRight="40dp"
+                        android:text="0"
+                        android:textColor="#1F2326"
+                        android:layout_gravity="bottom|right" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/method_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="辅助方法(选填)"
+                    android:textSize="16dp"
+                    android:textColor="#A9ADB2" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp" >
+                    <EditText
+                        android:id="@+id/method_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="30dp"
+                        android:inputType="textMultiLine"
+                        android:scrollbars="vertical"
+                        android:hint="可以描述一下辅助方法"
+                        android:gravity="top|left"
+                        android:background="@drawable/base_selector_button_white_border_1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="/200"
+                        android:textColor="#A9ADB2"
+                        android:layout_gravity="bottom|right" />
+                    <TextView
+                        android:id="@+id/method_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:layout_marginRight="40dp"
+                        android:text="0"
+                        android:textColor="#1F2326"
+                        android:layout_gravity="bottom|right" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/effect_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="辅助效果(选填)"
+                    android:textSize="16dp"
+                    android:textColor="#A9ADB2" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp" >
+                    <EditText
+                        android:id="@+id/effect_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="30dp"
+                        android:inputType="textMultiLine"
+                        android:scrollbars="vertical"
+                        android:hint="可以描述一下辅助效果"
+                        android:gravity="top|left"
+                        android:background="@drawable/base_selector_button_white_border_1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="/200"
+                        android:textColor="#A9ADB2"
+                        android:layout_gravity="bottom|right" />
+                    <TextView
+                        android:id="@+id/effect_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:layout_marginRight="40dp"
+                        android:text="0"
+                        android:textColor="#1F2326"
+                        android:layout_gravity="bottom|right" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/summarize_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="总结(选填)"
+                    android:textSize="16dp"
+                    android:textColor="#A9ADB2" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp" >
+                    <EditText
+                        android:id="@+id/summarize_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="30dp"
+                        android:inputType="textMultiLine"
+                        android:scrollbars="vertical"
+                        android:hint="可以描述一下总结"
+                        android:gravity="top|left"
+                        android:background="@drawable/base_selector_button_white_border_1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="/200"
+                        android:textColor="#A9ADB2"
+                        android:layout_gravity="bottom|right" />
+                    <TextView
+                        android:id="@+id/summarize_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:layout_marginRight="40dp"
+                        android:text="0"
+                        android:textColor="#1F2326"
+                        android:layout_gravity="bottom|right" />
+                </FrameLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/save"
+                android:layout_width="300dp"
+                android:layout_height="46dp"
+                android:text="保存"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:background="@drawable/base_selector_button_green_63" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

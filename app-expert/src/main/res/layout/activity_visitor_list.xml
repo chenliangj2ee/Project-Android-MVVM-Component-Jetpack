@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_margin="15dp"
+                android:layout_gravity="center_horizontal"
+                android:hint="请输入来访者昵称"
+                android:textCursorDrawable="@null"
+                android:cursorVisible="false"
+                android:paddingLeft="40dp"
+                android:paddingRight="15dp"
+                android:maxLines="1"
+                android:minLines="1"
+                android:singleLine="true"
+                android:gravity="left|center_vertical"
+                android:background="@drawable/visitor_search_bg" />
+            <com.mtjk.view.MyImageView
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/visitor_search"
+                android:layout_marginTop="22dp"
+                android:layout_marginLeft="30dp" />
+        </FrameLayout>
+        <com.mtjk.view.MyRefreshRecyclerView
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:background="#FFFFFF"
+            app:my_empty_layout="@layout/base_layout_empty"
+            app:my_item_layout="@layout/item_visitor" />
+    </LinearLayout>
+</layout>

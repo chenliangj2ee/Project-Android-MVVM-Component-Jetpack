@@ -405,4 +405,14 @@ interface ApiService {
     @POST("/api-app/v1/app/user/order/pageByTime")
     fun getWalletDetailList(@Body body: Any): DataPages<BeanWalletDetail>
 
+    @MyRetrofitGo(mTag = "获取咨询详情", mLoading = true, mFailToast = true, mCache = false)
+    @GET("/api-app/v1/app/user/visitor/case/getOne")
+    fun getVisitorConsultDetail(
+        @Query("orderId") id: String
+    ): Data<BeanVisitorConsultDetail>
+
+    @MyRetrofitGo(mTag = "保存咨询详情", mLoading = false, mFailToast = false, mCache = false)
+    @POST("/api-app/v1/app/user/visitor/case/save")
+    fun saveVisitorConsultDetail(@Body body: Any): Data<Boolean>
+
 }

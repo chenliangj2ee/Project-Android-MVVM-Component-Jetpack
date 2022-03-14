@@ -53,6 +53,8 @@ class MineFragment : MyBaseFragment<FragmentMineBinding, AccountViewModel>() {
             this.myVipcard.goto(VPICardActivity::class.java, "enterway", false)
             this.mySetting.goto(SettingActivity::class.java)
 
+            //TODO
+            this.myTest.goto(ConsultInfoEditActivity::class.java)
         }
     }
 
