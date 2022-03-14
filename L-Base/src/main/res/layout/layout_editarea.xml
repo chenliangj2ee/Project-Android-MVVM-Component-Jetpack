@@ -7,17 +7,36 @@
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
-        <EditText
-            android:id="@+id/edit"
+        <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/base_selector_edittext_background"
-            android:gravity="top"
-            android:maxLength="100"
-            android:padding="5dp"
-            android:textColor="#1F2326"
-            android:textColorHint="#877676"
-            android:textSize="17dp" />
+            android:background="@drawable/base_selector_edittext_background"></View>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#0000"
+                    android:gravity="top"
+                    android:maxLength="100"
+                    android:padding="5dp"
+                    android:textColor="#1F2326"
+                    android:textColorHint="#877676"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <LinearLayout
             android:layout_width="wrap_content"

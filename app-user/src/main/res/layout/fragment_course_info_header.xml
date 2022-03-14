@@ -73,11 +73,6 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/selector_title_tag" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,7 +98,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center|right"
                 android:text="全部"
-                android:textColor="#515357"
+                android:textColor="#A6ABB5"
                 android:textSize="12dp" />
 
             <ImageView

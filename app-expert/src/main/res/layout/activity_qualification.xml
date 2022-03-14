@@ -26,8 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:visibility="gone"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="148dp"
@@ -42,9 +42,10 @@
                 android:background="@drawable/selector_button_white"
                 android:drawableLeft="@drawable/icon_add"
                 android:paddingLeft="20dp"
-                android:stateListAnimator="@null"
                 android:paddingRight="20dp"
-                android:text="添加证书" />
+                android:stateListAnimator="@null"
+                android:text="添加证书"
+                android:textColor="@color/base_purple_500" />
 
         </LinearLayout>
 

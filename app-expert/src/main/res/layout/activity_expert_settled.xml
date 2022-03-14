@@ -34,10 +34,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/selector_title_tag"
                         android:text=" 入驻流程简介"
                         android:textColor="#133C53"
-                        android:textSize="14dp" />
+                        android:textSize="17dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

@@ -15,8 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             app:my_divider_height="1px"
             app:my_empty_layout="@layout/base_layout_empty"
             app:my_item_layout="@layout/item_recommend_video" />

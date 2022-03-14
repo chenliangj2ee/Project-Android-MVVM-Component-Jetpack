@@ -25,12 +25,13 @@ class WorksFragment : MyBaseFragment<FragmentWorksBinding, AccountViewModel>() {
 
     var baseArrays = arrayListOf<BeanWork>(
         BeanWork(R.drawable.icon_index_rzrz, "入驻认证", AuthActivity::class.java, ""),
-        BeanWork(R.drawable.icon_index_zxgl, "咨询管理", ConsultManagerActivity::class.java, ""),
-        BeanWork(R.drawable.icon_index_wallet, "我的钱包", WalletActivity::class.java, ""),
-//        BeanWork(R.drawable.icon_gzszx, "来访者", null, ""),
+        //BeanWork(R.drawable.icon_gzszx, "来访者", null, ""),
         BeanWork(R.drawable.icon_index_zbgl, "直播管理", MyLiveListActivity::class.java, ""),
+        BeanWork(R.drawable.icon_index_zxgl, "咨询管理", ConsultManagerActivity::class.java, ""),
         BeanWork(R.drawable.icon_index_plgl, "评价管理", null, ""),
         BeanWork(R.drawable.icon_index_ddgl, "订单管理", MyOrderActivity::class.java, ""),
+        BeanWork(R.drawable.icon_index_wallet, "我的钱包", WalletActivity::class.java, ""),
+
     )
     var serviceArrays = arrayListOf<BeanWork>(
         BeanWork(R.drawable.icon_index_fbzx, "发布咨询", ReleaseConsultActivity::class.java, ""),
