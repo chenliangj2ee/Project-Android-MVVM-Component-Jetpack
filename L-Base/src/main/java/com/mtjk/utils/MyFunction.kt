@@ -20,6 +20,7 @@ import android.text.Editable
 import android.text.Html
 import android.text.TextWatcher
 import android.util.Log
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -284,6 +285,14 @@ fun Any.toSettings() {
  */
 fun Int.dip2px(): Int {
     return MyScreen.dip2px(BaseInit.con!!, this.toFloat())
+}
+
+/**
+ * dip转px
+ * @return Int
+ */
+fun TextView.setTextSizeDip(size: Int) {
+    this.setTextSize(TypedValue.COMPLEX_UNIT_DIP, size.toFloat())
 }
 
 /**

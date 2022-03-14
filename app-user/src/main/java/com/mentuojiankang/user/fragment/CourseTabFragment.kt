@@ -1,5 +1,6 @@
 package com.mentuojiankang.user.fragment
 
+import android.util.TypedValue
 import android.widget.TextView
 import com.chenliang.annotation.MyRoute
 import com.mentuojiankang.user.R
@@ -8,9 +9,7 @@ import com.mentuojiankang.user.databinding.FragmentCourseBinding
 import com.mentuojiankang.user.vm.AppViewModel
 import com.mtjk.base.MyBaseFragment
 import com.mtjk.base.obs
-import com.mtjk.utils.goto
-import com.mtjk.utils.selected
-import com.mtjk.utils.setBold
+import com.mtjk.utils.*
 
 /**
  * tag==课程tab/Fragment
@@ -31,7 +30,7 @@ class CourseTabFragment : MyBaseFragment<FragmentCourseBinding, AppViewModel>() 
             courseTab.selected {
                 with(it?.customView?.findViewById<TextView>(R.id.title)) {
                     this?.isEnabled = it?.isSelected == false
-                    this?.textSize = if (it?.isSelected == true) 14F else 12F
+                    this?.setTextSizeDip(if (it?.isSelected == true) 14 else 12)
                     this?.setBold(it?.isSelected == true)
                 }
             }

@@ -14,6 +14,7 @@ import com.mtjk.base.obs
 import com.mtjk.utils.goto
 import com.mtjk.utils.selected
 import com.mtjk.utils.setBold
+import com.mtjk.utils.setTextSizeDip
 
 /**
  * tag==测评tab/Fragment
@@ -40,7 +41,7 @@ class TestTabFragment : MyBaseFragment<FragmentEvaluationBinding, AppViewModel>(
             testTab.selected {
                 with(it?.customView?.findViewById<TextView>(R.id.title)) {
                     this?.isEnabled = it?.isSelected == false
-                    this?.textSize = if (it?.isSelected == true) 14F else 12F
+                    this?.setTextSizeDip(if (it?.isSelected == true) 14 else 12)
                     this?.setBold(it?.isSelected == true)
                 }
 

@@ -18,7 +18,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="咨询"
-        android:textSize="14dp"
-        android:textColor="@drawable/selector_home_top_tab_text" />
+        android:textColor="@drawable/selector_home_top_tab_text"
+        android:textSize="12dp" />
 
 </LinearLayout>

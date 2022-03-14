@@ -11,6 +11,7 @@ import com.mtjk.base.MyBaseActivity
 import com.mtjk.obj.ObjectOrder
 import com.mtjk.utils.goto
 import com.mtjk.utils.selected
+import com.mtjk.utils.setTextSizeDip
 
 /**
  * tag==我的订单
@@ -33,7 +34,7 @@ class MyOrderActivity : MyBaseActivity<ActivityMyOrderBinding, DefaultViewModel>
             tab.selected {
                 with(it?.customView?.findViewById<TextView>(R.id.title)) {
                     this?.setTextColor(Color.parseColor(if (it?.isSelected == true) "#008599" else "#A9ADB2"))
-                    this?.textSize = if (it?.isSelected == true) 14F else 12f
+                    this?.setTextSizeDip(if (it?.isSelected == true) 14 else 12)
                 }
 
             }

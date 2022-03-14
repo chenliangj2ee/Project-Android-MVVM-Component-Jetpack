@@ -27,7 +27,7 @@
             android:background="#0000"
             android:gravity="right"
             android:textColor="#515357"
-            android:textSize="14dp" />
+            android:textSize="17dp" />
 
         <TextView
             android:id="@+id/must"
@@ -37,7 +37,7 @@
             android:gravity="right|center"
             android:text="*"
             android:textColor="#D0021B"
-            android:textSize="14dp"
+            android:textSize="17dp"
             android:visibility="gone" />
 
         <EditText
@@ -52,7 +52,7 @@
             android:singleLine="true"
             android:textColorHint="#A9ADB2"
             android:textColor="#515357"
-            android:textSize="14dp"
+            android:textSize="17dp"
             android:visibility="gone" />
 
         <TextView
@@ -66,13 +66,13 @@
             android:paddingRight="5dp"
             android:text="添加"
             android:textColor="#515357"
-            android:textSize="14dp"
+            android:textSize="17dp"
             android:visibility="gone" />
 
         <ImageView
             android:id="@+id/right_icon"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
             android:src="@drawable/icon_right" />
 
     </LinearLayout>
