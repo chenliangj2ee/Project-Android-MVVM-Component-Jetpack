@@ -320,12 +320,14 @@ public class LiveMultiHostSeatLayout extends RelativeLayout {
 //        seatState.videoLayout.removeAllViews();
         AppCompatImageView icon = new AppCompatImageView(getContext());
 //        icon.setImageResource(UserUtil.getUserProfileIcon(seatState.userId));
-
-        if (user != null && user.enableVideo == 0 && user.avatar != null) {
+        if (user.enableVideo == 0) {
             seatState.videoLayout.removeAllViews();
-            MyFunctionKt.load(icon, user.avatar, 1);
-            seatState.videoLayout.addView(icon);
+            if (user != null && user.avatar != null) {
+                MyFunctionKt.load(icon, user.avatar, 1);
+                seatState.videoLayout.addView(icon);
+            }
         }
+
     }
 
     private boolean containsChild(ViewGroup parent, View child) {
