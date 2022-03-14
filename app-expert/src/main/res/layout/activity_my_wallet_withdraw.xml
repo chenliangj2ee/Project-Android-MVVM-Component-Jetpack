@@ -174,9 +174,7 @@
                     android:gravity="center"
                     android:text="可提现金额¥0"
                     android:textColor="#515357"
-                    android:textSize="14dp"
-                    android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/wallet_withdraw_balance_drawable"/>
+                    android:textSize="14dp"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/withdraw"
