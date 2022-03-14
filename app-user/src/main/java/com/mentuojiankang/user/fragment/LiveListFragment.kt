@@ -64,6 +64,7 @@ class LiveListFragment : MyBaseFragment<FragmentLiveListBinding, LiveViewModel>(
         liveParam.userId = live.accountId
         liveParam.userHeader = live.avatar
         liveParam.userName = live.nickname
+        liveParam.liveType=BeanParam.LiveType.VIDEO_MORE
         liveParam.save()
         live.channelName?.sendSelf(BusCode.LIVE_GET_RTCTOKEN)
     }
