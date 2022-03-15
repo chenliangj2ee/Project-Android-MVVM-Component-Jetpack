@@ -55,7 +55,8 @@
                         android:gravity="center"
                         android:text="0人看过"
                         android:textColor="#FFF"
-                        android:textSize="10dp" />
+                        android:textSize="10dp"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -93,8 +94,8 @@
                         android:id="@+id/close"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:padding="5dp"
                         android:layout_gravity="center"
+                        android:padding="5dp"
                         android:src="@drawable/live_bottom_btn_close" />
                 </LinearLayout>
             </LinearLayout>
@@ -210,6 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="52dp">
+
                 <io.agora.vlive.ui.view.LiveRoomMessageList
                     android:id="@+id/message_list"
                     android:layout_width="match_parent"
