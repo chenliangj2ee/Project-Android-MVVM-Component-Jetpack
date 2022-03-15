@@ -298,6 +298,11 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
     private var usersCount: TextView? = null
     var user = getBeanUser()
     private fun initUI() {
+        if (liveParam!!.liveType == BeanParam.LiveType.AUDIO_ONE) {
+            rtcEngine().disableVideo()
+        } else {
+            rtcEngine().enableVideo()
+        }
         hideStatusBar(false)
         setContentView(R.layout.activity_host_in)
         user1 = findViewById(R.id.user1)

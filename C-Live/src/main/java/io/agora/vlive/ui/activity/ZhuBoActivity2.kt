@@ -305,12 +305,7 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
     private var usersCount: TextView? = null
     var user = getBeanUser()
     private fun initUI() {
-        if (liveParam!!.liveType == BeanParam.LiveType.AUDIO_MORE) {
-            rtcEngine().disableVideo()
-        } else {
-            rtcEngine().enableVideo()
-        }
-
+        rtcEngine().enableVideo()
         Live.initSeats()
         InviteUserActionSheet.inviting.clear()
         hideStatusBar(false)

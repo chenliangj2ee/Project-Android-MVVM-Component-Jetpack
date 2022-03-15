@@ -269,7 +269,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     var liveParam = BeanParam().get<BeanParam>()
 
     private fun initUI() {
-
+        rtcEngine().enableVideo()
         LiveMoreDialog.Status.showDraw = false
         hideStatusBar(false)
         setContentView(R.layout.activity_host_in_2)
@@ -949,11 +949,6 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
             isHost = true
             myRtcRole = Constants.CLIENT_ROLE_BROADCASTER
             rtcEngine().setClientRole(Constants.CLIENT_ROLE_AUDIENCE)
-            if (liveParam!!.liveType == BeanParam.LiveType.AUDIO_MORE) {
-                rtcEngine().disableVideo()
-            } else {
-                rtcEngine().enableVideo()
-            }
             mOwnerUIManager!!.rtcUid = uid.toInt()
             mOwnerUIManager!!.setOwner(false)
             mOwnerUIManager!!.setAudioMutedValue(false)
