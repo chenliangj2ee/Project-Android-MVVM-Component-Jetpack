@@ -13,27 +13,27 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/selector_item_white_radius_0_border_0"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="15dp"
-        android:paddingTop="10dp"
+        android:paddingTop="15dp"
         android:paddingRight="15dp"
-        android:paddingBottom="5dp">
+        android:paddingBottom="15dp">
 
 
         <com.mtjk.view.MyImageView
             load="@{data.coverImage}"
             radius="@{2}"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
             app:my_default="@drawable/load_default" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:orientation="vertical">
@@ -45,8 +45,8 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@{data.title}"
-                android:textColor="#1F2326"
-                android:textSize="14dp"
+                android:textColor="#515357"
+                android:textSize="15dp"
                 android:textStyle="bold"
                 tools:text="婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询婚恋咨询" />
 
@@ -58,9 +58,10 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:maxLines="1"
+                android:paddingBottom="5dp"
                 android:text="@{data.des()}"
                 android:textColor="#515357"
-                android:textSize="10dp"
+                android:textSize="12dp"
                 tools:text="语音 视频 / 50分钟" />
 
             <TextView
@@ -70,15 +71,15 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text='@{data.salePrice+"币"}'
-                android:textColor="@color/text_default"
-                android:textSize="10dp"
+                android:textColor="#008599"
+                android:textSize="12dp"
                 android:textStyle="bold"
                 tools:text="1900币" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -89,16 +90,18 @@
                 android:background="@drawable/base_selector_button_dark_24"
                 android:stateListAnimator="@null"
                 android:text="预约"
+                android:layout_gravity="right"
                 android:textColor="#fff"
                 android:textSize="14dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="22dp"
                 android:text='@{"咨询量"+data.consultNum}'
-                android:textColor="#515357"
-                android:textSize="10dp" />
+                android:textColor="#A9ADB2"
+                tools:text="咨询量232"
+                android:textSize="12dp" />
         </LinearLayout>
     </LinearLayout>
 

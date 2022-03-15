@@ -32,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:background="#133C53"
                 android:orientation="vertical"
-                android:paddingTop="20dp">
+                android:paddingTop="30dp"
+                android:paddingBottom="20dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -215,26 +216,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@drawable/selector_mine_top_bg" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:visibility="gone"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
-
                     android:background="@drawable/icon_mine_shouru_bg"
+
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingTop="20dp"
                     android:paddingRight="10dp"
+                    android:paddingBottom="20dp"
 
-                    android:paddingBottom="20dp">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -342,7 +339,6 @@
                 android:id="@+id/my_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 app:my_icon="@drawable/icon_mine_order"
                 app:my_title="我的订单" />
 

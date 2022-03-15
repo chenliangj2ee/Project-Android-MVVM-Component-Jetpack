@@ -135,6 +135,7 @@
                 android:layout_width="80dp"
                 android:layout_height="33dp"
                 android:background="@drawable/base_selector_button_dark_34"
+                android:stateListAnimator="@null"
                 android:text="去填写"
                 android:textColor="@drawable/base_selector_color_button_white" />
 

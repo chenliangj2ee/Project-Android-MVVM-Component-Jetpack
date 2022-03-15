@@ -28,7 +28,8 @@
                 android:layout_height="wrap_content"
                 android:background="#133C53"
                 android:orientation="vertical"
-                android:paddingTop="20dp">
+                android:paddingTop="30dp"
+                android:paddingBottom="20dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -213,10 +214,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@drawable/selector_mine_top_bg" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -316,7 +313,6 @@
                 android:id="@+id/my_course"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 app:my_icon="@drawable/icon_my_course"
                 app:my_title="我的课程" />
 

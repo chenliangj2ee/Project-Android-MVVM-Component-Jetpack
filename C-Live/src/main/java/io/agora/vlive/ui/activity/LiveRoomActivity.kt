@@ -386,6 +386,10 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
         return false
     }
 
+    /**
+     * tag==直播群聊
+     * tag==直播聊天
+     */
     fun sendChatMessage(content: String) {
         val profile = config().userProfile
         messageManager!!.sendChatMessage(profile.userId,

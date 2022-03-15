@@ -56,7 +56,7 @@ open class MyBaseViewModel : ViewModel() {
                     initCache(myRetrofitGoValue, key!!, data, viewModelScope)
                 } else {
                     if (myRetrofitGoValue.loading) {
-                        showLoading(path)
+                        showLoading(key)
                     }
                 }
 
@@ -129,22 +129,22 @@ open class MyBaseViewModel : ViewModel() {
                 }
             }
 
-            closeLoading(path)
+            closeLoading(key)
         }
         return data!! as MutableLiveData<MyBaseResponse<T>>
     }
 
     private fun <T> initCache(
         myRetrofitGoValue: MyRetrofitGoValue,
-        path: String,
+        key: String,
         data: MutableLiveData<MyBaseResponse<T>>,
         viewModelScope: CoroutineScope
     ) {
 
         var hasCache = false
 
-        if (!path.isNullOrEmpty() && myRetrofitGoValue.type != null) {
-            var cacheJson = MyHttpDB.getCacheJson(path)
+        if (!key.isNullOrEmpty() && myRetrofitGoValue.type != null) {
+            var cacheJson = MyHttpDB.getCacheJson(key)
 
             if (cacheJson != null) {
                 var response: MyBaseResponse<T>? =
@@ -162,10 +162,10 @@ open class MyBaseViewModel : ViewModel() {
 
         if (hasCache) {
             if (myRetrofitGoValue.hasCacheLoading) {
-                showLoading(path)
+                showLoading(key)
             }
         } else if (myRetrofitGoValue.loading) {
-            showLoading(path)
+            showLoading(key)
         }
 
 

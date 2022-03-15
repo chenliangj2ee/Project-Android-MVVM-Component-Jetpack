@@ -966,7 +966,6 @@ fun ImageView.load(url: String) {
  * @param url String
  */
 fun ImageView.load(url: String, radius: Int) {
-
     if (this is MyImageView) {
         if (default != -1) {
             var options = RequestOptions()
@@ -995,6 +994,8 @@ fun ImageView.load(url: String, radius: Int) {
     Glide.with(context!!)
         .load(url)
         .apply(options)
+        .error(R.drawable.load_default)
+        .placeholder(R.drawable.load_default)
         .into(this)
 }
 

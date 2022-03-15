@@ -16,13 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFF"
-        android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="15dp"
             android:text="上传封面图片"
             android:textColor="#1F2326"
@@ -31,6 +30,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
             android:orientation="horizontal">
@@ -86,11 +86,15 @@
                 android:textSize="12dp" />
         </LinearLayout>
 
-        <include layout="@layout/layout_line" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/app_background" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="15dp"
             android:text="咨询标题"
             android:textColor="#1F2326"
@@ -100,6 +104,7 @@
             android:id="@+id/editarea"
             android:layout_width="match_parent"
             android:layout_height="73dp"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             app:my_max_length="30"
@@ -167,11 +172,16 @@
             </RadioGroup>
         </LinearLayout>
 
-        <include layout="@layout/layout_line" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/app_background" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="15dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -232,7 +242,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="15dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -264,7 +275,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="15dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -316,12 +328,15 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@color/app_background" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@color/app_background"
+            android:orientation="horizontal"
+            android:paddingBottom="30dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/look"
