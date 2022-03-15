@@ -16,7 +16,7 @@ class DrawingPencilSelector(anchorView: View?, layoutResId: Int) :
 
     private val mColorData: MutableList<BeanColor> = ArrayList()
 
-    private val mLineValue = doubleArrayOf(2.0, 4.0, 6.0, 8.0)
+    private val mLineValue = doubleArrayOf(1.0, 5.0, 10.0, 20.0)
 
     private val mLineResValue = intArrayOf(
         R.drawable.db_line_1, R.drawable.db_line_2, R.drawable.db_line_3, R.drawable.db_line_4
