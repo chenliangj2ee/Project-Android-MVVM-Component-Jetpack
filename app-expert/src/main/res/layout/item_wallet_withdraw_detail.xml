@@ -60,18 +60,9 @@ xmlns:tools="http://schemas.android.com/tools">
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/info"
             android:layout_alignParentRight="true"
-            android:text="@{String.valueOf(data.price)}"
+            android:text='@{"+" + data.price}'
             android:textColor="#111235"
             android:textSize="15dp"/>
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:text="@{data.orderStatusText()}"
-            android:textColor="#F5633F"
-            android:textSize="14dp"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
