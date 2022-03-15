@@ -176,15 +176,16 @@
                     android:textColor="#515357"
                     android:textSize="14dp"/>
             </LinearLayout>
+
             <TextView
                 android:id="@+id/withdraw"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
-                android:gravity="center"
                 android:layout_marginHorizontal="45dp"
                 android:layout_marginBottom="103dp"
-                android:background="@drawable/base_selector_button_dark_20"
+                android:background="@drawable/base_selector_button_dark"
+                android:gravity="center"
                 android:text="确认"
                 android:textColor="#FFF"
                 android:textSize="17dp" />

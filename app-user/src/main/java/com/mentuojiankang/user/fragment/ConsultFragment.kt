@@ -36,7 +36,7 @@ class ConsultFragment : MyBaseFragment<FragmentConsultBinding, AppViewModel>() {
             consultTab.selected {
                 with(it?.customView?.findViewById<TextView>(R.id.title)) {
                     this?.isEnabled = it?.isSelected == false
-                    this?.setTextSizeDip(if (it?.isSelected == true) 14 else 12)
+                    this?.setTextSizeDip(if (it?.isSelected == true) 15 else 15)
                     this?.setBold(it?.isSelected == true)
                 }
             }

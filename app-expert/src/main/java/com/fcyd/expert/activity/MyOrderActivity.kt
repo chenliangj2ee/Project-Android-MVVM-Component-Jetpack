@@ -34,7 +34,7 @@ class MyOrderActivity : MyBaseActivity<ActivityMyOrderBinding, DefaultViewModel>
             tab.selected {
                 with(it?.customView?.findViewById<TextView>(R.id.title)) {
                     this?.setTextColor(Color.parseColor(if (it?.isSelected == true) "#008599" else "#A9ADB2"))
-                    this?.setTextSizeDip(if (it?.isSelected == true) 14 else 12)
+                    this?.setTextSizeDip(if (it?.isSelected == true) 15 else 15)
                 }
 
             }
