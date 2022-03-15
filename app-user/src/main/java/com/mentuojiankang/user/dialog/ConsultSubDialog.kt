@@ -147,7 +147,7 @@ class ConsultSubDialog(service: BeanConsultService, bean: BeanConsult) :
     private fun initDate(): ArrayList<BeanDate> {
         var date = Calendar.getInstance()
         var array = ArrayList<BeanDate>()
-        for (i in 0..15) {
+        for (i in 0..13) {
             var bean = BeanDate()
             var w = date[Calendar.DAY_OF_WEEK] - 1
             when (w) {
