@@ -34,7 +34,7 @@ class DrawingSelectDialog : MyBaseDialog<DialogDrawingSelectedBinding>() {
 
         var isOne = liveParam!!.liveType == AUDIO_ONE || liveParam!!.liveType == VIDEO_ONE
 
-        mBinding.send.isEnabled = isOne
+//        mBinding.send.isEnabled = isOne
         mBinding.selectUser.hide(isOne)
         mBinding.selectUser.click { DrawingSelectorUserDialog().show(this) }
         mBinding.close.click { dismiss() }
@@ -61,7 +61,7 @@ class DrawingSelectDialog : MyBaseDialog<DialogDrawingSelectedBinding>() {
     @Subscribe(code = BusCode.LIVE_DRAW_SELECTED_USER_FINISH)
     fun selectedUserEvent() {
         users.text = "${Live.audienceObjectList.filter { it.itemSelected }.size}人"
-        mBinding.send.isEnabled = Live.audienceObjectList.any { it.itemSelected }
+//        mBinding.send.isEnabled = Live.audienceObjectList.any { it.itemSelected }
     }
 
 }
