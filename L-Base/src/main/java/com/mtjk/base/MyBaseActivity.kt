@@ -489,14 +489,14 @@ abstract class MyBaseActivity<BINDING : ViewDataBinding, VM : ViewModel> : AppCo
                         .show(this)
                 } else {
                     if (javaClass.simpleName == "SettingActivity") {
-                        toast("当前为最新版本")
+                        toast("当前为最新版本"+MyApp.getVersionName(this))
                     }
                 }
 
             }
             it.n {
                 if (javaClass.simpleName == "SettingActivity") {
-                    toast("当前为最新版本")
+                    toast("当前为最新版本"+MyApp.getVersionName(this))
                 }
             }
 
