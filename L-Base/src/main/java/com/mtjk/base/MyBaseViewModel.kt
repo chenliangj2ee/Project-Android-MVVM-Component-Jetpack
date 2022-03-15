@@ -35,10 +35,10 @@ open class MyBaseViewModel : ViewModel() {
         var cell = block()
         var path = cell.request().url.toString()
         var key = cell.request().toString()
-       log("request:"+ cell.request().toString())
+//       log("request:"+ cell.request().toString())
 
         var mutableLiveDataKey = this.toString() + path.split("?")[0]
-        log("VM key:$mutableLiveDataKey")
+//        log("VM key:$mutableLiveDataKey")
 
         var data = dataMap[mutableLiveDataKey]
 

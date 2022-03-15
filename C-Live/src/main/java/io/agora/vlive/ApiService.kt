@@ -51,7 +51,23 @@ interface ApiService {
         @Body body: Any
     ): Data<Boolean>
 
-    @MyRetrofitGo(mTag = "获取画板房间TOKEN", mLoading = true, mFailToast = true, mCache = false,mHasCacheLoading = true)
+    @MyRetrofitGo(
+        mTag = "获取画板房间TOKEN",
+        mLoading = true,
+        mFailToast = true,
+        mCache = false,
+        mHasCacheLoading = true
+    )
     @POST("/api-app/v1/app/agora/whiteBoard/token")
     fun getDrawingBoardRoomToken(@Body any: Any): Data<BeanDrawingBoardRoom>
+
+    @MyRetrofitGo(
+        mTag = "敏感词",
+        mLoading = false,
+        mFailToast = true,
+        mCache = false,
+        mHasCacheLoading = false
+    )
+    @POST("/api-app/v1/common/risk/check")
+    fun checkMessage(@Body any: Any): Data<Boolean>
 }

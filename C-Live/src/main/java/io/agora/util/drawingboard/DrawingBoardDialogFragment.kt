@@ -62,6 +62,7 @@ class DrawingBoardDialogFragment : MyBaseDialog<DialogDrawingBoardBinding>(), Dr
     }
 
     override fun initCreate() {
+        cancelable(false)
         val args = arguments
         if (args != null) {
             mChannelId = args.getString(PARAM_CHANNEL_ID_KEY)

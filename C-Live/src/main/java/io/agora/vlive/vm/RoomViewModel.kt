@@ -15,11 +15,14 @@ import com.mtjk.utils.getBeanUser
 class RoomViewModel : MyBaseViewModel() {
 
     fun updateUid(uid: String) = go {
-        var user =  getBeanUser()
+        var user = getBeanUser()
         if (BaseInit.isUserApp) {
             API.updateUid2C(body("userId", user!!.userId, "agoraUserId", uid))
         } else {
             API.updateUid2B(body("userId", user!!.userId, "agoraUserId", uid))
         }
     }
+
+
+    fun checkMessage(content: String) = go { API.checkMessage(body("text", content)) }
 }

@@ -251,7 +251,13 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
 
     override fun onRtcJoinChannelSuccess(channel: String, uid: Int, elapsed: Int) {
         this.log("进入频道通知，channel：$channel  uid:$uid   ----------------------")
-        this.uid = uid
+        if (uid > 0){
+            this.uid = uid
+            user?.uid=uid
+            user?.save()
+        }
+
+        user
         sendUidToUsers()
         startLiveSuccess()
 

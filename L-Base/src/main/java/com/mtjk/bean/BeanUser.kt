@@ -21,6 +21,7 @@ open class BeanUser : MyBaseBean() {
     var userId = ""
     var shopId = ""
     var age = 0
+    var uid=0
 
     var realName = ""
     var vipLevel = 0

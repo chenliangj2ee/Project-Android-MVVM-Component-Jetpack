@@ -13,5 +13,4 @@ class BeanLinkUser : BeanUser() {
     var index = 0;
     var video: FrameLayout? = null
 
-    var uid=0;
 }

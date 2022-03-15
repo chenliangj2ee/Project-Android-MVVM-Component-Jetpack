@@ -21,8 +21,10 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.DialogFragment
 import com.elvishew.xlog.XLog
 import com.google.gson.Gson
+import com.mtjk.base.obs
 import com.mtjk.bean.BeanLiveData
 import com.mtjk.utils.dialog
+import com.mtjk.utils.initVM
 import com.mtjk.utils.log
 import com.mtjk.utils.toast
 import io.agora.rtc.IRtcEngineEventHandler
@@ -57,6 +59,7 @@ import io.agora.vlive.ui.view.bottomLayout.LiveBottomButtonLayout
 import io.agora.vlive.ui.view.bottomLayout.LiveBottomButtonLayout.LiveBottomButtonListener
 import io.agora.vlive.utils.GiftUtil
 import io.agora.vlive.utils.Global
+import io.agora.vlive.vm.RoomViewModel
 import java.util.*
 
 abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
@@ -390,14 +393,31 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
      * tag==直播群聊
      * tag==直播聊天
      */
-    fun sendChatMessage(content: String) {
+    private var content = ""
+    private fun sendChatMessage(con: String) {
+        content = con
         val profile = config().userProfile
-        messageManager!!.sendChatMessage(profile.userId,
-            profile.userName, content, object : ResultCallback<Void?> {
-                override fun onSuccess(aVoid: Void?) {}
-                override fun onFailure(errorInfo: ErrorInfo) {}
-            })
-        messageList!!.addMessage(LiveRoomMessageList.MSG_TYPE_CHAT, profile.userName, content)
+        initVM(RoomViewModel::class.java).checkMessage(content).obs(this) {
+            it.y {
+                if (it) {
+                    messageManager!!.sendChatMessage(profile.userId,
+                        profile.userName, content, object : ResultCallback<Void?> {
+                            override fun onSuccess(aVoid: Void?) {}
+                            override fun onFailure(errorInfo: ErrorInfo) {}
+                        })
+                    messageList!!.addMessage(
+                        LiveRoomMessageList.MSG_TYPE_CHAT,
+                        profile.userName,
+                        content
+                    )
+                } else {
+                    toast("发送失败，存在敏感词")
+                }
+
+            }
+        }
+
+
     }
 
     protected val isCurDialogShowing: Boolean
