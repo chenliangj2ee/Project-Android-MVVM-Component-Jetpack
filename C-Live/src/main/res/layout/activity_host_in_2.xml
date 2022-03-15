@@ -214,16 +214,24 @@
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingEnd="@dimen/activity_horizontal_margin" />
 
-            <io.agora.vlive.ui.view.LiveRoomMessageList
-                android:id="@+id/message_list"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/host_in_bottom_layout"
-                android:layout_below="@id/live_host_in_seat_layout"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="52dp"
-                android:overScrollMode="never"
-                android:paddingHorizontal="15dp" />
+                android:layout_marginBottom="52dp">
+                <io.agora.vlive.ui.view.LiveRoomMessageList
+                    android:id="@+id/message_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/host_in_bottom_layout"
+                    android:layout_below="@id/live_host_in_seat_layout"
+                    android:layout_gravity="bottom"
+
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="15dp" />
+            </FrameLayout>
+
+
 
             <io.agora.vlive.ui.view.RtcStatsView
                 android:id="@+id/multi_host_rtc_stats"
