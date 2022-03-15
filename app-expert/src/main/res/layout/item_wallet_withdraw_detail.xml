@@ -60,7 +60,7 @@ xmlns:tools="http://schemas.android.com/tools">
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/info"
             android:layout_alignParentRight="true"
-            android:text='@{"+" + data.price}'
+            android:text='@{"" + data.price}'
             android:textColor="#111235"
             android:textSize="15dp"/>
     </RelativeLayout>
