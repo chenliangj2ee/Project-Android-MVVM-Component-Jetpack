@@ -20,7 +20,7 @@ import com.mtjk.utils.log
 
 @SuppressLint("AppCompatCustomView")
 class MyImageView : ImageView {
-    var default = -1
+    var default = R.drawable.load_default
     private var ratio: Float = 0.0F
 
     constructor(context: Context?) : super(context)
@@ -54,7 +54,8 @@ class MyImageView : ImageView {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         if (ratio != 0.0F) {
             val widthSize = MeasureSpec.getSize(widthMeasureSpec)
-            var heightMeasureSpec = MeasureSpec.makeMeasureSpec((widthSize * ratio).toInt(), MeasureSpec.EXACTLY)
+            var heightMeasureSpec =
+                MeasureSpec.makeMeasureSpec((widthSize * ratio).toInt(), MeasureSpec.EXACTLY)
             super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         } else {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec)

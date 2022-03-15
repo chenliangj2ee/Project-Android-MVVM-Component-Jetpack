@@ -15,15 +15,8 @@ import com.mtjk.base.obs
 @MyClass(mFullScreen = true)
 class SplashActivity : BaseSplashActivity<ActivityBaseSplashBinding, AppViewModel>() {
 
-
-
     override fun initLogin() = LoginActivity::class.java
 
     override fun initMain() = MainActivity::class.java
 
-    override fun initClick() {
-        super.initClick()
-        mViewModel.getType2().obs(this) {  }
-        mViewModel.getTestType().obs(this) {  }
-    }
 }

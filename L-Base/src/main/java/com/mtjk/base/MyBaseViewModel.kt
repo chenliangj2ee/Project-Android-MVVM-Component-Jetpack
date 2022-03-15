@@ -34,9 +34,11 @@ open class MyBaseViewModel : ViewModel() {
 
         var cell = block()
         var path = cell.request().url.toString()
-
+        var key = cell.request().toString()
+       log("request:"+ cell.request().toString())
 
         var mutableLiveDataKey = this.toString() + path.split("?")[0]
+        log("VM key:$mutableLiveDataKey")
 
         var data = dataMap[mutableLiveDataKey]
 
@@ -51,7 +53,7 @@ open class MyBaseViewModel : ViewModel() {
                 //是否启用缓存
                 myRetrofitGoValue = getMyRetrofitGoValue(path)
                 if (myRetrofitGoValue.cache) {
-                    initCache(myRetrofitGoValue, path!!, data, viewModelScope)
+                    initCache(myRetrofitGoValue, key!!, data, viewModelScope)
                 } else {
                     if (myRetrofitGoValue.loading) {
                         showLoading(path)
@@ -121,9 +123,9 @@ open class MyBaseViewModel : ViewModel() {
             //把数据更新到缓存
             if (responseBean?.code == 0 && myRetrofitGoValue.cache) {
                 if (responseBean.data != null) {
-                    MyHttpDB.putCache(path, responseBean)
+                    MyHttpDB.putCache(key, responseBean)
                 } else {
-                    MyHttpDB.clearCache(path)
+                    MyHttpDB.clearCache(key)
                 }
             }
 

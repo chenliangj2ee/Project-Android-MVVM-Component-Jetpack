@@ -6,6 +6,7 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.webkit.*
+import com.mtjk.utils.log
 
 /**
  * author:chenliang
@@ -15,6 +16,9 @@ class MyWebView : WebView {
 
     var type = 2
 
+    var error = false
+    var success = true
+
     object Type {
         var CONTENT = 0
         var IMAGE = 1
@@ -23,6 +27,7 @@ class MyWebView : WebView {
 
     var loadFinish: (() -> Unit?)? = null
     var loadError: (() -> Unit?)? = null
+
     constructor(context: Context?) : super(context!!) {
         initWebView()
     }
@@ -87,7 +92,15 @@ class MyWebViewClient(myWebView: MyWebView) : WebViewClient() {
 
     override fun onPageFinished(view: WebView?, url: String?) {
         super.onPageFinished(view, url)
-        myWebView.loadFinish?.let { it() }
+        if (!myWebView.error) {
+            myWebView.success = true
+
+        }
+        myWebView.error = false
+        if (myWebView.success) {
+            myWebView.loadFinish?.let { it() }
+        }
+
     }
 
     override fun onReceivedError(
@@ -96,7 +109,11 @@ class MyWebViewClient(myWebView: MyWebView) : WebViewClient() {
         error: WebResourceError?
     ) {
 
-        myWebView.loadError?.let { it() }
+        log("加载失败......")
+        myWebView.error = true
+        myWebView.success = false
+        if (myWebView.error)
+            myWebView.loadError?.let { it() }
     }
 
     override fun onReceivedSslError(view: WebView?, handler: SslErrorHandler?, error: SslError?) {

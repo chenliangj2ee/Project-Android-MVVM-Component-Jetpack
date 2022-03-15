@@ -62,7 +62,6 @@ class WebViewActivity : MyBaseActivity<BaseActivityWebviewBinding, DefaultViewMo
             if (!title.isNullOrEmpty())
                 mToolBar.setTitle(title)
 
-
             /**
              * 加载失败
              */

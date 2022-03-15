@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -25,7 +26,7 @@
             android:layout_height="74dp"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/load_default" />
+            app:my_default="@drawable/load_default" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,12 +51,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:visibility="invisible"
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:text='@{data.subjectCount+"题  "+data.briefIntro}'
                 android:textColor="#515357"
                 android:textSize="12dp"
+                android:visibility="invisible"
                 tools:text="35题  是什么导致并正在加重你的抑郁？" />
 
             <LinearLayout
