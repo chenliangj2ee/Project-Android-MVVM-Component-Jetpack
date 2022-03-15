@@ -47,7 +47,7 @@ class BeanTime : MyBaseBean() {
             start.set(Calendar.HOUR_OF_DAY, text.split(":")[0].toInt())
             start.set(Calendar.MINUTE, 0)
             consultStartTime = format.format(start.time)
-            start.add(Calendar.HOUR_OF_DAY, 1)
+            start.add(Calendar.MINUTE, 50)
             consultEndTime = format.format(start.time)
         }
 
