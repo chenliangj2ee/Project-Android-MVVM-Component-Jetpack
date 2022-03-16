@@ -7,6 +7,7 @@
         <variable
             name="data"
             type="com.mentuojiankang.user.bean.BeanWalletDetail" />
+        <import type="android.view.View" />
     </data>
 
     <LinearLayout
@@ -46,6 +47,7 @@
                     android:id="@+id/tag"
                     android:layout_width="50dp"
                     android:layout_height="20dp"
+                    android:visibility="@{data.productTypeImage() > 0 ? View.VISIBLE : View.INVISIBLE}"
                     android:layout_marginTop="7dp" />
                 <TextView
                     android:id="@+id/time"
