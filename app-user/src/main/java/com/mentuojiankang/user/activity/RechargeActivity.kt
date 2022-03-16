@@ -127,19 +127,24 @@ class RechargeActivity : MyBaseActivity<ActivityRechargeBinding, OrderViewModel>
     @Subscribe(code = BusCode.PAYMENT_RESULT)
     fun refreshList() {
         log("请求订单基础信息")
-        mViewModel.getorderinfo(successorderid).obs(this) {
-            it.y {
-                log("支付状态："+it.orderStatus)
-                if (it.orderStatus == 50 || it.orderStatus == 90) {
-                    confirmSuccess()
-                } else {
-                    confirmFaile()
+       var dialog= loading("请稍后...")
+        postDelayed(3000){
+            mViewModel.getorderinfo(successorderid).obs(this) {
+                it.y {
+                    log("支付状态："+it.orderStatus)
+                    dialog.dismiss()
+                    if (it.orderStatus == 50 || it.orderStatus == 90) {
+                        confirmSuccess()
+                    } else {
+                        confirmFaile()
+                    }
+                }
+                it.n {
+                    dialog.dismiss()
                 }
             }
-            it.n {
-                toast(it)
-            }
         }
+
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
