@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text='@{order.paidAmount+""}'
-                android:textColor="#F44336"
+                android:textColor="#B82F25"
                 android:textSize="17dp"
                 android:textStyle="bold"
                 tools:text="19.9" />

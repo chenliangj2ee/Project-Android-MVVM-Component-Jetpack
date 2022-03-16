@@ -1,6 +1,7 @@
 package com.fcyd.expert.fragment
 
 import com.fcyd.expert.activity.ConsultFeedbackActivity
+import com.fcyd.expert.activity.VisitorUserInfoActivity
 import com.fcyd.expert.bean.BeanOrder
 import com.fcyd.expert.databinding.FragmentMyOrderListBinding
 import com.fcyd.expert.databinding.ItemMyOrderBinding
@@ -36,6 +37,7 @@ class MyOrderListFragment : MyBaseFragment<FragmentMyOrderListBinding, OrderView
             this.order = bean
             this.chat.click { IM.gotoChat(bean.userAccountId, "") }
             this.stop.click { stopConsult(bean) }
+            this.userInfo.goto(VisitorUserInfoActivity::class.java, "order", bean)
             this.startLive.click { intoLiveRoom(bean) }
             this.confirm.click { confirm(bean) }
             this.feedback.goto(ConsultFeedbackActivity::class.java, "order", bean)

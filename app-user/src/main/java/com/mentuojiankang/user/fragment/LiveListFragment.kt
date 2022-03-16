@@ -21,31 +21,43 @@ import kotlinx.android.synthetic.main.item_live_list.view.*
 class LiveListFragment : MyBaseFragment<FragmentLiveListBinding, LiveViewModel>() {
 
     override fun initOnCreateView() {
-        with(mBinding) {
-            refresh.setDisableLoadMore()
-            refresh.bindData<BeanLive> { live ->
-                with(live.binding as ItemLiveListBinding) {
-                    bean = live
-                    root.click {
-                        if (live.status == 1) {
-                            toLiveRoom(live)
-                        } else {
-                            toDetail(live)
-                        }
-                    }
-                    root.book.click { bookClick(live) }
-                }
-            }.loadData {
-                mViewModel.getLiveList().obs(this@LiveListFragment) {
-                    it.c { refresh.addCache(it) }
-                    it.y { refresh.addDatas(it) }
+        mBinding.refresh.setDisableLoadMore()
+        mBinding.refresh.bindData<BeanLive>(::bindItem).loadData(::loadData)
+    }
+
+
+    /**
+     * 绑定item
+     */
+    private fun bindItem(live: BeanLive) {
+        with(live.binding as ItemLiveListBinding) {
+            bean = live
+            root.click {
+                if (live.status == 1) {
+                    toLiveRoom(live)
+                } else {
+                    toDetail(live)
                 }
             }
+            root.book.click { bookClick(live) }
         }
     }
 
+    /**
+     * 加载列表直播数据
+     */
+    fun loadData() {
+        mViewModel.getLiveList().obs(this) {
+            it.c { mBinding.refresh.addCache(it) }
+            it.y { mBinding.refresh.addDatas(it) }
+        }
+    }
+
+    /**
+     * 预约
+     */
     private fun bookClick(live: BeanLive) {
-        if(live.free == 1) {
+        if (live.free == 1) {
             mViewModel.bookLive(live).obs(this@LiveListFragment) {
                 it.y { mBinding.refresh.refresh() }
             }
@@ -54,8 +66,11 @@ class LiveListFragment : MyBaseFragment<FragmentLiveListBinding, LiveViewModel>(
         }
     }
 
+    /**
+     * 正在直播中，且已付费，则直接进入直播间
+     */
     private fun toLiveRoom(live: BeanLive) {
-        if(live.free == 2 && live.bought != 2) {
+        if (live.free == 2 && live.bought != 2) {
             toast("未购买直播课程，无法进入房间")
             return
         }
@@ -64,11 +79,14 @@ class LiveListFragment : MyBaseFragment<FragmentLiveListBinding, LiveViewModel>(
         liveParam.userId = live.accountId
         liveParam.userHeader = live.avatar
         liveParam.userName = live.nickname
-        liveParam.liveType=BeanParam.LiveType.VIDEO_MORE
+        liveParam.liveType = BeanParam.LiveType.VIDEO_MORE
         liveParam.save()
         live.channelName?.sendSelf(BusCode.LIVE_GET_RTCTOKEN)
     }
 
+    /**
+     * 直播未开始，进入详情
+     */
     private fun toDetail(live: BeanLive) {
         goto(
             LiveDetailActivity::class.java,

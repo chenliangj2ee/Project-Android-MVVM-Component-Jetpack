@@ -16,16 +16,15 @@ class BeanLive : MyBaseBean() {
     var liveCourseId = ""
     var liveCourseName = ""
     //课程开始时间
-    var liveCourseStartAt = ""
+    var startTime = ""
     var lookNum = 0
     var nickname = ""
     var paid = false
     var shopId = ""
-    var startTime = ""
     //直播状态，1-直播中，2-预约
     var status = 0
 
-    fun startTimeDes() = liveCourseStartAt?.dateT("MM月dd日 HH:mm")
+    fun startTimeDes() = startTime?.dateT("MM月dd日 HH:mm")
 
 
 }

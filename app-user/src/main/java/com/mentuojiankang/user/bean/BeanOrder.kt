@@ -44,11 +44,24 @@ class BeanOrder : MyBaseBean() {
     }
 
     fun typeDes(): String {
-        ObjectProduct.TYPE_COURSE
-        when (consultType) {
-            1 -> return "视频咨询"
-            2 -> return "语音咨询"
+        when (orderServer) {
+            ObjectProduct.TYPE_COURSE -> {
+                return ""
+            }
+            ObjectProduct.TYPE_LIVE_COURSE -> {
+                return "视频咨询"
+            }
+            ObjectProduct.TYPE_LIVE -> {
+                return "视频咨询"
+            }
+            ObjectProduct.TYPE_CONSULT -> {
+                when (consultType) {
+                    1 -> return "视频咨询"
+                    2 -> return "语音咨询"
+                }
+            }
         }
+
         return ""
     }
 

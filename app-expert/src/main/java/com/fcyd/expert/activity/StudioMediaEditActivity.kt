@@ -72,10 +72,15 @@ class StudioMediaEditActivity : MyBaseActivity<ActivityStudioMediaEditBinding, S
             //添加
             root.click {
                 if (image.add) {
-                    if (networkArrays.none { it.url.endsWith(".mp4") }) {
-                        selectImages(true, 10 - networkArrays.size )
-                    } else {
-                        selectImages(false,10 - networkArrays.size )
+                    var max = 10 - networkArrays.size
+                    if(max>0) {
+                        if (networkArrays.none { it.url.endsWith(".mp4") }) {
+                            selectImages(true, max)
+                        } else {
+                            selectImages(false, max)
+                        }
+                    }else{
+                        toast("最多9张，请删除后再试")
                     }
                 }
             }

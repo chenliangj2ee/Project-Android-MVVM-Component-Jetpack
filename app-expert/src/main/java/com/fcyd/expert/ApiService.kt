@@ -5,6 +5,7 @@ import com.fcyd.expert.bean.*
 import com.mtjk.annotation.MyRetrofitGo
 import com.mtjk.base.MyBaseResponse
 import com.mtjk.bean.BeanPage
+import com.mtjk.bean.BeanUser
 import com.mtjk.utils.BusCode
 import retrofit2.Call
 import retrofit2.http.Body
@@ -162,4 +163,8 @@ interface ApiService {
     @MyRetrofitGo(mTag = "提现明细", mLoading = false, mFailToast = false, mCache = true)
     @POST("/api-app/v1/app/expert/order/withdraw/page")
     fun getWalletWithdrawList(@Body body: Any): DataPages<BeanWalletWithdraw>
+
+    @MyRetrofitGo(mTag = "来访者信息", mLoading = true, mFailToast = false, mCache = true)
+    @POST("/api-app/v1/app/expert/order/withdraw/page")
+    fun getVisitorInfo(@Body body: Any): Data<BeanUser>
 }

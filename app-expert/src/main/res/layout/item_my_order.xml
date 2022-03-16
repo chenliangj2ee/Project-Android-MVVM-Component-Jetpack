@@ -157,8 +157,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:text="发消息"
                 android:textColor="#133C53"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/confirm"
@@ -168,6 +167,17 @@
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/base_selector_button_grey"
                 android:text="接单"
+                android:textColor="#133C53"
+                android:visibility="@{order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/userInfo"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="来访者信息"
                 android:textColor="#133C53"
                 android:visibility="@{order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
 

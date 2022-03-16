@@ -1,11 +1,10 @@
 package com.mentuojiankang.user
 
 import com.mentuojiankang.user.vm.AppViewModel
+import com.mtjk.account.LoginActivity
 import com.mtjk.annotation.MyClass
 import com.mtjk.base.BaseSplashActivity
-import com.mtjk.account.LoginActivity
 import com.mtjk.base.databinding.ActivityBaseSplashBinding
-import com.mtjk.base.obs
 
 /**
  * tag==启动页
