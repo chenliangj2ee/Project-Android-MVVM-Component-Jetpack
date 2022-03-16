@@ -583,7 +583,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     ) {
         stopWaitLink()
 
-        dialog("您的连麦被咨询师拒绝").single(true).y { }.show(this)
+        dialog("您的连麦被咨询师拒绝").single(true).show(this)
     }
 
     /**
