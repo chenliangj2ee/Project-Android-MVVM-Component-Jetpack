@@ -12,6 +12,7 @@ import com.mtjk.base.MyBaseActivity
 import com.mtjk.utils.click
 import com.mtjk.utils.goto
 import com.mtjk.base.obs
+import com.mtjk.utils.changed
 import com.mtjk.utils.toast
 import java.math.BigDecimal
 
@@ -29,7 +30,6 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
         mToolBar.showRight("明细") { toDetail() }
         fullscreenTransparentBar(true)
         updateMoneyAvailable()
-        initMoneyEdit()
     }
 
     override fun initClick() {
@@ -44,27 +44,6 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
         }
     }
 
-    private fun initMoneyEdit() {
-        mBinding.withdrawMoney.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(editable: Editable?) {
-                var editStr = editable.toString().trim()
-                var posDot = editStr.indexOf(".");
-                //不允许输入3位小数,超过三位就删掉
-                if (posDot < 0) {
-                    return
-                }
-                if (editStr.length - posDot - 1 > 2) {
-                    editable?.delete(posDot + 3, posDot + 4)
-                }
-            }
-        })
-    }
 
     private fun toDetail() {
         goto(WalletWithdrawListActivity::class.java)
