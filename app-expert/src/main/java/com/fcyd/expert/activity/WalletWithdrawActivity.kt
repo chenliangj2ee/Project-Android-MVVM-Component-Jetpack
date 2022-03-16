@@ -26,7 +26,7 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
     var withdrawal = 0.0
 
     override fun initCreate() {
-        mToolBar.showRight("明细", { toDetail() })
+        mToolBar.showRight("明细") { toDetail() }
         fullscreenTransparentBar(true)
         updateMoneyAvailable()
         initMoneyEdit()
@@ -40,7 +40,7 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
 
     private fun updateMoneyAvailable() {
         if(withdrawal >= 0.0) {
-            mBinding.leftIncome.text = "可提现金额¥" + withdrawal
+            mBinding.leftIncome.text = "可提现金额¥$withdrawal"
         }
     }
 
@@ -92,9 +92,7 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
                 withdrawal = withdrawal.roundTo2DecimalPlaces()
                 afterWithdraw()
             }
-            it.n {
-                toast("提现申请失败，请检查网络")
-            }
+
         }
     }
 

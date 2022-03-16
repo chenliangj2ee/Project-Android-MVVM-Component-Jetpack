@@ -156,7 +156,7 @@ interface ApiService {
     @POST("/api-app/v1/app/expert/order/shopIncome/page")
     fun getWalletDetailList(@Body body: Any): DataPages<BeanWalletDetail>
 
-    @MyRetrofitGo(mTag = "咨询师提现", mLoading = false, mFailToast = false, mCache = true)
+    @MyRetrofitGo(mTag = "咨询师提现", mLoading = true, mFailToast = true, mCache = false)
     @POST("/api-app/v1/app/expert/order/withdraw")
     fun walletWithdraw(@Body body: Any): Data<BeanWalletWithdrawResult>
 
