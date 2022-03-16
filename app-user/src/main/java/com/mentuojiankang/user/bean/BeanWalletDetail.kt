@@ -20,6 +20,8 @@ class BeanWalletDetail  : MyBaseBean(){
     var productTitle = ""
     //商品类型：咨询、直播、课程、督导
     var productType = 0
+    //充值金额
+    var rechargeAmount = 0.0
 
     fun titleDisplay(): String {
         if(orderType == ObjectOrderType.TYPE_SHOP_WITHDRAW) {
@@ -35,8 +37,10 @@ class BeanWalletDetail  : MyBaseBean(){
     }
 
     fun coverDefaultImage(): Int {
+        if(orderType == ObjectOrderType.TYPE_RECHARGE) {
+            return R.drawable.item_wallet_detail_icon_recharge
+        }
         if(orderType == ObjectOrderType.TYPE_SHOP_WITHDRAW
-            || orderType == ObjectOrderType.TYPE_RECHARGE
             || orderType == ObjectOrderType.TYPE_REFUND) {
             return R.drawable.item_wallet_withdraw_detail_icon
         }
@@ -68,7 +72,7 @@ class BeanWalletDetail  : MyBaseBean(){
         if(productType == ObjectProduct.TYPE_COURSE) {
             return R.drawable.item_wallet_detail_tag_course
         }
-        return R.drawable.item_wallet_detail_tag_supervise
+        return 0
     }
 
     fun paidTimeDes(): String {
@@ -93,6 +97,13 @@ class BeanWalletDetail  : MyBaseBean(){
             return "提现"
         }
         return ""
+    }
+
+    fun priceAmount(): Double{
+        if(orderType == ObjectOrderType.TYPE_RECHARGE) {
+            return rechargeAmount
+        }
+        return price
     }
 
     fun groupName(): String {

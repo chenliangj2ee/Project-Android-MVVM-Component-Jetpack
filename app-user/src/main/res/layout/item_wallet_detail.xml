@@ -7,6 +7,7 @@
         <variable
             name="data"
             type="com.mentuojiankang.user.bean.BeanWalletDetail" />
+        <import type="android.view.View" />
     </data>
 
     <LinearLayout
@@ -47,6 +48,7 @@
                     android:id="@+id/tag"
                     android:layout_width="50dp"
                     android:layout_height="20dp"
+                    android:visibility="@{data.productTypeImage() > 0 ? View.VISIBLE : View.INVISIBLE}"
                     android:layout_marginTop="7dp" />
                 <TextView
                     android:id="@+id/time"
@@ -65,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/info"
                 android:layout_alignParentRight="true"
-                android:text='@{(data.orderType == 10 || data.orderType == 40 ) ? "+" : "-" + data.price}'
+                android:text='@{((data.orderType == 10 || data.orderType == 40 ) ? "+" : "-") + data.priceAmount()}'
                 android:textColor="#111235"
                 android:textSize="15dp"/>
         </RelativeLayout>

@@ -40,8 +40,7 @@ class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, U
         with(it.binding as ItemWalletDetailBinding) {
             data = it
             var coverBg = it.coverDefaultImage()
-            if(coverBg > 0) this.icon?.setBackgroundResource(coverBg)
-            if(!it.coverImage.isNullOrEmpty()) this.icon?.load(it.coverImage)
+            if(coverBg > 0) this.icon?.setImageResource(coverBg)
             var typeImage = it.productTypeImage()
             if(typeImage > 0) this.tag?.setImageResource(typeImage)
         }
