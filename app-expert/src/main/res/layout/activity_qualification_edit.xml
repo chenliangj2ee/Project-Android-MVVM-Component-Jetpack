@@ -80,7 +80,8 @@
                     radius="@{5}"
                     android:layout_width="108dp"
                     android:layout_height="108dp"
-                    android:layout_gravity="bottom" />
+                    android:layout_gravity="bottom"
+                    android:visibility='@{(bean.certificateImageUrl==null||"".equals(bean.certificateImageUrl))?View.GONE:View.VISIBLE}'/>
 
                 <ImageView
                     android:id="@+id/delete"

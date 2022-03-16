@@ -46,6 +46,7 @@ class QualificationEditActivity :
                 bean?.certificateImageUrl = ""
                 mBinding.bean?.notifyChange()
                 image.setImageBitmap(null)
+                selectImages.clear()
                 delete.show(false)
             }
 
