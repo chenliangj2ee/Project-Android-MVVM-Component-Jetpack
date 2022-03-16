@@ -14,7 +14,7 @@ class BeanTest : MyBaseBean(), Serializable {
     var chargeStatus = 0//0免费，1收费
     var coverImage = ""//封面
     var testCount = 0//测评量
-    var effectiveTime = 0//时间
+    var estimatedTime = 0//时间
     var subjectCount = 0//题目数量
 
 }

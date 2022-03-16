@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
-                    android:text='@{data.effectiveTime+"分钟"}'
+                    android:text='@{data.estimatedTime+"分钟"}'
                     android:textColor="#A9ADB2"
                     android:textSize="13dp"
                     tools:text="3分钟" />

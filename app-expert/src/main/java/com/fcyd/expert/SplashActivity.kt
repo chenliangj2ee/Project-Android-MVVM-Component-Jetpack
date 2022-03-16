@@ -13,13 +13,6 @@ import com.mtjk.base.databinding.ActivityBaseSplashBinding
  */
 @MyClass(mFullScreen = true)
 class SplashActivity : BaseSplashActivity<ActivityBaseSplashBinding, DefaultViewModel>() {
-
-
     override fun initLogin() = LoginActivity::class.java
-
     override fun initMain() = MainActivity::class.java
-
-    override fun initClick() {
-        super.initClick()
-    }
 }
