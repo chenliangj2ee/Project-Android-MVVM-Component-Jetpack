@@ -61,8 +61,7 @@ object MyNetWork {
      */
     private fun addParam(oldRequest: Request): Request {
         var user = getBeanUser()
-        log("userId:${user?.userId}")
-        log("token:${user?.token}")
+        log("userId:${user?.userId}  token:${user?.token}")
         var builder = oldRequest.url
             .newBuilder()
 //            .setEncodedQueryParameter(
