@@ -30,6 +30,10 @@ public class IM {
         TUICore.startActivity(TUIConstants.TUIChat.C2C_CHAT_ACTIVITY_NAME, param);
     }
 
+    public static void gotoServiceChat() {
+        IM.gotoChat("1495673911154786306", "吱吱客服");
+    }
+
     public static void gotoAudio(String... ids) {
 
         // 1. 初始化组件

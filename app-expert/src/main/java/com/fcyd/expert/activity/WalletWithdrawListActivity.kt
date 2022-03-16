@@ -55,6 +55,6 @@ class WalletWithdrawListActivity : MyBaseActivity<ActivityMyWalletWithdrawListBi
     }
 
     private fun toCustomerService() {
-        IM.gotoChat("1495673911154786306", "吱吱客服")
+        IM.gotoServiceChat()
     }
 }

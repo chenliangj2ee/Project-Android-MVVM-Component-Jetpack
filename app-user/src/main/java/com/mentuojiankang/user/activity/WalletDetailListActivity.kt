@@ -48,7 +48,7 @@ class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, U
     }
 
     private fun toCustomerService() {
-        IM.gotoChat("1495673911154786306", "吱吱客服")
+        IM.gotoServiceChat()
     }
 
     private fun updateRecyclerView() {
