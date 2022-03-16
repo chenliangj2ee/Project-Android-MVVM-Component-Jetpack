@@ -54,12 +54,12 @@ abstract class BaseTabActivity<BINDING : ViewDataBinding, VM : ViewModel> :
         }
         checkUpgrade(false)
 
-        if (!Settings.canDrawOverlays(this) && BaseInit.isUserApp && !MySp.isFloatDialog()) {
-            dialog("为了更好聊天的体验，请开启悬浮权限")
-                .n("拒绝") { MySp.setFloatDialog(false) }
-                .y("同意") { applyOverlays(this) }
-                .show(this)
-        }
+//        if (!Settings.canDrawOverlays(this) && BaseInit.isUserApp && !MySp.isFloatDialog()) {
+//            dialog("为了更好聊天的体验，请开启悬浮权限")
+//                .n("拒绝") { MySp.setFloatDialog(false) }
+//                .y("同意") { applyOverlays(this) }
+//                .show(this)
+//        }
     }
 
 
