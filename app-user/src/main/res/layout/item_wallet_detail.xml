@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/info"
                 android:layout_alignParentRight="true"
-                android:text='@{((data.orderType == 10 || data.orderType == 40 ) ? "+" : "-") + data.price}'
+                android:text='@{((data.orderType == 10 || data.orderType == 40 ) ? "+" : "-") + data.priceAmount()}'
                 android:textColor="#111235"
                 android:textSize="15dp"/>
         </RelativeLayout>

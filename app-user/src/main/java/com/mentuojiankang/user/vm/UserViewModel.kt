@@ -27,12 +27,6 @@ class UserViewModel : MyBaseViewModel() {
      * 获取钱包明细列表
      */
     fun getWalletDetailList(pageNo: Int, pageSize: Int, startTime: String, endTime: String) = go {
-        if(startTime.isNullOrEmpty()) {
-            API.getWalletDetailList(body("pageNo", pageNo, "pageSize", pageSize))
-        } else if(endTime.isNullOrEmpty()) {
-            API.getWalletDetailList(body("pageNo", pageNo, "pageSize", pageSize, "startTime", startTime))
-        } else {
-            API.getWalletDetailList(body("pageNo", pageNo, "pageSize", pageSize, "startTime", startTime, "endTime", endTime))
-        }
+        API.getWalletDetailList(body("pageNo", pageNo, "pageSize", pageSize, "startTime", startTime, "endTime", endTime))
     }
 }

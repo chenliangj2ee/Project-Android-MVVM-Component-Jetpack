@@ -20,6 +20,8 @@ class BeanWalletDetail  : MyBaseBean(){
     var productTitle = ""
     //商品类型：咨询、直播、课程、督导
     var productType = 0
+    //充值金额
+    var rechargeAmount = 0.0
 
     fun titleDisplay(): String {
         if(orderType == ObjectOrderType.TYPE_SHOP_WITHDRAW) {
@@ -95,6 +97,13 @@ class BeanWalletDetail  : MyBaseBean(){
             return "提现"
         }
         return ""
+    }
+
+    fun priceAmount(): Double{
+        if(orderType == ObjectOrderType.TYPE_RECHARGE) {
+            return rechargeAmount
+        }
+        return price
     }
 
     fun groupName(): String {
