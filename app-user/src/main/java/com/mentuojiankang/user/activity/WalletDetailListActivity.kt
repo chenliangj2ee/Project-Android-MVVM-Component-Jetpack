@@ -12,11 +12,11 @@ import com.mtjk.view.WalletItemDecoration
 import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 
 /**
- * tag==钱包明细
+ * tag==账单明细
  * author:xujunsheng
  * date:2022/02/28
  */
-@MyClass(mToolbarTitle = "明细")
+@MyClass(mToolbarTitle = "账单明细")
 class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, UserViewModel>(){
     override fun initCreate() {
         mToolBar.showRight("客服", { toCustomerService() })
