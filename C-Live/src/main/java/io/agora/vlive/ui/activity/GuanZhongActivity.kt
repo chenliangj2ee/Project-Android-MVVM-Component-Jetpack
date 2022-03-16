@@ -421,6 +421,10 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
         if (waitLink) {
             waitLink()
         } else {
+            if(ownerRtcUid==0){
+                toast("主播尚未开播")
+                return
+            }
             dialog("您是否申请上麦？").y {
                 Live.sendPeer(
                     this,

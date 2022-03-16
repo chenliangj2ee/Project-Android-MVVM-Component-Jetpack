@@ -17,15 +17,16 @@
         android:background="@android:color/white"
         android:paddingHorizontal="15dp"
         android:paddingTop="15dp">
+
         <com.mtjk.view.MyImageView
             android:id="@+id/cover"
-            android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
             load="@{data.coverImage}"
             radius="@{2}"
-            app:my_default="@drawable/load_default"
-            android:layout_centerVertical="true" />
+            android:layout_width="130dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            app:my_default="@drawable/load_default" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
