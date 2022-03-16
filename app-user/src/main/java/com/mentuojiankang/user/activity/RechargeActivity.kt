@@ -130,7 +130,7 @@ class RechargeActivity : MyBaseActivity<ActivityRechargeBinding, OrderViewModel>
         mViewModel.getorderinfo(successorderid).obs(this) {
             it.y {
                 log("支付状态："+it.orderStatus)
-                if (it.orderStatus == 50) {
+                if (it.orderStatus == 50 || it.orderStatus == 90) {
                     confirmSuccess()
                 } else {
                     confirmFaile()
