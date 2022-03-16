@@ -63,7 +63,7 @@ class CourseInfoHeaderFragment :
                             catalogueRefresh.getData<BeanSection>().forEach { it.isPlay = false }
                             it.isPlay = true
                             player?.play(it.fileUrl)
-                            playCount(it.id)
+//                            playCount(it.id)
                             it.playCount++
                             MySp.setCourseSectionPosition(bean.id, it.itemPosition)//保存当前播放位置
                             catalogueRefresh.scrollToPosition(it.itemPosition)
@@ -117,7 +117,7 @@ class CourseInfoHeaderFragment :
                     bean.sectionList?.forEach { it.isPlay = false }
                     bean.sectionList?.get(it)?.isPlay = true
                     player?.play(bean.sectionList?.get(it)!!.fileUrl)
-                    playCount(bean.sectionList?.get(it)!!.id)
+//                    playCount(bean.sectionList?.get(it)!!.id)
                     bean.sectionList?.get(it)!!.playCount++
                     catalogueRefresh.notifyDataSetChanged()
                     catalogueRefresh.scrollToPosition(it)
