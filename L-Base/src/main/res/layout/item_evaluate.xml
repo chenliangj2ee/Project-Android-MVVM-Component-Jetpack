@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="43dp"
-                android:text="匿名"
+                android:text="@{data.nameDes()}"
                 android:textColor="#515357"
                 android:textSize="14dp"
                 tools:text="小明" />
@@ -46,8 +46,8 @@
                 android:layout_marginLeft="43dp"
                 android:layout_marginTop="22dp"
                 android:isIndicator="true"
-                android:numStars="5"
                 android:max="5"
+                android:numStars="5"
                 android:rating="@{data.score}" />
 
             <TextView
@@ -69,7 +69,7 @@
             android:lineSpacingExtra="6dp"
             android:text="@{data.comment}"
             android:textColor="#515357"
-            android:textSize="12dp"
+            android:textSize="14dp"
             tools:text="Lisa老师人很好，每次都耐心倾听，真的很暖心，很细心，最后也给出了很中肯的建议，真的超级好，谢谢Lisa老师！！！！…" />
 
         <View

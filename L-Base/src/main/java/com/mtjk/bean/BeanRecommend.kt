@@ -1,6 +1,7 @@
 package com.mtjk.bean
 
 import com.mtjk.base.MyBaseBean
+import com.mtjk.utils.anonymous
 
 /**
  * 评论
@@ -21,5 +22,7 @@ class BeanRecommend : MyBaseBean() {
     var expertShopId = ""
     var orderId = ""
     var orderServer=0
+
+    fun nameDes()= userNickName?.anonymous()
 
 }

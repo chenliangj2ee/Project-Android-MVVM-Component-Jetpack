@@ -1349,6 +1349,8 @@ fun Any.messageNotification(id: String, title: String, message: String) {
 fun Any.getBeanUser(): BeanUser? = BeanUser().get<BeanUser>()
 
 fun String.anonymous(): String {
+    if(this.isNullOrEmpty())
+        return "匿名"
     return this.substring(0, 1) + "*".repeat(this.length - 1)
 }
 
