@@ -35,8 +35,10 @@ class BeanWalletDetail  : MyBaseBean(){
     }
 
     fun coverDefaultImage(): Int {
+        if(orderType == ObjectOrderType.TYPE_RECHARGE) {
+            return R.drawable.item_wallet_detail_icon_recharge
+        }
         if(orderType == ObjectOrderType.TYPE_SHOP_WITHDRAW
-            || orderType == ObjectOrderType.TYPE_RECHARGE
             || orderType == ObjectOrderType.TYPE_REFUND) {
             return R.drawable.item_wallet_withdraw_detail_icon
         }
@@ -68,7 +70,7 @@ class BeanWalletDetail  : MyBaseBean(){
         if(productType == ObjectProduct.TYPE_COURSE) {
             return R.drawable.item_wallet_detail_tag_course
         }
-        return R.drawable.item_wallet_detail_tag_supervise
+        return 0
     }
 
     fun paidTimeDes(): String {
