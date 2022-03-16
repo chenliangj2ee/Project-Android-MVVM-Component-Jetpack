@@ -19,7 +19,7 @@ import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 @MyClass(mToolbarTitle = "提现明细")
 class WalletWithdrawListActivity : MyBaseActivity<ActivityMyWalletWithdrawListBinding, UserViewModel>() {
     override fun initCreate() {
-        mToolBar.showRight("客服", { toCustomerService() })
+        mToolBar.showRight("客服") { toCustomerService() }
         mBinding.refresh.bindData<BeanWalletWithdraw>(::initItem)
         updateRecyclerView()
         loadWalletDetailData()
