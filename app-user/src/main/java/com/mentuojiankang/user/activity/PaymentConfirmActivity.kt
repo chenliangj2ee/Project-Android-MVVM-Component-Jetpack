@@ -267,7 +267,7 @@ class PaymentConfirmActivity : MyBaseActivity<ActivityPaymentConfirmBinding, Ord
         log("请求订单基础信息")
         mViewModel.getorderinfo(successorderid).obs(this) {
             it.y {
-                if (it.orderStatus == 60) {
+                if (it.orderStatus == 50 || it.orderStatus == 90) {
                     confirmSuccess()
                 } else {
                     confirmFaile()
