@@ -33,7 +33,7 @@
 
             <com.mtjk.view.MyImageView
                 load="@{bean.coverImage}"
-                radius="@{5}"
+                radius="@{2}"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
-                    android:text='@{"咨询量"+bean.orderSum+"     评价"+bean.commentSum}'
+                    android:text='@{"咨询量 "+bean.orderSum+"     评价 "+bean.commentSum}'
                     android:textColor="#515357"
                     android:textSize="12dp"
                     tools:text="咨询量0     评价0" />
