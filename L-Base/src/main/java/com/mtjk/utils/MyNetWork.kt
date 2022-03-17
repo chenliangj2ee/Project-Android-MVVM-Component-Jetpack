@@ -14,6 +14,9 @@ import java.util.concurrent.TimeUnit
  */
 fun <T> Any.initAPI(url: String, cla: Class<T>): T = MyNetWork.initRetrofit(url).create(cla)
 
+
+const val apiCode=1
+
 object MyNetWork {
     private val timeUnit: TimeUnit = TimeUnit.SECONDS
     private const val connectTimeOut: Long = 10
@@ -45,6 +48,7 @@ object MyNetWork {
                 var user = getBeanUser()
                 val request = newOriginal.newBuilder()
                     .header("token", "${user?.token}")
+                    .header("apiCode", apiCode.toString())
                     .method(newOriginal.method, newOriginal.body)
                     .build()
                 chain.proceed(request)

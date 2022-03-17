@@ -210,7 +210,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:text="发消息"
                 android:textColor="#133C53"
-                android:visibility="@{ order.orderServer ==200 &amp;&amp; order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
+                android:visibility="@{ order.orderServer ==ObjectProduct.TYPE_CONSULT &amp;&amp; order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 style="?android:attr/borderlessButtonStyle"

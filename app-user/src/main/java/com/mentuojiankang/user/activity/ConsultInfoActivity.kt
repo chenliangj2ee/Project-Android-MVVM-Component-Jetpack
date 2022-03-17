@@ -159,7 +159,8 @@ class ConsultInfoActivity : MyBaseActivity<ActivityConsultInfoBinding, ConsultVi
                 "url",
                 MyPath.expertPath,
                 "userId",
-                bean.id
+                bean.id,
+                "full",true
             )
         }
         lookInfo.click {
@@ -168,7 +169,8 @@ class ConsultInfoActivity : MyBaseActivity<ActivityConsultInfoBinding, ConsultVi
                 "url",
                 MyPath.expertPath,
                 "userId",
-                bean.id
+                bean.id,
+                "full",true
             )
         }
 

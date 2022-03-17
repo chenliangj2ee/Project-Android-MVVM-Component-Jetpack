@@ -228,7 +228,7 @@
                     android:paddingTop="5dp"
                     android:paddingRight="15dp"
                     android:singleLine="true"
-                    android:text='@{bean.school+bean.major+bean.education.replace("及以上","")+"  "+bean.qualificationDes()}'
+                    android:text='@{bean.qualificationDes()}'
                     android:textColor="#515357"
                     android:textSize="15dp"
                     tools:text="北京大学心理学专业博士，执业心理治疗师" />
