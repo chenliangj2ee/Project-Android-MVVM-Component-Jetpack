@@ -1,15 +1,22 @@
 package com.fcyd.expert.activity
 
+import android.view.View
+import android.widget.TextView
+import com.fcyd.expert.R
 import com.fcyd.expert.bean.BeanWalletDetail
 import com.fcyd.expert.databinding.ActivityMyWalletDetailBinding
 import com.fcyd.expert.databinding.ItemWalletDetailBinding
 import com.fcyd.expert.vm.UserViewModel
+import com.gavin.com.library.PowerfulStickyDecoration
+import com.gavin.com.library.listener.OnGroupClickListener
+import com.gavin.com.library.listener.PowerGroupListener
 import com.mtjk.annotation.MyClass
 import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.obs
+import com.mtjk.utils.DimenUtil
 import com.mtjk.utils.goto
 import com.mtjk.utils.load
-import com.mtjk.view.WalletItemDecoration
+import com.mtjk.utils.toast
 import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 
 /**
@@ -53,14 +60,26 @@ class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, U
     }
 
     private fun updateRecyclerView() {
-        with(mBinding) {
-            refresh.recyclerView?.addItemDecoration(
-                WalletItemDecoration(this@WalletDetailListActivity, object : WalletItemDecoration.OnGroupListener {
-                override fun getGroupName(position: Int): String? {
-                    return refresh.getData<BeanWalletDetail>()?.get(position)?.groupName()
+        mBinding.refresh.recyclerView?.addItemDecoration(
+            PowerfulStickyDecoration.Builder.init(object: PowerGroupListener {
+                override fun getGroupName(position: Int): String {
+                    return mBinding.refresh.getData<BeanWalletDetail>()?.get(position)?.groupName()
                 }
-            })
-            )
-        }
+
+                override fun getGroupView(position: Int): View {
+                    var view = layoutInflater.inflate(R.layout.wallet_item_decoration_content, null, false)
+                    view.findViewById<TextView>(R.id.group_name).text =
+                        mBinding.refresh.getData<BeanWalletDetail>()?.get(position)?.groupName()
+                    return view;
+                }
+
+            }).setOnClickListener(
+                object: OnGroupClickListener {
+                    override fun onClick(position: Int, id: Int) {
+                        //TODO 点击展开列表
+                    }
+                }
+            ).setGroupHeight(DimenUtil.dp2Px(this@WalletDetailListActivity,30)).build()
+        )
     }
 }
