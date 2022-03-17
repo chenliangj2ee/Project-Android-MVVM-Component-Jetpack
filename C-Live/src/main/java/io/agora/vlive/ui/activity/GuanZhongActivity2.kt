@@ -999,22 +999,25 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
         for (i in Live.seats.indices) {
             if (Live.seats[i].user.userId == user!!.userId) {
                 Live.seats[i] = SeatStateMessageDataItem()
+
+                refreshSeat()
+                Live.sendSentMessage(this, object : ResultCallback<Any?> {
+                    override fun onSuccess(o: Any?) {
+                        this.log("发送成功。。。。")
+                        isLink = false
+
+                    }
+
+                    override fun onFailure(errorInfo: ErrorInfo) {
+
+                    }
+                })
+
                 break
             }
         }
 
-        refreshSeat()
-        Live.sendSentMessage(this, object : ResultCallback<Any?> {
-            override fun onSuccess(o: Any?) {
-                this.log("发送成功。。。。")
-                isLink = false
 
-            }
-
-            override fun onFailure(errorInfo: ErrorInfo) {
-
-            }
-        })
     }
 
     /**

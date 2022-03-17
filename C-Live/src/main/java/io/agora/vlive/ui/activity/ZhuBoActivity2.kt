@@ -1153,7 +1153,7 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
      */
     override fun stopLive() {
         this.log("下麦UserId:" + Live.seats[0].user.userId)
-        Live.seats[0] = SeatStateMessageDataItem()
+        Live.seats.clear()
         refreshSeat()
         var liveDuration = System.currentTimeMillis() - startTime
         log("本次直播时长：$liveDuration")
