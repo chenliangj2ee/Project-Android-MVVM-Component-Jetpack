@@ -273,3 +273,11 @@ fun <T> MutableLiveData<T>.obs(owner: LifecycleOwner, func: (t: T) -> Unit) = th
         this.observe(owner, Observer<T> { func(it) })
 }
 
+/**
+ * 观察者监听数据变化
+ */
+fun <T> MutableLiveData<T>.obsf(func: (t: T) -> Unit) = this.apply {
+    if (!this.hasObservers())
+        this.observeForever(func)
+}
+

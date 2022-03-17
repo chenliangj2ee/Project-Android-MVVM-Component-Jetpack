@@ -99,21 +99,23 @@ class PaymentConfirmActivity : MyBaseActivity<ActivityPaymentConfirmBinding, Ord
         payment_zfb.setOnCheckedChangeListener(this)
         payment_ye.setOnCheckedChangeListener(this)
         submit.click {
-            endPay = payNum.text.toString().toDouble()
-            if (endPay > 0 && payType == 0) {
-                if (account) {
-                    toast("余额不足请选择微信支付")
+            dialog("确认提交订单吗？").y {
+                endPay = payNum.text.toString().toDouble()
+                if (endPay > 0 && payType == 0) {
+                    if (account) {
+                        toast("余额不足请选择微信支付")
+                    } else {
+                        toast("请选择支付方式")
+                    }
                 } else {
-                    toast("请选择支付方式")
-                }
-            } else {
-                if (payAgain) {
-                    payAgain()
-                } else {
-                    createOrder()
-                }
+                    if (payAgain) {
+                        payAgain()
+                    } else {
+                        createOrder()
+                    }
 
-            }
+                }
+            }.show(this)
         }
 
     }

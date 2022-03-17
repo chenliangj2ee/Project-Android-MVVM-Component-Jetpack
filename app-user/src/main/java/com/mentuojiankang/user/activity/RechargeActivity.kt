@@ -88,23 +88,25 @@ class RechargeActivity : MyBaseActivity<ActivityRechargeBinding, OrderViewModel>
 
     private fun createOrder() {
         log("创建并确认订单")
-        if (params == null)
-            params = BeanParams()
-        beanCreateConfirmOrder = BeanCreateConfirmOrder()
-        beanCreateConfirmOrder.payAmount = rechargeprice
-        beanCreateConfirmOrder.payType = payType
-        initVM(OrderViewModel::class.java).createCourseConfirmOrderInfo(
-            productId, 400, beanCreateConfirmOrder, params
-        ).obs(this) {
-            it.y {
-                successorderid = it.orderId
-                if (successorderid.isNotEmpty())
-                    confirm()
+        dialog("确认充值吗？").y {
+            if (params == null)
+                params = BeanParams()
+            beanCreateConfirmOrder = BeanCreateConfirmOrder()
+            beanCreateConfirmOrder.payAmount = rechargeprice
+            beanCreateConfirmOrder.payType = payType
+            initVM(OrderViewModel::class.java).createCourseConfirmOrderInfo(
+                productId, 400, beanCreateConfirmOrder, params
+            ).obs(this) {
+                it.y {
+                    successorderid = it.orderId
+                    if (successorderid.isNotEmpty())
+                        confirm()
+                }
+                it.n {
+                    confirmFaile()
+                }
             }
-            it.n {
-                confirmFaile()
-            }
-        }
+        }.show(this)
     }
 
     /**
@@ -112,7 +114,7 @@ class RechargeActivity : MyBaseActivity<ActivityRechargeBinding, OrderViewModel>
      */
     private fun confirm() {
         log("选择支付方式")
-        var beanUser =  getBeanUser()
+        var beanUser = getBeanUser()
         if (recharge_wx.isChecked) {
             log("确认订单orderId：successorderid====" + successorderid + " beanUser?.backWxZfb" + beanUser?.backWxZfb + "======用户token" + beanUser?.token)
             WX_Pay(this).jumpWX(beanUser?.token, successorderid)
@@ -127,11 +129,11 @@ class RechargeActivity : MyBaseActivity<ActivityRechargeBinding, OrderViewModel>
     @Subscribe(code = BusCode.PAYMENT_RESULT)
     fun refreshList() {
         log("请求订单基础信息")
-       var dialog= loading("请稍后...")
-        postDelayed(3000){
+        var dialog = loading("请稍后...")
+        postDelayed(3000) {
             mViewModel.getorderinfo(successorderid).obs(this) {
                 it.y {
-                    log("支付状态："+it.orderStatus)
+                    log("支付状态：" + it.orderStatus)
                     dialog.dismiss()
                     if (it.orderStatus == 50 || it.orderStatus == 90) {
                         confirmSuccess()

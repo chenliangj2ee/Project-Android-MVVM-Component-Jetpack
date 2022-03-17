@@ -35,46 +35,35 @@ class ConsultSubDialog(service: BeanConsultService, bean: BeanConsult) :
     var bean = bean
     var selectTime: BeanTime? = null
     override fun initCreate() {
-
         with(mBinding) {
+            initDate()
             close.click { dismiss() }
+
+            /**
+             * 日期
+             */
             dateRecyclerView.disable()
             dates.addAll(initDate())
-            dateRecyclerView.bindData<BeanDate> {
-                with(it.binding as ItemConsultSubDateBinding) {
-                    this.itemDate = it
-                    root.click { _ ->
-                        dateRecyclerView.selected(it.itemPosition)
-                        mBinding.date = it
-                        selectDate = it
-                        selectTime = null
-                        time = null
-                        getService()
-
-                    }
-                }
-            }
+            dateRecyclerView.bindData<BeanDate> { bindWeekItem(it) }
             dateRecyclerView.addDatas(dates)
+            /**
+             * 时间
+             */
             timeRecyclerView.disable()
-            timeRecyclerView.pageSize=1000
-            timeRecyclerView.bindData<BeanTime> {
-                with(it.binding as ItemConsultSubTimeBinding) {
-                    data = it
-                    root.click { _ ->
-                        if (!it.boo && !it.isPassTime()) {
-                            timeRecyclerView.selected(it.itemPosition)
-                            time = it.startTime + "-" + it.endTime
-                            selectTime = it
-                        }
-
-                    }
-                }
-            }
+            timeRecyclerView.pageSize = 1000
+            timeRecyclerView.bindData<BeanTime> { bindTimeItem(it) }
             timeRecyclerView.layoutParams.height = (54 * 3).px2dip()
+
+            /**
+             * 默认为视频，日期选中当前
+             */
             isVideo = true
             selectDate = dates[0]
             mBinding.date = selectDate
 
+            /**
+             * 视频，语音，目前没作用
+             */
             if (service.consultType.contains("1") && service.consultType.contains("2")) {
                 mBinding.video.show(true)
                 mBinding.voice.show(true)
@@ -82,25 +71,62 @@ class ConsultSubDialog(service: BeanConsultService, bean: BeanConsult) :
                 mBinding.isVideo = true
             } else if (service.consultType.contains("2")) {
                 mBinding.isVideo = false
+            }else{
+
             }
 
-            getService()
         }
 
+        getService()
 
-        initDate()
+    }
+
+    /**
+     * 绑定日期
+     */
+    private fun bindWeekItem(it: BeanDate) {
+        with(it.binding as ItemConsultSubDateBinding) {
+            this.itemDate = it
+            root.click { _ ->
+                mBinding.dateRecyclerView.selected(it.itemPosition)
+                mBinding.date = it
+                selectDate = it
+                selectTime = null
+                mBinding.time = null
+                getService()
+
+            }
+        }
+    }
+
+    /**
+     * 绑定时间
+     */
+    private fun bindTimeItem(it: BeanTime) {
+        with(it.binding as ItemConsultSubTimeBinding) {
+            data = it
+            root.click { _ ->
+                if (!it.boo && !it.isPassTime()) {
+                    mBinding.timeRecyclerView.selected(it.itemPosition)
+                    mBinding.time = it.startTime + "-" + it.endTime
+                    selectTime = it
+                }
+            }
+        }
     }
 
     override fun initClick() {
 
-
+        /**
+         * 目前没用到
+         */
         mBinding.video.click {
             mBinding.isVideo = true
             getService()
         }
-
-
-
+        /**
+         * 目前没用到
+         */
         mBinding.voice.click {
             mBinding.isVideo = false
             getService()
@@ -116,9 +142,12 @@ class ConsultSubDialog(service: BeanConsultService, bean: BeanConsult) :
             payInfo.payprice = service.salePrice
             payInfo.paysectionCount = 0
             payInfo.productId = selectTime!!.serverId
-            payInfo.subTitle = "预约时间 "+selectDate.time.date("yyyy-MM-dd")+ " ${selectTime!!.startTime.substring(0,5)}-"+selectTime!!.endTime.subSequence(0,5)
-
-            log("dddd:${selectTime!!.toJson()}")
+            payInfo.subTitle = "预约时间 " + selectDate.time.date("yyyy-MM-dd") + " ${
+                selectTime!!.startTime.substring(
+                    0,
+                    5
+                )
+            }-" + selectTime!!.endTime.subSequence(0, 5)
 
             var params = BeanParams()
             params.shopId = bean.id
@@ -181,11 +210,32 @@ class ConsultSubDialog(service: BeanConsultService, bean: BeanConsult) :
                 service.id + "",
                 service.shopId
             ).obs(this@ConsultSubDialog) {
-                it.c { timeRecyclerView.addCache(it) }
-                it.y { timeRecyclerView.addDatas(it) }
+                it.c {
+                    timeRecyclerView.addCache(it)
+                    scrollToPosition(it)
+                }
+                it.y {
+                    timeRecyclerView.addDatas(it)
+                    scrollToPosition(it)
+                }
                 it.n { timeRecyclerView.clearData() }
             }
         }
+    }
+
+    /**
+     * 跳转到可选时间段
+     */
+    private fun scrollToPosition(list: List<BeanTime>) {
+        var index = 0;
+        for (item in list) {
+            if (!item.isPassTime() && !item.boo) {
+                break
+            } else {
+                index++
+            }
+        }
+        mBinding.timeRecyclerView.scrollToPosition(index)
     }
 
 }
