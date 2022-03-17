@@ -13,6 +13,7 @@ import com.mtjk.base.obs
 import com.mtjk.obj.ObjectProduct
 import com.mtjk.utils.click
 import com.mtjk.utils.goto
+import com.mtjk.utils.show
 import com.mtjk.view.MyWebView
 
 @MyClass(mToolbarTitle = "直播详情", mRefresh = true)
@@ -32,6 +33,12 @@ class LiveDetailActivity : MyBaseActivity<ActivityLiveDetailBinding, LiveViewMod
         }
     }
 
+    override fun refresh() {
+        loadData()
+        stopRefresh()
+
+    }
+
     override fun onResume() {
         super.onResume()
         loadData()
@@ -45,11 +52,7 @@ class LiveDetailActivity : MyBaseActivity<ActivityLiveDetailBinding, LiveViewMod
                     if (!it.detail.isNullOrEmpty()) {
                         webview.load(it.detail, MyWebView.Type.IMAGE)
                     }
-                    if (live.bought == 2) {
-                        subscribe.visibility = View.GONE
-                    } else {
-                        subscribe.click { clickSubscribe() }
-                    }
+
                 }
             }
         }

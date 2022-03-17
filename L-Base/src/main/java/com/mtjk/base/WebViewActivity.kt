@@ -108,10 +108,12 @@ class WebViewActivity : MyBaseActivity<BaseActivityWebviewBinding, DefaultViewMo
 
 
             if (imgurl.isNotEmpty()) {
+                mRefresh.setEnableRefresh(false)
                 webview.load(imgurl, MyWebView.Type.IMAGE)
             }
 
             if (content.isNotEmpty()) {
+                mRefresh.setEnableRefresh(false)
                 webview.load(content, MyWebView.Type.CONTENT)
             }
 

@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="data"
             type="com.mentuojiankang.user.bean.BeanLiveDetail" />
+
         <import type="android.view.View"></import>
 
     </data>
@@ -18,9 +20,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="80dp"
-            android:background="#fff">
+            android:layout_height="match_parent">
 
             <com.mtjk.view.MyWebView
                 android:id="@+id/webview"
@@ -33,10 +33,10 @@
             android:id="@+id/subscribe"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_gravity="bottom|center_horizontal"
             android:layout_marginHorizontal="38dp"
             android:layout_marginRight="38dp"
             android:layout_marginBottom="15dp"
-            android:layout_gravity="bottom|center_horizontal"
             android:background="@drawable/base_selector_button_dark"
             android:gravity="center"
             android:stateListAnimator="@null">
