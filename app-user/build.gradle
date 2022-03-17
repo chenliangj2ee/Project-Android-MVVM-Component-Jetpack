@@ -35,7 +35,7 @@ android {
         applicationId "com.mentuojiankang.user"
         minSdk 26
         targetSdk 26
-        versionCode 9
+        versionCode 10
         versionName "1.1.5"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
