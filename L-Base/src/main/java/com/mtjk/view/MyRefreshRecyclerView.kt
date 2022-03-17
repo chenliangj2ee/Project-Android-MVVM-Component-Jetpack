@@ -115,7 +115,7 @@ class MyRefreshRecyclerView : SmartRefreshLayout {
         myOrientation = typedArray.getInt(R.styleable.MyRefreshRecyclerView_my_orientation, 1)
         divideColor = typedArray.getColor(
             R.styleable.MyRefreshRecyclerView_my_divider_color,
-            Color.parseColor("#DDDDDD")
+            Color.parseColor("#E6F0F2")
         )
         dividerHeight =
             typedArray.getLayoutDimension(R.styleable.MyRefreshRecyclerView_my_divider_height, 0)

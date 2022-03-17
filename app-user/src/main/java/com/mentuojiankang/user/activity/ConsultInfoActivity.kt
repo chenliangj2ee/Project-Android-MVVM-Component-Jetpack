@@ -27,7 +27,7 @@ import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 import kotlinx.android.synthetic.main.activity_consult_info.*
 
 /**
- * \\tag==咨询详情
+ * tag==咨询详情
  * author:chenliang
  * date:2021/11/3
  */

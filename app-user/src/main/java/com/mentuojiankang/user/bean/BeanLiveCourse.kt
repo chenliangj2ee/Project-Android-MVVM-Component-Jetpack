@@ -15,5 +15,5 @@ class BeanLiveCourse : MyBaseBean() {
     var startedAt = ""
     var state = 0
     var status = 0
-    var courseNum=""
+    var courseNum="0"
 }

@@ -133,10 +133,10 @@
     <View
         android:id="@+id/view_bottom_line"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1px"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/split_lint_color" />
+        android:background="@color/app_background" />
 
 </LinearLayout>

@@ -44,7 +44,7 @@ class WalletItemDecoration(val mContext: Context?, val mGroupListener: OnGroupLi
         if (position == 0 || isGroupFirst(position)) {
             outRect.top = mGroupDividerHeight
         } else {
-            outRect.top = dp2Px(1)
+            outRect.top = dp2Px(0)
         }
     }
 
@@ -65,7 +65,7 @@ class WalletItemDecoration(val mContext: Context?, val mGroupListener: OnGroupLi
                 val baseLine = (top + bottom) / 2f - (mTextPaint!!.descent() + mTextPaint!!.ascent()) / 2f
                 drawGroupContent(canvas, getGroupName(childAdapterPosition), left, baseLine)
             } else {
-                val top = bottom - dp2Px(1)
+                val top = bottom - dp2Px(0)
                 canvas.drawRect(left.toFloat(), top.toFloat(), (childView.width - right).toFloat(), bottom.toFloat(), mDividerPaint!!)
             }
         }
