@@ -2,7 +2,7 @@ package com.fcyd.expert.visitor
 
 import android.graphics.Color
 import android.graphics.Typeface
-import android.text.SpannableV
+import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
