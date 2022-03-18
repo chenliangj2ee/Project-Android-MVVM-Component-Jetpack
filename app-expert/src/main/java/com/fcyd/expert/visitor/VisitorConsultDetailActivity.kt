@@ -53,6 +53,9 @@ class VisitorConsultDetailActivity : MyBaseActivity<ActivityVisitorConsultEditBi
     }
 
     private fun loadData() {
+        if(consult?.visitorCaseId.isNullOrEmpty()) {
+            return
+        }
         mViewModel.getVisitorConsultDetail(consult.visitorCaseId).obs(this@VisitorConsultDetailActivity) {
             it.y {
                 consultDetail = it
