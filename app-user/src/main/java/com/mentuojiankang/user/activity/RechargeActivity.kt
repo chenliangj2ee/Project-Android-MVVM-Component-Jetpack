@@ -131,20 +131,21 @@ class RechargeActivity : MyBaseActivity<ActivityRechargeBinding, OrderViewModel>
         log("请求订单基础信息")
         var dialog = loading("请稍后...")
         postDelayed(3000) {
-            mViewModel.getorderinfo(successorderid).obs(this) {
-                it.y {
-                    log("支付状态：" + it.orderStatus)
-                    dialog.dismiss()
-                    if (it.orderStatus == 50 || it.orderStatus == 90) {
-                        confirmSuccess()
-                    } else {
-                        confirmFaile()
-                    }
-                }
-                it.n {
-                    dialog.dismiss()
-                }
-            }
+            confirmSuccess()
+//            mViewModel.getorderinfo(successorderid).obs(this) {
+//                it.y {
+//                    log("支付状态：" + it.orderStatus)
+//                    dialog.dismiss()
+//                    if (it.orderStatus == 50) {
+//                        confirmSuccess()
+//                    } else {
+//                        confirmFaile()
+//                    }
+//                }
+//                it.n {
+//                    dialog.dismiss()
+//                }
+//            }
         }
 
     }
@@ -193,6 +194,7 @@ class RechargeActivity : MyBaseActivity<ActivityRechargeBinding, OrderViewModel>
     /**
      * 充值失败弹窗
      */
+    @Subscribe(code = BusCode.PAYMENT_FAILURE)
     fun confirmFaile() {
         postDelayed(1000, {
             var dialog = PaymentSuccessDialog()

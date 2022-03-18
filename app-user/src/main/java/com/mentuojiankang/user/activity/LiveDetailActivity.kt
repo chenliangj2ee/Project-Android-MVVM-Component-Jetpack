@@ -52,8 +52,14 @@ class LiveDetailActivity : MyBaseActivity<ActivityLiveDetailBinding, LiveViewMod
                     if (!it.detail.isNullOrEmpty()) {
                         webview.load(it.detail, MyWebView.Type.IMAGE)
                     }
-
+                    if (live.bought == 1 || live.bought == 2) {
+                        subscribe.visibility = View.GONE
+                    } else {
+                        subscribe.click { clickSubscribe() }
+                    }
                 }
+
+
             }
         }
     }

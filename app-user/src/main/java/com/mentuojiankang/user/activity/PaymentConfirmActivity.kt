@@ -256,7 +256,8 @@ class PaymentConfirmActivity : MyBaseActivity<ActivityPaymentConfirmBinding, Ord
     /**
      * 支付确认失败弹框,留在当前页
      */
-    private fun confirmFaile() {
+    @Subscribe(code = BusCode.PAYMENT_FAILURE)
+    fun confirmFaile() {
         var dialog = PaymentSuccessDialog()
         dialog.confire(false)
         dialog.show(this)
@@ -272,15 +273,25 @@ class PaymentConfirmActivity : MyBaseActivity<ActivityPaymentConfirmBinding, Ord
     @Subscribe(code = BusCode.PAYMENT_RESULT)
     fun confirmOrderState() {
         log("请求订单基础信息")
-        mViewModel.getorderinfo(successorderid).obs(this) {
-            it.y {
-                if (it.orderStatus == 50 || it.orderStatus == 90) {
-                    confirmSuccess()
-                } else {
-                    confirmFaile()
-                }
-            }
+        var dialog = loading("请稍后...")
+        postDelayed(3000) {
 
+            confirmSuccess()
+
+//            mViewModel.getorderinfo(successorderid).obs(this) {
+//                it.y {
+//                    toast("支付状态" + it.orderStatus)
+//                    if (it.orderStatus == 50) {
+//                        confirmSuccess()
+//                    } else {
+//                        confirmFaile()
+//                    }
+//                    dialog.dismiss()
+//                }
+//                it.n {
+//                    dialog.dismiss()
+//                }
+//            }
         }
     }
 
