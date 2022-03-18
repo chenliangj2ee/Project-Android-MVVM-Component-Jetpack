@@ -6,7 +6,6 @@ import com.mentuojiankang.user.databinding.FragmentMineBinding
 import com.mentuojiankang.user.vm.OrderViewModel
 import com.mtjk.base.MyBaseFragment
 import com.mtjk.base.obs
-import com.mtjk.bean.BeanUser
 import com.mtjk.utils.BusCode
 import com.mtjk.utils.getBeanUser
 import com.mtjk.utils.goto
@@ -52,9 +51,6 @@ class MineFragment : MyBaseFragment<FragmentMineBinding, AccountViewModel>() {
             this.myHelp.goto(HelpActivity::class.java)
             this.myVipcard.goto(VPICardActivity::class.java, "enterway", false)
             this.mySetting.goto(SettingActivity::class.java)
-
-            //TODO
-            this.myTest.goto(ConsultInfoEditActivity::class.java)
         }
     }
 

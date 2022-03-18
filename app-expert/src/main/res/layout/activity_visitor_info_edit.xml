@@ -109,7 +109,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:background="@drawable/base_selector_button_green_63" />
+            android:background="@drawable/base_selector_button_dark_46" />
     </RelativeLayout>
 
 </layout>

@@ -34,7 +34,7 @@
             android:layout_marginTop="300dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:background="@drawable/base_selector_button_green_63" />
+            android:background="@drawable/base_selector_button_dark_34" />
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"

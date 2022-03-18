@@ -81,7 +81,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="center"
                 android:text="编辑"
-                android:background="@drawable/base_selector_button_green_63" />
+                android:background="@drawable/base_selector_button_dark_46" />
         </RelativeLayout>
 
         <com.google.android.material.tabs.TabLayout

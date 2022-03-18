@@ -8,7 +8,7 @@ import com.mtjk.base.MyBaseActivity
 import com.mtjk.utils.click
 import com.mtjk.utils.goto
 
-@MyClass(mToolbarTitle = "")
+@MyClass(mToolbarTitle = " ")
 class PayConsultSuccessActivity : MyBaseActivity<ActivityPayConsultSuccessBinding, ConsultViewModel>() {
 
     @MyField
@@ -21,5 +21,11 @@ class PayConsultSuccessActivity : MyBaseActivity<ActivityPayConsultSuccessBindin
     private fun toConsultEdit() {
         goto(ConsultInfoEditActivity::class.java, "orderItemId", orderItemId)
         finish()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        goto(MyOrderActivity::class.java)
     }
 }

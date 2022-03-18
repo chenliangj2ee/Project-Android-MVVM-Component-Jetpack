@@ -351,13 +351,6 @@
                 app:my_icon="@drawable/icon_mine_setting"
                 app:my_title="设置" />
 
-            <com.mtjk.view.ItemView
-                android:id="@+id/my_test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:my_icon="@drawable/icon_mine_setting"
-                app:my_title="测试咨询编辑" />
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
