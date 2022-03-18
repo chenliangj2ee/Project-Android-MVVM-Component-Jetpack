@@ -17,6 +17,7 @@ import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.obs
 import com.mtjk.utils.body
 import com.mtjk.utils.click
+import com.mtjk.utils.show
 import com.mtjk.utils.toast
 import kotlinx.android.synthetic.main.activity_visitor_consult_edit.*
 
@@ -38,9 +39,16 @@ class VisitorConsultDetailActivity : MyBaseActivity<ActivityVisitorConsultEditBi
 
     private fun initView() {
         with(mBinding) {
-            time.text = consult.consultStartTimeDesc()
+            var timeDesc = consult.consultStartTimeDesc()
+            if(!timeDesc.isNullOrEmpty())
+                time.text = consult.consultStartTimeDesc()
+            else
+                time.show(false)
             title.text = consult.title
-            title.setCompoundDrawables(if(consult.consultTypeDrawable() > 0) resources.getDrawable(consult.consultTypeDrawable()) else null, null, null, null)
+            if(consult.consultTypeDrawable() > 0)
+                type.setImageResource(consult.consultTypeDrawable())
+            else
+                type.show(false)
             setQuestionText(question_type, "问题类型","")
             setQuestionText(question_desc, "问题描述","")
             setQuestionText(question_effect,"期望效果","")
