@@ -411,8 +411,8 @@ interface ApiService {
         @Query("orderId") id: String
     ): Data<BeanVisitorConsultDetail>
 
-    @MyRetrofitGo(mTag = "保存咨询详情", mLoading = false, mFailToast = false, mCache = false)
+    @MyRetrofitGo(mTag = "保存咨询详情", mLoading = true, mFailToast = true, mCache = false)
     @POST("/api-app/v1/app/user/visitor/case/save")
-    fun saveVisitorConsultDetail(@Body body: Any): Data<Boolean>
+    fun saveVisitorConsultDetail(@Body body: Any): Data<Any>
 
 }

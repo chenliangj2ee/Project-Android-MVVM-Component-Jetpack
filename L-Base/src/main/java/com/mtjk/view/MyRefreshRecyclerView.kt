@@ -261,6 +261,7 @@ class MyRefreshRecyclerView : SmartRefreshLayout {
         enableLoadMore = true
         return this
     }
+
     fun setDisableLoadMore(): MyRefreshRecyclerView {
         setEnableLoadMore(false)
         enableLoadMore = false
@@ -270,6 +271,10 @@ class MyRefreshRecyclerView : SmartRefreshLayout {
     fun refresh(): MyRefreshRecyclerView {
         autoRefresh()
         return this
+    }
+
+    fun resetPageIndex() {
+        pageIndex = defaultPageIndex
     }
 
     private fun initLoadListener() {

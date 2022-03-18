@@ -8,7 +8,6 @@ import com.mtjk.base.MyBaseActivity
 import com.mtjk.utils.goto
 
 /**
- * tag==咨询信息
  * author:chenliang
  * date:2021/11/3
  */

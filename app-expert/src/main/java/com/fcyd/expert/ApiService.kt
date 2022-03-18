@@ -230,7 +230,7 @@ interface ApiService {
     @GET("/api-app/v1/app/expert/visitor/infoAndCase/getOne")
     fun getVisitorInfo(@Query("orderId") orderId: String): Data<BeanOrder.VisitorUser>
 
-    @MyRetrofitGo(mTag = "来访者列表", mLoading = true, mFailToast = false, mCache = true)
+    @MyRetrofitGo(mTag = "来访者列表", mLoading = false, mFailToast = false, mCache = true)
     @GET("/api-app/v1/app/expert/visitor/page")
     fun getVisitorList(
         @Query(value = "username") username: String,

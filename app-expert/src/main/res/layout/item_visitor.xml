@@ -1,97 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
-            name = "data"
-            type = "com.fcyd.expert.bean.BeanVisitor" />
+            name="data"
+            type="com.fcyd.expert.bean.BeanVisitor" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.mtjk.view.MyImageView
-            app:load="@{data.avatar}"
-            app:my_default="@drawable/default_header"
             android:id="@+id/head_image"
+            load="@{data.avatar}"
+            radius="@{30}"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
-            app:radius="30dp"
-            app:image_radius="30dp" />
+            android:layout_marginTop="10dp"
+            app:my_default="@drawable/default_header" />
+
         <TextView
             android:id="@+id/nick_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/head_image"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/head_image"
             android:ellipsize="end"
             android:lines="1"
             android:text="@{data.nickname}"
             android:textColor="#111235"
             android:textSize="17dp" />
+
         <TextView
             android:id="@+id/person_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/nick_name"
             android:layout_below="@id/nick_name"
+            android:layout_alignLeft="@id/nick_name"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:lines="1"
             android:text='@{data.sexDesc() + "  |  " + data.age + "岁"}'
             android:textColor="#515357"
             android:textSize="14dp" />
+
         <TextView
             android:id="@+id/consult_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/nick_name"
             android:layout_below="@id/person_info"
+            android:layout_alignLeft="@id/nick_name"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:lines="1"
             android:text='@{"咨询量 " + data.consultNumber}'
             android:textColor="#515357"
             android:textSize="14dp" />
+
         <TextView
             android:id="@+id/last_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/consult_count"
-            android:paddingVertical="10dp"
             android:layout_alignLeft="@id/nick_name"
+            android:paddingVertical="10dp"
             android:text='@{"上次咨询：" + data.lastConsultTimeDesc()}'
-            android:textSize="14dp"
-            android:textColor="#A9ADB2" />
+            android:textColor="#A9ADB2"
+            android:textSize="14dp" />
+
         <com.mtjk.view.MyImageView
             android:id="@+id/arrow"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
             android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
             android:src="@drawable/visitor_list_arrow" />
+
         <TextView
             android:id="@+id/consult_consume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/consult_count"
-            android:layout_toLeftOf="@id/arrow"
             android:layout_marginRight="25dp"
+            android:layout_toLeftOf="@id/arrow"
             android:ellipsize="end"
             android:lines="1"
             android:text='@{"累计消费 " + data.consultNumber + "元"}'
             android:textColor="#515357"
             android:textSize="14dp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_below="@id/last_time"
             android:layout_marginHorizontal="10dp"
-            android:background="#E6F0F2"
-            android:layout_below="@id/last_time" />
+            android:background="#E6F0F2" />
     </RelativeLayout>
 </layout>

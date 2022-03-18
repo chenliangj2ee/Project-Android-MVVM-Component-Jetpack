@@ -12,6 +12,7 @@ import com.mtjk.utils.*
 import com.mtjk.view.DialogPicker
 import kotlinx.android.synthetic.main.activity_consult_info_edit.*
 import kotlinx.android.synthetic.main.activity_consult_info_edit.age
+import kotlinx.android.synthetic.main.item_wallet_detail.view.*
 import java.util.ArrayList
 
 /**
@@ -19,7 +20,7 @@ import java.util.ArrayList
  * author:chenliang
  * date:2021/11/3
  */
-@MyClass(mToolbarTitle = "咨询信息",mScroll = true)
+@MyClass(mToolbarTitle = "咨询信息", mScroll = true)
 class ConsultInfoEditActivity :
     MyBaseActivity<ActivityConsultInfoEditBinding, ConsultViewModel>() {
 
@@ -31,9 +32,11 @@ class ConsultInfoEditActivity :
     private var ageValue = 20
 
     //当前问题类型选项
-    private val mTypes = intArrayOf(ObjectQuestionType.TYPE_LOVE, ObjectQuestionType.TYPE_MARRY,
+    private val mTypes = intArrayOf(
+        ObjectQuestionType.TYPE_LOVE, ObjectQuestionType.TYPE_MARRY,
         ObjectQuestionType.TYPE_CHILD, ObjectQuestionType.TYPE_SOCIETY, ObjectQuestionType.TYPE_JOB,
-        ObjectQuestionType.TYPE_GROW, ObjectQuestionType.TYPE_OTHERS)
+        ObjectQuestionType.TYPE_GROW, ObjectQuestionType.TYPE_OTHERS
+    )
 
     override fun initCreate() {
         initView()
@@ -52,6 +55,7 @@ class ConsultInfoEditActivity :
                 data = bean
                 status.checked { isChecked ->
                     bean?.status = isChecked
+                    enable()
                 }
             }
         }
@@ -64,7 +68,7 @@ class ConsultInfoEditActivity :
         for (item in mTypes) {
             var bean = BeanConsultType()
             bean.type = item
-            bean.status = if(set == null || !set?.contains(item)) false else true
+            bean.status = if (set == null || !set?.contains(item)) false else true
             list.add(bean)
         }
         typeSelector.addDatas(list)
@@ -82,12 +86,12 @@ class ConsultInfoEditActivity :
         mViewModel.getVisitorConsultDetail(orderItemId).obs(this@ConsultInfoEditActivity) {
             it.y {
                 with(mBinding) {
-                    if(!it.name.isNullOrEmpty()) name.setValue(it.name)
-                    if(it.age != null) age.setValue(it.age.toString())
-                    if(it.sex != null) sex.setValue(it.sexString())
+                    if (!it.name.isNullOrEmpty()) name.setValue(it.name)
+                    if (it.age != null) age.setValue(it.age.toString())
+                    if (it.sex != null) sex.setValue(it.sexString())
                     updateTypeStatus(it.questionType)
-                    desc_edit.setText(it.description)
-                    effect_edit.setText(it.helperResult)
+                    desc_edit.edit.setText(it.description)
+                    effect_edit.edit.setText(it.helperResult)
                 }
             }
         }
@@ -96,8 +100,8 @@ class ConsultInfoEditActivity :
     private fun getTypeResult(): IntArray {
         var result = arrayListOf<Int>()
         var list = mBinding.typeSelector.getData<BeanConsultType>()
-        for(item in list) {
-            if(item?.status) {
+        for (item in list) {
+            if (item?.status) {
                 result.add(item.type)
             }
         }
@@ -105,11 +109,10 @@ class ConsultInfoEditActivity :
     }
 
     override fun initClick() {
+        name.editText.changed { enable() }
         age.click { showAgeSelector() }
         sex.click { showSexSelector() }
         commit.click { commitClick() }
-        desc_edit.changed { num1.text = "${desc_edit.text.toString().length}/200" }
-        effect_edit.changed { num2.text = "${effect_edit.text.toString().length}/200"}
     }
 
     private fun showSexSelector() {
@@ -123,6 +126,7 @@ class ConsultInfoEditActivity :
                 1 -> sexValue = 2
             }
             sex.setValue(items[it])
+            enable()
         }
         dialog.show(this)
     }
@@ -138,26 +142,35 @@ class ConsultInfoEditActivity :
         dialog.selected {
             age.setValue(items[it])
             ageValue = items[it].toInt()
+            enable()
         }
         dialog.show(this)
     }
 
     private fun commitClick() {
         mViewModel.saveVisitorConsultDetail(
-            with(mBinding){
+            with(mBinding) {
                 mViewModel.body(
                     "name", name.editText.text.toString(),
                     "age", age.editText.text.toString().toInt(),
-                    "sex", (if(sex.editText.text.equals("女")) 2 else 1),
+                    "sex", (if (sex.editText.text.equals("女")) 2 else 1),
                     "questionType", getTypeResult(),
-                    "description", desc_edit.text.toString(),
-                    "helperResult",effect_edit.text.toString(),
+                    "description", desc_edit.edit.text.toString(),
+                    "wishResult", effect_edit.edit.text.toString(),
                     "orderItemId", orderItemId
                 )
             }
         ).obs(this@ConsultInfoEditActivity) {
-            it.y { toast("保存成功") }
+            it.y {
+                toast("保存成功")
+                finish()
+                goto(MyOrderActivity::class.java)
+            }
         }
+    }
+
+    private fun enable(){
+        commit.isEnabled=name.editText.text.toString().isNotEmpty()&&age.editText.text.toString().isNotEmpty()&&sex.editText.text.toString().isNotEmpty()&& getTypeResult().isNotEmpty()
     }
 
 }

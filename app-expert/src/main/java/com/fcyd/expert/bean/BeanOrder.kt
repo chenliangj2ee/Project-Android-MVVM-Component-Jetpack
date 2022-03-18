@@ -3,6 +3,7 @@ package com.fcyd.expert.bean
 import com.mtjk.base.MyBaseBean
 import com.mtjk.obj.ObjectOrder
 import com.mtjk.obj.ObjectProduct
+import com.mtjk.obj.ObjectQuestionType
 import com.mtjk.utils.dateT
 
 /**
@@ -29,13 +30,18 @@ class BeanOrder : MyBaseBean() {
         var description=""
         var name=""
         var orderItemId=""
-        var questionType=ArrayList<String>()
+        var questionType=ArrayList<Int>()
         var sex=0
         var userId=""
         var wishResult=""
         fun questionTypeDes():String{
-            questionType?:return ""
-           return  questionType.joinToString { "," }
+            var result= arrayListOf<String>()
+           if(questionType==null||questionType.isEmpty())
+               return ""
+            questionType.forEach {
+                result.add(ObjectQuestionType.getTypeString(it))
+            }
+           return  result.joinToString(",")
         }
     }
 
