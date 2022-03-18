@@ -29,7 +29,6 @@ class VisitorListActivity : MyBaseActivity<ActivityVisitorListBinding, VisitorVi
         with(mBinding) {
             mViewModel.getVisitorList(userName!!, refresh.pageIndex, refresh.pageSize)
                 .obs(this@VisitorListActivity) {
-                    refresh.clearData()
                     it.c { refresh.addCache(it.records) }
                     it.y { refresh.addDatas(it.records) }
                 }
