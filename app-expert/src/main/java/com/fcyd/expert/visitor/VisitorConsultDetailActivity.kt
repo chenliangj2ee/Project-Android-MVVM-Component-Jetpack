@@ -16,7 +16,6 @@ import com.mtjk.annotation.MyField
 import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.obs
 import com.mtjk.utils.body
-import com.mtjk.utils.changed
 import com.mtjk.utils.click
 import com.mtjk.utils.toast
 import kotlinx.android.synthetic.main.activity_visitor_consult_edit.*
@@ -49,10 +48,6 @@ class VisitorConsultDetailActivity : MyBaseActivity<ActivityVisitorConsultEditBi
             setEditTitle(method_title, "辅助方法", "(选填)")
             setEditTitle(effect_title, "辅助效果", "(选填)")
             setEditTitle(summarize_title, "总结", "(选填)")
-            main_edit.changed { main_count.text = "${main_edit.text.toString().length}" }
-            method_edit.changed { method_count.text = "${method_edit.text.toString().length}" }
-            effect_edit.changed { effect_count.text = "${effect_edit.text.toString().length}" }
-            summarize_edit.changed { summarize_count.text = "${summarize_edit.text.toString().length}" }
             save.click { clickSave() }
         }
     }
@@ -109,10 +104,10 @@ class VisitorConsultDetailActivity : MyBaseActivity<ActivityVisitorConsultEditBi
     private fun clickSave() {
         var body = mViewModel.body(
             "id", consult.visitorCaseId,
-            "mainQuestion", main_edit.text.toString(),
-            "helperMethod", method_edit.text.toString(),
-            "helperResult", effect_edit.text.toString(),
-            "summary", summarize_edit.text.toString()
+            "mainQuestion", main_edit.getText(),
+            "helperMethod", method_edit.getText(),
+            "helperResult", effect_edit.getText(),
+            "summary", summarize_edit.getText()
         )
         mViewModel.saveVisitorConsult(body).obs(this@VisitorConsultDetailActivity) {
             it.y { toast("已保存编辑信息") }

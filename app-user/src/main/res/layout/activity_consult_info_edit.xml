@@ -118,7 +118,6 @@
                     app:my_hint="请简单描述您需要咨询的问题"
                     app:my_max_length="200" />
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

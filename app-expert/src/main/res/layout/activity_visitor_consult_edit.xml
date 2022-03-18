@@ -23,12 +23,12 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:paddingHorizontal="15dp"
-                android:paddingTop="20dp"
                 android:orientation="vertical" >
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:text="@{data.consultTimeDesc()}"
                     android:textSize="14dp"
                     android:textColor="#515357" />
@@ -79,39 +79,13 @@
                     android:text="主诉问题(选填)"
                     android:textSize="16dp"
                     android:textColor="#A9ADB2" />
-                <FrameLayout
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/main_edit"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp" >
-                    <EditText
-                        android:id="@+id/main_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:paddingHorizontal="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="30dp"
-                        android:inputType="textMultiLine"
-                        android:scrollbars="vertical"
-                        android:hint="可以描述一下主诉问题"
-                        android:gravity="top|left"
-                        android:background="@drawable/base_selector_button_white_border_1"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="/200"
-                        android:textColor="#A9ADB2"
-                        android:layout_gravity="bottom|right" />
-                    <TextView
-                        android:id="@+id/main_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="10dp"
-                        android:layout_marginRight="40dp"
-                        android:text="0"
-                        android:textColor="#1F2326"
-                        android:layout_gravity="bottom|right" />
-                </FrameLayout>
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    app:my_hint="可以描述一下主诉问题"
+                    app:my_max_length="200" />
 
                 <TextView
                     android:id="@+id/method_title"
@@ -121,39 +95,13 @@
                     android:text="辅助方法(选填)"
                     android:textSize="16dp"
                     android:textColor="#A9ADB2" />
-                <FrameLayout
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/method_edit"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp" >
-                    <EditText
-                        android:id="@+id/method_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:paddingHorizontal="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="30dp"
-                        android:inputType="textMultiLine"
-                        android:scrollbars="vertical"
-                        android:hint="可以描述一下辅助方法"
-                        android:gravity="top|left"
-                        android:background="@drawable/base_selector_button_white_border_1"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="/200"
-                        android:textColor="#A9ADB2"
-                        android:layout_gravity="bottom|right" />
-                    <TextView
-                        android:id="@+id/method_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="10dp"
-                        android:layout_marginRight="40dp"
-                        android:text="0"
-                        android:textColor="#1F2326"
-                        android:layout_gravity="bottom|right" />
-                </FrameLayout>
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    app:my_hint="可以描述一下辅助方法"
+                    app:my_max_length="200" />
 
                 <TextView
                     android:id="@+id/effect_title"
@@ -163,39 +111,13 @@
                     android:text="辅助效果(选填)"
                     android:textSize="16dp"
                     android:textColor="#A9ADB2" />
-                <FrameLayout
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/effect_edit"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp" >
-                    <EditText
-                        android:id="@+id/effect_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:paddingHorizontal="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="30dp"
-                        android:inputType="textMultiLine"
-                        android:scrollbars="vertical"
-                        android:hint="可以描述一下辅助效果"
-                        android:gravity="top|left"
-                        android:background="@drawable/base_selector_button_white_border_1"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="/200"
-                        android:textColor="#A9ADB2"
-                        android:layout_gravity="bottom|right" />
-                    <TextView
-                        android:id="@+id/effect_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="10dp"
-                        android:layout_marginRight="40dp"
-                        android:text="0"
-                        android:textColor="#1F2326"
-                        android:layout_gravity="bottom|right" />
-                </FrameLayout>
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    app:my_hint="可以描述一下辅助效果"
+                    app:my_max_length="200" />
 
                 <TextView
                     android:id="@+id/summarize_title"
@@ -205,39 +127,13 @@
                     android:text="总结(选填)"
                     android:textSize="16dp"
                     android:textColor="#A9ADB2" />
-                <FrameLayout
+                <com.mtjk.view.MyEditArea
+                    android:id="@+id/summarize_edit"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp" >
-                    <EditText
-                        android:id="@+id/summarize_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:paddingHorizontal="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="30dp"
-                        android:inputType="textMultiLine"
-                        android:scrollbars="vertical"
-                        android:hint="可以描述一下总结"
-                        android:gravity="top|left"
-                        android:background="@drawable/base_selector_button_white_border_1"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="/200"
-                        android:textColor="#A9ADB2"
-                        android:layout_gravity="bottom|right" />
-                    <TextView
-                        android:id="@+id/summarize_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="10dp"
-                        android:layout_marginRight="40dp"
-                        android:text="0"
-                        android:textColor="#1F2326"
-                        android:layout_gravity="bottom|right" />
-                </FrameLayout>
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    app:my_hint="可以描述一下总结"
+                    app:my_max_length="200" />
             </LinearLayout>
             <TextView
                 android:id="@+id/save"
