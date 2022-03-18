@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="data"
-            type="com.fcyd.expert.bean.BeanVisitorConsultDetail" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -26,21 +23,32 @@
                 android:orientation="vertical" >
                 <TextView
                     android:id="@+id/time"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@{data.consultTimeDesc()}"
+                    android:layout_marginTop="15dp"
                     android:textSize="14dp"
                     android:textColor="#515357" />
-                <TextView
-                    android:id="@+id/title"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
-                    android:drawablePadding="10dp"
-                    android:textColor="#515357" />
+                    android:orientation="horizontal" >
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/type"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_gravity="center_vertical"/>
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:textColor="#515357" />
+                </LinearLayout>
                 <TextView
                     android:id="@+id/question_type"
                     android:layout_width="match_parent"

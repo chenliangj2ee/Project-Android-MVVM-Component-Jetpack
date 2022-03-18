@@ -18,7 +18,6 @@ class VisitorConsultListFragment : MyBaseFragment<FragmentVisitorConsultListBind
 
     override fun initOnCreateView() {
         bindView()
-        loadData()
     }
 
     private fun bindView() {
@@ -28,10 +27,12 @@ class VisitorConsultListFragment : MyBaseFragment<FragmentVisitorConsultListBind
                 title.setCompoundDrawables(if(bean.consultTypeDrawable() > 0) resources.getDrawable(bean.consultTypeDrawable()) else null, null, null, null)
                 root.click { toConsultDetail(bean) }
             }
+        }.loadData {
+            loadList()
         }
     }
 
-    private fun loadData() {
+    private fun loadList() {
         with(mBinding) {
             mViewModel.getVisitorConsult(visitor.id, refresh.pageIndex, refresh.pageSize).obs(this@VisitorConsultListFragment) {
                 it.c { refresh.addCache(it.records) }
