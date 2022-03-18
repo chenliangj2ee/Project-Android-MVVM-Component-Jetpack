@@ -258,19 +258,16 @@ interface ApiService {
     @GET("/api-app/v1/app/expert/visitor/case/getOne")
     fun getVisitorConsultDetail( @Query(value = "visitorCaseId") visitorCaseId: String): Data<BeanVisitorConsultDetail>
 
-    //TODO
     @MyRetrofitGo(mTag = "保存单个咨询信息", mLoading = false, mFailToast = false, mCache = true)
-    @POST("/api-app/v1/app/expert/visitor/xxx")
-    fun saveVisitorConsult(@Body body: Any): Data<Boolean>
+    @POST("/api-app/v1/app/expert/visitor/case/save")
+    fun saveVisitorConsult(@Body body: Any): Data<BeanVisitorConsultDetail>
 
-    //TODO 获取来访者信息
     @MyRetrofitGo(mTag = "获取来访者信息", mLoading = false, mFailToast = false, mCache = true)
-    @GET("/api-app/v1/app/expert/z")
-    fun getVisitorDetail(@Body body: Any): Data<Boolean>
+    @GET("/api-app/v1/app/expert/visitor/info/getOne")
+    fun getVisitorDetail(@Query(value = "userId") userId: String): Data<BeanVisitorInfo>
 
-    //TODO 编辑来访者信息
     @MyRetrofitGo(mTag = "保存来访者备注信息", mLoading = false, mFailToast = false, mCache = true)
-    @POST("/api-app/v1/app/expert/zz")
-    fun saveVisitorDetail(@Body body: Any): Data<Boolean>
+    @POST("/api-app/v1/app/expert/visitor/info/save")
+    fun saveVisitorDetail(@Body body: Any): Data<BeanVisitorInfo>
 
 }

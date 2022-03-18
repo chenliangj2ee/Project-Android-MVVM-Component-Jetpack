@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="com.fcyd.expert.bean.BeanVisitorInfo" />
+            type="com.fcyd.expert.bean.BeanVisitor" />
     </data>
 
     <RelativeLayout
@@ -33,7 +33,7 @@
                 android:layout_toRightOf="@id/avatar"
                 android:layout_alignTop="@id/avatar"
                 android:layout_marginLeft="10dp"
-                android:text="张三李四"
+                android:text="@{data.nickname}"
                 android:textColor="#111235"
                 android:textSize="17dp" />
             <TextView
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/nick_name"
                 android:layout_alignBottom="@id/avatar"
-                android:text='@{data.sex + " ｜ " + data.age + "岁"}'
+                android:text='@{data.sexDesc() + " ｜ " + data.age + "岁"}'
                 android:textColor="#515357"
                 android:textSize="14dp" />
         </RelativeLayout>
@@ -64,40 +64,14 @@
                 android:text="备注描述"
                 android:textColor="#1F2326"
                 android:textSize="16dp" />
-            <FrameLayout
+            <com.mtjk.view.MyEditArea
+                android:id="@+id/remark_edit"
                 android:layout_width="match_parent"
-                android:layout_height="120dp">
-                <EditText
-                    android:id="@+id/remark_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:paddingHorizontal="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="30dp"
-                    android:maxLength="100"
-                    android:inputType="textMultiLine"
-                    android:scrollbars="vertical"
-                    android:hint="可以添加备注信息"
-                    android:gravity="top|left"
-                    android:background="@drawable/base_selector_button_white_border_1"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="/100"
-                    android:textColor="#A9ADB2"
-                    android:layout_gravity="bottom|right" />
-                <TextView
-                    android:id="@+id/remark_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    android:layout_marginRight="40dp"
-                    android:text="0"
-                    android:textColor="#1F2326"
-                    android:layout_gravity="bottom|right" />
-            </FrameLayout>
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                app:my_hint="可以添加备注信息"
+                app:my_max_length="100" />
         </LinearLayout>
         <TextView
             android:id="@+id/save"

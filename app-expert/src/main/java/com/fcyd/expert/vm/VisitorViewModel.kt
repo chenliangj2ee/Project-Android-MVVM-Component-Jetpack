@@ -16,6 +16,8 @@ class VisitorViewModel : MyBaseViewModel() {
 
     fun saveVisitorConsult(body: HashMap<String, Any>) = go { API.saveVisitorConsult(body) }
 
-    fun editVisitorInfo(id: String) = go { API.saveVisitorDetail(body("id", id)) }
+    fun getVisitorDetail(userId: String) = go { API.getVisitorDetail(userId)}
+
+    fun saveVisitorDetail(body: HashMap<String, Any>) = go { API.saveVisitorDetail(body) }
 
 }
