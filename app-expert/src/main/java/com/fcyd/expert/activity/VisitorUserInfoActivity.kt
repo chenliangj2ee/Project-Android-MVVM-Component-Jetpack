@@ -13,7 +13,7 @@ import com.mtjk.base.obs
  * author:chenliang
  * date:2021/11/3
  */
-@MyClass(mToolbarTitle = "来访者信息", mRefresh = true)
+@MyClass(mToolbarTitle = "来访者信息", mRefresh = true,mScroll = true)
 class VisitorUserInfoActivity : MyBaseActivity<ActivityVisitorUserInfoBinding, OrderViewModel>() {
     @MyField
     lateinit var order: BeanOrder

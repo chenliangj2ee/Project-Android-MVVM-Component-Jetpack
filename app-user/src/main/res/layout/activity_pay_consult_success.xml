@@ -4,44 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingDefaultResource">
 
-    <data>
-    </data>
+    <data></data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.mtjk.view.MyImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
-            android:src="@drawable/payment_consult_success"
-            android:layout_gravity="center_horizontal" />
+            android:src="@drawable/payment_consult_success" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="160dp"
+            android:gravity="center"
             android:text="支付成功"
             android:textColor="#1F2326"
-            android:textSize="12dp"
-            android:layout_marginTop="160dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"/>
+            android:textSize="12dp" />
+
         <TextView
             android:id="@+id/write"
             android:layout_width="300dp"
             android:layout_height="46dp"
-            android:text="填写咨询信息"
-            android:textSize="16dp"
-            android:layout_marginTop="300dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="300dp"
+            android:background="@drawable/base_selector_button_dark_46"
             android:gravity="center"
-            android:background="@drawable/base_selector_button_dark_34" />
+            android:text="填写咨询信息"
+            android:textColor="@drawable/base_selector_color_button_white"
+            android:textSize="16dp" />
+
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="370dp"
             android:text="下一步填写咨询信息，以便咨询师了解您的情况，为您提供更好的服务。"
             android:textColor="#A9ADB2"
-            android:textSize="12dp"
-            android:layout_marginTop="370dp"
-            android:layout_gravity="center_horizontal"/>
+            android:textSize="12dp" />
     </FrameLayout>
 </layout>
