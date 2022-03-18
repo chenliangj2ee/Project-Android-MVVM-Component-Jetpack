@@ -11,4 +11,5 @@ class DB {
     var type = ""
     @MySpConfig
     var closeNotify: Boolean = false
+
 }

@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
+import com.chenliang.processor.CLive.MySp
 import com.google.gson.Gson
 import com.mtjk.base.obs
 import com.mtjk.bean.BeanUser
@@ -244,7 +245,11 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
 
     override fun onRtcJoinChannelSuccess(channel: String, uid: Int, elapsed: Int) {
         this.log("进入频道通知，channel：$channel  uid:$uid")
-        this.uid = uid
+        if (uid > 0){
+            this.uid = uid
+            MySp.setUid(rtcChannelName!!,uid)
+        }
+
         sendUidToUsers()
         startLiveSuccess()
         this.initVM(RoomViewModel::class.java).updateUid(uid.toString() + "").obs(this) {

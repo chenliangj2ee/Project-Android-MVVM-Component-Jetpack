@@ -51,6 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
+                    android:hint="未填写"
                     android:text="@{bean.name}"
                     android:textColor="#515357"
                     android:textSize="15dp"
@@ -74,6 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
+                    android:hint="未填写"
                     android:text='@{bean.age+"岁"}'
                     android:textColor="#515357"
                     android:textSize="15dp"
@@ -97,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text='@{bean.sex==0?"无":bean.sex==1?"男":"女"}'
+                    android:text='@{bean.sex==0?"未填写":bean.sex==1?"男":"女"}'
                     android:textColor="#515357"
                     android:textSize="15dp"
                     tools:text="女" />
@@ -120,9 +122,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
+                    android:hint="未填写"
                     android:text="@{bean.questionTypeDes()}"
                     android:textColor="#515357"
-                    android:hint="无"
                     android:textSize="15dp"
                     tools:text="人际交往" />
             </LinearLayout>
@@ -149,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="无"
+                android:hint="未填写"
                 android:text="@{bean.description}"
                 android:textColor="#515357"
                 android:textSize="15dp"
@@ -167,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="无"
+                android:hint="未填写"
                 android:text="@{bean.wishResult}"
                 android:textColor="#515357"
                 android:textSize="15dp"

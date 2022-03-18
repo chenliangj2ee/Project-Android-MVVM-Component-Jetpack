@@ -19,6 +19,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.DialogFragment
+import com.chenliang.processor.CLive.MySp
 import com.elvishew.xlog.XLog
 import com.google.gson.Gson
 import com.mtjk.base.obs
@@ -127,6 +128,7 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
     private fun myCreateRoom() {
         val beanData = BeanLiveData().get<BeanLiveData>()
         rtcChannelName = beanData!!.channelName
+        uid=MySp.getUid(rtcChannelName!!)
         roomId = ""
         joinRtcChannel()
         joinRtmChannel()
