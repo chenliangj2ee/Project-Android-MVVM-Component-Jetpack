@@ -30,7 +30,7 @@ class VisitorInfoEditActivity : MyBaseActivity<ActivityVisitorInfoEditBinding, V
         mBinding.data = visitor
         mViewModel.getVisitorDetail(visitor?.id.toString()).obs(this@VisitorInfoEditActivity) {
             it.y {
-                mBinding.remarkEdit.setText(it.note)
+                if(!it.note.isNullOrEmpty()) mBinding.remarkEdit.setText(it.note)
             }
         }
     }
