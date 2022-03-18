@@ -16,10 +16,12 @@ class VisitorGaugeListFragment : MyBaseFragment<FragmentVisitorGaugeListBinding,
 
     override fun initOnCreateView() {
         mBinding.refresh.bindData<BeanVisitorGauge> { ::initItem }
-        loadData()
+            .loadData {
+                loadList()
+            }
     }
 
-    private fun loadData() {
+    private fun loadList() {
         with(mBinding) {
             mViewModel.getVisitorGauge(visitor.id, refresh.pageIndex, refresh.pageSize).obs(this@VisitorGaugeListFragment) {
                 it.c { refresh.addCache(it.records) }
