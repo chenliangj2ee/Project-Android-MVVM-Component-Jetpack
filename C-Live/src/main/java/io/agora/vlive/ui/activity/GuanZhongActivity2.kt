@@ -1137,6 +1137,11 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     @Subscribe(code = BusCode.LIVE_UPDATE_ZHUBO_UID)
     fun updateZhuBoUid(uid: String) {
         log("主播更新uid，刷新UI")
+        isLink=false
+        waitLink=false
+        waitingLinkMicDialog?.dismiss()
+        Live.initSeats()
+        refreshSeat()
         onAnchorUidResponse(uid.toInt(), null)
     }
 

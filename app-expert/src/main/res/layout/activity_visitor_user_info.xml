@@ -9,7 +9,7 @@
 
         <variable
             name="bean"
-            type="com.fcyd.expert.bean.BeanAuth" />
+            type="com.fcyd.expert.bean.BeanOrder.VisitorUser" />
 
 
     </data>
@@ -51,9 +51,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="tom"
+                    android:text="@{bean.name}"
                     android:textColor="#515357"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    tools:text="tom" />
             </LinearLayout>
 
             <LinearLayout
@@ -73,9 +74,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="30岁"
+                    android:text='@{bean.age+"岁"}'
                     android:textColor="#515357"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    tools:text="30岁" />
             </LinearLayout>
 
             <LinearLayout
@@ -95,9 +97,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="女"
+                    android:text='@{bean.sex==0?"无":bean.sex==1?"男":"女"}'
                     android:textColor="#515357"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    tools:text="女" />
             </LinearLayout>
 
             <LinearLayout
@@ -110,16 +113,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="问题类型"
-                    android:textColor="#515357"
+                    android:textColor="@color/text_default"
                     android:textSize="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="人际交往"
+                    android:text="@{bean.questionTypeDes()}"
                     android:textColor="#515357"
-                    android:textSize="15dp" />
+                    android:hint="无"
+                    android:textSize="15dp"
+                    tools:text="人际交往" />
             </LinearLayout>
 
         </LinearLayout>
@@ -144,7 +149,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text=""
+                android:hint="无"
+                android:text="@{bean.description}"
                 android:textColor="#515357"
                 android:textSize="15dp"
                 tools:text="失眠情况已经两周，每天工作没状态，情绪消极不愿意和同事沟通。" />
@@ -161,7 +167,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text=""
+                android:hint="无"
+                android:text="@{bean.wishResult}"
                 android:textColor="#515357"
                 android:textSize="15dp"
                 tools:text="提升工作积极性，改善睡眠状态" />

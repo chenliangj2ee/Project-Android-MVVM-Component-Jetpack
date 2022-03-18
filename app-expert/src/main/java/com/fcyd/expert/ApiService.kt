@@ -26,13 +26,23 @@ typealias DataPages<T> = Call<MyBaseResponse<BeanPage<List<T>>>>
 )
 interface ApiService {
 
-    @MyRetrofitGo(mTag = "专家认证", mLoading = true, mFailToast = true, mSuccessCode = BusCode.AUTH_FINISH)
+    @MyRetrofitGo(
+        mTag = "专家认证",
+        mLoading = true,
+        mFailToast = true,
+        mSuccessCode = BusCode.AUTH_FINISH
+    )
     @POST("/api-app/v1/app/expert-authentication/inApp")
     fun inApp(
         @Body inAppEntity: Any
     ): Data<Boolean>
 
-    @MyRetrofitGo(mTag = "工作室装修", mLoading = true, mFailToast = true, mSuccessCode = BusCode.STUDIO_EDIT_SUCCESS)
+    @MyRetrofitGo(
+        mTag = "工作室装修",
+        mLoading = true,
+        mFailToast = true,
+        mSuccessCode = BusCode.STUDIO_EDIT_SUCCESS
+    )
     @POST("/api-app/v1/app/expert-studio/updateExpertStudioDetail")
     fun updateStudioInfo(
         @Body verifyExpertShop: Any
@@ -44,7 +54,12 @@ interface ApiService {
 
     ): Data<BeanStudio>
 
-    @MyRetrofitGo(mTag = "发布咨询", mLoading = true, mFailToast = true, mSuccessCode = BusCode.REFRESH_CONSULT_LIST)
+    @MyRetrofitGo(
+        mTag = "发布咨询",
+        mLoading = true,
+        mFailToast = true,
+        mSuccessCode = BusCode.REFRESH_CONSULT_LIST
+    )
     @POST("/api-app/v1/app/expert-server/saveOrUpdateExpertServer")
     fun releaseConsult(
         @Body createExpertServerEntity: Any
@@ -60,13 +75,25 @@ interface ApiService {
     ): DataPages<BeanConsult>
 
 
-    @MyRetrofitGo(mTag = "咨询上架/下架/删除", mLoading = true, mFailToast = true, mCache = false, mSuccessCode = BusCode.REFRESH_CONSULT_LIST)
+    @MyRetrofitGo(
+        mTag = "咨询上架/下架/删除",
+        mLoading = true,
+        mFailToast = true,
+        mCache = false,
+        mSuccessCode = BusCode.REFRESH_CONSULT_LIST
+    )
     @POST("/api-app/v1/app/expert-server/updateServerState")
     fun updateServerState(
         @Body updateServerState: Any
     ): Data<Boolean>
 
-    @MyRetrofitGo(mTag = "获取咨询详情", mLoading = true, mFailToast = true, mCache = true, mDataIsNullToError = true)
+    @MyRetrofitGo(
+        mTag = "获取咨询详情",
+        mLoading = true,
+        mFailToast = true,
+        mCache = true,
+        mDataIsNullToError = true
+    )
     @GET("/api-app/v1/app/expert-server/queryServerDetailById")
     fun getConsultInfo(
         @Query(value = "serverId") serverId: String
@@ -79,7 +106,12 @@ interface ApiService {
         @Body createOrderEntity: Any,
     ): Data<BeanOrder>
 
-    @MyRetrofitGo(mTag = "支付确认", mLoading = true, mFailToast = true, mSuccessCode = BusCode.PAYMENT_SUCCESS)
+    @MyRetrofitGo(
+        mTag = "支付确认",
+        mLoading = true,
+        mFailToast = true,
+        mSuccessCode = BusCode.PAYMENT_SUCCESS
+    )
     @POST("/api-app/v1/app/expert-order/confirmOrderInfo")
     fun paymentConfirm(
         @Body requestEntity: Any
@@ -93,7 +125,13 @@ interface ApiService {
         @Query("pageSize") pageSize: Int
     ): DataPages<BeanOrder>
 
-    @MyRetrofitGo(mTag = "订单确认", mLoading = true, mFailToast = true, mCache = false, mSuccessCode = BusCode.ORDER_REFRESH)
+    @MyRetrofitGo(
+        mTag = "订单确认",
+        mLoading = true,
+        mFailToast = true,
+        mCache = false,
+        mSuccessCode = BusCode.ORDER_REFRESH
+    )
     @POST("/api-app/v1/app/expert-server/saveRoomIdByOrderId")
     fun orderConfirm(
         @Body body: Any
@@ -105,18 +143,36 @@ interface ApiService {
         @Query("parentId") parentId: Int
     ): Datas<BeanTags>
 
-    @MyRetrofitGo(mTag = "查询审核状态", mLoading = false, mFailToast = false, mCache = false, mSuccessCode = BusCode.INIT)
+    @MyRetrofitGo(
+        mTag = "查询审核状态",
+        mLoading = false,
+        mFailToast = false,
+        mCache = false,
+        mSuccessCode = BusCode.INIT
+    )
     @GET("/api-app/v1/app/expert-studio/queryExpertStudioState")
     fun init(): Data<BeanInit>
 
 
-    @MyRetrofitGo(mTag = "结束咨询", mLoading = true, mFailToast = true, mCache = false, mSuccessCode = BusCode.ORDER_REFRESH)
+    @MyRetrofitGo(
+        mTag = "结束咨询",
+        mLoading = true,
+        mFailToast = true,
+        mCache = false,
+        mSuccessCode = BusCode.ORDER_REFRESH
+    )
     @POST("/api-app/v1/app/expert-server/updateOrderState")
     fun stopConsult(
         @Body body: Any
     ): Data<Boolean>
 
-    @MyRetrofitGo(mTag = "咨询方案", mLoading = true, mFailToast = true, mCache = false, mSuccessCode = BusCode.ORDER_REFRESH)
+    @MyRetrofitGo(
+        mTag = "咨询方案",
+        mLoading = true,
+        mFailToast = true,
+        mCache = false,
+        mSuccessCode = BusCode.ORDER_REFRESH
+    )
     @POST("/api-app/v1/app/user-diagnosis/saveOrUpdateUserDiagnosis")
     fun feedback(
         @Body body: Any
@@ -131,7 +187,13 @@ interface ApiService {
     @POST("/api-app/v1/app/agora/createRtcTokenToB")
     fun getRTCToken(@Body body: Any): Data<String>
 
-    @MyRetrofitGo(mTag = "获取TRM Token", mLoading = true, mFailToast = true, mCache = false, mSuccessCode = BusCode.LIVE_GET_RTM_TOKEN)
+    @MyRetrofitGo(
+        mTag = "获取TRM Token",
+        mLoading = true,
+        mFailToast = true,
+        mCache = false,
+        mSuccessCode = BusCode.LIVE_GET_RTM_TOKEN
+    )
     @POST("/api-app/v1/app/agora/createRtmTokenToB")
     fun getRTMToken(@Body body: Any): Data<String>
 
@@ -165,6 +227,6 @@ interface ApiService {
     fun getWalletWithdrawList(@Body body: Any): DataPages<BeanWalletWithdraw>
 
     @MyRetrofitGo(mTag = "来访者信息", mLoading = true, mFailToast = false, mCache = true)
-    @POST("/api-app/v1/app/expert/order/withdraw/page")
-    fun getVisitorInfo(@Body body: Any): Data<BeanUser>
+    @GET("/api-app/v1/app/expert/visitor/infoAndCase/getOne")
+    fun getVisitorInfo(@Query("orderId") orderId: String): Data<BeanOrder.VisitorUser>
 }

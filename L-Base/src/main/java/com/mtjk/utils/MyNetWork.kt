@@ -35,6 +35,9 @@ object MyNetWork {
     }
 
     /**2
+     * tag==header
+     * tag==token
+     * tag==apiCode
      * 初始化OkHttpClient
      */
     private fun initHttpClient(): OkHttpClient {

@@ -268,8 +268,10 @@ abstract class LiveBaseActivity : BaseActivity(), RtcEventHandler, RtmMessageLis
             override fun onSuccess(aVoid: Void?) {
                 this.log("进入聊天房间成功")
 
-                if(this@LiveBaseActivity is ZhuBoActivity2){
+                if(this@LiveBaseActivity is ZhuBoActivity2||this@LiveBaseActivity is ZhuBoActivity){
                     Live.sendMessage(this@LiveBaseActivity,"咨询师进入")
+                }else{
+                    Live.sendMessage(this@LiveBaseActivity,"用户进入")
                 }
 
 

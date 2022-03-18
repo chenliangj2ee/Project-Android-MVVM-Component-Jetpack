@@ -194,10 +194,4 @@ class UserViewModel : MyBaseViewModel() {
         }
     }
 
-    /**
-     * 获取钱包明细列表
-     */
-    fun getVisitorInfo() = go {
-        API.getVisitorInfo(body("", ""))
-    }
 }

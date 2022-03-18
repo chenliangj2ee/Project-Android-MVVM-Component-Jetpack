@@ -53,4 +53,11 @@ class OrderViewModel : MyBaseViewModel() {
      * 写咨询方案
      */
     fun feedback(orderId: String, orderPlan: String) = go { API.feedback(body("orderId", orderId, "diagnosisText", orderPlan)) }
+
+    /**
+     * 获取来访者详情
+     */
+    fun getVisitorInfo(orderId: String) = go {
+        API.getVisitorInfo(orderId)
+    }
 }

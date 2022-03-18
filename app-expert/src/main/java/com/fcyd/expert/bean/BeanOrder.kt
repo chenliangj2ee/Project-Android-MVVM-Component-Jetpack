@@ -24,6 +24,22 @@ class BeanOrder : MyBaseBean() {
     var feedBackState = -1
 
 
+    class VisitorUser:MyBaseBean(){
+        var age=0
+        var description=""
+        var name=""
+        var orderItemId=""
+        var questionType=ArrayList<String>()
+        var sex=0
+        var userId=""
+        var wishResult=""
+        fun questionTypeDes():String{
+            questionType?:return ""
+           return  questionType.joinToString { "," }
+        }
+    }
+
+
     fun statusDes(): String {
         when (orderStatus) {
             ObjectOrder.STATUS_NO_PAY -> return "待支付"

@@ -28,6 +28,7 @@
             android:layout_gravity="center"
             android:ellipsize="end"
             android:lines="1"
+            tools:text="标题"
             android:maxLength="16"
             android:textColor="@color/base_toolbar_text_color"
             android:textSize="@dimen/toolbar_text_size"
