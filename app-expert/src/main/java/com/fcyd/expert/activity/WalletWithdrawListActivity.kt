@@ -53,13 +53,13 @@ class WalletWithdrawListActivity : MyBaseActivity<ActivityMyWalletWithdrawListBi
         mBinding.refresh.recyclerView?.addItemDecoration(
             PowerfulStickyDecoration.Builder.init(object: PowerGroupListener {
                 override fun getGroupName(position: Int): String {
-                    return mBinding.refresh.getData<BeanWalletDetail>()?.get(position)?.groupName()
+                    return mBinding.refresh.getData<BeanWalletWithdraw>()?.get(position)?.groupName()
                 }
 
                 override fun getGroupView(position: Int): View {
                     var view = layoutInflater.inflate(R.layout.wallet_item_decoration_content, null, false)
                     view.findViewById<TextView>(R.id.group_name).text =
-                        mBinding.refresh.getData<BeanWalletDetail>()?.get(position)?.groupName()
+                        mBinding.refresh.getData<BeanWalletWithdraw>()?.get(position)?.groupName()
                     return view;
                 }
 

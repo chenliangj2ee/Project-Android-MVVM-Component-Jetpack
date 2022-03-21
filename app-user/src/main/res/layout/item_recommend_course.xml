@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanCourse" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.mtjk.view.MyImageView
+                load="@{data.coverImage}"
+                radius="@{2}"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:background="@drawable/load_default"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:maxLines="1"
+                android:text='@{"播放量" + data.playCount}'
+                android:textSize="10dp"
+                android:textColor="@android:color/white"
+                tools:text="播放量：100"/>
+        </FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical|top"
+            android:lines="2"
+            android:text="@{data.title}"
+            android:textColor="#1F2326"
+            android:textSize="15dp"
+            tools:text="如何在关系中树立并守住界限，不内耗如何在关系中树立并守住界限，不内耗" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text='@{data.expertName+"  "+data.school+data.major+data.education }'
+            android:textColor="#515357"
+            android:textSize="12dp"
+            tools:text="是什么导致并正在加重你的抑郁" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="15dp"
+            android:text='@{data.sectionCount+"讲 / " + data.discountPrice + "币"}'
+            android:textColor="#008599"
+            android:textSize="14dp"
+            tools:text="100讲 / 100币"/>
+    </LinearLayout>
+</layout>
