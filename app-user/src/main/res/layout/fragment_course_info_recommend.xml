@@ -9,11 +9,14 @@
 
 
         <com.mtjk.view.MyRefreshRecyclerView
-            android:id="@+id/videoRefresh"
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:overScrollMode="never"
-            app:my_item_layout="@layout/item_recommend_video"
+            app:my_item_layout="@layout/item_recommend_course"
             app:my_layout_manager="gridLayout"
             app:my_span_count="2" />
     </LinearLayout>
