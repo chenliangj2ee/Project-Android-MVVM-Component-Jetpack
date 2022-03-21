@@ -143,6 +143,7 @@ class LivePrepareActivity : LiveBaseActivity() {
         processId: Long,
         userId: String?,
         userName: String?,
+        userAvatar:String?,
         uid: Int,
         index: Int
     ) {

@@ -432,7 +432,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
                 return
             }
 
-            if(ownerRtcUid==0){
+            if (ownerRtcUid == 0) {
                 toast("主播尚未开播")
                 return
             }
@@ -562,6 +562,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
         processId: Long,
         userId: String,
         userName: String,
+        userAvatar: String,
         uid: Int,
         index: Int
     ) {
@@ -637,6 +638,15 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
             isLink = false
         }
 
+        list.filter { it.user.userId == user!!.userId }.forEach {
+            if (it.user.enableAudio == 1) {
+                rtcEngine().enableAudio()
+            } else {
+                rtcEngine().disableAudio()
+            }
+        }
+
+
         log("更新座位.....................")
     }
 
@@ -675,7 +685,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
         if (isOwner || isHost) {
             val mode = if (isOwner) SeatItemDialog.MODE_OWNER else SeatItemDialog.MODE_HOST
             val dialog = SeatItemDialog(
-                this, seatState,
+                this, seatState, Live.seats[position].user.enableVideo,
                 audioMuteState, mode, view, position, this
             )
             dialog.show()
@@ -707,7 +717,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     override fun onSeatAdapterItemVideoRemoved(
         position: Int,
         uid: Int,
-        view: SurfaceView,
+        view: SurfaceView?,
         mine: Boolean,
         remainsHost: Boolean
     ) {
@@ -733,36 +743,17 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
 
     override fun onSeatDialogItemClicked(position: Int, operation: SeatItemDialog.Operation) {
         val item = mSeatLayout!!.getSeatItem(position)
-        var title: String? = null
         var message: String? = null
-        var request: Request? = null
         var type = 0
         when (operation) {
-            SeatItemDialog.Operation.mute -> {
-                title = resources.getString(R.string.dialog_multi_host_mute_title)
-                message = resources.getString(R.string.dialog_multi_host_mute_message)
-                message = String.format(message, item.userName)
-                type = Request.MODIFY_USER_STATE
-                request = ModifyUserStateRequest(
-                    config().userProfile.token, roomId, item.userId,
-                    0,  // Notify that the seat has disabled audio
-                    // keep video state unchanged
-                    if (item.videoMuteState == SeatInfo.User.USER_VIDEO_ENABLE) 1 else 0,
-                    1 // Always enable chat
-                )
+            SeatItemDialog.Operation.mute -> {//静音
+                message = "是否禁言？"
+                dialog(message).y { enableAudio(position, false) }.show(this)
             }
             SeatItemDialog.Operation.unmute -> {
-                title = resources.getString(R.string.dialog_multi_host_unmute_title)
-                message = resources.getString(R.string.dialog_multi_host_unmute_message)
-                message = String.format(message, item.userName)
+                message = "是否解除禁言？"
                 type = Request.MODIFY_USER_STATE
-                request = ModifyUserStateRequest(
-                    config().userProfile.token, roomId, item.userId,
-                    1,  // Notify that the seat has enabled audio
-                    // keep video state unchanged
-                    if (item.videoMuteState == SeatInfo.User.USER_VIDEO_ENABLE) 1 else 0,
-                    1 // Always enable chat
-                )
+                dialog(message).y { enableAudio(position, true) }.show(this)
             }
             SeatItemDialog.Operation.leave -> {
                 title = resources.getString(R.string.dialog_multi_host_leave_title)
@@ -780,40 +771,51 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
                     interaction = SeatInteraction.OWNER_FORCE_LEAVE
                 }
                 type = Request.SEAT_INTERACTION
-                request = SeatInteractionRequest(
-                    config().userProfile.token,
-                    roomId, item.userId, position, interaction
-                )
+                dialog(message).y {
+                    isLink = false
+                    Live.seats[position] = SeatStateMessageDataItem()
+                    refreshSeat()
+                    Live.sendSentMessage(this)
+                }.show(this)
             }
             SeatItemDialog.Operation.open -> {
                 title = resources.getString(R.string.dialog_multi_host_open_seat_title)
                 message = resources.getString(R.string.dialog_multi_host_open_seat_message)
                 type = Request.MODIFY_SEAT_STATE
-                request = ModifySeatStateRequest(
-                    config().userProfile.token, roomId,
-                    item.userId, position, SeatInfo.OPEN
-                )
+
             }
             SeatItemDialog.Operation.close -> {
                 title = resources.getString(R.string.dialog_multi_host_block_seat_title)
                 message = resources.getString(R.string.dialog_multi_host_block_seat_message)
                 type = Request.MODIFY_SEAT_STATE
-                request = ModifySeatStateRequest(
-                    config().userProfile.token, roomId,
-                    null, position, SeatInfo.CLOSE
-                )
+            }
+            SeatItemDialog.Operation.close_video -> {
+                dialog("是否关闭视频？").y { enableVideo(position, false) }.show(this)
+            }
+            SeatItemDialog.Operation.open_video -> {
+                dialog("是否开启视频？").y { enableVideo(position, true) }.show(this)
             }
         }
 
 
-        dialog(message).y {
-            isLink = false
-            Live.seats[position] = SeatStateMessageDataItem()
-            refreshSeat()
-            Live.sendSentMessage(this)
-        }.show(this)
+    }
 
+    /**
+     * tag==静音
+     */
+    fun enableAudio(position: Int, boo: Boolean) {
+        Live.seats[position].user.enableAudio = if (boo) 1 else 2
+        refreshSeat()
+        Live.sendSentMessage(this)
+    }
 
+    /**
+     * tag==静音
+     */
+    fun enableVideo(position: Int, boo: Boolean) {
+        Live.seats[position].user.enableVideo = if (boo) 1 else 2
+        refreshSeat()
+        Live.sendSentMessage(this)
     }
 
     override fun onSeatAdapterPositionClosed(position: Int, view: View) {}
@@ -1128,7 +1130,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
             toast("主播结束共享画板")
             disableDraw = false;
             drawInviteDialog?.dismiss()
-        }catch (e:Exception){
+        } catch (e: Exception) {
 
         }
 
@@ -1137,8 +1139,8 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     @Subscribe(code = BusCode.LIVE_UPDATE_ZHUBO_UID)
     fun updateZhuBoUid(uid: String) {
         log("主播更新uid，刷新UI")
-        isLink=false
-        waitLink=false
+        isLink = false
+        waitLink = false
         waitingLinkMicDialog?.dismiss()
         Live.initSeats()
         refreshSeat()

@@ -252,9 +252,9 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
 
     override fun onRtcJoinChannelSuccess(channel: String, uid: Int, elapsed: Int) {
         this.log("进入频道通知，channel：$channel  uid:$uid   ----------------------")
-        if (uid > 0){
+        if (uid > 0) {
             this.uid = uid
-            MySp.setUid(rtcChannelName!!,uid)
+            MySp.setUid(rtcChannelName!!, uid)
         }
 
         user
@@ -699,25 +699,27 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
         processId: Long,
         userId: String,
         userName: String,
+        userAvatar:String,
         uid: Int,
         index: Int
     ) {
         this.log("邀请被接受-咨询师回调。。。。userId:$userId  index:$index")
 
-       if(Live.seats.none { it.user.uid == uid }) {
-           for (index in Live.seats.indices) {
-               if (Live.seats[index].user.uid == 0) {
-                   Live.seats[index].seat.state = 1
-                   Live.seats[index].seat.no = index
-                   Live.seats[index].user.userId = userId
-                   Live.seats[index].user.uid = uid
-                   Live.seats[index].user.userName = userName
-                   Live.seats[index].user.enableVideo = 1
-                   Live.seats[index].user.enableAudio = 1
-                   break
-               }
-           }
-       }
+        if (Live.seats.none { it.user.uid == uid }) {
+            for (index in Live.seats.indices) {
+                if (Live.seats[index].user.uid == 0) {
+                    Live.seats[index].seat.state = 1
+                    Live.seats[index].seat.no = index
+                    Live.seats[index].user.userId = userId
+                    Live.seats[index].user.uid = uid
+                    Live.seats[index].user.userName = userName
+                    Live.seats[index].user.enableVideo = 1
+                    Live.seats[index].user.enableAudio = 1
+                    Live.seats[index].user.avatar = userAvatar
+                    break
+                }
+            }
+        }
 
         Live.sendSentMessage(this)
 
@@ -819,7 +821,7 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
         if (isOwner || isHost) {
             val mode = if (isOwner) SeatItemDialog.MODE_OWNER else SeatItemDialog.MODE_HOST
             val dialog = SeatItemDialog(
-                this, seatState,
+                this,seatState,Live.seats[position].user.enableVideo,
                 audioMuteState, mode, view, position, this
             )
             dialog.show()
@@ -895,31 +897,16 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
         var request: Request? = null
         var type = 0
         when (operation) {
-            SeatItemDialog.Operation.mute -> {
-                title = resources.getString(R.string.dialog_multi_host_mute_title)
-                message = resources.getString(R.string.dialog_multi_host_mute_message)
-                message = String.format(message, item.userName)
+            SeatItemDialog.Operation.mute -> {//静音
+                message = "是否禁言${item.userName}"
                 type = Request.MODIFY_USER_STATE
-                request = ModifyUserStateRequest(
-                    config().userProfile.token, roomId, item.userId,
-                    0,  // Notify that the seat has disabled audio
-                    // keep video state unchanged
-                    if (item.videoMuteState == SeatInfo.User.USER_VIDEO_ENABLE) 1 else 0,
-                    1 // Always enable chat
-                )
+                dialog(message).y { enableAudio(position, false) }.show(this)
+
             }
             SeatItemDialog.Operation.unmute -> {
-                title = resources.getString(R.string.dialog_multi_host_unmute_title)
-                message = resources.getString(R.string.dialog_multi_host_unmute_message)
-                message = String.format(message, item.userName)
+                message = "是否解除禁言？"
                 type = Request.MODIFY_USER_STATE
-                request = ModifyUserStateRequest(
-                    config().userProfile.token, roomId, item.userId,
-                    1,  // Notify that the seat has enabled audio
-                    // keep video state unchanged
-                    if (item.videoMuteState == SeatInfo.User.USER_VIDEO_ENABLE) 1 else 0,
-                    1 // Always enable chat
-                )
+                dialog(message).y { enableAudio(position, true) }.show(this)
             }
             SeatItemDialog.Operation.leave -> {
                 title = resources.getString(R.string.dialog_multi_host_leave_title)
@@ -937,34 +924,28 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
                     interaction = SeatInteraction.OWNER_FORCE_LEAVE
                 }
                 type = Request.SEAT_INTERACTION
-                request = SeatInteractionRequest(
-                    config().userProfile.token,
-                    roomId, item.userId, position, interaction
-                )
+                dialog(message).y { downMic(position) }.show(this)
             }
             SeatItemDialog.Operation.open -> {
                 title = resources.getString(R.string.dialog_multi_host_open_seat_title)
                 message = resources.getString(R.string.dialog_multi_host_open_seat_message)
                 type = Request.MODIFY_SEAT_STATE
-                request = ModifySeatStateRequest(
-                    config().userProfile.token, roomId,
-                    item.userId, position, SeatInfo.OPEN
-                )
+
             }
             SeatItemDialog.Operation.close -> {
                 title = resources.getString(R.string.dialog_multi_host_block_seat_title)
                 message = resources.getString(R.string.dialog_multi_host_block_seat_message)
                 type = Request.MODIFY_SEAT_STATE
-                request = ModifySeatStateRequest(
-                    config().userProfile.token, roomId,
-                    null, position, SeatInfo.CLOSE
-                )
+            }
+            SeatItemDialog.Operation.close_video -> {
+                dialog("是否关闭视频？").y { enableVideo(position, false) }.show(this)
+            }
+            SeatItemDialog.Operation.open_video -> {
+                dialog("是否开启视频？").y { enableVideo(position, true) }.show(this)
             }
         }
-        val requestType = type
-        val seatRequest = request
 
-        dialog(message).y { downMic(position) }.show(this)
+
     }
 
     /**
@@ -990,6 +971,24 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
                 }
             })
         Live.seats[position] = SeatStateMessageDataItem()
+        refreshSeat()
+        Live.sendSentMessage(this)
+    }
+
+    /**
+     * tag==禁言
+     */
+    fun enableAudio(position: Int, boo: Boolean) {
+        Live.seats[position].user.enableAudio = if (boo) 1 else 0
+        refreshSeat()
+        Live.sendSentMessage(this)
+    }
+
+    /**
+     * tag==禁视
+     */
+    fun enableVideo(position: Int, boo: Boolean) {
+        Live.seats[position].user.enableVideo = if (boo) 1 else 0
         refreshSeat()
         Live.sendSentMessage(this)
     }

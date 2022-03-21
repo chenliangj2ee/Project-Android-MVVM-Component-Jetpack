@@ -70,11 +70,11 @@
     <string name="live_system_notification_member_left">离开房间</string>
 
     <string-array name="live_host_in_seat_operations">
-        <item>禁麦</item>
-        <item>解禁</item>
-        <item>下麦</item>
+        <item>用户禁言</item>
+        <item>解除禁言</item>
+        <item>用户下麦</item>
         <item>解封</item>
-        <item>封麦</item>
+        <item>禁视</item>
     </string-array>
 
     <!-- Virtual Host -->

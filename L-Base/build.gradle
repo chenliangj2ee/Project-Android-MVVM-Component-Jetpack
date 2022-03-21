@@ -200,4 +200,6 @@ dependencies {
 
     api 'com.gavin.com.library:stickyDecoration:1.5.3'
 
+    // 配合glide实现高斯模糊
+    api 'jp.wasabeef:glide-transformations:2.0.2'
 }

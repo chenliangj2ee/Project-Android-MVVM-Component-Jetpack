@@ -34,7 +34,7 @@ public interface RtmMessageListener {
 
     void onRtmInvitationAccepted(long processId, String userId, String userName, int index);
 
-    void onRtmInvitationAccepted(long processId, String userId, String userName, int uid, int index);
+    void onRtmInvitationAccepted(long processId, String userId, String userName,String userAvatar, int uid, int index);
 
     void onRtmApplicationAccepted(long processId, String userId, String userName, int index);
 

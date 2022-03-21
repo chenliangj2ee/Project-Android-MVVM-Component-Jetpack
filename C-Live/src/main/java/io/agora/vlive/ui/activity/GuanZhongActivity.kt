@@ -547,6 +547,7 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
         processId: Long,
         userId: String,
         userName: String,
+        userAvatar:String,
         uid: Int,
         index: Int
     ) {
@@ -793,7 +794,7 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
             }
         }
 
-        dialog(message).y {
+        dialog(message!!).y {
             this.log("下麦UserId:" + Live.seats.get(position).user.userId)
             this.log("用户列表:" + Gson().toJson(Live.seats))
             Live.seats.set(position, SeatStateMessageDataItem())

@@ -649,6 +649,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
         processId: Long,
         userId: String,
         userName: String,
+        userAvatar:String?,
         uid: Int,
         index: Int
     ) {
@@ -664,6 +665,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
         Live.seats[0].user.enableVideo =
             if (liveParam!!.liveType == BeanParam.LiveType.VIDEO_ONE) 1 else 0
         Live.seats[0].user.enableAudio = 1
+        Live.seats[0].user.avatar = userAvatar
         Live.sendSentMessage(this)
         runOnUiThread { mSeatLayout!!.updateStates(Live.seats) }
     }
@@ -898,7 +900,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
                 )
             }
         }
-        dialog(message).y {
+        dialog(message!!).y {
             this.log("下麦UserId:" + Live.seats[0].user.userId)
             this.log("用户列表:" + Gson().toJson(Live.seats))
             Live.sendPeer(
