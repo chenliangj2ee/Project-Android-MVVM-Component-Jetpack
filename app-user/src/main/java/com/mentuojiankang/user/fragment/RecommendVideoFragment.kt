@@ -19,7 +19,7 @@ class RecommendVideoFragment : MyBaseFragment<FragmentRecommendVideoBinding, Def
         mRootView.show(false)
         with(mBinding) {
             root.more.click { goto(FragmentActivity::class.java, "fragment", "/user/course", "title", "课程") }
-            mBinding.root.title.text = "学习成长"
+            mBinding.root.title.text = "正念生活"
             videoRefresh.setEnableRefresh(false)
             videoRefresh.setEnableLoadMore(false)
 

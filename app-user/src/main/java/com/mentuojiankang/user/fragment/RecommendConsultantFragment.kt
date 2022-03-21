@@ -24,7 +24,7 @@ class RecommendConsultantFragment :
         mRootView.show(false)
         with(mBinding) {
             root.more.click { goto(FragmentActivity::class.java, "fragment", "/user/consult", "title", "咨询") }
-            mBinding.root.title.text = "咨询疏导"
+            mBinding.root.title.text = "推荐咨询师"
             consultantRefresh.disable()
         }
 
