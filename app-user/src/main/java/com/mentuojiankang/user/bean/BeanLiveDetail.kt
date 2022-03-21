@@ -4,6 +4,7 @@ import com.mtjk.base.MyBaseBean
 
 class BeanLiveDetail : MyBaseBean() {
 
+    var bought = false
     var coverImage = ""
     var createBy = ""
     var createTime = ""
@@ -19,7 +20,4 @@ class BeanLiveDetail : MyBaseBean() {
     var status = 0
     var updateBy = ""
     var updateTime = ""
-
-
-
 }
