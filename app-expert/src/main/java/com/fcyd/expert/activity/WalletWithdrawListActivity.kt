@@ -3,7 +3,6 @@ package com.fcyd.expert.activity
 import android.view.View
 import android.widget.TextView
 import com.fcyd.expert.R
-import com.fcyd.expert.bean.BeanWalletDetail
 import com.fcyd.expert.bean.BeanWalletWithdraw
 import com.fcyd.expert.databinding.ActivityMyWalletWithdrawListBinding
 import com.fcyd.expert.databinding.ItemWalletWithdrawDetailBinding
@@ -15,8 +14,9 @@ import com.mtjk.annotation.MyClass
 import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.obs
 import com.mtjk.utils.DimenUtil
-import com.mtjk.utils.goto
+import com.mtjk.view.DialogYearMonthPicker
 import com.tencent.qcloud.tuikit.tuiconversation.util.IM
+import java.time.LocalDateTime
 
 /**
  * tag==提现明细
@@ -27,9 +27,10 @@ import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 class WalletWithdrawListActivity : MyBaseActivity<ActivityMyWalletWithdrawListBinding, UserViewModel>() {
     override fun initCreate() {
         mToolBar.showRight("客服") { toCustomerService() }
-        mBinding.refresh.bindData<BeanWalletWithdraw>(::initItem)
+        mBinding.refresh.bindData<BeanWalletWithdraw>(::initItem).loadData {
+            loadWalletDetailData("", "")
+        }
         updateRecyclerView()
-        loadWalletDetailData()
     }
 
     private fun initItem(it: BeanWalletWithdraw) {
@@ -38,10 +39,10 @@ class WalletWithdrawListActivity : MyBaseActivity<ActivityMyWalletWithdrawListBi
         }
     }
 
-    private fun loadWalletDetailData() {
+    private fun loadWalletDetailData(startTime: String, endTime: String) {
         with(mBinding) {
             refresh.loadData {
-                mViewModel.getWalletWithdrawList(refresh.pageIndex, refresh.pageSize, "", "").obs(this@WalletWithdrawListActivity) {
+                mViewModel.getWalletWithdrawList(refresh.pageIndex, refresh.pageSize, startTime, endTime).obs(this@WalletWithdrawListActivity) {
                     it.c { refresh.addCache(it.records) }
                     it.y { refresh.addDatas(it.records) }
                 }
@@ -66,11 +67,25 @@ class WalletWithdrawListActivity : MyBaseActivity<ActivityMyWalletWithdrawListBi
             }).setOnClickListener(
                 object: OnGroupClickListener {
                     override fun onClick(position: Int, id: Int) {
-                        //TODO 点击展开列表
+                        var detail = mBinding.refresh.getData<BeanWalletWithdraw>()?.get(position)
+                        if(detail != null) {
+                            dateDialog(detail.year(), detail.month())
+                        }
                     }
                 }
             ).setGroupHeight(DimenUtil.dp2Px(this@WalletWithdrawListActivity,30)).build()
         )
+    }
+
+    private fun dateDialog(initYear: Int, initMonth: Int) {
+        DialogYearMonthPicker().showDialog(this, 2020, initYear, initMonth, "时间") { year, month ->
+            var start = LocalDateTime.of(year, month, 1, 0, 0, 0).toString()
+            var endYear = if (month == 12) (year + 1) else year
+            var endMonth = if (month == 12) 1 else (month + 1)
+            var end = LocalDateTime.of(endYear, endMonth, 1, 0, 0, 0).toString()
+            mBinding.refresh.clearData()
+            loadWalletDetailData(start, end)
+        }
     }
 
     private fun toCustomerService() {

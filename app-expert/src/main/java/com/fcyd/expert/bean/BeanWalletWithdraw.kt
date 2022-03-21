@@ -5,6 +5,8 @@ import com.mtjk.base.MyBaseBean
 import com.mtjk.obj.ObjectProduct
 import com.mtjk.obj.ObjectWithdraw
 import com.mtjk.utils.dateT
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 /**
  * 提现详情
@@ -84,6 +86,22 @@ class BeanWalletWithdraw : MyBaseBean() {
             return "订单取消"
         }
         return ""
+    }
+
+    fun year(): Int {
+        if (!paidAt.isNullOrEmpty()) {
+            var date = LocalDate.parse(paidAt.dateT("yyyyMMdd"), DateTimeFormatter.ofPattern("yyyyMMdd"))
+            return date?.year!!
+        }
+        return 0
+    }
+
+    fun month(): Int {
+        if (!paidAt.isNullOrEmpty()) {
+            var date = LocalDate.parse(paidAt.dateT("yyyyMMdd"), DateTimeFormatter.ofPattern("yyyyMMdd"))
+            return date?.monthValue!!
+        }
+        return 0
     }
 
 }

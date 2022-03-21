@@ -14,8 +14,9 @@ import com.mtjk.annotation.MyClass
 import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.obs
 import com.mtjk.utils.DimenUtil
-import com.mtjk.utils.load
+import com.mtjk.view.DialogYearMonthPicker
 import com.tencent.qcloud.tuikit.tuiconversation.util.IM
+import java.time.LocalDateTime
 
 /**
  * tag==账单明细
@@ -26,15 +27,17 @@ import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, UserViewModel>(){
     override fun initCreate() {
         mToolBar.showRight("客服", { toCustomerService() })
-        mBinding.refresh.bindData<BeanWalletDetail>(::initItem)
+        mBinding.refresh.bindData<BeanWalletDetail>(::initItem).loadData {
+            loadWalletDetailData("", "")
+        }
         updateRecyclerView()
-        loadWalletDetailData()
+
     }
 
-    private fun loadWalletDetailData() {
+    private fun loadWalletDetailData(startTime: String, endTime: String) {
         with(mBinding) {
             refresh.loadData {
-                mViewModel.getWalletDetailList(refresh.pageIndex, refresh.pageSize, "", "").obs(this@WalletDetailListActivity) {
+                mViewModel.getWalletDetailList(refresh.pageIndex, refresh.pageSize, startTime, endTime).obs(this@WalletDetailListActivity) {
                     it.c { refresh.addCache(it.records) }
                     it.y { refresh.addDatas(it.records) }
                 }
@@ -73,10 +76,24 @@ class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, U
             }).setOnClickListener(
                 object: OnGroupClickListener {
                     override fun onClick(position: Int, id: Int) {
-                        //TODO 点击展开列表
+                        var detail = mBinding.refresh.getData<BeanWalletDetail>()?.get(position)
+                        if(detail != null) {
+                            dateDialog(detail.year(), detail.month())
+                        }
                     }
                 }
             ).setGroupHeight(DimenUtil.dp2Px(this@WalletDetailListActivity,30)).build()
         )
+    }
+
+    private fun dateDialog(initYear: Int, initMonth: Int) {
+        DialogYearMonthPicker().showDialog(this, 2020, initYear, initMonth, "时间") { year, month ->
+            var start = LocalDateTime.of(year, month, 1, 0, 0, 0).toString()
+            var endYear = if (month == 12) (year + 1) else year
+            var endMonth = if (month == 12) 1 else (month + 1)
+            var end = LocalDateTime.of(endYear, endMonth, 1, 0, 0, 0).toString()
+            mBinding.refresh.clearData()
+            loadWalletDetailData(start, end)
+        }
     }
 }
