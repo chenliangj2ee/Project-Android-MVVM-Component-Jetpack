@@ -88,6 +88,13 @@ android {
                     APPLICATIONID: "com.fcyd.expert",
                     APP_NAME     : "吱吱心理咨询师"
             ]
+
+            // 自定义输出配置
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName =  "expert_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                }
+            }
         }
 
         develop_expert {
