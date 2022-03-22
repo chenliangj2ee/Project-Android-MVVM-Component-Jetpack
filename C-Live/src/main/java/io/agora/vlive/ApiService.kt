@@ -48,7 +48,7 @@ interface ApiService {
     @MyRetrofitGo(mTag = "更新观看次数", mLoading = false, mFailToast = false, mCache = false)
     @POST("/api-app/v1/app/liveRoom/addViewedCount")
     fun addViewedCount(
-        @Body body: Any
+        @Query(value = "channelName") channelName: String
     ): Data<Boolean>
 
     @MyRetrofitGo(
