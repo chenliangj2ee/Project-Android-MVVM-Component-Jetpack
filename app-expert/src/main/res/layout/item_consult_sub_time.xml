@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.mtjk.bean.BeanTime" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_margin="5dp"
+        android:background='@{data.boo||data.isPassTime()?@drawable/selector_consult_sub_select_time_diseable: data.itemSelected?@drawable/selector_consult_sub_select_time_selected:@drawable/selector_consult_sub_select_time_default}'
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_vertical|top"
+            android:src='@{data.boo==true||data.isPassTime()? data.serverType==1?@drawable/icon_consult_1_to_1:@drawable/icon_consult_1_to_more: data.serverType==1?@drawable/icon_consult_eable_1_to_1:@drawable/icon_consult_eable_1_to_more}'
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:text='@{data.startTime.substring(0,5)+"-"+data.endTime.substring(0,5)}'
+            android:textColor='@{data.boo||data.isPassTime()?@color/time_text_disable:@color/time_text_enable}'
+            android:textSize="14dp"
+            tools:text="13:00-14:00" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="120dp"
+            android:text='@{data.boo?"约满":""}'
+            android:textColor="#A9ADB2"
+            android:textSize="14dp"
+            tools:text="约满" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:paddingRight="15dp"
+            android:text='@{data.price+"币/人"}'
+            android:textColor='@{data.boo||data.isPassTime()?@color/time_price_disable:@color/time_price_enable}'
+            android:textSize="12dp"
+            tools:text="方寸币19.8/人" />
+    </FrameLayout>
+</layout>

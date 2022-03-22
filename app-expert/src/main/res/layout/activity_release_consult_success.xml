@@ -53,7 +53,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/base_selector_button_white_border_1"
                 android:stateListAnimator="@null"
-                android:text="查看咨询管理"
+                android:text="查看预览"
                 android:textColor="@drawable/base_selector_color_button_dark" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -63,8 +63,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:stateListAnimator="@null"
                 android:background="@drawable/base_selector_button_dark"
+                android:stateListAnimator="@null"
                 android:text="再发一个"
                 android:textColor="@drawable/base_selector_color_button_white" />
         </LinearLayout>

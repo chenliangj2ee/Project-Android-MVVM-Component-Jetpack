@@ -5,6 +5,7 @@ import com.fcyd.expert.bean.*
 import com.mtjk.annotation.MyRetrofitGo
 import com.mtjk.base.MyBaseResponse
 import com.mtjk.bean.BeanPage
+import com.mtjk.bean.BeanTime
 import com.mtjk.bean.BeanUser
 import com.mtjk.utils.BusCode
 import retrofit2.Call
@@ -269,5 +270,27 @@ interface ApiService {
     @MyRetrofitGo(mTag = "保存来访者备注信息", mLoading = false, mFailToast = false, mCache = true)
     @POST("/api-app/v1/app/expert/visitor/info/save")
     fun saveVisitorDetail(@Body body: Any): Data<BeanVisitorInfo>
+
+    @MyRetrofitGo(mTag = "服务时间列表", mLoading = true, mFailToast = true, mCache = true)
+    @GET("/api-app/v1/app/used-time/queryServerTimeTable")
+    fun getServiceTime(
+        @Query("consultType") consultType: String,
+        @Query("day") day: String,
+        @Query("week") week: String,
+        @Query("serverId") serverId: String,
+        @Query("shopId") shopId: String
+    ): Datas<BeanTime>
+
+
+
+
+    @MyRetrofitGo(mTag = "保存咨询详情", mLoading = true, mFailToast = true, mCache = false)
+    @POST("/api-app/v1/app/user/visitor/case/save")
+    fun saveVisitorConsultDetail(@Body body: Any): Data<Any>
+    @MyRetrofitGo(mTag = "获取咨询详情", mLoading = true, mFailToast = true, mCache = true)
+    @GET("/api-app/v1/app/expert-server/queryExpertShopDetail")
+    fun getConsultInformation(
+        @Query("shopId") expertShopId: String
+    ): Data<BeanConsultRes>
 
 }

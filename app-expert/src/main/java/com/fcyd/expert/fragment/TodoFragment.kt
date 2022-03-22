@@ -53,6 +53,7 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
     public fun initStudio() {
         initVM(StudioViewModel::class.java).getStudioInfo().obs(this) {
             it.y {
+                it.save()
                 when (it.verify) {
                     0 -> {
                         verify.show(false)

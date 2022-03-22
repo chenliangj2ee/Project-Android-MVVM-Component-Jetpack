@@ -590,11 +590,11 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
             stopLive()
         }
 
-        if(this is ZhuBoActivity2||this is ZhuBoActivity){
-            Live.sendMessage(this,"咨询师离开")
-        }else{
-            Live.sendMessage(this,"用户离开")
-        }
+//        if(this is ZhuBoActivity2||this is ZhuBoActivity){
+//            Live.sendMessage(this,"咨询师离开")
+//        }else{
+//            Live.sendMessage(this,"用户离开")
+//        }
 
         if (waitLink) {
             cancelWaitLink()

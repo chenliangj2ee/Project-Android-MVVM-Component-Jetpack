@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.fcyd.expert.bean.BeanConsult" />
+
+        <import type="android.view.View"></import>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility='@{bean!=null?View.VISIBLE:View.GONE}'>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                android:orientation="vertical">
+
+                <com.mtjk.view.MyImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_consult_default"
+                    android:visibility="@{bean.introVideo.size()>0?View.GONE:View.VISIBLE}"
+                    app:my_ratio="900:540" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{bean.introVideo.size()>0?View.VISIBLE:View.GONE}">
+
+                    <com.stx.xhb.androidx.XBanner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:AutoPlayTime="3000"
+                        app:isShowIndicatorOnlyOne="false"
+                        app:pageChangeDuration="800"
+                        app:pointsContainerBackground="#0000"
+                        app:pointsPosition="CENTER"
+                        app:tipTextSize="12dp">
+
+                    </com.stx.xhb.androidx.XBanner>
+
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/videobg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@drawable/selector_icon_video_bg"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/play"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_play"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:padding="15dp">
+
+                    <com.mtjk.view.MyImageView
+                        android:id="@+id/header"
+                        load="@{bean.avatar}"
+                        radius="@{30}"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/default_header" />
+
+                    <ImageView
+                        android:id="@+id/follow"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="50dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="70dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{bean.realName}"
+                            android:textColor="#133C53"
+                            android:textSize="17dp"
+                            tools:text="Lisa" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_expert_auth" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginTop="30dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:text='@{bean.score+""}'
+                                android:textColor="#1F2326"
+                                android:textSize="17dp"
+                                tools:text="5.0" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="1dp"
+                                android:gravity="center"
+                                android:text="用户评分"
+                                android:textColor="#A9ADB2"
+                                android:textSize="10dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:text='@{bean.consultNumber+""}'
+                                android:textColor="#1F2326"
+                                android:textSize="17dp"
+                                tools:text="2846" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="1dp"
+                                android:gravity="center"
+                                android:text="咨询人数"
+                                android:textColor="#A9ADB2"
+                                android:textSize="10dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:text='@{bean.serviceDuration+"小时"}'
+                                android:textColor="#1F2326"
+                                android:textSize="17dp"
+                                tools:text="653小时" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="1dp"
+                                android:gravity="center"
+                                android:text="服务时长"
+                                android:textColor="#A9ADB2"
+                                android:textSize="10dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:drawableLeft="@drawable/icon_location"
+                        android:text='@{bean.location}'
+                        android:textSize="12dp"
+                        tools:text="北京" />
+
+
+                    <ImageView
+                        android:id="@+id/chat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:ellipsize="end"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="15dp"
+                    android:singleLine="true"
+                    android:text='@{bean.qualificationDes()}'
+                    android:textColor="#515357"
+                    android:textSize="15dp"
+                    tools:text="北京大学心理学专业博士，执业心理治疗师" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/introduction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="5dp"
+                        android:maxLines="2"
+                        android:textColor="#515357"
+                        android:textSize="14dp"
+                        tools:text="专业擅长:专业增长情绪困扰、职场困感、个人成长问题。个体辅导：擅长家庭辅导、婚恋、情感、亲子沟通，家庭关系。" />
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="right|bottom"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="60dp"
+                        android:layout_marginBottom="2dp"
+                        android:background="@drawable/selector_ckjj" />
+
+                    <ImageView
+                        android:id="@+id/lookInfo"
+                        android:layout_width="60dp"
+                        android:layout_height="14dp"
+                        android:layout_gravity="right|bottom"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:background="#fff"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/icon_ckjj" />
+                </FrameLayout>
+
+
+                <com.mtjk.view.MyRefreshRecyclerView
+                    android:id="@+id/consults"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#fff"
+                    android:fadeScrollbars="false"
+                    android:fadingEdge="none"
+                    app:my_divider_color="#E6F0F2"
+                    app:my_divider_height="1px"
+                    app:my_divider_marginLeft="15dp"
+                    app:my_divider_marginRight="15dp"
+                    app:my_item_layout="@layout/item_consult" />
+
+                <fragment
+                    android:id="@+id/evaluate"
+                    android:name="com.mtjk.fragment.EvaluateFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#fff"
+            android:paddingBottom="10dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/subscribe"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:text="消息"
+                    android:visibility="gone"
+                    android:textColor="#A9ADB2"
+                    android:textSize="10dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/startSub"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/base_selector_button_dark"
+                    android:gravity="center"
+                    android:stateListAnimator="@null"
+                    android:text="开始预约"
+                    android:textColor="@drawable/base_selector_color_button_white"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fullScreenLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</layout>

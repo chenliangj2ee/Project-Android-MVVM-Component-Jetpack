@@ -16,7 +16,7 @@ import gorden.rxbus2.RxBus
 import kotlinx.android.synthetic.main.activity_personal_info_edit.*
 
 /**
- * tag==个人资料
+ * tag==个人资料/用户
  * author:chenliang
  * date:2021/11/3
  */

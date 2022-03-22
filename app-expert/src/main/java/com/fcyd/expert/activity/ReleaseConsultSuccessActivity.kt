@@ -20,7 +20,7 @@ class ReleaseConsultSuccessActivity :
     }
 
     override fun initClick() {
-        look.click { gotoFinish(ConsultManagerActivity::class.java) }
+        look.click { gotoFinish(ConsultInfoActivity::class.java) }
         release.click { gotoFinish(ReleaseConsultActivity::class.java) }
     }
 
