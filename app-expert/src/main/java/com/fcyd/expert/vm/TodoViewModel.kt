@@ -14,5 +14,5 @@ class TodoViewModel : MyBaseViewModel() {
 
     fun stopTodoService(id: String) = go { API.stopTodoService(body("id", id)) }
 
-
+    fun getExpertStatus() = go { API.getExpertStatus() }
 }

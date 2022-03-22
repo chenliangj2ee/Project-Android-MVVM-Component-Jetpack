@@ -21,6 +21,9 @@ class BeanTODO : MyBaseBean() {
     var endTime = ""
     var extend = BeanModel()
 
+    @Transient
+    var guide = BeanTodoGuide()
+
 
     fun productTypeImage(): Int {
         if (productType == ObjectProduct.TYPE_CONSULT) {

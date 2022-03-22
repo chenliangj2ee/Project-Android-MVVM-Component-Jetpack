@@ -293,4 +293,8 @@ interface ApiService {
         @Query("shopId") expertShopId: String
     ): Data<BeanConsultRes>
 
+    @MyRetrofitGo(mTag = "咨询师状态", mLoading = false, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/expert/home/status")
+    fun getExpertStatus(): Data<BeanExpertStatus>
+
 }

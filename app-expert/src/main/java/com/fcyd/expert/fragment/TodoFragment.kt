@@ -1,26 +1,23 @@
 package com.fcyd.expert.fragment
 
-import com.chenliang.processor.appexpert.MySp
+import com.fcyd.expert.R
 import com.fcyd.expert.activity.ReleaseConsultActivity
-import com.fcyd.expert.activity.ReleaseConsultRemindActivity
 import com.fcyd.expert.activity.StudioMediaEditActivity
+import com.fcyd.expert.bean.BeanExpertStatus
 import com.fcyd.expert.bean.BeanTODO
+import com.fcyd.expert.bean.BeanTodoGuide
 import com.fcyd.expert.databinding.FragmentTodoBinding
 import com.fcyd.expert.databinding.ItemTodoBinding
-import com.fcyd.expert.vm.StudioViewModel
+import com.fcyd.expert.databinding.ItemTodoGuideBinding
 import com.fcyd.expert.vm.TodoViewModel
 import com.mtjk.annotation.MyClass
 import com.mtjk.base.MyBaseFragment
 import com.mtjk.base.obs
+import com.mtjk.obj.ObjectLocalTodo
 import com.mtjk.obj.ObjectProduct
 import com.mtjk.utils.*
-import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 import gorden.rxbus2.Subscribe
 import io.agora.vlive.bean.BeanParam
-import kotlinx.android.synthetic.main.fragment_todo.*
-import kotlinx.android.synthetic.main.fragment_todo.view.*
-import kotlinx.android.synthetic.main.layout_todo_setting.*
-import kotlinx.android.synthetic.main.layout_todo_setting.view.*
 import java.lang.Exception
 
 /**
@@ -30,59 +27,40 @@ import java.lang.Exception
  */
 @MyClass(mToolbarTitle = "待办")
 class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
-    var user = getBeanUser()
+
+    private val ITEM_TYPE_LOCAL = 1
+    private val ITEM_TYPE_COMMON = 2
+
+    private var localTodo = ArrayList<BeanTODO>()
+
     override fun initOnCreateView() {
-        mRootView.layout_todo_setting.show(!MySp.isCloseNotify())
-        initStudio()
-        mBinding.todoList.setDisableLoadMore()
-        mBinding.todoList.bindData<BeanTODO>(::bindItem).loadData(::loadTodos)
-    }
-
-    override fun initClick() {
-        mRootView.fbzx.goto(ReleaseConsultActivity::class.java)
-        mRootView.closeNotify.click {
-            MySp.setCloseNotify(true)
-            mRootView.layout_todo_setting.show(false)
-        }
-    }
-
-    /**
-     * 工作室装修
-     */
-    @Subscribe(code = BusCode.STUDIO_EDIT_SUCCESS)
-    public fun initStudio() {
-        initVM(StudioViewModel::class.java).getStudioInfo().obs(this) {
-            it.y {
-                it.save()
-                when (it.verify) {
-                    0 -> {
-                        verify.show(false)
-                        mRootView.gzszx.goto(StudioMediaEditActivity::class.java)
-                    }
-                    1 -> {
-                        verify.text = "待审核"
-                        mRootView.gzszx.goto(ReleaseConsultRemindActivity::class.java)
-                    }
-                    2 -> {
-                        verify.text = "审核通过"
-                        layout_todo_setting.show(false)
-                        mBinding.todoList.show(true)
-                    }
-                    3 -> {
-                        verify.text = "审核不通过"
-                        mRootView.gzszx.goto(StudioMediaEditActivity::class.java)
-                    }
-                }
-                user?.shopId = it.id;
-                user?.save()
-            }
-        }
+        mBinding.todoList
+            .bindTypeToItemView(ITEM_TYPE_LOCAL, R.layout.item_todo_guide)
+            .bindTypeToItemView(ITEM_TYPE_COMMON, R.layout.item_todo)
+            .setDisableLoadMore()
+            .bindData<BeanTODO>(::bindItem)
+            .loadData(::initStudio)
     }
 
     /**
      * 绑定列表item
      */
     private fun bindItem(bean: BeanTODO) {
+        if(bean.itemType == ITEM_TYPE_LOCAL) {
+            with(bean.binding as ItemTodoGuideBinding) {
+                this.data = bean.guide
+                when (bean.guide.todoType) {
+                    ObjectLocalTodo.WORKROOM -> {
+                        editButton.goto(StudioMediaEditActivity::class.java)
+                    }
+                    ObjectLocalTodo.CONSULT -> {
+                        editButton.goto(ReleaseConsultActivity::class.java)
+                    }
+                    else -> {}
+                }
+            }
+            return
+        }
         with(bean.binding as ItemTodoBinding) {
             this.data = bean
             stop.click { stopService(bean) }
@@ -93,15 +71,47 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
     /**
      * 加载待办列表数据
      */
-    private fun loadTodos() {
+    @Subscribe(code = BusCode.STUDIO_EDIT_SUCCESS)
+    public fun initStudio() {
+        mViewModel.getExpertStatus().obs(this@TodoFragment) {
+            it.y { initLocalTodo(it) }
+            loadTodoList()
+        }
+    }
+
+    private fun initLocalTodo(status: BeanExpertStatus) {
+        localTodo?.clear()
+        if(status.shopStatus != 400) {
+            localTodo?.add(createLocalTodoItem("工作室信息填写", "请完成工作室信息填写", ObjectLocalTodo.WORKROOM))
+        }
+        if(status.serverStatus != 200) {
+            localTodo?.add(createLocalTodoItem("发布咨询", "请发布您的咨询服务", ObjectLocalTodo.CONSULT))
+        }
+    }
+
+    private fun createLocalTodoItem(title: String, desc: String, type: Int) :BeanTODO{
+        var todoItem = BeanTODO()
+        var guide = BeanTodoGuide()
+        guide.title = title
+        guide.desc = desc
+        guide.todoType = type
+        todoItem.guide = guide
+        todoItem.itemType = ITEM_TYPE_LOCAL
+        return todoItem
+    }
+
+    private fun loadTodoList() {
         mViewModel.getTodoList().obs(this@TodoFragment) {
             it.c {
-
                 /**
                  * 去掉重复，后台bug
                  */
                 var data = ArrayList<BeanTODO>()
+                if(!localTodo?.isEmpty()) {
+                    data.addAll(localTodo)
+                }
                 it.forEach {
+                    it.itemType = ITEM_TYPE_COMMON
                     if (it.productType == ObjectProduct.TYPE_LIVE) {
                         data.add(it)
                     }
@@ -119,7 +129,11 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
                  * 去掉重复，后台bug
                  */
                 var data = ArrayList<BeanTODO>()
+                if(!localTodo?.isEmpty()) {
+                    data.addAll(localTodo)
+                }
                 it.forEach {
+                    it.itemType = ITEM_TYPE_COMMON
                     if (it.productType == ObjectProduct.TYPE_LIVE) {
                         data.add(it)
                     }
@@ -131,6 +145,13 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
                  * 去掉重复，后台bug
                  */
                 mBinding.todoList.addDatas(data)
+            }
+            it.n {
+                if(!localTodo?.isEmpty()) {
+                    var data = ArrayList<BeanTODO>()
+                    data.addAll(localTodo)
+                    mBinding.todoList.addDatas(data)
+                }
             }
         }
     }
@@ -145,8 +166,6 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
                 it.y { mBinding.todoList.refresh() }
             }
         }.show(this)
-
-
     }
 
     /**
@@ -201,7 +220,6 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
         }
 
     }
-
 
     @Subscribe(code = BusCode.ORDER_REFRESH)
     override fun refresh() {
