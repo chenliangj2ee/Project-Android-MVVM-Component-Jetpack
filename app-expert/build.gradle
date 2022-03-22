@@ -35,8 +35,8 @@ android {
         applicationId "com.fcyd.expert"
         minSdk 26
         targetSdk 26
-        versionCode 11
-        versionName "1.1.6"
+        versionCode 12
+        versionName "1.1.7"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
