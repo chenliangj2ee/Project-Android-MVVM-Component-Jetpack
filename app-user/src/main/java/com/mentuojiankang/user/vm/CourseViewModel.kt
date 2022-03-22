@@ -40,7 +40,7 @@ class CourseViewModel : MyBaseViewModel() {
         API.playCount(body("courseSectionId", courseId))
     }
 
-    fun getCourseRecommendList(courseId: String, pageNo: Int, pageIndex: Int) = go {
-        API.getCourseRecommendList(courseId, pageNo, pageIndex)
+    fun getCourseRecommendList(productId: String) = go {
+        API.getCourseRecommendList(productId)
     }
 }

@@ -5,6 +5,7 @@ import com.mentuojiankang.user.bean.BeanCourse
 import com.mentuojiankang.user.databinding.FragmentCourseInfoRecommendBinding
 import com.mentuojiankang.user.databinding.ItemRecommendCourseBinding
 import com.mentuojiankang.user.vm.CourseViewModel
+import com.mtjk.annotation.MyField
 import com.mtjk.base.MyBaseFragment
 import com.mtjk.base.obs
 import com.mtjk.utils.click
@@ -16,6 +17,10 @@ import com.mtjk.utils.goto
  * date:2021/11/4
  */
 class CourseRecommendFragment : MyBaseFragment<FragmentCourseInfoRecommendBinding, CourseViewModel>() {
+
+    @MyField
+    var courseId: String = ""
+
     override fun initOnCreateView() {
         with(mBinding) {
             refresh.setEnableRefresh(false)
@@ -35,9 +40,9 @@ class CourseRecommendFragment : MyBaseFragment<FragmentCourseInfoRecommendBindin
 
     private fun loadRecommendData() {
         with(mBinding) {
-            mViewModel.getCourseRecommendList("", refresh.pageSize, refresh.pageIndex).obs(this@CourseRecommendFragment) {
-                it.c { refresh.addCache(it.records) }
-                it.y { refresh.addDatas(it.records) }
+            mViewModel.getCourseRecommendList(courseId).obs(this@CourseRecommendFragment) {
+                it.c { refresh.addCache(it) }
+                it.y { refresh.addDatas(it) }
             }
             //TODO
             refresh.test(BeanCourse::class.java, 20)

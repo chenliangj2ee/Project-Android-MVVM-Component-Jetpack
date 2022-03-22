@@ -153,7 +153,7 @@ class ConsultInfoEditActivity :
                 mViewModel.body(
                     "name", name.editText.text.toString(),
                     "age", age.editText.text.toString().toInt(),
-                    "sex", (if (sex.editText.text.equals("女")) 2 else 1),
+                    "sex", (if ("女".equals(sex.editText.text.toString())) 2 else 1),
                     "questionType", getTypeResult(),
                     "description", desc_edit.edit.text.toString(),
                     "wishResult", effect_edit.edit.text.toString(),

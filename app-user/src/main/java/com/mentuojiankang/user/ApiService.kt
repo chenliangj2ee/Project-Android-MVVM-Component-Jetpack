@@ -415,13 +415,10 @@ interface ApiService {
     @POST("/api-app/v1/app/user/visitor/case/save")
     fun saveVisitorConsultDetail(@Body body: Any): Data<Any>
 
-    //TODO 课程推荐接口占位
-    @MyRetrofitGo(mTag = "课程推荐", mLoading = false, mFailToast = false, mCache = true)
-    @GET("/api-app/v1/app/course/xxx")
+    @MyRetrofitGo(mTag = "课程推荐", mLoading = true, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/user/course/listRecommend")
     fun getCourseRecommendList(
-        @Query("courseId") courseId: String,
-        @Query("pageNo") pageNo: Int,
-        @Query("pageSize") pageSize: Int
-    ): DataPages<BeanCourse>
+        @Query("productId") productId: String,
+    ): Datas<BeanCourse>
 
 }

@@ -38,6 +38,7 @@
             android:layout_marginRight="38dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/base_selector_button_dark"
+            android:visibility="@{(data.bought == 1 || data.bought == 2) ? View.GONE : View.VISIBLE}"
             android:gravity="center"
             android:stateListAnimator="@null">
 

@@ -7,6 +7,7 @@ import com.mentuojiankang.user.bean.BeanCourse
 import com.mentuojiankang.user.bean.BeanPayInfo
 import com.mentuojiankang.user.databinding.ActivityCourseInfoBinding
 import com.mentuojiankang.user.fragment.CourseInfoHeaderFragment
+import com.mentuojiankang.user.fragment.CourseRecommendFragment
 import com.mentuojiankang.user.fragment.DetailsWebViewFragment
 import com.mentuojiankang.user.vm.CourseViewModel
 import com.mentuojiankang.user.vm.FavoriteViewModel
@@ -40,6 +41,7 @@ class CourseInfoActivity : MyBaseActivity<ActivityCourseInfoBinding, CourseViewM
         header = headerFragment as CourseInfoHeaderFragment
         header.player?.initFullLayout(fullScreenLayout)
         viewpager.setTabLayout(tabLayout, "详情", "评价")
+        //viewpager.setTabLayout(tabLayout, "详情", "推荐", "评价")
 
         viewpager.onPageSelected { subscribe.show(it == 0) }
         subscribe.click {
@@ -84,7 +86,7 @@ class CourseInfoActivity : MyBaseActivity<ActivityCourseInfoBinding, CourseViewM
         viewpager.clearFragments()
         viewpager.addFragments(
             DetailsWebViewFragment(bean.detailUrl, MyWebView.Type.IMAGE ),
-//            CourseRecommendFragment(),
+            //goto(CourseRecommendFragment::class.java, "courseId", bean.id),
             goto(EvaluateFragment::class.java, "productId", bean.id)
         )
 

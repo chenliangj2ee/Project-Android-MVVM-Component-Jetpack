@@ -4,7 +4,7 @@ import com.mtjk.base.MyBaseBean
 
 class BeanLiveDetail : MyBaseBean() {
 
-    var bought = false
+    var bought = 0      //是否已购买, 1: 已预约，2：已购买
     var coverImage = ""
     var createBy = ""
     var createTime = ""
