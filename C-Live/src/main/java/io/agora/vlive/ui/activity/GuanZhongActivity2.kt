@@ -812,6 +812,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
      * tag==静音
      */
     fun enableAudio(position: Int, boo: Boolean) {
+        Live.seats[position].user.anchorCloseVideo = if (boo) 1 else 2
         Live.seats[position].user.enableAudio = if (boo) 1 else 2
         refreshSeat()
         Live.sendSentMessage(this)
@@ -821,6 +822,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
      * tag==静音
      */
     fun enableVideo(position: Int, boo: Boolean) {
+        Live.seats[position].user.anchorCloseVideo = if (boo) 1 else 2
         Live.seats[position].user.enableVideo = if (boo) 1 else 2
         refreshSeat()
         Live.sendSentMessage(this)
@@ -977,9 +979,9 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     override fun onRtcJoinChannelSuccess(channel: String, uid: Int, elapsed: Int) {
         this.log("进入频道通知，channel：$channel  uid:$uid")
         this.uid = uid
-        this.initVM(RoomViewModel::class.java).updateUid(uid.toString() + "").obs(this) {
-            it.y { log("更新uid成功") }
-        }
+//        this.initVM(RoomViewModel::class.java).updateUid(uid.toString() + "").obs(this) {
+//            it.y { log("更新uid成功") }
+//        }
         this.initVM(LiveViewModel::class.java).addViewedCount(rtcChannelName!!).obs(this) {
             it.y { log("更新观看次数") }
         }

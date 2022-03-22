@@ -981,7 +981,7 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
      * tag==禁言
      */
     fun enableAudio(position: Int, boo: Boolean) {
-        Live.seats[position].user.anchorCloseAudio = boo
+        Live.seats[position].user.anchorCloseAudio = if (boo) 1 else 0
         Live.seats[position].user.enableAudio = if (boo) 1 else 0
         refreshSeat()
         Live.sendSentMessage(this)
@@ -991,7 +991,7 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
      * tag==禁视
      */
     fun enableVideo(position: Int, boo: Boolean) {
-        Live.seats[position].user.anchorCloseVideo = boo
+        Live.seats[position].user.anchorCloseVideo = if (boo) 1 else 0
         Live.seats[position].user.enableVideo = if (boo) 1 else 0
         refreshSeat()
         Live.sendSentMessage(this)
