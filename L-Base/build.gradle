@@ -17,7 +17,7 @@ android {
     defaultConfig {
         minSdk 22
         targetSdk 31
-        versionCode 1
+        versionCode 12
         versionName "1.0.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true

@@ -269,6 +269,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     var liveParam = BeanParam().get<BeanParam>()
 
     private fun initUI() {
+        rtcEngine().enableAudio()
         rtcEngine().enableVideo()
         LiveMoreDialog.Status.showDraw = false
         hideStatusBar(false)
@@ -628,6 +629,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
 
     override fun onRtmSeatStateChanged(list: List<SeatStateMessageDataItem>) {
         Live.seats = list
+
         refreshSeat()
         val user = getBeanUser()
 
@@ -639,6 +641,8 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
         }
 
         list.filter { it.user.userId == user!!.userId }.forEach {
+            it.user.enableVideo = it.user.anchorCloseVideo
+            it.user.enableAudio = it.user.anchorCloseAudio
             if (it.user.enableAudio == 1) {
                 rtcEngine().enableAudio()
             } else {
@@ -684,6 +688,10 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     ) {
         if (isOwner || isHost) {
             val mode = if (isOwner) SeatItemDialog.MODE_OWNER else SeatItemDialog.MODE_HOST
+
+            Live.seats[position].user.enableVideo = Live.seats[position].user.anchorCloseVideo
+            Live.seats[position].user.enableAudio = Live.seats[position].user.anchorCloseAudio
+
             val dialog = SeatItemDialog(
                 this, seatState, Live.seats[position].user.enableVideo,
                 audioMuteState, mode, view, position, this

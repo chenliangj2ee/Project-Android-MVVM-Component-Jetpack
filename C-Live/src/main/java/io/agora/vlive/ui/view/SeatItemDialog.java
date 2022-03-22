@@ -189,7 +189,7 @@ public class SeatItemDialog extends Dialog implements View.OnClickListener {
                     mOpTextViews[1].setVisibility(View.VISIBLE);
                     mOpTextViews[1].setText("解除禁言");
                 }
-
+                mOpTextViews[2].setVisibility(View.GONE);
                 if (isMore && mOpTextViews[2] != null) {
                     if (mVideoMuteState == 1) {
                         mOpTextViews[2].setText("关闭视频");

@@ -27,7 +27,7 @@ android {
 //        applicationId "io.agora.vlive"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 32101
+        versionCode 12
         versionName "3.2.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

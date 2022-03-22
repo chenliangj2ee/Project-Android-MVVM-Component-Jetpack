@@ -22,8 +22,10 @@ public class SeatStateMessage extends AbsRtmMessage {
         public String userName;
         public String avatar;
         public int uid;
-        public int enableAudio;
-        public int enableVideo;
+        public int anchorCloseAudio = 1;//0:主播关闭，1：正常，2:自己关闭
+        public int anchorCloseVideo = 1;//0:主播关闭，1：正常，2:自己关闭
+        public int enableAudio;//0:主播关闭，1：正常，2:自己关闭
+        public int enableVideo;//0:主播关闭，1：正常，2:自己关闭
         public int role = 1;
     }
 }

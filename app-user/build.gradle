@@ -29,18 +29,18 @@ android {
             v2SigningEnabled true
         }
     }
+
     compileSdk 31
 
     defaultConfig {
         applicationId "com.mentuojiankang.user"
         minSdk 26
         targetSdk 26
-        versionCode 11
-        versionName "1.1.6"
+        versionCode 12
+        versionName "1.1.7"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         ndk {
             abiFilters "armeabi-v7a"//, "arm64-v8a"// ,"armeabi"
         }
@@ -50,13 +50,29 @@ android {
                 XG_ACCESS_KEY: "ACQ3NYGJVLVT",
                 PACKAGE_NAME : "com.mentuojiankang.user",
         ]
-
+        flavorDimensions 'versionCode'
     }
+
+
+
     dataBinding {
         enabled = true
     }
 
-
+    productFlavors {
+        huawei {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "huawei"]
+        }
+        xiaomi {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "xiaomi"]
+        }
+        oppo {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "oppo"]
+        }
+        vivo {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "vivo"]
+        }
+    }
     buildTypes {
 
         release_user {
@@ -68,10 +84,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            manifestPlaceholders =[
-                    APPLICATIONID : "com.mentuojiankang.user",
-                    APP_NAME :"吱吱心理"
+            manifestPlaceholders = [
+                    APPLICATIONID: "com.mentuojiankang.user",
+                    APP_NAME     : "吱吱心理"
             ]
+            // 自定义输出配置
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${variant.name}-${variant.versionName}.apk"
+                }
+            }
+
         }
 
         develop_user {
@@ -82,9 +105,9 @@ android {
             buildConfigField "Boolean", "isUserApp", 'true'
             buildConfigField "Boolean", "isExpertApp", 'false'
             signingConfig signingConfigs.debug
-            manifestPlaceholders =[
-                    APPLICATIONID : "com.mentuojiankang.user.develop",
-                    APP_NAME : "吱吱心理-开发"
+            manifestPlaceholders = [
+                    APPLICATIONID: "com.mentuojiankang.user.develop",
+                    APP_NAME     : "吱吱心理-开发"
             ]
             debuggable true
         }
@@ -97,13 +120,15 @@ android {
             buildConfigField "Boolean", "isExpertApp", 'false'
             signingConfig signingConfigs.debug
             debuggable true
-            manifestPlaceholders =[
-                    APPLICATIONID : "com.mentuojiankang.user.alpha",
-                    APP_NAME : "吱吱心理-测试"
+            manifestPlaceholders = [
+                    APPLICATIONID: "com.mentuojiankang.user.alpha",
+                    APP_NAME     : "吱吱心理-测试"
             ]
         }
 
     }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

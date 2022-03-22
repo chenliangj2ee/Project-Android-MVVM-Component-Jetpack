@@ -51,7 +51,22 @@ android {
                 XG_ACCESS_KEY: "A5TH4E686EKU",
                 PACKAGE_NAME : "com.fcyd.expert",
         ]
+        flavorDimensions 'versionCode'
+    }
 
+    productFlavors {
+        huawei {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "huawei"]
+        }
+        xiaomi {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "xiaomi"]
+        }
+        oppo {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "oppo"]
+        }
+        vivo {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "vivo"]
+        }
     }
     dataBinding {
         enabled = true
