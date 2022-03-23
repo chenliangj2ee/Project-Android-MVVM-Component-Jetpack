@@ -80,6 +80,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_centerVertical="true"
                 android:gravity="center"
+                android:textColor="@android:color/white"
                 android:text="编辑"
                 android:background="@drawable/base_selector_button_dark_46" />
         </RelativeLayout>
