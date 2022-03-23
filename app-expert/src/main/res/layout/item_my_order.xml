@@ -182,7 +182,7 @@
                 android:minWidth="78dp"
                 android:text="来访者信息"
                 android:textColor="#133C53"
-                android:visibility="@{order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
+                android:visibility="@{(order.orderStatus==status.STATUS_WAIT_CONFIRM || order.orderStatus==status.STATUS_DOING)?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/stop"
