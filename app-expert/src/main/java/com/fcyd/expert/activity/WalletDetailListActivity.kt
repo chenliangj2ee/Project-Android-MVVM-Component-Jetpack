@@ -14,7 +14,9 @@ import com.mtjk.annotation.MyClass
 import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.obs
 import com.mtjk.utils.DimenUtil
+import com.mtjk.utils.click
 import com.mtjk.utils.load
+import com.mtjk.utils.show
 import com.mtjk.view.DialogYearMonthPicker
 import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 import java.time.LocalDateTime
@@ -26,6 +28,11 @@ import java.time.LocalDateTime
  */
 @MyClass(mToolbarTitle = "明细")
 class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, UserViewModel>() {
+
+    private var selectYear = 0
+
+    private var selectMonth = 0
+
     override fun initCreate() {
         mToolBar.showRight("客服", { toCustomerService() })
         mBinding.refresh.bindData<BeanWalletDetail>(::initItem).loadData {
@@ -39,11 +46,36 @@ class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, U
         with(mBinding) {
             refresh.loadData {
                 mViewModel.getWalletDetailList(refresh.pageIndex, refresh.pageSize, startTime, endTime).obs(this@WalletDetailListActivity) {
-                    it.c { refresh.addCache(it.records) }
-                    it.y { refresh.addDatas(it.records) }
+                    it.c {
+                        refresh.addCache(it.records)
+                        checkEmptyList(it.records)
+                    }
+                    it.y {
+                        refresh.addDatas(it.records)
+                        checkEmptyList(it.records)
+                    }
                 }
             }
         }
+    }
+
+    override fun initClick() {
+        super.initClick()
+        mBinding.root.findViewById<View>(R.id.empty_group)?.click {
+            dateDialog(
+                if(selectYear > 0) selectYear else 0,
+                if(selectMonth > 0) selectMonth else 0)
+        }
+    }
+
+    private fun checkEmptyList(list: List<BeanWalletDetail>?) {
+        if(selectYear <= 0 || selectMonth <= 0) {
+            return
+        }
+        var groupView  = mBinding.root.findViewById<View>(R.id.empty_group)
+        groupView?.show(list.isNullOrEmpty())
+        var month = if(selectMonth > 10) selectMonth.toString() else ("0" + selectMonth.toString())
+        groupView?.findViewById<TextView>(R.id.group_name)?.text = "${selectYear}年${month}月"
     }
 
     private fun initItem(it: BeanWalletDetail) {
@@ -94,6 +126,8 @@ class WalletDetailListActivity : MyBaseActivity<ActivityMyWalletDetailBinding, U
             var endYear = if (month == 12) (year + 1) else year
             var endMonth = if (month == 12) 1 else (month + 1)
             var end = LocalDateTime.of(endYear, endMonth, 1, 0, 0, 0).toString()
+            selectYear = year
+            selectMonth = month
             mBinding.refresh.clearData()
             loadWalletDetailData(start, end)
         }
