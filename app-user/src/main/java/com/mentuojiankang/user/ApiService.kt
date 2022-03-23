@@ -375,6 +375,14 @@ interface ApiService {
     @POST("/api-app/v1/app/user/myCourse/liveCourse")
     fun getLiveCourse(@Body body: Any): DataPages<BeanLiveCourse>
 
+    @MyRetrofitGo(mTag = "直播课节", mLoading = true, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/live-course-section/queryByCourseId")
+    fun getLiveSection(
+        @Query("courseId") courseId: String,
+        @Query("pageNo") pageNo: Int,
+        @Query("pageSize") pageSize: Int
+    ): DataPages<BeanLiveSection>
+
     @MyRetrofitGo(mTag = "文章列表", mLoading = false, mFailToast = false, mCache = true)
     @GET("/api-app/v1/app/cms/article/getPageList")
     fun getArticleList(

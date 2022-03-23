@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanLiveSection" />
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
+        <TextView
+            android:id="@+id/index"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:text='@{"" + data.itemPosition}'
+            tools:text="10"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_toRightOf="@id/index"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="17dp"
+            android:text="@{data.name}"
+            tools:text="标题"/>
+        <com.mtjk.view.MyImageView
+            android:id="@+id/type"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/title"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@id/title"
+            tools:src="@drawable/icon_todo_video"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/type"
+            android:layout_alignLeft="@id/title"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:text="@{data.timeDesc()}"
+            android:textColor="#A9ADB2"
+            android:textSize="12dp"
+            tools:text="2022.03.23 10:00-11:30" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/time"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:visibility="@{data.currentState()==0 ? View.GONE : View.VISIBLE}"
+            android:textColor="#A9ADB2"
+            android:textSize="12dp"
+            android:text="@{data.stateDesc()}"
+            tools:text="未开始"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/start"
+            android:layout_width="68dp"
+            android:layout_height="24dp"
+            android:layout_below="@id/type"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/base_selector_button_dark"
+            android:text="进入直播"
+            android:textColor="@drawable/base_selector_color_button_white"
+            android:textSize="12dp"
+            android:visibility='@{data.currentState()==0?View.VISIBLE:View.GONE}' />
+    </RelativeLayout>
+</layout>
