@@ -91,7 +91,7 @@
             android:layout_toLeftOf="@id/arrow"
             android:ellipsize="end"
             android:lines="1"
-            android:text='@{"累计消费 " + data.consultNumber + "元"}'
+            android:text='@{"累计消费 " + data.cumulative + "元"}'
             android:textColor="#515357"
             android:textSize="14dp" />
 
