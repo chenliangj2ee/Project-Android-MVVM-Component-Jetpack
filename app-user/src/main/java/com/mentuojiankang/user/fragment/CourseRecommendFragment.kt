@@ -28,7 +28,8 @@ class CourseRecommendFragment : MyBaseFragment<FragmentCourseInfoRecommendBindin
                 with(it.binding as ItemRecommendCourseBinding) {
                     data = it
                     root.click {
-                        context?.goto(CourseInfoActivity::class.java)
+                        goto(CourseInfoActivity::class.java, "courseId", data?.id!!)
+                        activity?.finish()
                     }
                 }
             }.loadData {
