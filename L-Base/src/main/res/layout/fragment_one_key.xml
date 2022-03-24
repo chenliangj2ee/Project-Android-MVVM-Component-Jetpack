@@ -24,11 +24,11 @@
         <ImageView
             android:id="@+id/icon"
             android:layout_width="86dp"
-            android:layout_height="60dp"
+            android:layout_height="86dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
             android:scaleType="centerInside"
-            android:src="@mipmap/login_icon" />
+            android:src="@drawable/login_logo" />
 
         <TextView
             android:id="@+id/onkeyNumber"

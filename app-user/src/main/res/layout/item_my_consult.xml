@@ -26,11 +26,10 @@
 
             <com.mtjk.view.MyImageView
                 load="@{order.image}"
-                radius="@{5}"
+                radius="@{2}"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
-                android:background="#eee"
                 app:my_default="@drawable/load_default" />
 
             <LinearLayout

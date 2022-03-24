@@ -62,7 +62,7 @@ class PersonalInfoEditActivity :
         expertareaXXJS.edit.isEnabled = false
         expertname.editText.isEnabled = false
 
-        postDelayed(1000){
+        postDelayed(1000) {
             expertareaSCLY.edit.isEnabled = true
             expertareaXXJS.edit.isEnabled = true
             expertname.editText.isEnabled = true
@@ -78,7 +78,7 @@ class PersonalInfoEditActivity :
 
     override fun initClick() {
         header.click { selectImage(false) }
-        exportnext.click { dialog("是否提交").n("取消") {  }.y("确认"){uploadImage() } }
+        exportnext.click { uploadImage() }
         expertloction.click { initCity() }
         expertman.click { user?.gender = 1 }
         expertwoman.click { user?.gender = 2 }
@@ -86,7 +86,13 @@ class PersonalInfoEditActivity :
         //教育背景
         experteducation.click { goto(EducationEditActivity::class.java, "bean", beanAuth) }
         //资格证书
-        expertcertificate.click { goto(QualificationListActivity::class.java, "beanAuth", beanAuth) }
+        expertcertificate.click {
+            goto(
+                QualificationListActivity::class.java,
+                "beanAuth",
+                beanAuth
+            )
+        }
 
         with(mBinding) {
             expertareaSCLY.edit.changed {

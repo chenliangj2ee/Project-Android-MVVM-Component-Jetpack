@@ -94,6 +94,8 @@ public abstract class BaseActivity extends AppCompatActivity implements ClientPr
     private BottomSheetDialog mSheetDialog;
     private long mLastToastTime;
 
+    public boolean stop=false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +116,13 @@ public abstract class BaseActivity extends AppCompatActivity implements ClientPr
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stop=false;
+    }
+
 
     /**
      * Give a chance to obtain view layout attributes when the
@@ -420,6 +429,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ClientPr
     @Override
     public void onStop() {
         super.onStop();
+        stop=true;
         proxy().removeProxyListener(this);
     }
 

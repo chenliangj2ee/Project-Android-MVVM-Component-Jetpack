@@ -1,6 +1,7 @@
 package com.mtjk.view
 
 import android.content.Context
+import android.graphics.Color
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
@@ -26,7 +27,7 @@ import kotlinx.android.synthetic.main.layout_edit_item.view.*
  */
 class ItemEditView : LinearLayout {
     open lateinit var editText: EditText
-    lateinit var item:View
+    lateinit var item: View
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
@@ -59,8 +60,10 @@ class ItemEditView : LinearLayout {
         if (myTitle != null) {
             item.title.text = myTitle
         }
+        item.textValue.setTextColor(Color.parseColor("#1F2326"))
         if (myValueHint != null && "" != myValueHint) {
             item.textValue.text = myValueHint
+            item.textValue.setTextColor(Color.parseColor("#A9ADB2"))
             item.editValue.hint = myValueHint
         }
         if (length != null && length > 0) {
@@ -83,9 +86,9 @@ class ItemEditView : LinearLayout {
         }
 
         if (textsize != null && textsize > 0) {
-            item.title.setTextSize(TypedValue.COMPLEX_UNIT_PX,textsize)
-            item.editValue.setTextSize(TypedValue.COMPLEX_UNIT_PX,textsize)
-            item.textValue.setTextSize(TypedValue.COMPLEX_UNIT_PX,textsize)
+            item.title.setTextSize(TypedValue.COMPLEX_UNIT_PX, textsize)
+            item.editValue.setTextSize(TypedValue.COMPLEX_UNIT_PX, textsize)
+            item.textValue.setTextSize(TypedValue.COMPLEX_UNIT_PX, textsize)
         }
 
         lineShow?.let { item.line.show(it) }
@@ -95,6 +98,7 @@ class ItemEditView : LinearLayout {
     }
 
     fun setValue(value: String) {
+        textValue.setTextColor(Color.parseColor("#1F2326"))
         editText.setText(value)
         textValue.text = value
     }

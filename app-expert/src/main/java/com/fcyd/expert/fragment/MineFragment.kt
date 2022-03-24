@@ -41,6 +41,7 @@ class MineFragment : MyBaseFragment<FragmentMineBinding, AccountViewModel>() {
                 mBinding.data = it
                 user?.realName = it.realName
                 user?.save()
+                user?.sendSelf(BusCode.UPDATE_IM_USERINFO)
             }
         }
 

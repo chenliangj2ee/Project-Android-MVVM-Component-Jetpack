@@ -74,6 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:textSize="12dp"
             tools:text="tom" />
     </LinearLayout>

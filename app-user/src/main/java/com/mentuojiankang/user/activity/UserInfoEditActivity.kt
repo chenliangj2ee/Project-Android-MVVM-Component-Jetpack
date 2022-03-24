@@ -54,6 +54,10 @@ class UserInfoEditActivity : MyBaseActivity<ActivityUserInfoEditBinding, Account
 
         header.click { selectImage(false) }
         next.click {
+            if (user?.nickName!!.length < 2) {
+                toast("昵称最少2个字符")
+                return@click
+            }
             isFinish = true
             updateUserInfo()
         }

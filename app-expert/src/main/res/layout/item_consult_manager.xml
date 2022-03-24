@@ -135,10 +135,10 @@
 
                 android:layout_weight="1"
                 android:gravity="right|bottom"
-                android:text='@{"总价:"}'
+                android:text='@{"实付:"}'
                 android:textColor="#373535"
                 android:textSize="12dp"
-                tools:text="总价:" />
+                tools:text="实付:" />
 
             <TextView
                 android:layout_width="wrap_content"

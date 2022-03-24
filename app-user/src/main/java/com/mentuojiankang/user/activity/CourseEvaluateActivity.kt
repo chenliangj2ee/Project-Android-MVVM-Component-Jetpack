@@ -1,5 +1,7 @@
 package com.mentuojiankang.user.activity
 
+import android.view.MotionEvent
+import android.view.View
 import com.mentuojiankang.user.databinding.ActivityCourseEvaluateBinding
 import com.mentuojiankang.user.vm.OrderViewModel
 import com.mtjk.annotation.MyClass
@@ -9,6 +11,7 @@ import com.mtjk.base.obs
 import com.mtjk.bean.BeanRecommend
 import com.mtjk.utils.changed
 import com.mtjk.utils.click
+import com.mtjk.utils.log
 import com.mtjk.utils.toast
 import kotlinx.android.synthetic.main.activity_course_evaluate.*
 
@@ -30,18 +33,40 @@ class CourseEvaluateActivity : MyBaseActivity<ActivityCourseEvaluateBinding, Ord
             }
             ratingbar.setOnRatingBarChangeListener { _, rating, _ ->
                 bean.score = rating
-                if (rating < 2) {
-                    good.text = "差"
-                } else if (rating > 2 && rating <= 3) {
-                    good.text = "中"
-                } else if (rating > 3) {
-                    good.text = "好"
+                when (rating) {
+                    in 0.0..1.0 -> {
+                        good.text = "差"
+                    }
+                    in 2.0..3.0 -> {
+                        good.text = "中"
+                    }
+                    in 3.0..5.0 -> {
+                        good.text = "好"
+                    }
                 }
             }
 
 
         }
     }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+
+
+//        postDelayed(200){
+//            var rating = mBinding.ratingbar.rating
+//            log("顶顶顶顶顶顶顶顶$rating")
+//            if (rating in 1.0..2.0) {
+//                good.text = "差"
+//            } else if (rating in 2.0..3.0) {
+//                good.text = "中"
+//            } else if (rating in 3.0..5.0) {
+//                good.text = "好"
+//            }
+//        }
+        return super.dispatchTouchEvent(ev)
+    }
+
 
     override fun initClick() {
         submit.click { httpSubmit() }

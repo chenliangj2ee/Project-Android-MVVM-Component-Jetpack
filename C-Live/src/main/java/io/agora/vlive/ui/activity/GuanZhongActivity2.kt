@@ -630,19 +630,22 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     override fun onRtmSeatStateChanged(list: List<SeatStateMessageDataItem>) {
         Live.seats = list
 
-        refreshSeat()
         val user = getBeanUser()
 
         if (list.any { it.user.userId == user!!.userId }) {
             isLink = true
             stopWaitLink()
         } else {
+            if (isLink) {
+                toast("您已被主播请下连麦")
+            }
             isLink = false
         }
-
-        list.filter { it.user.userId == user!!.userId }.forEach {
+        list.forEach {
             it.user.enableVideo = it.user.anchorCloseVideo
             it.user.enableAudio = it.user.anchorCloseAudio
+        }
+        list.filter { it.user.userId == user!!.userId }.forEach {
             if (it.user.enableAudio == 1) {
                 rtcEngine().enableAudio()
             } else {
@@ -650,7 +653,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
             }
         }
 
-
+        refreshSeat()
         log("更新座位.....................")
     }
 
@@ -812,7 +815,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
      * tag==静音
      */
     fun enableAudio(position: Int, boo: Boolean) {
-        Live.seats[position].user.anchorCloseVideo = if (boo) 1 else 2
+        Live.seats[position].user.anchorCloseAudio = if (boo) 1 else 2
         Live.seats[position].user.enableAudio = if (boo) 1 else 2
         refreshSeat()
         Live.sendSentMessage(this)
@@ -979,9 +982,9 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     override fun onRtcJoinChannelSuccess(channel: String, uid: Int, elapsed: Int) {
         this.log("进入频道通知，channel：$channel  uid:$uid")
         this.uid = uid
-//        this.initVM(RoomViewModel::class.java).updateUid(uid.toString() + "").obs(this) {
-//            it.y { log("更新uid成功") }
-//        }
+        this.initVM(RoomViewModel::class.java).updateUid(uid.toString() + "").obs(this) {
+            it.y { log("更新uid成功") }
+        }
         this.initVM(LiveViewModel::class.java).addViewedCount(rtcChannelName!!).obs(this) {
             it.y { log("更新观看次数") }
         }

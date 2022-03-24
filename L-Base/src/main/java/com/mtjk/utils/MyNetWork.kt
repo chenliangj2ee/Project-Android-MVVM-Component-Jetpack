@@ -1,5 +1,6 @@
 package com.mtjk.utils
 
+import android.net.TrafficStats
 import com.localebro.okhttpprofiler.OkHttpProfilerInterceptor
 import com.mtjk.bean.BeanUser
 import okhttp3.OkHttpClient
@@ -8,6 +9,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import java.lang.System.console
+
 
 /**
  * 创建API
@@ -15,7 +18,7 @@ import java.util.concurrent.TimeUnit
 fun <T> Any.initAPI(url: String, cla: Class<T>): T = MyNetWork.initRetrofit(url).create(cla)
 
 
-const val apiCode=1
+const val apiCode = 1
 
 object MyNetWork {
     private val timeUnit: TimeUnit = TimeUnit.SECONDS
@@ -81,5 +84,8 @@ object MyNetWork {
             .build();
         return newRequest;
     }
+
+    fun getNetworkBytes() = TrafficStats.getTotalRxBytes()
+
 }
 

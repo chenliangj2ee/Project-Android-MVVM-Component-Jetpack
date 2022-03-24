@@ -29,7 +29,7 @@ class MineFragment : MyBaseFragment<FragmentMineBinding, AccountViewModel>() {
             it.y {
                 if (it.listWorker.size > 0) {
                     conmpanyname.show(true)
-                    conmpanyname.text = it.listWorker[0].companyName
+//                    conmpanyname.text = it.listWorker[0].companyName
                     conmpanyname.visibility = if(it.listWorker[0].companyName.isNullOrEmpty()) View.GONE else View.VISIBLE
                 }
             }
@@ -43,7 +43,7 @@ class MineFragment : MyBaseFragment<FragmentMineBinding, AccountViewModel>() {
             this.follow.goto(MyFollowActivity::class.java)
             this.collection.goto(MyCollectionActivity::class.java)
             this.history.goto(MyHistoryActivity::class.java)
-            this.myEvaluation.goto(MyTestingActivity::class.java)
+            this.myTest.goto(MyTestingActivity::class.java)
             this.myConsult.goto(MyConsultActivity::class.java)
             this.myCourse.goto(MyCourseActivity::class.java)
             this.myOrder.goto(MyOrderActivity::class.java)

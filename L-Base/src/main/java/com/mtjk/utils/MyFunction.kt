@@ -557,9 +557,8 @@ fun <T> Context.goto(cls: Class<T>, vararg values: Any?): Fragment {
 
 
 }
-
+var handler = Handler()
 fun Any.postDelayed(delay: Long, func: () -> Unit) {
-    var handler = Handler()
     var run = Runnable {
         func()
     }
@@ -1354,7 +1353,7 @@ fun Any.messageNotification(id: String, title: String, message: String) {
         )
     val builder: NotificationCompat.Builder =
         NotificationCompat.Builder(BaseInit.act!!.applicationContext)
-            .setSmallIcon(R.mipmap.login_icon)
+            .setSmallIcon(R.drawable.login_logo)
             .setContentTitle(title)
             .setContentText(message)
             .setAutoCancel(true)

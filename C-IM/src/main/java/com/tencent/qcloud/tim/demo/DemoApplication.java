@@ -273,10 +273,12 @@ public class DemoApplication extends MyBaseApplication {
         }
     }
 
-    private void updateProfile(BeanUser user) {
+    @Subscribe(code = BusCode.UPDATE_IM_USERINFO)
+    public void updateProfile(BeanUser user) {
         UserInfo.getInstance().setName(user.getNickName() + "");
         UserInfo.getInstance().setUserId(user.getUserId());
         String avatarurl = user.getAvatar();
+        MyFunctionKt.log(this,"更新IM用户头像"+avatarurl);
         V2TIMUserFullInfo v2TIMUserFullInfo = new V2TIMUserFullInfo();
         // 头像
         if (!TextUtils.isEmpty(avatarurl)) {
@@ -293,13 +295,12 @@ public class DemoApplication extends MyBaseApplication {
         V2TIMManager.getInstance().setSelfInfo(v2TIMUserFullInfo, new V2TIMCallback() {
             @Override
             public void onError(int code, String desc) {
-                DemoLog.e(TAG, "modifySelfProfile err code = " + code + ", desc = " + desc);
-                ToastUtil.toastShortMessage("Error code = " + code + ", desc = " + desc);
+                MyFunctionKt.log(this,"更新IM用户头像失败");
             }
 
             @Override
             public void onSuccess() {
-                DemoLog.i(TAG, "modifySelfProfile success");
+                MyFunctionKt.log(this,"更新IM用户头像成功");
             }
         });
     }

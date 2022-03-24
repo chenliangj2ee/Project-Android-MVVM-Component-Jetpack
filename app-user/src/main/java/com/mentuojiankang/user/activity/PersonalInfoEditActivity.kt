@@ -118,7 +118,11 @@ class PersonalInfoEditActivity :
 
     override fun onBackPressed() {
         user?.occupation = userindustry.editText.text.toString()
-        user?.nickName = nicknameuser.editText.text.toString()
+        user?.nickName = nicknameuser.editText.text.toString().trim().replace(" ","")
+        if( user?.nickName!!.length<2){
+            toast("昵称最少2个字符")
+            return ;
+        }
         mViewModel.updateUserAccount(user!!).obs(this) {
             it.y {
                 user!!.save()

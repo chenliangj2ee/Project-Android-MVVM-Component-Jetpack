@@ -112,6 +112,7 @@
                     radius="@{5}"
                     android:layout_width="108dp"
                     android:layout_height="108dp"
+                    android:visibility='@{"".equals(bean.jybj_image)?View.GONE:View.VISIBLE}'
                     android:layout_gravity="bottom" />
 
                 <ImageView

@@ -23,10 +23,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#133C53"
+                android:background="@drawable/icon_my_top_bg"
                 android:orientation="vertical"
                 android:paddingTop="30dp"
                 android:paddingBottom="20dp">
@@ -70,19 +71,6 @@
                                 android:textColor="#fff"
                                 android:textSize="21dp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignTop="@id/name"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="10dp"
-                                android:layout_toRightOf="@id/name"
-                                android:drawableLeft="@drawable/icon_mine_vip"
-                                android:drawablePadding="5dp"
-                                android:text="会员"
-                                android:textColor="#fff"
-                                android:textSize="12dp"
-                                android:visibility="@{data.vipLevel>0?View.VISIBLE:View.GONE}" />
 
                             <androidx.appcompat.widget.AppCompatButton
                                 android:id="@+id/edit"
@@ -103,12 +91,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/info"
+                            android:drawableLeft="@drawable/icon_mine_vip"
                             android:paddingTop="8dp"
                             android:paddingBottom="5dp"
+                            android:text=" 会员"
                             android:textColor="#fff"
-                            android:textSize="14dp"
-                            android:visibility="gone"
-                            tools:text="北京小桔科技有限公司" />
+                            android:textSize="12dp"
+                            android:visibility="@{data.vipLevel>0?View.VISIBLE:View.GONE}"
+                            tools:text="会员" />
+
                     </RelativeLayout>
                 </FrameLayout>
 
@@ -212,45 +203,43 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-70dp">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
                     android:background="@drawable/selector_card_10"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:paddingTop="20dp"
+                    android:paddingTop="10dp"
                     android:paddingRight="10dp"
-                    android:paddingBottom="20dp"
-                    android:visibility="gone">
+                    android:paddingBottom="10dp">
 
                     <LinearLayout
-                        android:id="@+id/my_evaluation"
+                        android:id="@+id/my_consult"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="gone">
+                        android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:src="@drawable/icon_testing" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="我的测评"
-                            android:textColor="#133C53"
-                            android:textSize="10dp" />
+                            android:text="我的咨询"
+                            android:textColor="#515357"
+                            android:textSize="12dp" />
                     </LinearLayout>
 
                     <View
@@ -259,7 +248,7 @@
                         android:background="#fff" />
 
                     <LinearLayout
-                        android:id="@+id/my_consult"
+                        android:id="@+id/my_course"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -267,17 +256,17 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:src="@drawable/icon_mine_consulting" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="我的咨询"
-                            android:textColor="#133C53"
-                            android:textSize="10dp" />
+                            android:text="我的课程"
+                            android:textColor="#515357"
+                            android:textSize="12dp" />
                     </LinearLayout>
 
                     <View
@@ -286,7 +275,7 @@
                         android:background="#fff" />
 
                     <LinearLayout
-                        android:id="@+id/my_course2"
+                        android:id="@+id/my_test"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -294,63 +283,70 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:src="@drawable/icon_course" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="我的课程"
-                            android:textColor="#133C53"
-                            android:textSize="10dp" />
+                            android:text="我的测评"
+                            android:textColor="#515357"
+                            android:textSize="12dp" />
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>
 
-            <com.mtjk.view.ItemView
-                android:id="@+id/my_course"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:my_icon="@drawable/icon_my_course"
-                app:my_title="我的课程" />
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_card_white_radius_10_border_0"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
 
-            <com.mtjk.view.ItemView
-                android:id="@+id/my_order"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:my_icon="@drawable/icon_mine_order"
-                app:my_title="我的订单" />
 
-            <com.mtjk.view.ItemView
-                android:id="@+id/my_wallet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:my_icon="@drawable/icon_mine_wallet"
-                app:my_title="我的钱包" />
+                <com.mtjk.view.ItemView
+                    android:id="@+id/my_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:my_icon="@drawable/icon_mine_order"
+                    app:my_title="我的订单" />
 
-            <com.mtjk.view.ItemView
-                android:id="@+id/my_vipcard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:my_icon="@drawable/icon_mine_vipcard"
-                app:my_title="会员卡" />
+                <com.mtjk.view.ItemView
+                    android:id="@+id/my_wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:my_icon="@drawable/icon_mine_wallet"
+                    app:my_title="我的钱包" />
 
-            <com.mtjk.view.ItemView
-                android:id="@+id/my_help"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:my_icon="@drawable/icon_mine_help"
-                app:my_title="帮助与反馈" />
+                <com.mtjk.view.ItemView
+                    android:id="@+id/my_vipcard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:my_icon="@drawable/icon_mine_vipcard"
+                    app:my_title="会员卡" />
 
-            <com.mtjk.view.ItemView
-                android:id="@+id/my_setting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:my_icon="@drawable/icon_mine_setting"
-                app:my_title="设置" />
+                <com.mtjk.view.ItemView
+                    android:id="@+id/my_help"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:my_icon="@drawable/icon_mine_help"
+                    app:my_title="帮助与反馈" />
 
+                <com.mtjk.view.ItemView
+                    android:id="@+id/my_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:my_icon="@drawable/icon_mine_setting"
+                    app:my_lineShow="false"
+                    app:my_title="设置" />
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

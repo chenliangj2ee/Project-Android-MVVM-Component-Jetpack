@@ -1,5 +1,6 @@
 package com.tencent.qcloud.tuikit.tuichat.ui.view.message.viewholder;
 
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -49,15 +50,15 @@ public abstract class MessageContentHolder extends MessageBaseHolder {
 
         if (isForwardMode) {
             leftUserIcon.setVisibility(View.VISIBLE);
-            rightUserIcon.setVisibility(View.GONE);
+            rightUserIcon.setVisibility(View.INVISIBLE);
         } else {
             //// 头像设置
             if (msg.isSelf()) {
-                leftUserIcon.setVisibility(View.GONE);
+                leftUserIcon.setVisibility(View.INVISIBLE);
                 rightUserIcon.setVisibility(View.VISIBLE);
             } else {
                 leftUserIcon.setVisibility(View.VISIBLE);
-                rightUserIcon.setVisibility(View.GONE);
+                rightUserIcon.setVisibility(View.INVISIBLE);
             }
         }
         if (properties.getAvatar() != 0) {
@@ -163,7 +164,7 @@ public abstract class MessageContentHolder extends MessageBaseHolder {
             msgContentFrame.setBackgroundResource(R.drawable.chat_left_live_group_bg);
             statusImage.setVisibility(View.GONE);
         } else {
-            //// 聊天气泡设置
+            //tag== 聊天气泡设置
             if (msg.isSelf()) {
                 if (properties.getRightBubble() != null && properties.getRightBubble().getConstantState() != null) {
                     msgContentFrame.setBackground(properties.getRightBubble().getConstantState().newDrawable());
@@ -234,9 +235,15 @@ public abstract class MessageContentHolder extends MessageBaseHolder {
             if (msg.isSelf()) {
                 msgContentLinear.removeView(msgContentFrame);
                 msgContentLinear.addView(msgContentFrame);
+               LinearLayout.LayoutParams params= (LinearLayout.LayoutParams) msgContentFrame.getLayoutParams();
+                params.gravity=Gravity.RIGHT;
+                msgContentFrame.setLayoutParams(params);
             } else {
                 msgContentLinear.removeView(msgContentFrame);
                 msgContentLinear.addView(msgContentFrame, 0);
+                LinearLayout.LayoutParams params= (LinearLayout.LayoutParams) msgContentFrame.getLayoutParams();
+                params.gravity=Gravity.LEFT;
+                msgContentFrame.setLayoutParams(params);
             }
         }
         if (rightGroupLayout != null) {
