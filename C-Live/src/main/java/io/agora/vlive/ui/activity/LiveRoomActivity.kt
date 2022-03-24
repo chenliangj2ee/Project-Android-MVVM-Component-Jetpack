@@ -125,20 +125,21 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
 
 
     private fun checkNetWorkBytes() {
-        postDelayed(10000) {
+        postDelayed(1000 * 20) {
             var total1 = MyNetWork.getNetworkBytes()
             var total2 = 0L
-            postDelayed(1000) {
+            postDelayed(5000) {
                 total2 = MyNetWork.getNetworkBytes()
 
-                var result = abs(total2 - total1) / 1024
+                var result = abs(total2 - total1) / 1024 / 5
                 log("当前网速：$result")
-                if (result < 100) {
+                if (result < 60 && !leaveRoom && ownerRtcUid > 0) {
                     toast("当前网速太慢，请检测网络")
                 }
 
             }
-            checkNetWorkBytes()
+            if (!leaveRoom)
+                checkNetWorkBytes()
         }
     }
 
@@ -599,7 +600,9 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
     open fun userLiveRoom() {}
     open fun stopLive() {}
     var waitLink = false
+    var leaveRoom = false
     protected fun leaveRoom() {
+        leaveRoom = true
         Live.sendRtmUserExitRoomMessage(this, object : ResultCallback<Any?> {
             override fun onSuccess(o: Any?) {}
             override fun onFailure(errorInfo: ErrorInfo) {}

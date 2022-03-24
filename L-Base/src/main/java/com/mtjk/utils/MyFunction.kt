@@ -557,12 +557,15 @@ fun <T> Context.goto(cls: Class<T>, vararg values: Any?): Fragment {
 
 
 }
-var handler = Handler()
+
+
 fun Any.postDelayed(delay: Long, func: () -> Unit) {
+    var handler:Handler? = Handler()
     var run = Runnable {
         func()
+        handler = null
     }
-    handler.postDelayed(run, delay)
+    handler?.postDelayed(run, delay)
 }
 
 fun Context.goto(path: String, vararg values: Any): Fragment {
@@ -1407,4 +1410,8 @@ fun WebView.loadJs(name: String, vararg values: String) {
     log("loadjs:$bridge")
 
     loadUrl(bridge)
+}
+
+fun Activity.UI(func: () -> Unit) {
+    runOnUiThread { func() }
 }

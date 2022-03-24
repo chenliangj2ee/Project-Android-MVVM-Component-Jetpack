@@ -4,6 +4,7 @@ import android.text.Html
 import android.view.View
 import com.mtjk.annotation.MyClass
 import com.mtjk.base.MyBaseDialog
+import com.mtjk.base.R
 import com.mtjk.base.databinding.BaseDialogDefaultLayoutBinding
 import kotlinx.android.synthetic.main.base_dialog_default_layout.view.*
 
@@ -38,6 +39,7 @@ class MyDialog : MyBaseDialog<BaseDialogDefaultLayoutBinding>() {
         if (single) {
             mRootView?.cancel?.visibility = View.GONE
             mRootView?.line?.visibility = View.GONE
+            mRootView?.confirm?.setBackgroundResource(R.drawable.base_selector_yes_single_bg)
         }
 
         mRootView?.cancel?.click {

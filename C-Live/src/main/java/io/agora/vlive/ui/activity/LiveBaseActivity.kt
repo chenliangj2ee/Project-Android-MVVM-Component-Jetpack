@@ -186,13 +186,16 @@ abstract class LiveBaseActivity : BaseActivity(), RtcEventHandler, RtmMessageLis
     }
 
     protected fun setVideoConfiguration() {
-        rtcEngine().setVideoEncoderConfiguration(
-            config().createVideoEncoderConfig(
-                tabIdToLiveType(
-                    tabId
-                )
+        if (this is ZhuBoActivity2 || this is ZhuBoActivity || this is GuanZhongActivity) {
+            rtcEngine().setVideoEncoderConfiguration(
+                config().createVideoEncoderConfigZhuBo()
             )
-        )
+        } else {
+            rtcEngine().setVideoEncoderConfiguration(
+                config().createVideoEncoderConfigGuanZhong()
+            )
+        }
+
     }
 
     protected fun tabIdToLiveType(tabId: Int): Int {
@@ -268,10 +271,10 @@ abstract class LiveBaseActivity : BaseActivity(), RtcEventHandler, RtmMessageLis
             override fun onSuccess(aVoid: Void?) {
                 this.log("进入聊天房间成功")
 
-                if(this@LiveBaseActivity is ZhuBoActivity2||this@LiveBaseActivity is ZhuBoActivity){
-                    Live.sendMessage(this@LiveBaseActivity,"咨询师进入")
-                }else{
-                    Live.sendMessage(this@LiveBaseActivity,"用户进入")
+                if (this@LiveBaseActivity is ZhuBoActivity2 || this@LiveBaseActivity is ZhuBoActivity) {
+                    Live.sendMessage(this@LiveBaseActivity, "咨询师进入")
+                } else {
+                    Live.sendMessage(this@LiveBaseActivity, "用户进入")
                 }
 
 

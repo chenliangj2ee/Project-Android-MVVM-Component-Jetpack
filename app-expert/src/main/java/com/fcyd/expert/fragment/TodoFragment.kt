@@ -39,14 +39,15 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
             .bindTypeToItemView(ITEM_TYPE_COMMON, R.layout.item_todo)
             .setDisableLoadMore()
             .bindData<BeanTODO>(::bindItem)
-            .loadData(::initStudio)
+            .loadData { loadTodoList() }
+
     }
 
     /**
      * 绑定列表item
      */
     private fun bindItem(bean: BeanTODO) {
-        if(bean.itemType == ITEM_TYPE_LOCAL) {
+        if (bean.itemType == ITEM_TYPE_LOCAL) {
             with(bean.binding as ItemTodoGuideBinding) {
                 this.data = bean.guide
                 when (bean.guide.todoType) {
@@ -56,7 +57,8 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
                     ObjectLocalTodo.CONSULT -> {
                         editButton.goto(ReleaseConsultActivity::class.java)
                     }
-                    else -> {}
+                    else -> {
+                    }
                 }
             }
             return
@@ -75,21 +77,21 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
     public fun initStudio() {
         mViewModel.getExpertStatus().obs(this@TodoFragment) {
             it.y { initLocalTodo(it) }
-            loadTodoList()
+
         }
     }
 
     private fun initLocalTodo(status: BeanExpertStatus) {
         localTodo?.clear()
-        if(status.shopStatus != 400) {
+        if (status.shopStatus != 400) {
             localTodo?.add(createLocalTodoItem("工作室信息填写", "请完成工作室信息填写", ObjectLocalTodo.WORKROOM))
         }
-        if(status.serverStatus != 200) {
+        if (status.serverStatus != 200) {
             localTodo?.add(createLocalTodoItem("发布咨询", "请发布您的咨询服务", ObjectLocalTodo.CONSULT))
         }
     }
 
-    private fun createLocalTodoItem(title: String, desc: String, type: Int) :BeanTODO{
+    private fun createLocalTodoItem(title: String, desc: String, type: Int): BeanTODO {
         var todoItem = BeanTODO()
         var guide = BeanTodoGuide()
         guide.title = title
@@ -101,13 +103,14 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
     }
 
     private fun loadTodoList() {
+        initStudio()
         mViewModel.getTodoList().obs(this@TodoFragment) {
             it.c {
                 /**
                  * 去掉重复，后台bug
                  */
                 var data = ArrayList<BeanTODO>()
-                if(!localTodo?.isEmpty()) {
+                if (!localTodo?.isEmpty()) {
                     data.addAll(localTodo)
                 }
                 it.forEach {
@@ -129,7 +132,7 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
                  * 去掉重复，后台bug
                  */
                 var data = ArrayList<BeanTODO>()
-                if(!localTodo?.isEmpty()) {
+                if (!localTodo?.isEmpty()) {
                     data.addAll(localTodo)
                 }
                 it.forEach {
@@ -147,7 +150,7 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
                 mBinding.todoList.addDatas(data)
             }
             it.n {
-                if(!localTodo?.isEmpty()) {
+                if (!localTodo?.isEmpty()) {
                     var data = ArrayList<BeanTODO>()
                     data.addAll(localTodo)
                     mBinding.todoList.addDatas(data)

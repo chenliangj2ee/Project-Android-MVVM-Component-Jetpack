@@ -471,7 +471,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
      * 连麦等待
      */
     fun waitLink() {
-        runOnUiThread(Runnable {
+        UI {
             waitLink = true
             val user = getBeanUser()
             waitingLinkMicDialog = WaitingLinkMicDialog()
@@ -487,7 +487,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
                 null
             }
             waitingLinkMicDialog!!.show(this@GuanZhongActivity2)
-        })
+        }
     }
 
     /**
@@ -611,7 +611,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
         enableAudio: Int,
         enableVideo: Int
     ) {
-        runOnUiThread {
+        UI {
             val audioMuted: Boolean = enableAudio != SeatInfo.User.USER_AUDIO_ENABLE
             val videoMuted: Boolean = enableVideo != SeatInfo.User.USER_VIDEO_ENABLE
             mOwnerUIManager!!.setAudioMutedValue(audioMuted)
@@ -670,7 +670,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
         totalVolume: Int
     ) {
         if (totalVolume <= 0) return
-        runOnUiThread({
+        UI {
             for (info: IRtcEngineEventHandler.AudioVolumeInfo in speakers) {
                 if (isOwner && info.uid == 0 || info.uid == ownerRtcUid) {
                     mOwnerUIManager!!.startVoiceIndicateAnim()
@@ -680,7 +680,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
                     config().getUserProfile().getAgoraUid().toInt()
                 )
             }
-        })
+        }
     }
 
     override fun onSeatAdapterMoreClicked(
@@ -962,7 +962,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
 
     override fun onAnchorUidResponse(uid: Int, seats: MutableList<SeatStateMessageDataItem>?) {
         log("获取主播，座位信息成功..............uid:$uid")
-        runOnUiThread {
+        UI {
             ownerRtcUid = uid.toInt()
             isHost = true
             myRtcRole = Constants.CLIENT_ROLE_BROADCASTER
@@ -983,7 +983,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
         this.log("进入频道通知，channel：$channel  uid:$uid")
         this.uid = uid
 
-        runOnUiThread {
+        UI {
             this.initVM(LiveViewModel::class.java).addViewedCount(rtcChannelName!!).obs(this) {
                 it.y { log("更新观看次数") }
             }
@@ -1046,7 +1046,7 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
      */
     private fun refreshSeat() {
         requestAudienceList()
-        runOnUiThread { mSeatLayout!!.updateStates(Live.seats) }
+        UI { mSeatLayout!!.updateStates(Live.seats) }
     }
 
 

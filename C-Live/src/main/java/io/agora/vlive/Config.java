@@ -260,12 +260,21 @@ public class Config {
         mBitrate = bitrate;
     }
 
-    public VideoEncoderConfiguration createVideoEncoderConfig(int type) {
+    //tag==分辨率/主播
+    public VideoEncoderConfiguration createVideoEncoderConfigZhuBo() {
+        return new VideoEncoderConfiguration(
+                Global.Constants.RESOLUTIONS_VIRTUAL_IMAGE[0],//分辨率
+                VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_15,//转码率
+                VideoEncoderConfiguration.STANDARD_BITRATE,
+                VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_PORTRAIT);
+    }
+    //tag==分辨率//观众
+    public VideoEncoderConfiguration createVideoEncoderConfigGuanZhong() {
 
 
         return new VideoEncoderConfiguration(
-                Global.Constants.RESOLUTIONS_PK_HOST[0],
-                VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_30,
+                Global.Constants.RESOLUTIONS_PK_HOST[0],//分辨率
+                VideoEncoderConfiguration.FRAME_RATE.FRAME_RATE_FPS_15,//转码率
                 VideoEncoderConfiguration.STANDARD_BITRATE,
                 VideoEncoderConfiguration.ORIENTATION_MODE.ORIENTATION_MODE_FIXED_PORTRAIT);
 

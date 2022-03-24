@@ -486,7 +486,8 @@ class ZhuBoActivity2 : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatO
             }
 
             dialogLinkList?.notifyDataSetChanged()
-//            dialogLinkList!!.dismiss()
+            if (linkUsers.isEmpty())
+                dialogLinkList!!.dismiss()
             null
         }
         dialogLinkList!!.show(this)

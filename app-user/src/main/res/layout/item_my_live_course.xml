@@ -39,6 +39,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@{data.name}"
+            tools:text="心理咨询课程"
             android:textColor="#1F2326"
             android:textSize="15dp" />
 
@@ -50,8 +51,9 @@
             android:layout_toRightOf="@id/cover"
             android:ellipsize="end"
             android:lines="1"
-            android:text='@{data.courseNum+"讲"}'
+            android:text='@{data.courseNum+"节"}'
             android:textColor="#A9ADB2"
+            tools:text="1节"
             android:textSize="14dp" />
 
         <View
