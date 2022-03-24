@@ -44,8 +44,6 @@ class CourseRecommendFragment : MyBaseFragment<FragmentCourseInfoRecommendBindin
                 it.c { refresh.addCache(it) }
                 it.y { refresh.addDatas(it) }
             }
-            //TODO
-            refresh.test(BeanCourse::class.java, 20)
         }
     }
 }

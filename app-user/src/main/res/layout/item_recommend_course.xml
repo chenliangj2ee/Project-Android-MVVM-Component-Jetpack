@@ -57,7 +57,7 @@
             android:layout_marginHorizontal="10dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text='@{data.expertName+"  "+data.school+data.major+data.education }'
+            android:text="@{data.expertDesc()}"
             android:textColor="#515357"
             android:textSize="12dp"
             tools:text="是什么导致并正在加重你的抑郁" />

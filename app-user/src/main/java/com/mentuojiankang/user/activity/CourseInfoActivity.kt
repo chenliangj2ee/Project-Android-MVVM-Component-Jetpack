@@ -40,8 +40,7 @@ class CourseInfoActivity : MyBaseActivity<ActivityCourseInfoBinding, CourseViewM
         price.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         header = headerFragment as CourseInfoHeaderFragment
         header.player?.initFullLayout(fullScreenLayout)
-        viewpager.setTabLayout(tabLayout, "详情", "评价")
-        //viewpager.setTabLayout(tabLayout, "详情", "推荐", "评价")
+        viewpager.setTabLayout(tabLayout, "详情", "推荐", "评价")
 
         viewpager.onPageSelected { subscribe.show(it == 0) }
         subscribe.click {
@@ -86,7 +85,7 @@ class CourseInfoActivity : MyBaseActivity<ActivityCourseInfoBinding, CourseViewM
         viewpager.clearFragments()
         viewpager.addFragments(
             DetailsWebViewFragment(bean.detailUrl, MyWebView.Type.IMAGE ),
-            //goto(CourseRecommendFragment::class.java, "courseId", bean.id),
+            goto(CourseRecommendFragment::class.java, "courseId", bean.id),
             goto(EvaluateFragment::class.java, "productId", bean.id)
         )
 
