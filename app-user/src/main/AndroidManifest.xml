@@ -253,6 +253,10 @@
             android:name=".activity.PayConsultSuccessActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MyLiveSectionActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <meta-data
             android:name="TD_APP_ID"
             android:value="AF860118FB7D4A2096DD3EF4F23A56F8" />

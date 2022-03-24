@@ -50,7 +50,7 @@
             android:layout_toRightOf="@id/cover"
             android:ellipsize="end"
             android:lines="1"
-            android:text='@{data.courseNum+"节"}'
+            android:text='@{data.courseNum+"讲"}'
             android:textColor="#A9ADB2"
             android:textSize="14dp" />
 
