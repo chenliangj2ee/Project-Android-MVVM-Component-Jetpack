@@ -23,8 +23,7 @@ class CourseRecommendFragment : MyBaseFragment<FragmentCourseInfoRecommendBindin
 
     override fun initOnCreateView() {
         with(mBinding) {
-            refresh.setEnableRefresh(false)
-            refresh.setEnableLoadMore(false)
+            refresh.disable()
             refresh.bindData<BeanCourse> {
                 with(it.binding as ItemRecommendCourseBinding) {
                     data = it

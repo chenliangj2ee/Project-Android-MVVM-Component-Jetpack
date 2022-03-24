@@ -4,7 +4,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -54,17 +54,21 @@
                 android:textSize="10dp" />
 
         </LinearLayout>
-
-        <com.mtjk.view.MyRefreshRecyclerView
-            android:id="@+id/refresh"
+        <!--        必须添加，否则导致列表无法滑动-->
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            app:my_empty_layout="@layout/base_layout_empty"
-            app:my_item_layout="@layout/item_evaluate" />
+            android:layout_height="match_parent"
+            android:background="#fff">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            <com.mtjk.view.MyRefreshRecyclerView
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:overScrollMode="never"
+                app:my_empty_layout="@layout/base_layout_empty"
+                app:my_item_layout="@layout/item_evaluate" />
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </layout>

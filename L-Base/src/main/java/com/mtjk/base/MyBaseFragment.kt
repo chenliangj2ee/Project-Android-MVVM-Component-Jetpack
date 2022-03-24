@@ -217,15 +217,5 @@ abstract class MyBaseFragment<BINDING : ViewDataBinding, VM : ViewModel> : Fragm
         handler.postDelayed(run, delay)
         handlerRunnable.add(run)
     }
-    open fun getRandomChannelName(length: Int): String {
-        val str = "abcdefghijklmnopqrstuvwxyz"
-        val random = Random()
-        val sb = StringBuffer()
-        for (i in 0 until length) {
-            val number: Int = random.nextInt(26)
-            sb.append(str[number])
-        }
-        return sb.toString()
-    }
 
 }
