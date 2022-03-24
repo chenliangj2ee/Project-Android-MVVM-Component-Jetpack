@@ -982,12 +982,18 @@ class GuanZhongActivity2() : LiveRoomActivity(), View.OnClickListener,
     override fun onRtcJoinChannelSuccess(channel: String, uid: Int, elapsed: Int) {
         this.log("进入频道通知，channel：$channel  uid:$uid")
         this.uid = uid
-        this.initVM(RoomViewModel::class.java).updateUid(uid.toString() + "").obs(this) {
-            it.y { log("更新uid成功") }
+
+        runOnUiThread {
+            this.initVM(LiveViewModel::class.java).addViewedCount(rtcChannelName!!).obs(this) {
+                it.y { log("更新观看次数") }
+            }
+
+            this.initVM(RoomViewModel::class.java).updateUid(uid.toString() + "").obs(this) {
+                it.y { log("更新uid成功") }
+            }
         }
-        this.initVM(LiveViewModel::class.java).addViewedCount(rtcChannelName!!).obs(this) {
-            it.y { log("更新观看次数") }
-        }
+
+
     }
 
     override fun onRtmMemberExitRoom(userId: String?) {
