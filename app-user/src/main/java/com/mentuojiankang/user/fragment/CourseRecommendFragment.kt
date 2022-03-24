@@ -3,7 +3,7 @@ package com.mentuojiankang.user.fragment
 import com.mentuojiankang.user.activity.CourseInfoActivity
 import com.mentuojiankang.user.bean.BeanCourse
 import com.mentuojiankang.user.databinding.FragmentCourseInfoRecommendBinding
-import com.mentuojiankang.user.databinding.ItemRecommendCourseBinding
+import com.mentuojiankang.user.databinding.ItemRecommendVideoBinding
 import com.mentuojiankang.user.vm.CourseViewModel
 import com.mtjk.annotation.MyField
 import com.mtjk.base.MyBaseFragment
@@ -25,7 +25,7 @@ class CourseRecommendFragment : MyBaseFragment<FragmentCourseInfoRecommendBindin
         with(mBinding) {
             refresh.disable()
             refresh.bindData<BeanCourse> {
-                with(it.binding as ItemRecommendCourseBinding) {
+                with(it.binding as ItemRecommendVideoBinding) {
                     data = it
                     root.click {
                         goto(CourseInfoActivity::class.java, "courseId", data?.id!!)

@@ -11,21 +11,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
             <com.mtjk.view.MyRefreshRecyclerView
                 android:id="@+id/refresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:focusable="false"
                 android:overScrollMode="never"
+                app:my_divider_height="1px"
+                app:my_divider_marginRight="15dp"
+                app:my_divider_marginLeft="15dp"
                 app:my_empty_layout="@layout/base_layout_empty"
-                app:my_item_layout="@layout/item_recommend_course"
-                app:my_layout_manager="gridLayout"
-                app:my_span_count="2" />
+                app:my_item_layout="@layout/item_recommend_video" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
