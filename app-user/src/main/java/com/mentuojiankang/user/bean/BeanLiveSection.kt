@@ -9,11 +9,16 @@ import java.time.format.DateTimeFormatter
 
 class BeanLiveSection : MyBaseBean() {
 
+    var accountId = ""
+    var avatar = ""
+    var channelName = ""
     var createBy = ""
     var createTime = ""
     var endTime = ""            //结束时间
+    var expertName = ""
     var id = ""
     var liveCourseId = ""
+    var liveCourseName = ""
     var liveCourseNum = 0
     var liveMode = ""           //1: live, 2: record
     var liveType = 0            //1: video, 2: voice
@@ -22,6 +27,7 @@ class BeanLiveSection : MyBaseBean() {
     var playBackEndTime = ""    //回放限时时间
     var shopId = ""
     var startTime = ""          //开始时间
+    var state = 0
     var status = 0              //0: 上架 1: 下架
     var updateBy = ""
     var updateTime = ""

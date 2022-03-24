@@ -9,7 +9,10 @@ import com.mtjk.annotation.MyClass
 import com.mtjk.annotation.MyField
 import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.obs
+import com.mtjk.utils.BusCode
 import com.mtjk.utils.click
+import com.mtjk.utils.sendSelf
+import io.agora.vlive.bean.BeanParam
 
 /**
  * tag==我的课程/直播课程/课节
@@ -31,9 +34,9 @@ class MyLiveSectionActivity : MyBaseActivity<ActivityLiveSectionListBinding, Liv
     }
 
     private fun loadSection() {
-        mViewModel.getLiveSection(courseId, mBinding.refresh.pageIndex, mBinding.refresh.pageSize).obs(this@MyLiveSectionActivity) {
-            it.c { mBinding.refresh.addCache(it.records) }
-            it.y { mBinding.refresh.addDatas(it.records) }
+        mViewModel.getLiveSection(courseId).obs(this@MyLiveSectionActivity) {
+            it.c { mBinding.refresh.addCache(it) }
+            it.y { mBinding.refresh.addDatas(it) }
         }
     }
 
@@ -49,7 +52,14 @@ class MyLiveSectionActivity : MyBaseActivity<ActivityLiveSectionListBinding, Liv
         }
     }
 
-    private fun gotoLiveRoom(bean: BeanLiveSection) {
-        //TODO
+    private fun gotoLiveRoom(live: BeanLiveSection) {
+        var liveParam = BeanParam()
+        liveParam.liveTitle = live.liveCourseName
+        liveParam.userId = live.accountId
+        liveParam.userHeader = live.avatar
+        liveParam.userName = live.expertName
+        liveParam.liveType = BeanParam.LiveType.VIDEO_MORE
+        liveParam.save()
+        live.channelName?.sendSelf(BusCode.LIVE_GET_RTCTOKEN)
     }
 }
