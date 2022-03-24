@@ -250,12 +250,6 @@ interface ApiService {
     @GET("/api-app/v1/app/user-bank/getUserAccountMoney")
     fun getBlance(): Data<BeanMoney>
 
-    @MyRetrofitGo(mTag = "获取订单基础信息", mLoading = true, mFailToast = true)
-    @GET("/api-app/v1/app/user-order/getOrderBaseInfoByOrderId")
-    fun getOrderInfo(
-        @Query("orderId") orderId: String
-    ): Data<BeanOrderInfo>
-
     @MyRetrofitGo(mTag = "服务时间列表", mLoading = true, mFailToast = true, mCache = true)
     @GET("/api-app/v1/app/used-time/queryServerTimeTable")
     fun getServiceTime(

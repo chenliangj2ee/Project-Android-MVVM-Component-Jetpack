@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.text.TextUtils" />
         <import type="android.view.View" />
-
         <variable
             name="order"
             type="com.mentuojiankang.user.bean.BeanOrder" />
-
         <variable
             name="status"
             type="com.mtjk.obj.ObjectOrder" />
@@ -19,8 +17,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/tip_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:visibility="@{order.orderStatus == 10 ? View.VISIBLE : View.GONE}"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tip_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#D0021B"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:text="请尽快支付" />
+            <TextView
+                android:id="@+id/tip_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{order.tipDesc()}"
+                android:textColor="#1F2326"
+                android:textSize="10dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,42 +68,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:singleLine="true"
-                        android:text="@{order.orderItems.title}"
-                        android:textColor="#1F2326"
-                        android:textSize="14dp"
-                        android:textStyle="bold"
-                        tools:text="抑郁症测评【专业版】抑郁症测评【专业版】抑郁症测评【专业版】" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="19dp"
-                        android:text="@{order.statusDes()}"
-                        android:textColor="#008599"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
+                    android:singleLine="true"
+                    android:text="@{order.orderItems.title}"
+                    android:textColor="#1F2326"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    tools:text="订单详情标题" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
-                    android:text="视频咨询"
+                    android:text="@{order.typeDes()}"
                     android:textColor="#515357"
                     android:textSize="10dp"
                     android:textStyle="bold" />
@@ -87,8 +94,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
                     android:background="#fff"
                     android:gravity="right"
                     android:orientation="horizontal">
@@ -96,44 +102,41 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="总价："
-                        android:textColor="#000"
-                        android:textSize="12dp" />
+                        android:text='@{"总价：" + order.paidAmount + "币  实付："}'
+                        android:textColor="#1F2326"
+                        android:textSize="12dp"
+                        tools:text="总价：100币  实付："/>
 
                     <TextView
-                        android:id="@+id/totalPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text='@{order.paidAmount+"币"}'
-                        android:textColor="#000"
-                        android:textSize="12dp" />
+                        android:text='@{"" + order.paidAmount}'
+                        android:textColor="#D0021B"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        tools:text="19.90"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
                         android:singleLine="true"
                         android:text="币"
-                        android:textColor="#000"
+                        android:textColor="#1F2326"
                         android:textSize="12dp" />
-
-
                 </LinearLayout>
-
             </LinearLayout>
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:gravity="right"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp">
+            android:background="#fff"
+            android:padding="10dp"
+            android:gravity="right">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/modify_info"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="78dp"
                 android:layout_height="33dp"
@@ -166,6 +169,7 @@
                 android:visibility="@{order.orderStatus==status.STATUS_NO_PAY?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/delete_order"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="78dp"
                 android:layout_height="33dp"
@@ -176,6 +180,7 @@
                 android:visibility="@{order.orderStatus==status.STATUS_FINISH?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/consult_again"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="78dp"
                 android:layout_height="33dp"
@@ -197,6 +202,7 @@
                 android:visibility="@{order.orderItems.type ==1 &amp;&amp;  order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/remind"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="78dp"
                 android:layout_height="33dp"
@@ -219,6 +225,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/start_consult"
                 android:layout_width="78dp"
                 android:layout_height="33dp"
                 android:layout_marginLeft="10dp"
@@ -226,6 +233,35 @@
                 android:text="开始咨询"
                 android:textColor="#fff"
                 android:visibility="@{order.orderItems.type ==1 &amp;&amp;  order.orderStatus==status.STATUS_DOING?View.VISIBLE:View.GONE}" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/startCourse"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:text="开始观看"
+                android:textColor="#133C53"
+                android:visibility='@{order.isShowLookCourse()?View.VISIBLE:View.GONE}' />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/refund"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_dark"
+                android:text="退款"
+                android:textColor="#fff"
+                android:visibility="gone" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/service"
+                android:layout_width="78dp"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_dark"
+                android:text="申请售后"
+                android:textColor="#fff"
+                android:visibility="gone" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -242,10 +278,10 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:singleLine="true"
-                android:text="@{order.orderId}"
+                android:text='@{"订单编号："+ order.orderId}'
                 android:textColor="#1F2326"
                 android:textSize="12dp"
-                tools:text="订单编号：2381194728900299" />
+                tools:text="订单编号：1234567890"/>
 
             <View
                 android:layout_width="match_parent"
@@ -262,7 +298,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:singleLine="true"
-                android:text="@{order.orderDate}"
+                android:text='@{"创建时间："+ order.orderDateDes()}'
                 android:textColor="#1F2326"
                 android:textSize="12dp"
                 tools:text="创建时间：2021.05.01  20:14:09" />
@@ -282,15 +318,18 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:singleLine="true"
-                android:text="付款时间：2021.05.01  20:10:53"
+                android:visibility="@{TextUtils.isEmpty(order.paidAt) ? View.GONE : View.VISIBLE}"
+                android:text='@{"付款时间："+ order.paidDateDes()}'
                 android:textColor="#1F2326"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                tools:text="付款时间：2021.05.01  20:14:09"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:visibility="@{TextUtils.isEmpty(order.paidAt) ? View.GONE : View.VISIBLE}"
                 android:background="#E6F0F2" />
         </LinearLayout>
     </LinearLayout>
