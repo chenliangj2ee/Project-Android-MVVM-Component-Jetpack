@@ -44,6 +44,7 @@ class BeanCourse : MyBaseBean() {
     fun expertDesc(): String {
         var nameDesc = if(expertName.isNullOrEmpty()) "" else expertName
         var result = if(nameDesc.isNullOrEmpty()) "" else (nameDesc + ": ")
+        result += (if(school.isNullOrEmpty()) "" else school)
         result += (if(major.isNullOrEmpty()) "" else major)
         result += (if(education.isNullOrEmpty()) "" else education)
         return result
