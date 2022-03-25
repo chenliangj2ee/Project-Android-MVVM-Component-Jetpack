@@ -362,7 +362,7 @@ interface ApiService {
     fun bookLive(@Body body: Any): Data<String>
 
     @MyRetrofitGo(mTag = "直播详情", mLoading = false, mFailToast = false, mCache = true)
-    @GET("/api-app/v1/app/user/liveCourse/queryById")
+    @GET("/api-app/v1/app/user/liveCourse/getWithBoughtStatus")
     fun getLiveDetail(@Query("id") id: String): Data<BeanLiveDetail>
 
     @MyRetrofitGo(mTag = "直播课程", mLoading = false, mFailToast = false, mCache = true)
