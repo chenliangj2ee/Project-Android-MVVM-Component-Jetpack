@@ -57,7 +57,7 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/base_selector_button_dark_34"
             android:stateListAnimator="@null"
-            android:text="开始填写"
+            android:text="@{data.operation}"
             android:textColor="@android:color/white"
             android:textSize="12dp"
             android:gravity="center" />

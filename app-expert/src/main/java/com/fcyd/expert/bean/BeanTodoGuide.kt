@@ -7,6 +7,7 @@ class BeanTodoGuide {
     var title = ""
     var desc = ""
     var todoType = 0
+    var operation = ""
 
     fun typeDrawable(): Int {
         if(todoType == ObjectLocalTodo.WORKROOM) {

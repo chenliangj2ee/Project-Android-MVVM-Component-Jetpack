@@ -84,19 +84,20 @@ class TodoFragment : MyBaseFragment<FragmentTodoBinding, TodoViewModel>() {
     private fun initLocalTodo(status: BeanExpertStatus) {
         localTodo?.clear()
         if (status.shopStatus != 400) {
-            localTodo?.add(createLocalTodoItem("工作室信息填写", "请完成工作室信息填写", ObjectLocalTodo.WORKROOM))
+            localTodo?.add(createLocalTodoItem("工作室信息填写", "请完成工作室信息填写", ObjectLocalTodo.WORKROOM, "开始填写"))
         }
         if (status.serverStatus != 200) {
-            localTodo?.add(createLocalTodoItem("发布咨询", "请发布您的咨询服务", ObjectLocalTodo.CONSULT))
+            localTodo?.add(createLocalTodoItem("发布咨询", "请发布您的咨询服务", ObjectLocalTodo.CONSULT, "立即发布"))
         }
     }
 
-    private fun createLocalTodoItem(title: String, desc: String, type: Int): BeanTODO {
+    private fun createLocalTodoItem(title: String, desc: String, type: Int, operation: String): BeanTODO {
         var todoItem = BeanTODO()
         var guide = BeanTodoGuide()
         guide.title = title
         guide.desc = desc
         guide.todoType = type
+        guide.operation = operation
         todoItem.guide = guide
         todoItem.itemType = ITEM_TYPE_LOCAL
         return todoItem
