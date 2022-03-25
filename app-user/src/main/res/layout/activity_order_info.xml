@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             android:padding="10dp"
+            android:visibility="gone"
             android:gravity="right">
 
             <androidx.appcompat.widget.AppCompatButton

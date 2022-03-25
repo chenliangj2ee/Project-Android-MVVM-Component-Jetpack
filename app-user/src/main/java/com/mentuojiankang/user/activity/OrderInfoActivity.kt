@@ -1,9 +1,6 @@
 package com.mentuojiankang.user.activity
 
-import android.os.Handler
-import android.os.Looper
 import com.mentuojiankang.user.bean.BeanOrder
-import com.mentuojiankang.user.bean.ObjectOrderStatus
 import com.mentuojiankang.user.databinding.ActivityOrderInfoBinding
 import com.mentuojiankang.user.utils.OrderUtil
 import com.mentuojiankang.user.vm.OrderViewModel
