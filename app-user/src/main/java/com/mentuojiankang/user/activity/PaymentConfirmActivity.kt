@@ -241,7 +241,9 @@ class PaymentConfirmActivity : MyBaseActivity<ActivityPaymentConfirmBinding, Ord
         dialog.show(this)
         postDelayed(3000) {
             dialog.dismiss()
-            if (productType == ObjectProduct.TYPE_COURSE) {
+            if (productType == ObjectProduct.TYPE_COURSE
+                || productType == ObjectProduct.TYPE_LIVE
+                || productType == ObjectProduct.TYPE_LIVE_COURSE) {
                 send(BusCode.PAYMENT_SUCCESS)
             } else if (productType == ObjectProduct.TYPE_CONSULT) {
                 goto(PayConsultSuccessActivity::class.java, "orderItemId", orderItemId)

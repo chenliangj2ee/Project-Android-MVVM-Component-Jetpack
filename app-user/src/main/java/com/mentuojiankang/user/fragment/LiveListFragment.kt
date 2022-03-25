@@ -9,6 +9,7 @@ import com.mentuojiankang.user.vm.LiveViewModel
 import com.mtjk.base.MyBaseFragment
 import com.mtjk.base.obs
 import com.mtjk.utils.*
+import gorden.rxbus2.Subscribe
 import io.agora.vlive.bean.BeanParam
 import kotlinx.android.synthetic.main.item_live_list.view.*
 
@@ -46,6 +47,7 @@ class LiveListFragment : MyBaseFragment<FragmentLiveListBinding, LiveViewModel>(
     /**
      * 加载列表直播数据
      */
+    @Subscribe(code = BusCode.PAYMENT_SUCCESS)
     fun loadData() {
         mViewModel.getLiveList().obs(this) {
             it.c { mBinding.refresh.addCache(it) }
