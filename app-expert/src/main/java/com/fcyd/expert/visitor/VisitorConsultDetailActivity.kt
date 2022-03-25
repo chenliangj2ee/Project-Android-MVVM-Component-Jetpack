@@ -94,7 +94,7 @@ class VisitorConsultDetailActivity : MyBaseActivity<ActivityVisitorConsultEditBi
     private fun setQuestionText(view: TextView, title: String, msg: String) {
         var desc = if(msg.isNullOrEmpty()) "未填写" else msg
         var spannableString = SpannableString(title + ": " + desc)
-        var colorSpan = ForegroundColorSpan(Color.parseColor(if(msg.isNullOrEmpty()) "#1F2326" else "#5cb7ca"))
+        var colorSpan = ForegroundColorSpan(Color.parseColor("#5cb7ca"))
         var styleSpan = StyleSpan(Typeface.BOLD)
         var titleLength = title.length
         spannableString.setSpan(colorSpan, 0, titleLength, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
