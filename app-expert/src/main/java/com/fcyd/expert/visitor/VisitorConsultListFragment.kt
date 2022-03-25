@@ -10,6 +10,7 @@ import com.mtjk.base.MyBaseFragment
 import com.mtjk.base.obs
 import com.mtjk.utils.click
 import com.mtjk.utils.goto
+import com.mtjk.utils.show
 
 class VisitorConsultListFragment : MyBaseFragment<FragmentVisitorConsultListBinding, VisitorViewModel>() {
 
@@ -24,7 +25,12 @@ class VisitorConsultListFragment : MyBaseFragment<FragmentVisitorConsultListBind
         mBinding.refresh.bindData<BeanVisitorConsult> { bean->
             with(bean.binding as ItemVisitorConsultBinding) {
                 data = bean
-                title.setCompoundDrawables(if(bean.consultTypeDrawable() > 0) resources.getDrawable(bean.consultTypeDrawable()) else null, null, null, null)
+                if(bean.consultTypeDrawable() > 0) {
+                    type.show(true)
+                    type.setImageResource(bean.consultTypeDrawable())
+                } else {
+                    type.show(false)
+                }
                 root.click { toConsultDetail(bean) }
             }
         }.loadData {
