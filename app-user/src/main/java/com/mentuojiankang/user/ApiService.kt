@@ -209,7 +209,7 @@ interface ApiService {
         @Body requestEntity: Any
     ): Data<Boolean>
 
-    @MyRetrofitGo(mTag = "我的咨询", mLoading = false, mFailToast = true, mCache = true)
+    @MyRetrofitGo(mTag = "我的咨询", mLoading = false, mFailToast = false, mCache = true)
     @GET("/api-app/v1/app/user-order/pageUserConsult")
     fun myConsultList(
         @Query("orderStatus") orderStatus: Int,
@@ -219,7 +219,7 @@ interface ApiService {
     ): DataPages<BeanMyConsult>
 
     @MyRetrofitGo(mTag = "订单列表", mLoading = false, mFailToast = true, mCache = true)
-    @GET("/api-app/v1/app/user-order/queryOrderInfo")
+    @GET("/api-app/v1/app/user/order/queryOrderInfo")
     fun orderList(
         @Query("orderStatus") orderStatus: Int,
         @Query("consultType") consultType: Int,

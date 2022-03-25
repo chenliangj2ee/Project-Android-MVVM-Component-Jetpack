@@ -231,7 +231,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:text="评价"
                 android:textColor="#133C53"
-                android:visibility="@{order.commentState==0&amp;&amp;(order.orderStatus==status.STATUS_WAIT_EVALUATE||order.orderStatus==status.STATUS_FINISH)?View.VISIBLE:View.GONE}" />
+                android:visibility="@{order.commentState==0&amp;&amp;(order.orderStatus==status.STATUS_FINISH)?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/startCourse"

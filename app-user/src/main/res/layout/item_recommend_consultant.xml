@@ -132,6 +132,8 @@
                 android:layout_weight="1"
                 android:text='@{bean.certificateDes()}'
                 android:textColor="#1F2326"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textSize="14dp"
                 android:visibility='@{(bean.school+bean.major+bean.education).length==0?View.GONE:View.VISIBLE}'
                 tools:text="心理学证书" />

@@ -246,27 +246,26 @@
                         android:id="@+id/introduction"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
                         android:lineSpacingExtra="5dp"
                         android:maxLines="2"
                         android:textColor="#515357"
                         android:textSize="14dp"
-                        tools:text="专业擅长:专业增长情绪困扰、职场困感、个人成长问题。个体辅导：擅长家庭辅导、婚恋、情感、亲子沟通，家庭关系。" />
+                        tools:text="专业擅长:专业增长情绪困扰、职场困感、个人成长问题。专业增长情绪困扰、职场困感、个人成长问题。专业增长情绪困扰、职场困感、个人成长问题。" />
 
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="16dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginTop="5dp"
                         android:layout_marginRight="60dp"
                         android:layout_marginBottom="2dp"
                         android:background="@drawable/selector_ckjj" />
 
                     <ImageView
                         android:id="@+id/lookInfo"
-                        android:layout_width="60dp"
-                        android:layout_height="14dp"
+                        android:layout_width="70dp"
+                        android:layout_height="15dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="2dp"
                         android:background="#fff"
                         android:scaleType="fitXY"

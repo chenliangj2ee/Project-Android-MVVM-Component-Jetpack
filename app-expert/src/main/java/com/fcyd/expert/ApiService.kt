@@ -119,7 +119,7 @@ interface ApiService {
     ): Data<Boolean>
 
     @MyRetrofitGo(mTag = "订单列表", mLoading = false, mFailToast = true, mCache = true)
-    @GET("/api-app/v1/app/expert-order/queryOrderInfo")
+    @GET("/api-app/v1/app/expert/order/queryOrderInfo")
     fun orderList(
         @Query("orderStatus") orderStatus: Int,
         @Query("pageNo") pageNo: Int,

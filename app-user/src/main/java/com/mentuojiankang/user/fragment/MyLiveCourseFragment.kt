@@ -13,6 +13,7 @@ import com.mtjk.utils.goto
 
 /**
  * tag==直播课程/Fragment
+ * tag==我的课程/直播课程
  */
 @MyRoute(mPath = "/app/mylivecoursefragment")
 class MyLiveCourseFragment : MyBaseFragment<FragmentMyLiveCourseListBinding, LiveViewModel>() {

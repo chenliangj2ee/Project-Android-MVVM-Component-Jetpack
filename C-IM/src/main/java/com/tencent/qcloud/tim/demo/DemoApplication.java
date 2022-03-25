@@ -200,7 +200,7 @@ public class DemoApplication extends MyBaseApplication {
         registerActivityLifecycleCallbacks(new StatisticActivityLifecycleCallback());
         initLoginStatusListener();
         //测试一下调用登录接口
-        login();
+//        login();
 
     }
 
@@ -237,15 +237,18 @@ public class DemoApplication extends MyBaseApplication {
                 TUIUtils.login(userId, userSig, new V2TIMCallback() {
                     @Override
                     public void onError(final int code, final String desc) {
-                        MyFunctionKt.log(this, "IM登录失败.......准备重试");
-                        //登录失败，重新获取token后，继续登录IM
-                        MyFunctionKt.postDelayed(this, 3000, new Function0<Unit>() {
-                            @Override
-                            public Unit invoke() {
-                                MyFunctionKt.send(this, BusCode.LOGIN_SUCCESS);
-                                return null;
-                            }
-                        });
+                        BeanUser user=new BeanUser().get();
+                        if(user.isLogin()){
+                            MyFunctionKt.log(this, "IM登录失败.......准备重试");
+                            //登录失败，重新获取token后，继续登录IM
+                            MyFunctionKt.postDelayed(this, 3000, new Function0<Unit>() {
+                                @Override
+                                public Unit invoke() {
+                                    MyFunctionKt.send(this, BusCode.LOGIN_SUCCESS);
+                                    return null;
+                                }
+                            });
+                        }
 
                     }
 

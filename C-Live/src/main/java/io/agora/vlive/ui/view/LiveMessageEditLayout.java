@@ -2,6 +2,7 @@ package io.agora.vlive.ui.view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.view.inputmethod.EditorInfo;
 import android.widget.RelativeLayout;
@@ -10,6 +11,9 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import io.agora.vlive.R;
 
+/**
+ * tag==直播/聊天输入框
+ */
 public class LiveMessageEditLayout extends RelativeLayout {
     public static final int EDIT_TEXT_ID = 1 << 4;
     private static final int HINT_TEXT_COLOR = Color.rgb(96, 96, 96);
@@ -56,5 +60,7 @@ public class LiveMessageEditLayout extends RelativeLayout {
         editText.setSingleLine();
         editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         editText.setBackgroundResource(R.drawable.message_edit_text_bg);
+        InputFilter[] filters = {new InputFilter.LengthFilter(50)};
+        editText.setFilters(filters);
     }
 }

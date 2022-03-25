@@ -26,8 +26,7 @@ import kotlinx.android.synthetic.main.activity_consult_info.*
 @MyClass(mToolbarTitle = "咨询详情", mRefresh = true)
 class ConsultInfoActivity : MyBaseActivity<ActivityConsultInfoBinding, ConsultViewModel>() {
 
-    var id=BeanStudio().get<BeanStudio>()!!.id
-
+    var id= BeanInit().get<BeanInit>()?.shopId?:""
     override fun initCreate() {
 
         /**

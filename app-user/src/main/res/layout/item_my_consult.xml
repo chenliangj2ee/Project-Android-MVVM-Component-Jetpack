@@ -67,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:visibility="gone"
             android:paddingTop="10dp"
             android:paddingBottom="10dp">
 
@@ -86,6 +87,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/base_selector_button_dark"
+                android:enabled='@{order.enable()?true:false}'
                 android:stateListAnimator="@null"
                 android:text="开始咨询"
                 android:textColor="@drawable/base_selector_color_button_white" />

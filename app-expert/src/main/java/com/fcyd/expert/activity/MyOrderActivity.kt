@@ -46,7 +46,7 @@ class MyOrderActivity : MyBaseActivity<ActivityMyOrderBinding, DefaultViewModel>
             viewpager.addFragments(goto(MyOrderListFragment::class.java,"status", ObjectOrder.STATUS_NO_PAY))
             viewpager.addFragments(goto(MyOrderListFragment::class.java,"status", ObjectOrder.STATUS_WAIT_CONFIRM))
             viewpager.addFragments(goto(MyOrderListFragment::class.java,"status", ObjectOrder.STATUS_DOING))
-            viewpager.addFragments(goto(MyOrderListFragment::class.java,"status", ObjectOrder.STATUS_WAIT_FEEDBACK))
+            viewpager.addFragments(goto(MyOrderListFragment::class.java,"status", ObjectOrder.STATUS_FINISH))
 
         }
     }

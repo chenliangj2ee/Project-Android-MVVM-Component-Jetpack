@@ -67,18 +67,26 @@ class MainActivity : BaseTabActivity<ActivityBaseTabBinding, UserViewModel>() {
      */
     @Subscribe(code = BusCode.UPDATE_EXPERT_INFO)
     fun initAccountInfo() {
-        mViewModel.init().obs(this) { it.y { authResult(it.verify) } }
+        mViewModel.init().obs(this) {
+            it.y {
+                it.save()
+                authResult(it.verify)
+            }
+        }
     }
 
     /**
-     * verify:0-初始状态，1-审核中，2-审核成功，3-审核失败',
+     * verify:0-初始状态，1-审核中，2-审核成功，3-审核失败',4-修改审核中
      */
     private fun authResult(verify: Int) {
         when (verify) {
-            0 -> gotoFinish(ExpertSettledActivity::class.java)
-            1 -> gotoFinish(ExpertAuthSubmitSuccessActivity::class.java)
-            3 -> authError()
-
+            0 -> gotoFinish(ExpertSettledActivity::class.java)//未入驻
+            1 -> gotoFinish(ExpertAuthSubmitSuccessActivity::class.java)//入驻审核中
+            2 -> {
+            }//审核成功
+            3 -> authError()//审核失败
+            4 -> {
+            }//修改审核中
         }
     }
 

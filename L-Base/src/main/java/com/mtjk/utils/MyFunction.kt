@@ -347,7 +347,7 @@ fun String.dateParse(from: String, to: String) = SimpleDateFormat(from).parse(th
  * @param pattern String
  * @return String
  */
-fun String.dateToLong(from: String) = SimpleDateFormat(from).parse(this).time
+fun String.dateToLong(from: String) = if (this == "") 0 else SimpleDateFormat(from).parse(this).time
 
 /**
  * 时间戳long格式化:var time=13239100192; time.date("yyyy-MM-dd")
@@ -560,7 +560,7 @@ fun <T> Context.goto(cls: Class<T>, vararg values: Any?): Fragment {
 
 
 fun Any.postDelayed(delay: Long, func: () -> Unit) {
-    var handler:Handler? = Handler()
+    var handler: Handler? = Handler()
     var run = Runnable {
         func()
         handler = null
