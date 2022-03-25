@@ -2,8 +2,6 @@ package com.fcyd.expert.activity
 
 import android.app.Activity
 import android.content.Intent
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import com.fcyd.expert.databinding.ActivityMyWalletWithdrawBinding
 import com.fcyd.expert.vm.UserViewModel
@@ -12,8 +10,8 @@ import com.mtjk.base.MyBaseActivity
 import com.mtjk.utils.click
 import com.mtjk.utils.goto
 import com.mtjk.base.obs
-import com.mtjk.utils.changed
 import com.mtjk.utils.toast
+import com.mtjk.view.CashierInputFilter
 import java.math.BigDecimal
 
 /**
@@ -29,6 +27,7 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
     override fun initCreate() {
         mToolBar.showRight("明细") { toDetail() }
         fullscreenTransparentBar(true)
+        initWithdrawEdit()
         updateMoneyAvailable()
     }
 
@@ -36,6 +35,10 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
         super.initClick()
         mBinding.todetail.click { toDetail() }
         mBinding.withdraw.click { withdraw() }
+    }
+
+    private fun initWithdrawEdit() {
+        mBinding.withdrawMoney.filters = arrayOf(CashierInputFilter())
     }
 
     private fun updateMoneyAvailable() {
