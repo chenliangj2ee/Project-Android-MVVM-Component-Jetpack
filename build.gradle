@@ -58,7 +58,7 @@ allprojects {
         maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
         maven { url 'https://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
 
-        maven{
+        maven {
             url 'https://oss.sonatype.org/content/repositories/snapshots/'
         }
 //        maven { url 'http://developer.huawei.com/repo'}

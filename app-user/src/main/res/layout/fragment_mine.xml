@@ -231,7 +231,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/icon_testing" />
+                            android:src="@drawable/icon_mine_consulting" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -258,7 +258,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/icon_mine_consulting" />
+                            android:src="@drawable/icon_course" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -285,7 +285,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/icon_course" />
+                            android:src="@drawable/icon_testing" />
 
                         <TextView
                             android:layout_width="wrap_content"
