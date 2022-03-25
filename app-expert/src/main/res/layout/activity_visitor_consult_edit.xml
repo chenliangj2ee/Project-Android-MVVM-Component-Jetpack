@@ -152,6 +152,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
+                android:textColor="@android:color/white"
                 android:background="@drawable/base_selector_button_dark_46" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
