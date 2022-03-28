@@ -46,4 +46,29 @@ class ConsultViewModel : MyBaseViewModel() {
      * 获取咨询详情
      */
     fun getConsultInfo(serverId: String) = go { API.getConsultInfo(serverId) }
+
+
+    /**
+     * 获取咨询详情
+     */
+    fun getConsultInformation(categoryId: String) = go {
+        API.getConsultInformation(categoryId)
+    }
+
+    /**
+     * 获取咨询服务时间
+     */
+    fun getServiceTime(consultType: String, day: String, week: String, serverId: String, shopId: String) = go {
+        API.getServiceTime(consultType, day, week, serverId, shopId)
+    }
+
+
+
+    fun getVisitorConsultDetail(orderId: String) = go {
+        API.getVisitorConsultDetail(orderId)
+    }
+
+    fun saveVisitorConsultDetail(body: HashMap<String, Any>) = go {
+        API.saveVisitorConsultDetail(body)
+    }
 }

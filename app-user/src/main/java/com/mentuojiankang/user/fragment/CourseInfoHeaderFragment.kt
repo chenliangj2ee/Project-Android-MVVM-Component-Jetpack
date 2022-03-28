@@ -89,7 +89,7 @@ class CourseInfoHeaderFragment :
      * 播放次数统计
      */
 
-    @Subscribe(code=BusCode.COURSE_PLAY)
+    @Subscribe(code = BusCode.COURSE_PLAY)
     public fun playCount(courseSectionId: String) {
         bean.playCount++
         mBinding.data = bean

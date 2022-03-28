@@ -2,8 +2,6 @@ package com.fcyd.expert.activity
 
 import android.app.Activity
 import android.content.Intent
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import com.fcyd.expert.databinding.ActivityMyWalletWithdrawBinding
 import com.fcyd.expert.vm.UserViewModel
@@ -13,6 +11,7 @@ import com.mtjk.utils.click
 import com.mtjk.utils.goto
 import com.mtjk.base.obs
 import com.mtjk.utils.toast
+import com.mtjk.view.CashierInputFilter
 import java.math.BigDecimal
 
 /**
@@ -26,10 +25,10 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
     var withdrawal = 0.0
 
     override fun initCreate() {
-        mToolBar.showRight("明细", { toDetail() })
+        mToolBar.showRight("明细") { toDetail() }
         fullscreenTransparentBar(true)
+        initWithdrawEdit()
         updateMoneyAvailable()
-        initMoneyEdit()
     }
 
     override fun initClick() {
@@ -38,33 +37,16 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
         mBinding.withdraw.click { withdraw() }
     }
 
+    private fun initWithdrawEdit() {
+        mBinding.withdrawMoney.filters = arrayOf(CashierInputFilter())
+    }
+
     private fun updateMoneyAvailable() {
         if(withdrawal >= 0.0) {
-            mBinding.leftIncome.text = "可提现金额¥" + withdrawal
+            mBinding.leftIncome.text = "可提现金额¥$withdrawal"
         }
     }
 
-    private fun initMoneyEdit() {
-        mBinding.withdrawMoney.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(editable: Editable?) {
-                var editStr = editable.toString().trim()
-                var posDot = editStr.indexOf(".");
-                //不允许输入3位小数,超过三位就删掉
-                if (posDot < 0) {
-                    return
-                }
-                if (editStr.length - posDot - 1 > 2) {
-                    editable?.delete(posDot + 3, posDot + 4)
-                }
-            }
-        })
-    }
 
     private fun toDetail() {
         goto(WalletWithdrawListActivity::class.java)
@@ -92,9 +74,7 @@ class WalletWithdrawActivity : MyBaseActivity<ActivityMyWalletWithdrawBinding, U
                 withdrawal = withdrawal.roundTo2DecimalPlaces()
                 afterWithdraw()
             }
-            it.n {
-                toast("提现申请失败，请检查网络")
-            }
+
         }
     }
 

@@ -11,6 +11,7 @@ import com.mtjk.BaseInit
 import com.mtjk.base.BaseTabActivity
 import com.mtjk.base.databinding.ActivityBaseTabBinding
 import com.mtjk.base.obs
+import com.mtjk.base.obsf
 import com.mtjk.bean.BeanLiveData
 import com.mtjk.bean.BeanUser
 import com.mtjk.utils.*
@@ -71,7 +72,7 @@ class MainActivity : BaseTabActivity<ActivityBaseTabBinding, AppViewModel>() {
         beanData.channelName = channelName
         beanData.save()
 
-        initVM(LiveViewModel::class.java).getRTCToken(channelName).obs(BaseInit.act!!) {
+        initVM(LiveViewModel::class.java).getRTCToken(channelName).obsf() {
             it.y {
                 var user = BeanUser().get<BeanUser>()
                 user?.rtcToken = it
@@ -85,7 +86,7 @@ class MainActivity : BaseTabActivity<ActivityBaseTabBinding, AppViewModel>() {
      * 根据channelName获取token
      */
     private fun initRtmToken(channelName: String) {
-        initVM(LiveViewModel::class.java).getRTMToken(channelName).obs(BaseInit.act!!) {
+        initVM(LiveViewModel::class.java).getRTMToken(channelName).obsf() {
             it.y {
                 var user = getBeanUser()
                 user?.rtmToken = it

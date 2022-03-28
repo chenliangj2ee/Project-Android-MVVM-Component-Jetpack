@@ -23,4 +23,6 @@ class LiveViewModel : MyBaseViewModel() {
     fun getLiveDetail(courseId: String) = go { API.getLiveDetail(courseId)}
 
     fun getLiveCourse(pageNo: Int, pageSize: Int) = go { API.getLiveCourse(body("pageNo", pageNo, "pageSize", pageSize))}
+
+    fun getLiveSection(courseId: String) = go {API.getLiveSection(courseId)}
 }

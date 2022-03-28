@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
+import com.chenliang.processor.CLive.MySp
 import com.google.gson.Gson
 import com.mtjk.base.obs
 import com.mtjk.bean.BeanUser
@@ -244,7 +245,11 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
 
     override fun onRtcJoinChannelSuccess(channel: String, uid: Int, elapsed: Int) {
         this.log("进入频道通知，channel：$channel  uid:$uid")
-        this.uid = uid
+        if (uid > 0){
+            this.uid = uid
+            MySp.setUid(rtcChannelName!!,uid)
+        }
+
         sendUidToUsers()
         startLiveSuccess()
         this.initVM(RoomViewModel::class.java).updateUid(uid.toString() + "").obs(this) {
@@ -543,18 +548,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
                     this.log("观众列表" + Gson().toJson(users))
                     userCount.text = users.size.toString()
                     if (users != null) {
-                        user1!!.show(users.size > 0)
-                        user2!!.show(users.size > 1)
-                        user3!!.show(users.size > 2)
-                        if (users.size > 0) {
-                            user1!!.load(users[0].avatar, 30.dip2px())
-                        }
-                        if (users.size > 1) {
-                            user2!!.load(users[1].avatar, 30.dip2px())
-                        }
-                        if (users.size > 2) {
-                            user3!!.load(users[2].avatar, 30.dip2px())
-                        }
+
                     }
 //                mInviteUserListActionSheet!!.append(userList)
                 }
@@ -655,6 +649,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
         processId: Long,
         userId: String,
         userName: String,
+        userAvatar:String?,
         uid: Int,
         index: Int
     ) {
@@ -670,6 +665,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
         Live.seats[0].user.enableVideo =
             if (liveParam!!.liveType == BeanParam.LiveType.VIDEO_ONE) 1 else 0
         Live.seats[0].user.enableAudio = 1
+        Live.seats[0].user.avatar = userAvatar
         Live.sendSentMessage(this)
         runOnUiThread { mSeatLayout!!.updateStates(Live.seats) }
     }
@@ -904,7 +900,7 @@ class ZhuBoActivity : LiveRoomActivity(), View.OnClickListener, LiveHostInSeatOn
                 )
             }
         }
-        dialog(message).y {
+        dialog(message!!).y {
             this.log("下麦UserId:" + Live.seats[0].user.userId)
             this.log("用户列表:" + Gson().toJson(Live.seats))
             Live.sendPeer(

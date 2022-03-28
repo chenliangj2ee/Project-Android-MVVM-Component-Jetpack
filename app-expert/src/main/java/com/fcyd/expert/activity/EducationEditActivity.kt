@@ -63,7 +63,7 @@ class EducationEditActivity : MyBaseActivity<ActivityEducationEditBinding, Accou
         dialog.setTitle("学历")
         dialog.selected {
             bean?.jybj_xl = cynxArrays[it]
-            mBinding.bean?.notifyChange()
+            xl.setValue(bean?.jybj_xl)
             enableSave()
         }
         dialog.show(this)

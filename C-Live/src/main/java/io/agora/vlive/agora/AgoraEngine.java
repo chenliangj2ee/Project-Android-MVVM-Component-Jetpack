@@ -30,6 +30,7 @@ public class AgoraEngine {
             mRtcEngine = RtcEngine.create(application, appId, mRtcEventHandler);
             mRtcEngine.registerLocalUserAccount(AgoraLiveApplication.app.APPID, user.getUserId());
             mRtcEngine.enableVideo();
+            mRtcEngine.enableAudio();
             mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
             mRtcEngine.enableDualStreamMode(false);
             mRtcEngine.setLogFile(UserUtil.rtcLogFilePath(application));

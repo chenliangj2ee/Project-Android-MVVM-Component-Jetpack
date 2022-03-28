@@ -6,6 +6,7 @@ import com.fcyd.expert.bean.BeanWork
 import com.fcyd.expert.databinding.FragmentWorksBinding
 import com.fcyd.expert.databinding.ItemFbfwBinding
 import com.fcyd.expert.databinding.ItemWorksBinding
+import com.fcyd.expert.visitor.VisitorListActivity
 import com.fcyd.expert.vm.UserViewModel
 import com.mtjk.act.EvaluateActivity
 import com.mtjk.base.MyBaseFragment
@@ -25,7 +26,7 @@ class WorksFragment : MyBaseFragment<FragmentWorksBinding, AccountViewModel>() {
 
     var baseArrays = arrayListOf<BeanWork>(
         BeanWork(R.drawable.icon_index_rzrz, "入驻认证", AuthActivity::class.java, ""),
-        //BeanWork(R.drawable.icon_gzszx, "来访者", null, ""),
+        BeanWork(R.drawable.icon_index_lfz, "来访者", VisitorListActivity::class.java, ""),
         BeanWork(R.drawable.icon_index_zbgl, "直播管理", MyLiveListActivity::class.java, ""),
         BeanWork(R.drawable.icon_index_zxgl, "咨询管理", ConsultManagerActivity::class.java, ""),
         BeanWork(R.drawable.icon_index_plgl, "评价管理", null, ""),
@@ -50,7 +51,6 @@ class WorksFragment : MyBaseFragment<FragmentWorksBinding, AccountViewModel>() {
                     data = bean
                     root.click {
                         when (bean.title) {
-                            "来访者" -> toast("敬请期待")
                             "评价管理" -> {
                                 goto(
                                     EvaluateActivity::class.java,

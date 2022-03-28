@@ -25,8 +25,6 @@ object ObjectOrder {
     //待评价
     const val STATUS_WAIT_EVALUATE = 85
 
-    //已完成
-    const val STATUS_FINISH = 75
 
     //已取消
     const val STATUS_CANCEL = 80
@@ -34,6 +32,11 @@ object ObjectOrder {
     //待反馈
     const val STATUS_WAIT_FEEDBACK = 85
 
+    //已完成
+    const val STATUS_FINISH = 90
+
     //结束咨询
     const val STATE_STOP_CONSULT = STATUS_FINISH
+
+
 }

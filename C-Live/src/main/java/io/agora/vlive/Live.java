@@ -77,6 +77,7 @@ public class Live {
                 Live.seats.get(i).user.role = 2;
                 Live.seats.get(i).user.uid = user.getUid();
                 Live.seats.get(i).user.userName = user.getNickName();
+                Live.seats.get(i).user.avatar = user.getAvatar();
                 Live.seats.get(i).user.enableVideo = 1;
                 Live.seats.get(i).user.enableAudio = 1;
                 add = true;

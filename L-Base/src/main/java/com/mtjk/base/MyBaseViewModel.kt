@@ -79,7 +79,7 @@ open class MyBaseViewModel : ViewModel() {
                         bean.code == 403 -> bean.msg = "访问被拒绝"
                         bean.code == 404 -> bean.msg = "找不到路径"
                         bean.code.toString().startsWith("4") -> bean.msg = "客户端异常"
-                        bean.code.toString().startsWith("5") -> bean.msg = "服务器异常"
+                        bean.code.toString().startsWith("5") -> bean.msg = "服务器异常，稍后再试"
                     }
                     bean
                 }
@@ -186,7 +186,7 @@ open class MyBaseViewModel : ViewModel() {
                     e.code() == 403 -> bean.msg = "访问被拒绝"
                     e.code() == 404 -> bean.msg = "找不到路径"
                     e.code().toString().startsWith("4") -> bean.msg = "客户端异常"
-                    e.code().toString().startsWith("5") -> bean.msg = "服务器异常"
+                    e.code().toString().startsWith("5") -> bean.msg = "服务器异常，稍后再试"
                 }
             }
             is ConnectException -> bean.msg = "网络链接异常，请检查网络"
@@ -196,7 +196,7 @@ open class MyBaseViewModel : ViewModel() {
             is JSONException -> bean.msg = "数据解析异常，非法JSON"
             is MalformedJsonException -> bean.msg = "数据解析异常，非法JSON"
             is UnknownServiceException -> bean.msg = "未知服务器路径"
-            is Exception -> bean.msg = "服务器异常"
+            is Exception -> bean.msg = "服务器异常，稍后再试"
         }
         return bean
     }
@@ -271,5 +271,13 @@ open class MyBaseViewModel : ViewModel() {
 fun <T> MutableLiveData<T>.obs(owner: LifecycleOwner, func: (t: T) -> Unit) = this.apply {
     if (!this.hasObservers())
         this.observe(owner, Observer<T> { func(it) })
+}
+
+/**
+ * 观察者监听数据变化
+ */
+fun <T> MutableLiveData<T>.obsf(func: (t: T) -> Unit) = this.apply {
+    if (!this.hasObservers())
+        this.observeForever(func)
 }
 

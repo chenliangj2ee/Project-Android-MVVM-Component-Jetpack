@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -14,8 +15,7 @@
             android:text="注销账号"
             android:textColor="#1F2326"
             android:textSize="16dp"
-            android:visibility="gone"
-            />
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/message"
@@ -44,6 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/base_selector_no_bg"
                 android:gravity="center"
                 android:text="取消"
                 android:textColor="#7B7F83"
@@ -61,6 +62,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/base_selector_yes_bg"
                 android:gravity="center"
                 android:text="确定"
                 android:textColor="#008599"

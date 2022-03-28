@@ -105,6 +105,15 @@ public class LiveRoomMessageList extends RecyclerView {
         mLayoutManager.scrollToPosition(mAdapter.getItemCount() - 1);
         mAdapter.notifyDataSetChanged();
     }
+    public void removeMessage(String message) {
+        for(int i=0;i< mAdapter.mMessageList.size();i++){
+            if(mAdapter.mMessageList.get(i).message.equals(message)){
+                mAdapter.mMessageList.remove(i);
+                break;
+            }
+        }
+        mAdapter.notifyDataSetChanged();
+    }
 
     public void setNarrow(boolean narrow) {
         mNarrow = narrow;

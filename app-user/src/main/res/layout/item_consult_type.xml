@@ -1,0 +1,20 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+        <variable
+            name="data"
+            type="com.mentuojiankang.user.bean.BeanConsultType" />
+    </data>
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="@{data.typeString}"
+        android:textColor="#515357"
+        android:paddingLeft="5dp"
+        android:button="@drawable/item_consult_type_selector" />
+</layout>

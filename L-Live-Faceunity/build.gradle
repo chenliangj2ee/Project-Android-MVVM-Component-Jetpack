@@ -11,8 +11,6 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 660
-        versionName "6.6.0"
     }
     buildTypes {
         release_user {

@@ -209,7 +209,7 @@ interface ApiService {
         @Body requestEntity: Any
     ): Data<Boolean>
 
-    @MyRetrofitGo(mTag = "我的咨询", mLoading = false, mFailToast = true, mCache = true)
+    @MyRetrofitGo(mTag = "我的咨询", mLoading = false, mFailToast = false, mCache = true)
     @GET("/api-app/v1/app/user-order/pageUserConsult")
     fun myConsultList(
         @Query("orderStatus") orderStatus: Int,
@@ -219,7 +219,7 @@ interface ApiService {
     ): DataPages<BeanMyConsult>
 
     @MyRetrofitGo(mTag = "订单列表", mLoading = false, mFailToast = true, mCache = true)
-    @GET("/api-app/v1/app/user-order/queryOrderInfo")
+    @GET("/api-app/v1/app/user/order/queryOrderInfo")
     fun orderList(
         @Query("orderStatus") orderStatus: Int,
         @Query("consultType") consultType: Int,
@@ -249,12 +249,6 @@ interface ApiService {
     @MyRetrofitGo(mTag = "获取用户钱包余额以及会员卡列表", mLoading = false, mFailToast = false, mCache = true)
     @GET("/api-app/v1/app/user-bank/getUserAccountMoney")
     fun getBlance(): Data<BeanMoney>
-
-    @MyRetrofitGo(mTag = "获取订单基础信息", mLoading = true, mFailToast = true)
-    @GET("/api-app/v1/app/user-order/getOrderBaseInfoByOrderId")
-    fun getOrderInfo(
-        @Query("orderId") orderId: String
-    ): Data<BeanOrderInfo>
 
     @MyRetrofitGo(mTag = "服务时间列表", mLoading = true, mFailToast = true, mCache = true)
     @GET("/api-app/v1/app/used-time/queryServerTimeTable")
@@ -368,12 +362,18 @@ interface ApiService {
     fun bookLive(@Body body: Any): Data<String>
 
     @MyRetrofitGo(mTag = "直播详情", mLoading = false, mFailToast = false, mCache = true)
-    @GET("/api-app/v1/app/user/liveCourse/queryById")
+    @GET("/api-app/v1/app/user/liveCourse/getWithBoughtStatus")
     fun getLiveDetail(@Query("id") id: String): Data<BeanLiveDetail>
 
     @MyRetrofitGo(mTag = "直播课程", mLoading = false, mFailToast = false, mCache = true)
     @POST("/api-app/v1/app/user/myCourse/liveCourse")
     fun getLiveCourse(@Body body: Any): DataPages<BeanLiveCourse>
+
+    @MyRetrofitGo(mTag = "直播课节", mLoading = true, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/user/myCourse/listCourseSection")
+    fun getLiveSection(
+        @Query("liveCourseId") courseId: String,
+    ): Datas<BeanLiveSection>
 
     @MyRetrofitGo(mTag = "文章列表", mLoading = false, mFailToast = false, mCache = true)
     @GET("/api-app/v1/app/cms/article/getPageList")
@@ -404,5 +404,21 @@ interface ApiService {
     @MyRetrofitGo(mTag = "钱包明细", mLoading = false, mFailToast = false, mCache = true)
     @POST("/api-app/v1/app/user/order/pageByTime")
     fun getWalletDetailList(@Body body: Any): DataPages<BeanWalletDetail>
+
+    @MyRetrofitGo(mTag = "获取咨询详情", mLoading = true, mFailToast = true, mCache = false)
+    @GET("/api-app/v1/app/user/visitor/case/getOne")
+    fun getVisitorConsultDetail(
+        @Query("orderId") id: String
+    ): Data<BeanVisitorConsultDetail>
+
+    @MyRetrofitGo(mTag = "保存咨询详情", mLoading = true, mFailToast = true, mCache = false)
+    @POST("/api-app/v1/app/user/visitor/case/save")
+    fun saveVisitorConsultDetail(@Body body: Any): Data<Any>
+
+    @MyRetrofitGo(mTag = "课程推荐", mLoading = true, mFailToast = false, mCache = true)
+    @GET("/api-app/v1/app/user/course/listRecommend")
+    fun getCourseRecommendList(
+        @Query("productId") productId: String,
+    ): Datas<BeanCourse>
 
 }

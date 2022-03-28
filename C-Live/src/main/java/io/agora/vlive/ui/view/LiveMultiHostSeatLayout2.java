@@ -16,6 +16,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.mtjk.BaseInit;
 import com.mtjk.utils.MyFunctionKt;
+import com.mtjk.view.MyImageView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +43,7 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
     public static class SeatItem {
         RelativeLayout layout;
         FrameLayout videoLayout;
+        MyImageView userAvatar;
         AppCompatImageView operationIcon;
         AppCompatTextView operationText;
         AppCompatTextView nickname;
@@ -57,6 +59,7 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
         // rtc uid used to indicate speaking volumes.
         int rtcUid;
         public String userName;
+        public String userHeader;
         public String userId;
 
         void startIndicate() {
@@ -113,6 +116,7 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
         item.layout = layout;
         item.position = position;
         item.videoLayout = layout.findViewById(R.id.host_in_seat_item_video_layout);
+        item.userAvatar = layout.findViewById(R.id.userAvatar);
         item.operationIcon = layout.findViewById(R.id.seat_item_operation_icon);
         item.operationText = layout.findViewById(R.id.seat_item_operation_text);
         item.nickname = layout.findViewById(R.id.host_in_seat_item_nickname);
@@ -233,7 +237,7 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
                                 mMyUserId.equals(curSeatState.userId), true);
                     }
 
-                    showUserProfile(curSeatState);
+                    showUserProfile(curSeatState, user.avatar);
                 }
 
                 setSeatStates(curSeatState, seat, user, surfaceView);
@@ -276,7 +280,7 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
                     }
 
                     setSeatStates(curSeatState, seat, user, surfaceView);
-                } else if (newVideoState == VIDEO_MUTED) {
+                } else if (newVideoState == 0||newVideoState == 2) {
                     if (mListener != null) {
                         mListener.onSeatAdapterItemVideoRemoved(
                                 curSeatState.position, curSeatState.rtcUid,
@@ -284,7 +288,7 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
                                 mMyUserId.equals(curSeatState.userId), true);
                     }
 
-                    showUserProfile(curSeatState);
+                    showUserProfile(curSeatState, user.avatar);
                     curSeatState.videoMuteState = user.enableVideo;
                 }
             }
@@ -303,6 +307,7 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
 
         seatState.userId = user.userId;
         seatState.userName = user.userName;
+        seatState.userHeader = user.avatar;
         seatState.rtcUid = user.uid;
         seatState.videoMuteState = user.enableVideo;
         seatState.audioMuteState = user.enableAudio;
@@ -323,10 +328,13 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
         seatState.seatState = SEAT_OPEN;
     }
 
-    private void showUserProfile(@NonNull SeatItem seatState) {
+    private void showUserProfile(@NonNull SeatItem seatState, String url) {
+        MyFunctionKt.log(this,"视频用户头像："+url);
         seatState.videoLayout.removeAllViews();
-        AppCompatImageView icon = new AppCompatImageView(getContext());
-        icon.setImageResource(UserUtil.getUserProfileIcon(seatState.userId));
+        MyImageView icon = new MyImageView(getContext());
+//        icon.setImageResource(UserUtil.getUserProfileIcon(seatState.userId));
+        if (url != null)
+            MyFunctionKt.loadGS( icon, url);
         seatState.videoLayout.addView(icon);
     }
 
@@ -340,7 +348,8 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
     }
 
     private void updateItemUI(SeatItem item) {
-
+        if (item.userHeader != null)
+            item.userAvatar.setVisibility(View.GONE);
 
         if (item.seatState == SEAT_TAKEN) {
             item.nickname.setVisibility(VISIBLE);
@@ -362,6 +371,8 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
             } else {
                 item.nickname.setText(item.userName);
             }
+
+
         } else {
             item.nickname.setVisibility(View.GONE);
             item.videoLayout.removeAllViews();
@@ -389,6 +400,11 @@ public class LiveMultiHostSeatLayout2 extends RelativeLayout {
                 item.operationText.setVisibility(VISIBLE);
                 item.operationText.setText(R.string.live_host_in_seat_state_blocked);
             }
+        }
+
+        if (item.rtcUid > 0 && item.videoMuteState != 1) {
+            item.userAvatar.setVisibility(View.VISIBLE);
+            MyFunctionKt.load(item.userAvatar, item.userHeader, 25);
         }
 
         if (mIsOwner || mIsHost && mMyUserId != null && mMyUserId.equals(item.userId)) {

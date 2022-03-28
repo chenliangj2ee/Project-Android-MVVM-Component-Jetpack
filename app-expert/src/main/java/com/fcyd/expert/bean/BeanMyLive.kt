@@ -1,5 +1,7 @@
 package com.fcyd.expert.bean
 
+import com.chenliang.annotation.ApiModel
+import com.chenliang.processor.appexpert.API
 import com.mtjk.base.MyBaseBean
 import com.mtjk.utils.dateT
 import com.mtjk.utils.dateToLong
@@ -27,5 +29,5 @@ class BeanMyLive : MyBaseBean() {
         return ""
     }
 
-    fun enable() =  System.currentTimeMillis() >= startTime.dateT("yyyy-MM-dd HH:mm:ss").dateToLong("yyyy-MM-dd HH:mm:ss") - 60 * 10*1000
+    fun enable() =if(ApiModel.dev) true else   System.currentTimeMillis() >= startTime.dateT("yyyy-MM-dd HH:mm:ss").dateToLong("yyyy-MM-dd HH:mm:ss") - 60 * 10*1000
 }

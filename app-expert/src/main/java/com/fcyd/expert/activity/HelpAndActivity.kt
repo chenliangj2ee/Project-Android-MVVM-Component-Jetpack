@@ -13,7 +13,7 @@ import com.tencent.qcloud.tuikit.tuiconversation.util.IM
 class HelpAndActivity : MyBaseActivity<ActivityHelpBinding, DefaultViewModel>() {
     override fun initCreate() {
         mToolBar.showRight("客服") {
-            IM.gotoChat("1495673911154786306", "吱吱客服")
+            IM.gotoServiceChat()
         }
     }
 

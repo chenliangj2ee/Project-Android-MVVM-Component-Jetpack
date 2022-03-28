@@ -16,17 +16,14 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.DialogFragment
+import com.chenliang.processor.CLive.MySp
 import com.elvishew.xlog.XLog
 import com.google.gson.Gson
 import com.mtjk.base.obs
 import com.mtjk.bean.BeanLiveData
-import com.mtjk.utils.dialog
-import com.mtjk.utils.initVM
-import com.mtjk.utils.log
-import com.mtjk.utils.toast
+import com.mtjk.utils.*
 import io.agora.rtc.IRtcEngineEventHandler
 import io.agora.rtm.ErrorInfo
 import io.agora.rtm.ResultCallback
@@ -61,6 +58,7 @@ import io.agora.vlive.utils.GiftUtil
 import io.agora.vlive.utils.Global
 import io.agora.vlive.vm.RoomViewModel
 import java.util.*
+import kotlin.math.abs
 
 abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
     LiveRoomSettingActionSheetListener,
@@ -122,11 +120,33 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
 //            enterRoom(roomId);
             myEnterRoom()
         }
+        checkNetWorkBytes()
+    }
+
+
+    private fun checkNetWorkBytes() {
+        postDelayed(1000 * 20) {
+            var total1 = MyNetWork.getNetworkBytes()
+            var total2 = 0L
+            postDelayed(5000) {
+                total2 = MyNetWork.getNetworkBytes()
+
+                var result = abs(total2 - total1) / 1024 / 5
+                log("当前网速：$result")
+                if (result < 60 && !leaveRoom && ownerRtcUid > 0) {
+                    toast("当前网速太慢，请检测网络")
+                }
+
+            }
+            if (!leaveRoom)
+                checkNetWorkBytes()
+        }
     }
 
     private fun myCreateRoom() {
         val beanData = BeanLiveData().get<BeanLiveData>()
         rtcChannelName = beanData!!.channelName
+        uid = MySp.getUid(rtcChannelName!!)
         roomId = ""
         joinRtcChannel()
         joinRtmChannel()
@@ -397,6 +417,11 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
     private fun sendChatMessage(con: String) {
         content = con
         val profile = config().userProfile
+        messageList!!.addMessage(
+            LiveRoomMessageList.MSG_TYPE_CHAT,
+            profile.userName,
+            content
+        )
         initVM(RoomViewModel::class.java).checkMessage(content).obs(this) {
             it.y {
                 if (it) {
@@ -405,13 +430,9 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
                             override fun onSuccess(aVoid: Void?) {}
                             override fun onFailure(errorInfo: ErrorInfo) {}
                         })
-                    messageList!!.addMessage(
-                        LiveRoomMessageList.MSG_TYPE_CHAT,
-                        profile.userName,
-                        content
-                    )
                 } else {
                     toast("发送失败，存在敏感词")
+                    messageList!!.removeMessage(content)
                 }
 
             }
@@ -579,7 +600,9 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
     open fun userLiveRoom() {}
     open fun stopLive() {}
     var waitLink = false
+    var leaveRoom = false
     protected fun leaveRoom() {
+        leaveRoom = true
         Live.sendRtmUserExitRoomMessage(this, object : ResultCallback<Any?> {
             override fun onSuccess(o: Any?) {}
             override fun onFailure(errorInfo: ErrorInfo) {}
@@ -587,6 +610,13 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
         if (isHost || isOwner) {
             stopLive()
         }
+
+//        if(this is ZhuBoActivity2||this is ZhuBoActivity){
+//            Live.sendMessage(this,"咨询师离开")
+//        }else{
+//            Live.sendMessage(this,"用户离开")
+//        }
+
         if (waitLink) {
             cancelWaitLink()
         }
@@ -645,15 +675,11 @@ abstract class LiveRoomActivity : LiveBaseActivity(), BeautyActionSheetListener,
                 ?: return
             val info = cm.activeNetworkInfo
             if (info == null || !info.isAvailable || !info.isConnected) {
-                Toast.makeText(context, R.string.network_unavailable, Toast.LENGTH_SHORT).show()
+                toast("您的网络有点卡顿，请检查网络")
             } else {
                 val type = info.type
                 if (ConnectivityManager.TYPE_WIFI == type) {
-                    Toast.makeText(context, R.string.network_switch_to_wifi, Toast.LENGTH_SHORT)
-                        .show()
                 } else if (ConnectivityManager.TYPE_MOBILE == type) {
-                    Toast.makeText(context, R.string.network_switch_to_mobile, Toast.LENGTH_SHORT)
-                        .show()
                 }
             }
         }

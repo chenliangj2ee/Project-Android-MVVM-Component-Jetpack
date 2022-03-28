@@ -46,6 +46,7 @@
             android:background="@drawable/base_selector_button_dark"
             android:text="充值"
             android:textColor="#FFFFFF"
+            android:stateListAnimator="@null"
             android:textSize="16dp" />
 
         <TextView

@@ -23,6 +23,8 @@
                 android:overScrollMode="never"
                 app:my_divider_color="#E6F0F2"
                 app:my_divider_height="1px"
+                app:my_divider_marginLeft="15dp"
+                app:my_divider_marginRight="15dp"
                 app:my_item_layout="@layout/item_recommend_article" />
         </LinearLayout>
     </LinearLayout>

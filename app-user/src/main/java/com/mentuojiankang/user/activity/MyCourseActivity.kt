@@ -19,8 +19,8 @@ class MyCourseActivity : MyBaseActivity<ActivityMyCourseBinding, CourseViewModel
     override fun initCreate() {
         viewpager.setTabLayout(
             tab,
-            "直播课",
-            "录播课"
+            "直播课程",
+            "录播课程"
         )
         viewpager.addFragments(
             MyLiveCourseFragment(),

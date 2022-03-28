@@ -123,7 +123,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -152,11 +153,12 @@
                         <!--声音-->
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/live_host_in_owner_mute_icon"
-                            android:layout_width="@dimen/live_host_in_seat_item_more_btn_size"
-                            android:layout_height="@dimen/live_host_in_seat_item_more_btn_size"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
                             android:src="@drawable/host_seat_item_mute_icon"
+                            android:layout_margin="5dp"
                             android:visibility="gone" />
                         <!--声音动画-->
                         <io.agora.vlive.ui.view.VoiceIndicateGifView
@@ -199,10 +201,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-            <!--    底部-->
-
-            <!--    消息-->
-
 
             <io.agora.vlive.ui.view.bottomLayout.LiveBottomButtonLayout
                 android:id="@+id/host_in_bottom_layout"

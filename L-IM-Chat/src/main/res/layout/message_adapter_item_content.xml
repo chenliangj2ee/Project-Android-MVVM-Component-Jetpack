@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--tag==消息item-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/messsage_content_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:paddingBottom="12.6dp"
     android:paddingLeft="12.6dp"
-    android:paddingRight="12.6dp">
+    android:paddingRight="12.6dp"
+    android:paddingBottom="12.6dp">
 
     <TextView
         android:id="@+id/chat_time_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:includeFontPadding="false"
-        android:layout_marginBottom="20.58dp"
         android:layout_marginTop="8.98dp"
+        android:layout_marginBottom="20.58dp"
+        android:includeFontPadding="false"
         android:textColor="@color/text_tips_color"
         android:textSize="12.6dp" />
 
     <CheckBox
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/chat_time_tv"
+        android:id="@+id/select_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/select_checkbox"
-        android:button="@drawable/checkbox_selector"
+        android:layout_below="@+id/chat_time_tv"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:layout_marginRight="6.23dp"
+        android:button="@drawable/checkbox_selector"
         android:visibility="gone" />
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/right_group_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,41 +49,26 @@
             app:default_image="@drawable/default_user_icon"
             app:image_radius="20dp" />
 
-        <com.tencent.qcloud.tuicore.component.gatherimage.UserIconView
-            android:id="@+id/right_user_icon_view"
-            android:layout_width="41dp"
-            android:layout_height="41dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="6.23dp"
-            android:visibility="gone"
-            app:default_image="@drawable/default_user_icon"
-            app:image_radius="20dp" />
-
-        <TextView
-            android:id="@+id/user_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6.67dp"
-            android:layout_marginBottom="3.68dp"
-            android:layout_toLeftOf="@+id/right_user_icon_view"
-            android:layout_toRightOf="@+id/left_user_icon_view"
-            android:textColor="@color/text_tips_color"
-            android:textSize="12.6dp"
-            android:visibility="gone" />
-
         <LinearLayout
             android:id="@+id/msg_content_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/user_name_tv"
+            android:layout_marginHorizontal="5dp"
             android:layout_toLeftOf="@+id/right_user_icon_view"
             android:layout_toRightOf="@+id/left_user_icon_view"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <com.tencent.qcloud.tuicore.component.UnreadCountTextView
                 android:id="@+id/audio_unread"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <ProgressBar
                 android:id="@+id/message_sending_pb"
@@ -118,5 +103,29 @@
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
-    </RelativeLayout>
+
+        <com.tencent.qcloud.tuicore.component.gatherimage.UserIconView
+            android:id="@+id/right_user_icon_view"
+            android:layout_width="41dp"
+            android:layout_height="41dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="6.23dp"
+            android:visibility="gone"
+            app:default_image="@drawable/default_user_icon"
+            app:image_radius="20dp" />
+
+        <TextView
+            android:id="@+id/user_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6.67dp"
+            android:layout_marginBottom="3.68dp"
+            android:layout_toLeftOf="@+id/right_user_icon_view"
+            android:layout_toRightOf="@+id/left_user_icon_view"
+            android:textColor="@color/text_tips_color"
+            android:textSize="12.6dp"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
 </RelativeLayout>

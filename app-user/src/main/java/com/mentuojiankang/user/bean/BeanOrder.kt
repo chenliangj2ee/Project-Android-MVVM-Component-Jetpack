@@ -13,7 +13,8 @@ import com.mtjk.utils.dateT
  * date:2021/11/18
  */
 class BeanOrder : MyBaseBean() {
-    var orderDate: String = ""//下单时间
+    var orderDate: String = ""  //下单时间
+    var paidAt: String = ""     //支付时间
     var orderId: String = ""
     var orderServer: Int = 0
     var orderStatus: Int = 0
@@ -44,15 +45,30 @@ class BeanOrder : MyBaseBean() {
     }
 
     fun typeDes(): String {
-        ObjectProduct.TYPE_COURSE
-        when (consultType) {
-            1 -> return "视频咨询"
-            2 -> return "语音咨询"
+        when (orderServer) {
+            ObjectProduct.TYPE_COURSE -> {
+                return ""
+            }
+            ObjectProduct.TYPE_LIVE_COURSE -> {
+                return "视频咨询"
+            }
+            ObjectProduct.TYPE_LIVE -> {
+                return "视频咨询"
+            }
+            ObjectProduct.TYPE_CONSULT -> {
+                when (consultType) {
+                    1 -> return "视频咨询"
+                    2 -> return "语音咨询"
+                }
+            }
         }
+
         return ""
     }
 
-    fun orderDateDes() = orderDate.dateT("yyyy.MM.dd HH:mm:ss")
+    fun orderDateDes() = if(orderDate.isNullOrEmpty()) "" else orderDate.dateT("yyyy.MM.dd HH:mm:ss")
+
+    fun paidDateDes() = if(paidAt.isNullOrEmpty()) "" else paidAt.dateT("yyyy.MM.dd HH:mm:ss")
 
     fun isShowLookCourse(): Boolean {
         if (orderServer != ObjectProduct.TYPE_COURSE) {
@@ -65,5 +81,12 @@ class BeanOrder : MyBaseBean() {
 
             return true
         }
+    }
+
+    fun tipDesc() :String {
+        if(orderStatus == 10) {
+            return "超时未支付，订单将自动关闭"
+        }
+        return "如有疑问，请联系客服咨询"
     }
 }

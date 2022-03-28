@@ -16,7 +16,6 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            app:my_divider_color="@color/app_background"
             app:my_divider_height="0dp"
             app:my_empty_layout="@layout/base_layout_empty"
             app:my_item_layout="@layout/item_live_list"

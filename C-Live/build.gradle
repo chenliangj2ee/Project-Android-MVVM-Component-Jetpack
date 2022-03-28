@@ -27,7 +27,7 @@ android {
 //        applicationId "io.agora.vlive"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 32101
+        versionCode 12
         versionName "3.2.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -93,7 +93,7 @@ dependencies {
     def gson_version = "2.8.6"
     def glide_version = "4.11.0"
     kapt project(path: ':L-Compiler')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'lib', include: ['*.jar'])
 
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 

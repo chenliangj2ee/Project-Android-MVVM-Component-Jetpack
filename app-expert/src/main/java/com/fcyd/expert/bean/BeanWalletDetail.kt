@@ -5,6 +5,8 @@ import com.mtjk.base.MyBaseBean
 import com.mtjk.obj.ObjectOrderType
 import com.mtjk.obj.ObjectProduct
 import com.mtjk.utils.dateT
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 /**
  * 钱包详情
@@ -96,5 +98,21 @@ open class BeanWalletDetail : MyBaseBean(){
             return date.replace("-", "年") + "月"
         }
         return ""
+    }
+
+    fun year(): Int {
+        if (!paidAt.isNullOrEmpty()) {
+            var date = LocalDate.parse(paidAt.dateT("yyyyMMdd"), DateTimeFormatter.ofPattern("yyyyMMdd"))
+            return date?.year!!
+        }
+        return 0
+    }
+
+    fun month(): Int {
+        if (!paidAt.isNullOrEmpty()) {
+            var date = LocalDate.parse(paidAt.dateT("yyyyMMdd"), DateTimeFormatter.ofPattern("yyyyMMdd"))
+            return date?.monthValue!!
+        }
+        return 0
     }
 }

@@ -189,6 +189,30 @@
             android:name=".activity.VisitorUserInfoActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".visitor.VisitorListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+        <activity
+            android:name=".visitor.VisitorDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".visitor.VisitorInfoEditActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+        <activity
+            android:name=".visitor.VisitorConsultDetailActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".activity.ConsultInfoActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <meta-data
             android:name="TD_APP_ID"
             android:value="AF860118FB7D4A2096DD3EF4F23A56F8" />

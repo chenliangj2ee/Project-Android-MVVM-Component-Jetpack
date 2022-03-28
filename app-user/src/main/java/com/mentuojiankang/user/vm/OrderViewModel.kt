@@ -68,8 +68,6 @@ class OrderViewModel : MyBaseViewModel() {
 
     fun getvipcardslist() = go { API.getVipCardList() }
 
-    fun getorderinfo(orderId: String) = go { API.getOrderInfo(orderId) }
-
     fun cancelOrder(orderId: String) =
         go { API.cancelOrder(orderId) }
 

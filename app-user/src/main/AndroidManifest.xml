@@ -117,7 +117,7 @@
         <activity
             android:name=".activity.CourseInfoActivity"
             android:configChanges="orientation|screenSize"
-            android:launchMode="singleTop" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SearchActivity"
             android:screenOrientation="portrait" />
@@ -247,6 +247,14 @@
         <activity
             android:name=".activity.TestInfoActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PayConsultSuccessActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MyLiveSectionActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <meta-data

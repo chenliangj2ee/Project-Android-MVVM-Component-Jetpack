@@ -19,6 +19,7 @@ import android.provider.Settings
 import android.text.Editable
 import android.text.Html
 import android.text.TextWatcher
+import android.transition.Transition
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
@@ -35,11 +36,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.request.target.ViewTarget
 import com.chenliang.annotation.MyRouteUtils
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
@@ -52,6 +56,7 @@ import com.mtjk.obj.ObjectID
 import com.mtjk.view.MyImageView
 import com.tbruyelle.rxpermissions3.RxPermissions
 import gorden.rxbus2.RxBus
+import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.base_exception_dialog.view.*
 import kotlinx.android.synthetic.main.base_toast.view.*
 import kotlinx.android.synthetic.main.base_toast.view.message
@@ -342,7 +347,7 @@ fun String.dateParse(from: String, to: String) = SimpleDateFormat(from).parse(th
  * @param pattern String
  * @return String
  */
-fun String.dateToLong(from: String) = SimpleDateFormat(from).parse(this).time
+fun String.dateToLong(from: String) = if (this == "") 0 else SimpleDateFormat(from).parse(this).time
 
 /**
  * 时间戳long格式化:var time=13239100192; time.date("yyyy-MM-dd")
@@ -553,12 +558,14 @@ fun <T> Context.goto(cls: Class<T>, vararg values: Any?): Fragment {
 
 }
 
+
 fun Any.postDelayed(delay: Long, func: () -> Unit) {
-    var handler = Handler()
+    var handler: Handler? = Handler()
     var run = Runnable {
         func()
+        handler = null
     }
-    handler.postDelayed(run, delay)
+    handler?.postDelayed(run, delay)
 }
 
 fun Context.goto(path: String, vararg values: Any): Fragment {
@@ -959,13 +966,48 @@ fun ImageView.load(url: String) {
 
 }
 
+/**
+ * 将图片下载到本地
+ * @receiver ImageView
+ * @param url String
+ */
+fun ImageView.loadGS(url: String) {
+    var bg = background
+    scaleType = ImageView.ScaleType.FIT_XY
+    if (bg != null) {
+        Glide.with(context!!)
+            .load(url).into(this)
+    } else {
+        var options = RequestOptions().error(R.drawable.load_default)
+//        Glide.with(context!!)
+//            .load(url).dontAnimate()
+//            .transform(BlurTransformation(context, 13)).apply(options).into(this)
+
+        Glide.with(this)
+            .load(url)
+            .apply(bitmapTransform(GlideBlurTransformation(context)))
+            .into(object : ViewTarget<ImageView?, Drawable?>(this) {
+                override fun onResourceReady(
+                    resource: Drawable,
+                    transition: com.bumptech.glide.request.transition.Transition<in Drawable?>?
+                ) {
+                    val current = resource.current
+                    this@loadGS.setImageDrawable(current)
+                }
+            })
+
+    }
+
+
+}
+
 
 /**
  * 将图片下载到本地
  * @receiver ImageView
  * @param url String
  */
-fun ImageView.load(url: String, radius: Int) {
+fun ImageView.load(url: String? = "", radius: Int) {
     if (this is MyImageView) {
         if (default != -1) {
             var options = RequestOptions()
@@ -1314,7 +1356,7 @@ fun Any.messageNotification(id: String, title: String, message: String) {
         )
     val builder: NotificationCompat.Builder =
         NotificationCompat.Builder(BaseInit.act!!.applicationContext)
-            .setSmallIcon(R.mipmap.login_icon)
+            .setSmallIcon(R.drawable.login_logo)
             .setContentTitle(title)
             .setContentText(message)
             .setAutoCancel(true)
@@ -1349,6 +1391,8 @@ fun Any.messageNotification(id: String, title: String, message: String) {
 fun Any.getBeanUser(): BeanUser? = BeanUser().get<BeanUser>()
 
 fun String.anonymous(): String {
+    if (this.isNullOrEmpty())
+        return "匿名"
     return this.substring(0, 1) + "*".repeat(this.length - 1)
 }
 
@@ -1366,4 +1410,8 @@ fun WebView.loadJs(name: String, vararg values: String) {
     log("loadjs:$bridge")
 
     loadUrl(bridge)
+}
+
+fun Activity.UI(func: () -> Unit) {
+    runOnUiThread { func() }
 }

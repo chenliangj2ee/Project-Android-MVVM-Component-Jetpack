@@ -4,35 +4,46 @@ import com.mentuojiankang.user.activity.CourseInfoActivity
 import com.mentuojiankang.user.bean.BeanCourse
 import com.mentuojiankang.user.databinding.FragmentCourseInfoRecommendBinding
 import com.mentuojiankang.user.databinding.ItemRecommendVideoBinding
-import com.mtjk.base.DefaultViewModel
+import com.mentuojiankang.user.vm.CourseViewModel
+import com.mtjk.annotation.MyField
 import com.mtjk.base.MyBaseFragment
+import com.mtjk.base.obs
 import com.mtjk.utils.click
 import com.mtjk.utils.goto
-import com.mtjk.utils.toast
 
 /**
  * tag==推荐/课程
  * author:chenliang
  * date:2021/11/4
  */
-class CourseRecommendFragment : MyBaseFragment<FragmentCourseInfoRecommendBinding, DefaultViewModel>() {
+class CourseRecommendFragment : MyBaseFragment<FragmentCourseInfoRecommendBinding, CourseViewModel>() {
+
+    @MyField
+    var courseId: String = ""
+
     override fun initOnCreateView() {
         with(mBinding) {
-            videoRefresh.setEnableRefresh(false)
-            videoRefresh.setEnableLoadMore(false)
-            videoRefresh.bindData<BeanCourse> {
+            refresh.disable()
+            refresh.bindData<BeanCourse> {
                 with(it.binding as ItemRecommendVideoBinding) {
                     data = it
                     root.click {
-                        toast("我被点击了")
-                        context?.goto(CourseInfoActivity::class.java)
+                        goto(CourseInfoActivity::class.java, "courseId", data?.id!!)
+                        activity?.finish()
                     }
                 }
-
+            }.loadData {
+                loadRecommendData()
             }
-            videoRefresh.test(BeanCourse::class.java,10)
         }
-
     }
 
+    private fun loadRecommendData() {
+        with(mBinding) {
+            mViewModel.getCourseRecommendList(courseId).obs(this@CourseRecommendFragment) {
+                it.c { refresh.addCache(it) }
+                it.y { refresh.addDatas(it) }
+            }
+        }
+    }
 }

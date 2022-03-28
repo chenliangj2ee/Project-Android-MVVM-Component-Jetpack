@@ -20,7 +20,7 @@ import gorden.rxbus2.Subscribe
 import kotlinx.android.synthetic.main.activity_personal_info_edit.*
 
 /**
- * tag==个人资料
+ * tag==个人资料/咨询师
  * author:chenliang
  * date:2021/11/3
  */
@@ -29,7 +29,7 @@ class PersonalInfoEditActivity :
     MyBaseActivity<ActivityPersonalInfoEditBinding, AccountViewModel>() {
     var beanAuth = BeanAuth()
     var user = getBeanUser()
-    var educationModel =  getBeanUser()?.educationExperienceModel
+    var educationModel = getBeanUser()?.educationExperienceModel
     var token = user?.token
     var cynxArrays = arrayListOf<String>()
     var intyear = 0
@@ -58,37 +58,50 @@ class PersonalInfoEditActivity :
             it.n { log(it) }
         }
 
-        expertareaSCLY.edit.isEnabled=false
-        expertareaXXJS.edit.isEnabled=false
+        expertareaSCLY.edit.isEnabled = false
+        expertareaXXJS.edit.isEnabled = false
+        expertname.editText.isEnabled = false
+
+        postDelayed(1000) {
+            expertareaSCLY.edit.isEnabled = true
+            expertareaXXJS.edit.isEnabled = true
+            expertname.editText.isEnabled = true
+        }
 
     }
 
     override fun onResume() {
         super.onResume()
-        hideSoftInput(expertname.editText)
+//        hideSoftInput(expertname.editText)
     }
 
 
     override fun initClick() {
-//        header.click { selectImage(false) }
-//        exportnext.click { dialog("是否提交").n("取消") {  }.y("确认"){uploadImage() } }
-//        expertloction.click { initCity() }
-//        expertman.click { user?.gender = 1 }
-//        expertwoman.click { user?.gender = 2 }
-//        expertcynx.click { initWorkyear() }
-//        //教育背景
-//        experteducation.click { goto(EducationEditActivity::class.java, "bean", beanAuth) }
-//        //资格证书
-//        expertcertificate.click { goto(QualificationListActivity::class.java, "beanAuth", beanAuth) }
-//
-//        with(mBinding) {
-//            expertareaSCLY.edit.changed {
-//                exportnextclick()
-//            }
-//            expertname.editText.changed {
-//                exportnextclick()
-//            }
-//        }
+        header.click { selectImage(false) }
+        exportnext.click { uploadImage() }
+        expertloction.click { initCity() }
+        expertman.click { user?.gender = 1 }
+        expertwoman.click { user?.gender = 2 }
+        expertcynx.click { initWorkyear() }
+        //教育背景
+        experteducation.click { goto(EducationEditActivity::class.java, "bean", beanAuth) }
+        //资格证书
+        expertcertificate.click {
+            goto(
+                QualificationListActivity::class.java,
+                "beanAuth",
+                beanAuth
+            )
+        }
+
+        with(mBinding) {
+            expertareaSCLY.edit.changed {
+                exportnextclick()
+            }
+            expertname.editText.changed {
+                exportnextclick()
+            }
+        }
 
     }
 
@@ -97,7 +110,7 @@ class PersonalInfoEditActivity :
     var loadCount = 0
     var finishCount = 0
     var successCount = 0
-    fun uploadImage() {
+    private fun uploadImage() {
         loading = loading("上传中")
         loadCount = 0
         finishCount = 0
@@ -164,7 +177,7 @@ class PersonalInfoEditActivity :
         log("上传图片总量:$loadCount")
     }
 
-    fun expertInfor() {
+    private fun expertInfor() {
         loading.dismiss()
         addEducationAbout()
         user?.educationExperienceModel = educationModel!!
@@ -186,14 +199,14 @@ class PersonalInfoEditActivity :
 
             }
             it.n {
-                log("上传" + it)
+                log("上传$it")
                 finish()
             }
         }
     }
 
-    fun addEducationAbout() {
-        educationModel =  getBeanUser()?.educationExperienceModel
+    private fun addEducationAbout() {
+        educationModel = getBeanUser()?.educationExperienceModel
         beanAuth = BeanAuth().get<BeanAuth>() ?: BeanAuth()
         educationModel?.education = beanAuth?.jybj_xl
         educationModel?.certificate = beanAuth?.jybj_image
@@ -282,15 +295,15 @@ class PersonalInfoEditActivity :
         }
     }
 
-    fun timeToData(time: String): Int {
+    private fun timeToData(time: String): Int {
         var endtime = 0
         var index: Int = time.indexOf("年")
-        if (time.length > 0)
+        if (time.isNotEmpty())
             endtime = time.substring(0, index).toInt()
         return endtime
     }
 
-    fun exportnextclick() {
+    private fun exportnextclick() {
         with(mBinding) {
             exportnext.isEnabled =
                 user?.avatar!!.isNotEmpty() &&

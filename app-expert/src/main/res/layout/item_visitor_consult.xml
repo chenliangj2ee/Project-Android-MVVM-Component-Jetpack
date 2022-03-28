@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanVisitorConsult" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/base_selector_button_white"
+        android:clickable="true"
+        android:padding="15dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{data.consultStartTimeDesc()}"
+            android:textSize="14dp"
+            android:textColor="#515357" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+            <com.mtjk.view.MyImageView
+                android:id="@+id/type"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center_vertical" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@{data.title}"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="#515357" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

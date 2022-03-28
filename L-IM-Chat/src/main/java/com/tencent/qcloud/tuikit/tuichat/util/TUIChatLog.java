@@ -1,5 +1,6 @@
 package com.tencent.qcloud.tuikit.tuichat.util;
 
+import com.mtjk.utils.MyFunctionKt;
 import com.tencent.imsdk.common.IMLog;
 
 public class TUIChatLog extends IMLog {
@@ -17,7 +18,7 @@ public class TUIChatLog extends IMLog {
      * @param strInfo 消息
      */
     public static void v(String strTag, String strInfo) {
-        IMLog.v(mixTag(strTag), strInfo);
+        MyFunctionKt.log(strTag,strTag+":"+strInfo);
     }
 
     /**
@@ -27,7 +28,7 @@ public class TUIChatLog extends IMLog {
      * @param strInfo 消息
      */
     public static void d(String strTag, String strInfo) {
-        IMLog.d(mixTag(strTag), strInfo);
+        MyFunctionKt.log(strTag,strTag+":"+strInfo);
     }
 
     /**
@@ -37,7 +38,7 @@ public class TUIChatLog extends IMLog {
      * @param strInfo 消息
      */
     public static void i(String strTag, String strInfo) {
-        IMLog.i(mixTag(strTag), strInfo);
+        MyFunctionKt.log(strTag, strTag + ":" + strInfo);
     }
 
     /**
@@ -47,7 +48,7 @@ public class TUIChatLog extends IMLog {
      * @param strInfo 消息
      */
     public static void w(String strTag, String strInfo) {
-        IMLog.w(mixTag(strTag), strInfo);
+        MyFunctionKt.log(strTag, strTag + ":" + strInfo);
     }
 
     /**
@@ -57,7 +58,7 @@ public class TUIChatLog extends IMLog {
      * @param strInfo 消息
      */
     public static void w(String strTag, String strInfo, Throwable e) {
-        IMLog.w(mixTag(strTag), strInfo + e.getMessage());
+        MyFunctionKt.log(strTag, strTag + ":" + strInfo);
     }
 
     /**
@@ -67,7 +68,7 @@ public class TUIChatLog extends IMLog {
      * @param strInfo 消息
      */
     public static void e(String strTag, String strInfo) {
-        IMLog.e(mixTag(strTag), strInfo);
+        MyFunctionKt.log(strTag, strTag + ":" + strInfo);
     }
 
 }

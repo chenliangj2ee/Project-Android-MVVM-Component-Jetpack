@@ -7,6 +7,8 @@
         <variable
             name="data"
             type="com.fcyd.expert.bean.BeanWalletDetail" />
+        <import type="com.mtjk.obj.ObjectOrderType" />
+        <import type="android.view.View" />
     </data>
 
     <LinearLayout
@@ -46,7 +48,8 @@
                     android:id="@+id/tag"
                     android:layout_width="50dp"
                     android:layout_height="20dp"
-                    android:layout_marginTop="7dp" />
+                    android:layout_marginTop="7dp"
+                    android:visibility="@{(data.orderType == ObjectOrderType.TYPE_SHOP_WITHDRAW) ? View.INVISIBLE : View.VISIBLE}" />
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
@@ -64,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/info"
                 android:layout_alignParentRight="true"
-                android:text='@{"+" + data.price}'
+                android:text='@{((data.orderType == ObjectOrderType.TYPE_SHOP_WITHDRAW) ? "" : "+") + data.price}'
                 android:textColor="#111235"
                 android:textSize="15dp"/>
         </RelativeLayout>

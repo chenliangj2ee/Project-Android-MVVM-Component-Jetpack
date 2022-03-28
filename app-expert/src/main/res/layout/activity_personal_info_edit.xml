@@ -82,7 +82,6 @@
                 android:id="@+id/expertname"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                app:my_edit="false"
                 app:my_lineShow="true"
                 app:my_must_input="true"
                 app:my_rightShow="false"
@@ -127,11 +126,9 @@
                         android:layout_height="30dp"
                         android:background="@drawable/base_selector_radiobutton_bg"
                         android:button="@null"
-                        android:checked="@{bean.gender==1?true:false}"
-                        android:enabled="false" />
+                        android:checked="@{bean.gender==1?true:false}" />
 
                     <TextView
-
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:text="男"
@@ -143,8 +140,7 @@
                         android:layout_height="30dp"
                         android:background="@drawable/base_selector_radiobutton_bg"
                         android:button="@null"
-                        android:checked="@{bean.gender==2?true:false}"
-                        android:enabled="false" />
+                        android:checked="@{bean.gender==2?true:false}" />
 
                     <TextView
                         android:layout_width="80dp"
@@ -293,8 +289,7 @@
                     android:stateListAnimator="@null"
                     android:text="提交"
                     android:textColor="@drawable/base_selector_color_button_white"
-                    android:textSize="14dp"
-                    android:visibility="gone" />
+                    android:textSize="14dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

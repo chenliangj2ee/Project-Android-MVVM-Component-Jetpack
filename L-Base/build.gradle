@@ -17,7 +17,7 @@ android {
     defaultConfig {
         minSdk 22
         targetSdk 31
-        versionCode 1
+        versionCode 12
         versionName "1.0.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -198,4 +198,8 @@ dependencies {
     // TPNS 推送 [VERSION] 为最新 SDK 版本号
     implementation 'com.tencent.tpns:tpns:1.2.7.1-release'
 
+    api 'com.gavin.com.library:stickyDecoration:1.5.3'
+
+    // 配合glide实现高斯模糊
+    api 'jp.wasabeef:glide-transformations:2.0.2'
 }

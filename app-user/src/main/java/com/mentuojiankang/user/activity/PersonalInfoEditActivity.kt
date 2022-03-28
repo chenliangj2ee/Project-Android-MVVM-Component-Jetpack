@@ -16,7 +16,7 @@ import gorden.rxbus2.RxBus
 import kotlinx.android.synthetic.main.activity_personal_info_edit.*
 
 /**
- * tag==个人资料
+ * tag==个人资料/用户
  * author:chenliang
  * date:2021/11/3
  */
@@ -118,7 +118,11 @@ class PersonalInfoEditActivity :
 
     override fun onBackPressed() {
         user?.occupation = userindustry.editText.text.toString()
-        user?.nickName = nicknameuser.editText.text.toString()
+        user?.nickName = nicknameuser.editText.text.toString().trim().replace(" ","")
+        if( user?.nickName!!.length<2){
+            toast("昵称最少2个字符")
+            return ;
+        }
         mViewModel.updateUserAccount(user!!).obs(this) {
             it.y {
                 user!!.save()

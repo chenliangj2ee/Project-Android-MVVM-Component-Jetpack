@@ -3,6 +3,7 @@ package com.tencent.qcloud.tuikit.tuichat.ui.view.message.viewholder;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public abstract class MessageBaseHolder extends RecyclerView.ViewHolder {
     public TextView chatTimeText;
     public FrameLayout msgContentFrame;
     public CheckBox mMutiSelectCheckBox;
-    public RelativeLayout rightGroupLayout;
+    public LinearLayout rightGroupLayout;
     public RelativeLayout mContentLayout;
 
 

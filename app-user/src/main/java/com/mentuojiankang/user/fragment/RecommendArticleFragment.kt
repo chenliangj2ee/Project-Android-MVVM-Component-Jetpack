@@ -24,7 +24,7 @@ class RecommendArticleFragment :
         mRootView.show(false)
         with(mBinding) {
             root.more.click { goto(ArticleListActivity::class.java) }
-            mBinding.root.title.text = "精选好文"
+            mBinding.root.title.text = "健康资讯"
             articleRefresh.disable()
         }
 
@@ -32,7 +32,7 @@ class RecommendArticleFragment :
 
     fun addData(list: ArrayList<BeanArticle>) {
 
-        if(list.isNullOrEmpty())
+        if (list.isNullOrEmpty())
             return
         mRootView.show(true)
         with(mBinding) {
@@ -49,7 +49,15 @@ class RecommendArticleFragment :
 
 
     private fun getArticleInfo(bean: BeanArticle) {
-        goto(WebViewActivity::class.java, "url", MyPath.articlePath, "title", bean.title, "articleId", bean.id)
+        goto(
+            WebViewActivity::class.java,
+            "url",
+            MyPath.articlePath,
+            "title",
+            bean.title,
+            "articleId",
+            bean.id
+        )
         addReadCount(bean)
     }
 

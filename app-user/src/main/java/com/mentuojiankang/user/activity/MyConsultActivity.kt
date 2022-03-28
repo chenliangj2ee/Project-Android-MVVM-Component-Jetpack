@@ -12,6 +12,7 @@ import com.mentuojiankang.user.fragment.*
 import com.mtjk.annotation.MyClass
 import com.mtjk.base.DefaultViewModel
 import com.mtjk.base.MyBaseActivity
+import com.mtjk.obj.ObjectProduct
 import com.mtjk.utils.goto
 import com.mtjk.utils.selected
 import kotlinx.android.synthetic.main.activity_my_collection.*
@@ -48,8 +49,8 @@ class MyConsultActivity : MyBaseActivity<ActivityMyConsultBinding, DefaultViewMo
                 it.customView?.findViewById<TextView>(R.id.title)?.text = it.text
             }
 
-//            viewpager.addFragments(goto(MyConsultListFragment::class.java, "consultType", 300))
-            viewpager.addFragments(goto(MyConsultListFragment::class.java, "consultType", 200))
+            viewpager.addFragments(goto(MyConsultListFragment::class.java, "consultType", ObjectProduct.TYPE_CONSULT))
+//            viewpager.addFragments(goto(MyConsultListFragment::class.java, "consultType", 200))
 
         }
     }

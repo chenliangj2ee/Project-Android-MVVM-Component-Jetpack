@@ -73,5 +73,5 @@ object BusCode {
     const val LIVE_DRAW_SHOW_GZ = 1048//主播显示画板
     const val LIVE_DRAW_CLOSE_ALL = 1049//主播显示画板
     const val LIVE_UPDATE_ZHUBO_UID = 1050//主播显示画板
-
+    const val UPDATE_IM_USERINFO = 1051//修改IM信息
 }

@@ -14,6 +14,6 @@ class LiveViewModel : MyBaseViewModel() {
 
     fun start(channelName: String) = go { API.startLive(body("channelName", channelName)) }
     fun stop(channelName: String,liveSeconds:Long) = go { API.stopLive(body("channelName", channelName,"liveSeconds",liveSeconds)) }
-    fun addViewedCount(channelName: String) = go { API.addViewedCount(body("channelName", channelName)) }
+    fun addViewedCount(channelName: String) = go { API.addViewedCount( channelName) }
 
 }

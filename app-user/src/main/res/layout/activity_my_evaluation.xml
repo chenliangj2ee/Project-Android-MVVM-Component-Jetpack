@@ -15,6 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:my_item_layout="@layout/item_my_test"
+            app:my_divider_height="1px"
+            android:background="#0000"
             app:my_empty_layout="@layout/base_layout_empty"/>
 
     </LinearLayout>

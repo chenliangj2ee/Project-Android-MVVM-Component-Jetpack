@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.fcyd.expert.bean.BeanTodoGuide" />
+        <import type="android.view.View" />
+        <import type="com.mtjk.obj.ObjectLocalTodo" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingTop="10dp"
+        android:paddingHorizontal="15dp"
+        android:paddingBottom="20dp"
+        android:background="@drawable/selector_item_white_radius_5_border_0">
+
+        <com.mtjk.view.MyImageView
+            android:id="@+id/type_icon"
+            bindSrc="@{data.typeDrawable()}"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            tools:src="@drawable/item_todo_icon_work_room"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/type_icon"
+            android:layout_marginTop="5dp"
+            android:text="@{data.title}"
+            android:textColor="#515357"
+            android:textSize="17dp"
+            tools:text="工作室信息填写" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/type_icon"
+            android:layout_marginTop="20dp"
+            android:text="@{data.desc}"
+            android:textColor="#A9ADB2"
+            android:textSize="14dp"
+            tools:text="请完成工作室信息填写" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/edit_button"
+            android:layout_width="80dp"
+            android:layout_height="34dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/base_selector_button_dark_34"
+            android:stateListAnimator="@null"
+            android:text="@{data.operation}"
+            android:textColor="@android:color/white"
+            android:textSize="12dp"
+            android:gravity="center" />
+    </RelativeLayout>
+</layout>

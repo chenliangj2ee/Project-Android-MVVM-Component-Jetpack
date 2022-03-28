@@ -56,11 +56,11 @@ class WXEntryActivity : AppCompatActivity(), IWXAPIEventHandler {
             } else if ("failure" == extraData) {
                 //支付失败
                 beanUser?.backWxZfb=false
-                send(BusCode.PAYMENT_RESULT)
+                send(BusCode.PAYMENT_FAILURE)
                 finish()
             } else {
                 beanUser?.backWxZfb=false
-                send(BusCode.PAYMENT_RESULT)
+                send(BusCode.PAYMENT_FAILURE)
                 toast("返回值为空$extraData")
                 finish()
             }

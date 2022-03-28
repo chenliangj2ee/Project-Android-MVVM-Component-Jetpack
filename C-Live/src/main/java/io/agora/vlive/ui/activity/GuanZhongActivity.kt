@@ -421,6 +421,10 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
         if (waitLink) {
             waitLink()
         } else {
+            if(ownerRtcUid==0){
+                toast("主播尚未开播")
+                return
+            }
             dialog("您是否申请上麦？").y {
                 Live.sendPeer(
                     this,
@@ -543,6 +547,7 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
         processId: Long,
         userId: String,
         userName: String,
+        userAvatar:String,
         uid: Int,
         index: Int
     ) {
@@ -789,7 +794,7 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
             }
         }
 
-        dialog(message).y {
+        dialog(message!!).y {
             this.log("下麦UserId:" + Live.seats.get(position).user.userId)
             this.log("用户列表:" + Gson().toJson(Live.seats))
             Live.seats.set(position, SeatStateMessageDataItem())
@@ -976,18 +981,7 @@ class GuanZhongActivity() : LiveRoomActivity(), View.OnClickListener,
                     this.log("观众列表" + Gson().toJson(users))
                     userCount.text = users.size.toString()
                     if (users != null) {
-                        user1!!.show(users.size > 0)
-                        user2!!.show(users.size > 1)
-                        user3!!.show(users.size > 2)
-                        if (users.size > 0) {
-                            user1!!.load(users[0].avatar, 30.dip2px())
-                        }
-                        if (users.size > 1) {
-                            user2!!.load(users[1].avatar, 30.dip2px())
-                        }
-                        if (users.size > 2) {
-                            user3!!.load(users[2].avatar, 30.dip2px())
-                        }
+
                     }
 //                mInviteUserListActionSheet!!.append(userList)
                 }

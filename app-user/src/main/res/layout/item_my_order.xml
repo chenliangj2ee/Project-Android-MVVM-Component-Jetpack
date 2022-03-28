@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text='@{order.paidAmount+""}'
-                android:textColor="#F44336"
+                android:textColor="#B82F25"
                 android:textSize="17dp"
                 android:textStyle="bold"
                 tools:text="19.9" />
@@ -210,7 +210,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:text="发消息"
                 android:textColor="#133C53"
-                android:visibility="@{ order.orderServer ==200 &amp;&amp; order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
+                android:visibility="@{ order.orderServer ==ObjectProduct.TYPE_CONSULT &amp;&amp; order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 style="?android:attr/borderlessButtonStyle"
@@ -231,7 +231,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:text="评价"
                 android:textColor="#133C53"
-                android:visibility="@{order.commentState==0&amp;&amp;(order.orderStatus==status.STATUS_WAIT_EVALUATE||order.orderStatus==status.STATUS_FINISH)?View.VISIBLE:View.GONE}" />
+                android:visibility="@{order.commentState==0&amp;&amp;(order.orderStatus==status.STATUS_FINISH)?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/startCourse"

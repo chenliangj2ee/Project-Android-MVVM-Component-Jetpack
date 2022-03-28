@@ -4,8 +4,6 @@ import com.mtjk.base.MyBaseBean
 
 class BeanLiveCourse : MyBaseBean() {
     var coverImage = ""
-    var createBy = ""
-    var createTime = ""
     var detail = ""
     var discountPrice = 0.0
     var free = 0
@@ -17,6 +15,5 @@ class BeanLiveCourse : MyBaseBean() {
     var startedAt = ""
     var state = 0
     var status = 0
-    var updateBy = ""
-    var updateTime = ""
+    var courseNum="0"
 }

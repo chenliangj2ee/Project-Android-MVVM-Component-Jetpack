@@ -1,9 +1,11 @@
 package com.mtjk.view
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.mtjk.base.MyBaseActivity
 import com.mtjk.base.R
@@ -27,11 +29,15 @@ class MyToolBar : LinearLayout {
     }
 
     private fun initViews() {
-        root = LayoutInflater.from(context).inflate(R.layout.base_layout_toolbar, this, true)
+        root = LayoutInflater.from(context).inflate(R.layout.base_layout_toolbar,this)
         customLayout = root.findViewById(R.id.customLayout)
         root.toolbar_back.setOnClickListener {
             (context as MyBaseActivity<*, *>).onBackPressed()
         }
+//        addView(
+//            root,
+//            LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+//        )
     }
 
 

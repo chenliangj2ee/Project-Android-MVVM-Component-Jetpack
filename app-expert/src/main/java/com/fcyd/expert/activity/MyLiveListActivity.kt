@@ -29,6 +29,7 @@ class MyLiveListActivity : MyBaseActivity<ActivityMyLiveListBinding, LiveViewMod
                     root.start.click {
                         var liveParam = BeanParam()
                         liveParam.liveTitle = bean.liveCourseSectionName
+                        liveParam.liveType = BeanParam.LiveType.VIDEO_MORE
                         liveParam.save()
                         bean.channelName?.sendSelf(BusCode.LIVE_GET_RTCTOKEN)
                     }

@@ -26,11 +26,10 @@
 
             <com.mtjk.view.MyImageView
                 load="@{order.image}"
-                radius="@{5}"
+                radius="@{2}"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
-                android:background="#eee"
                 app:my_default="@drawable/load_default" />
 
             <LinearLayout
@@ -68,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:visibility="gone"
             android:paddingTop="10dp"
             android:paddingBottom="10dp">
 
@@ -87,6 +87,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/base_selector_button_dark"
+                android:enabled='@{order.enable()?true:false}'
                 android:stateListAnimator="@null"
                 android:text="开始咨询"
                 android:textColor="@drawable/base_selector_color_button_white" />

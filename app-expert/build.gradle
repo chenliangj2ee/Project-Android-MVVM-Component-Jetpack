@@ -35,14 +35,14 @@ android {
         applicationId "com.fcyd.expert"
         minSdk 26
         targetSdk 26
-        versionCode 7
-        versionName "1.1.5"
+        versionCode 117
+        versionName "1.1.7"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
-            abiFilters "armeabi-v7a"//, "arm64-v8a"//,"armeabi"
+            abiFilters "armeabi-v7a", "arm64-v8a"//,"armeabi"
         }
 
         //tpns消息推送配置
@@ -51,7 +51,22 @@ android {
                 XG_ACCESS_KEY: "A5TH4E686EKU",
                 PACKAGE_NAME : "com.fcyd.expert",
         ]
+        flavorDimensions 'versionCode'
+    }
 
+    productFlavors {
+        huawei {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "huawei"]
+        }
+        xiaomi {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "xiaomi"]
+        }
+        oppo {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "oppo"]
+        }
+        vivo {
+            manifestPlaceholders = ["TD_CHANNEL_ID": "vivo"]
+        }
     }
     dataBinding {
         enabled = true
@@ -73,6 +88,13 @@ android {
                     APPLICATIONID: "com.fcyd.expert",
                     APP_NAME     : "吱吱心理咨询师"
             ]
+
+            // 自定义输出配置
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName =  "expert_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                }
+            }
         }
 
         develop_expert {

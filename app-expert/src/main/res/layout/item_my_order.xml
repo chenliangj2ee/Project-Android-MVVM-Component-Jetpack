@@ -151,33 +151,48 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/chat"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="78dp"
+                android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/base_selector_button_grey"
+                android:minWidth="78dp"
                 android:text="发消息"
                 android:textColor="#133C53"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/userInfo"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/base_selector_button_grey"
+                android:minWidth="78dp"
+                android:text="来访者信息"
+                android:textColor="#133C53"
+                android:visibility="@{(order.orderStatus==status.STATUS_WAIT_CONFIRM ||order.orderStatus==status.STATUS_DOING  )?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/confirm"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="78dp"
+                android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/base_selector_button_grey"
+                android:minWidth="78dp"
                 android:text="接单"
                 android:textColor="#133C53"
-                android:visibility="@{order.orderStatus==status.STATUS_WAIT_CONFIRM?View.VISIBLE:View.GONE}" />
+                android:visibility="@{(order.orderStatus==status.STATUS_WAIT_CONFIRM)?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/stop"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="78dp"
+                android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/base_selector_button_grey"
+                android:minWidth="78dp"
                 android:text="结束咨询"
                 android:textColor="#133C53"
                 android:visibility="gone" />
@@ -185,20 +200,22 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/feedback"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="78dp"
+                android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/base_selector_button_grey"
+                android:minWidth="78dp"
                 android:text="写咨询方案"
                 android:textColor="#133C53"
                 android:visibility="@{order.feedBackState==0&amp;&amp;order.orderStatus==status.STATUS_FINISH?View.VISIBLE:View.GONE}" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/startLive"
-                android:layout_width="78dp"
+                android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/base_selector_button_dark"
+                android:minWidth="78dp"
                 android:text="开始咨询"
                 android:textColor="#fff"
                 android:visibility="gone" />

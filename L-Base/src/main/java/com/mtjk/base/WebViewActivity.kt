@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.base_activity_webview.*
  * author:chenliang
  * date:2021/12/9
  */
-@MyClass(mToolbarTitle = " ", mRefresh = true)
+@MyClass(mToolbarTitle = "", mRefresh = true)
 class WebViewActivity : MyBaseActivity<BaseActivityWebviewBinding, DefaultViewModel>() {
 
     @MyField
@@ -47,6 +47,9 @@ class WebViewActivity : MyBaseActivity<BaseActivityWebviewBinding, DefaultViewMo
     @MyField
     var testId: String? = null
 
+    @MyField
+    var full = false
+
     //测评
 
 
@@ -59,8 +62,11 @@ class WebViewActivity : MyBaseActivity<BaseActivityWebviewBinding, DefaultViewMo
         loadDialog.setCancelable(true)
         with(mBinding) {
 
-            if (!title.isNullOrEmpty())
+            if (!title.isNullOrEmpty() && !full){
                 mToolBar.setTitle(title)
+            }
+
+            fullscreenTransparentBar(full)
 
             /**
              * 加载失败
@@ -108,10 +114,12 @@ class WebViewActivity : MyBaseActivity<BaseActivityWebviewBinding, DefaultViewMo
 
 
             if (imgurl.isNotEmpty()) {
+                mRefresh.setEnableRefresh(false)
                 webview.load(imgurl, MyWebView.Type.IMAGE)
             }
 
             if (content.isNotEmpty()) {
+                mRefresh.setEnableRefresh(false)
                 webview.load(content, MyWebView.Type.CONTENT)
             }
 

@@ -2,19 +2,25 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-
-        <com.mtjk.view.MyRefreshRecyclerView
-            android:id="@+id/videoRefresh"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            app:my_item_layout="@layout/item_recommend_video"
-            app:my_layout_manager="gridLayout"
-            app:my_span_count="2" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.mtjk.view.MyRefreshRecyclerView
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                app:my_divider_height="1px"
+                app:my_divider_marginRight="15dp"
+                app:my_divider_marginLeft="15dp"
+                app:my_empty_layout="@layout/base_layout_empty"
+                app:my_item_layout="@layout/item_recommend_video" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -12,9 +12,18 @@
             android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
+            app:my_divider_height="1px"
+            app:my_divider_marginLeft="15dp"
+            app:my_divider_marginRight="15dp"
             app:my_empty_layout="@layout/base_layout_empty"
             app:my_item_layout="@layout/item_wallet_detail" />
 
-    </LinearLayout>
+        <include
+            android:id="@+id/empty_group"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            layout="@layout/wallet_item_decoration_content" />
+
+    </FrameLayout>
 </layout>

@@ -33,7 +33,7 @@
 
             <com.mtjk.view.MyImageView
                 load="@{bean.coverImage}"
-                radius="@{5}"
+                radius="@{2}"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
-                    android:text='@{"咨询量"+bean.orderSum+"     评价"+bean.commentSum}'
+                    android:text='@{"咨询量 "+bean.orderSum+"     评价 "+bean.commentSum}'
                     android:textColor="#515357"
                     android:textSize="12dp"
                     tools:text="咨询量0     评价0" />
@@ -132,13 +132,33 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
+
                 android:layout_weight="1"
                 android:gravity="right|bottom"
-                android:text='@{"总价:"+bean.price+"币"}'
-                android:textColor="#133C53"
+                android:text='@{"实付:"}'
+                android:textColor="#373535"
                 android:textSize="12dp"
-                tools:text="总价:689币" />
+                tools:text="实付:" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="right|bottom"
+                android:text='@{bean.price+""}'
+                android:textColor="#DA2121"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                tools:text="33" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="right|bottom"
+                android:text="币"
+                android:textColor="#373535"
+                android:textSize="12dp"
+                tools:text="币" />
 
 
         </LinearLayout>
@@ -158,7 +178,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:stateListAnimator="@null"
                 android:text="未通过原因"
-                android:textColor="#133C53"
+                android:textColor="#373535"
                 android:visibility='@{state==2&amp;&amp;bean.verify==3?View.VISIBLE:View.GONE}' />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -169,7 +189,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:stateListAnimator="@null"
                 android:text="删除"
-                android:textColor="#133C53" />
+                android:textColor="#373535" />
 
 
             <androidx.appcompat.widget.AppCompatButton
@@ -180,7 +200,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:stateListAnimator="@null"
                 android:text="修改"
-                android:textColor="#133C53" />
+                android:textColor="#373535" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/down"
@@ -190,7 +210,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:stateListAnimator="@null"
                 android:text="下架"
-                android:textColor="#133C53"
+                android:textColor="#373535"
                 android:visibility='@{state==1?View.VISIBLE:View.GONE}' />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -201,7 +221,7 @@
                 android:background="@drawable/base_selector_button_grey"
                 android:stateListAnimator="@null"
                 android:text="上架"
-                android:textColor="#133C53"
+                android:textColor="#373535"
                 android:visibility='@{state==3?View.VISIBLE:View.GONE}' />
         </LinearLayout>
 

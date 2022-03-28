@@ -33,6 +33,7 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="52dp"
+            android:layout_marginRight="15dp"
             app:my_edit="true"
             app:my_rightShow="false"
             app:my_title="学校"
@@ -43,9 +44,10 @@
             android:id="@+id/zy"
             android:layout_width="match_parent"
             android:layout_height="52dp"
+            android:layout_marginRight="15dp"
             app:my_edit="true"
-            app:my_title="专业"
             app:my_rightShow="false"
+            app:my_title="专业"
             app:my_value="@={bean.jybj_zy}"
             app:my_value_hint="请输入专业" />
 
@@ -59,82 +61,85 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:background="#fff"
-            android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="上传证书"
-            android:textColor="#333333"
-            android:textSize="17dp" />
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="15dp"
-            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="上传证书"
+                android:textColor="#333333"
+                android:textSize="17dp" />
 
-            <FrameLayout
-                android:id="@+id/addIcon"
-                android:layout_width="118dp"
-                android:layout_height="118dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="108dp"
-                    android:layout_height="108dp"
-                    android:layout_gravity="bottom"
-                    android:background="#F6F7F8" />
+                <FrameLayout
+                    android:id="@+id/addIcon"
+                    android:layout_width="118dp"
+                    android:layout_height="118dp">
+
+                    <ImageView
+                        android:layout_width="108dp"
+                        android:layout_height="108dp"
+                        android:layout_gravity="bottom"
+                        android:background="#F6F7F8" />
+
+                    <TextView
+                        android:id="@+id/addIconText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="#F6F7F8"
+                        android:drawableLeft="@drawable/icon_add"
+                        android:gravity="center"
+                        android:text="添加图片"
+                        android:textColor="#008599"
+                        android:textSize="14dp"
+                        android:visibility='@{bean.jybj_image==null||"".equals(bean.jybj_image)?View.VISIBLE:View.GONE}' />
+
+                    <ImageView
+                        android:id="@+id/image"
+                        load="@{bean.jybj_image}"
+                        radius="@{5}"
+                        android:layout_width="108dp"
+                        android:layout_height="108dp"
+                        android:layout_gravity="bottom"
+                        android:visibility='@{"".equals(bean.jybj_image)?View.GONE:View.VISIBLE}' />
+
+                    <ImageView
+                        android:id="@+id/delete"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/icon_edittext_delete"
+                        android:visibility='@{bean.jybj_image.equals("")?View.GONE:View.VISIBLE}' />
+                </FrameLayout>
 
                 <TextView
-                    android:id="@+id/addIconText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#F6F7F8"
-                    android:drawableLeft="@drawable/icon_add"
-                    android:gravity="center"
-                    android:text="添加图片"
-                    android:textColor="#008599"
-                    android:textSize="14dp"
-                    android:visibility='@{bean.jybj_image==null||"".equals(bean.jybj_image)?View.VISIBLE:View.GONE}' />
-
-                <ImageView
-                    android:id="@+id/image"
-                    load="@{bean.jybj_image}"
-                    radius="@{5}"
-                    android:layout_width="108dp"
-                    android:layout_height="108dp"
-                    android:layout_gravity="bottom" />
-
-                <ImageView
-                    android:id="@+id/delete"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="right"
-                    android:src="@drawable/icon_edittext_delete"
-                    android:visibility='@{bean.jybj_image.equals("")?View.GONE:View.VISIBLE}' />
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:visibility="gone"
-                android:text="支持JPG、PNG格式图片大小不超过5M"
-                android:textColor="#A9ADB2"
-                android:textSize="12dp" />
+                    android:text="支持JPG、PNG格式图片大小不超过5M"
+                    android:textColor="#A9ADB2"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
         </LinearLayout>
-        </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"

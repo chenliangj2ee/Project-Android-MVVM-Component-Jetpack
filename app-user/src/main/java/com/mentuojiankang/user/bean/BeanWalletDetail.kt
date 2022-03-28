@@ -5,6 +5,8 @@ import com.mtjk.base.MyBaseBean
 import com.mtjk.obj.ObjectOrderType
 import com.mtjk.obj.ObjectProduct
 import com.mtjk.utils.dateT
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class BeanWalletDetail  : MyBaseBean(){
 
@@ -20,6 +22,8 @@ class BeanWalletDetail  : MyBaseBean(){
     var productTitle = ""
     //商品类型：咨询、直播、课程、督导
     var productType = 0
+    //充值金额
+    var rechargeAmount = 0.0
 
     fun titleDisplay(): String {
         if(orderType == ObjectOrderType.TYPE_SHOP_WITHDRAW) {
@@ -35,8 +39,10 @@ class BeanWalletDetail  : MyBaseBean(){
     }
 
     fun coverDefaultImage(): Int {
+        if(orderType == ObjectOrderType.TYPE_RECHARGE) {
+            return R.drawable.item_wallet_detail_icon_recharge
+        }
         if(orderType == ObjectOrderType.TYPE_SHOP_WITHDRAW
-            || orderType == ObjectOrderType.TYPE_RECHARGE
             || orderType == ObjectOrderType.TYPE_REFUND) {
             return R.drawable.item_wallet_withdraw_detail_icon
         }
@@ -68,7 +74,7 @@ class BeanWalletDetail  : MyBaseBean(){
         if(productType == ObjectProduct.TYPE_COURSE) {
             return R.drawable.item_wallet_detail_tag_course
         }
-        return R.drawable.item_wallet_detail_tag_supervise
+        return 0
     }
 
     fun paidTimeDes(): String {
@@ -95,11 +101,34 @@ class BeanWalletDetail  : MyBaseBean(){
         return ""
     }
 
+    fun priceAmount(): Double{
+        if(orderType == ObjectOrderType.TYPE_RECHARGE) {
+            return rechargeAmount
+        }
+        return price
+    }
+
     fun groupName(): String {
         if (!paidAt.isNullOrEmpty()) {
             var date = paidAt.dateT("yyyy-MM")
             return date.replace("-", "年") + "月"
         }
         return ""
+    }
+
+    fun year(): Int {
+        if (!paidAt.isNullOrEmpty()) {
+            var date = LocalDate.parse(paidAt.dateT("yyyyMMdd"),DateTimeFormatter.ofPattern("yyyyMMdd"))
+            return date?.year!!
+        }
+        return 0
+    }
+
+    fun month(): Int {
+        if (!paidAt.isNullOrEmpty()) {
+            var date = LocalDate.parse(paidAt.dateT("yyyyMMdd"), DateTimeFormatter.ofPattern("yyyyMMdd"))
+            return date?.monthValue!!
+        }
+        return 0
     }
 }

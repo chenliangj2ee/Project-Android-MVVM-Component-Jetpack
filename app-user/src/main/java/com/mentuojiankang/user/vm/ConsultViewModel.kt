@@ -41,4 +41,12 @@ class ConsultViewModel : MyBaseViewModel() {
     fun getMyConsultList(consultType: Int, pageNo: Int, pageSize: Int) = go {
         API.myConsultList(0, consultType, pageNo, pageSize)
     }
+
+    fun getVisitorConsultDetail(orderId: String) = go {
+        API.getVisitorConsultDetail(orderId)
+    }
+
+    fun saveVisitorConsultDetail(body: HashMap<String, Any>) = go {
+        API.saveVisitorConsultDetail(body)
+    }
 }

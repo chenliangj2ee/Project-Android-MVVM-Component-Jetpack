@@ -5,7 +5,9 @@
     tools:ignore="MissingDefaultResource">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="data"
             type="com.mentuojiankang.user.bean.BeanLiveCourse" />
@@ -14,40 +16,46 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="@drawable/selector_item_white_radius_0_border_0"
         android:paddingHorizontal="15dp"
         android:paddingTop="15dp">
+
         <com.mtjk.view.MyImageView
             android:id="@+id/cover"
-            android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
             load="@{data.coverImage}"
             radius="@{2}"
-            app:my_default="@drawable/load_default"
-            android:layout_centerVertical="true" />
+            android:layout_width="130dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:scaleType="centerCrop"
+            app:my_default="@drawable/load_default" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/cover"
-            android:layout_toRightOf="@id/cover"
             android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/cover"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@{data.name}"
+            tools:text="心理咨询课程"
             android:textColor="#1F2326"
             android:textSize="15dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/cover"
-            android:layout_toRightOf="@id/cover"
             android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/cover"
             android:ellipsize="end"
             android:lines="1"
-            android:text="@{data.introduction}"
+            android:text='@{data.courseNum+"节"}'
             android:textColor="#A9ADB2"
+            tools:text="1节"
             android:textSize="14dp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
